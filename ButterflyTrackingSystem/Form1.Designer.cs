@@ -29,20 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BTS));
-            this.accountLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // accountLabel
-            // 
-            this.accountLabel.AutoSize = true;
-            this.accountLabel.BackColor = System.Drawing.SystemColors.Menu;
-            this.accountLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.accountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountLabel.Location = new System.Drawing.Point(12, 9);
-            this.accountLabel.Name = "accountLabel";
-            this.accountLabel.Size = new System.Drawing.Size(70, 22);
-            this.accountLabel.TabIndex = 0;
-            this.accountLabel.Text = "Account";
             // 
             // BTS
             // 
@@ -52,18 +39,15 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(653, 369);
-            this.Controls.Add(this.accountLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BTS";
             this.Text = "Butterfly Tracking System";
+            this.Load += new System.EventHandler(this.BTS_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label accountLabel;
     }
 }
 

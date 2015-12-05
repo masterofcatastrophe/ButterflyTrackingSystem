@@ -16,5 +16,10 @@ namespace ButterflyTrackingSystem
         {
             InitializeComponent();
         }
+
+        private void BTS_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
