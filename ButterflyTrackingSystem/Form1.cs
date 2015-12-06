@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace ButterflyTrackingSystem
 {
@@ -44,8 +45,19 @@ namespace ButterflyTrackingSystem
 
         private void loginButton_Click(object sender, EventArgs e)
         {
+            string user_ID = userNameBox.Text;
+            string Password = passwordBox.Text;
+
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
+            builder.UserID = "root";
+            builder.Password = "master77";
+            builder.Database = "BTS";
+            MySqlConnection connection = new MySqlConnection(builder.ToString());
+
             if (!String.IsNullOrEmpty(userNameBox.Text) && !String.IsNullOrEmpty(passwordBox.Text))
             {
+                
                 loginPanel.Visible = false; //To-Do: if credentials are correct, enter system. otherwise, show alert box invalid credentials!
 
                 registrationPanel.Visible = false;
@@ -197,6 +209,37 @@ namespace ButterflyTrackingSystem
 
         private void createEmployeeAccountButton_Click(object sender, EventArgs e)
         {
+            string employeeUserName = createEmployeeUserNameBox.Text;
+            string employeePassword = createEmployeePasswordBox.Text;
+            string employeeName = createEmployeeNameBox.Text;
+            string employeeStreet = createEmployeeStreetBox.Text;
+            string employeeCity = createEmployeeCityBox.Text;
+            string employeeState = createEmployeeStateBox.Text;
+            string employeePosition = taggerNontaggerOptionsBox.Text;
+            string employeePhoneNumber = createEmployeePhoneNumberBox.Text;
+
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
+            builder.UserID = "root";
+            builder.Password = "master77";
+            builder.Database = "BTS";
+            MySqlConnection connection = new MySqlConnection(builder.ToString());
+            connection.Open();
+
+            // inserting values into Employee table
+            string newuser_sql = "INSERT INTO Employee (Name, Position, Phone_Number, City, State, Street_Address, User_ID, Password) VALUES (@EmployeeName, @EmployeePosition, @EmployeePhoneNumber, @EmployeeCity, @EmployeeState, @EmployeeStreetAddress, @EmployeeUserID, @EmployeePassword)";
+            MySqlCommand newuser = new MySqlCommand(newuser_sql, connection);
+            newuser.CommandText = newuser_sql;
+            newuser.Parameters.AddWithValue("@EmployeeName", employeeName);
+            newuser.Parameters.AddWithValue("@EmployeePosition", employeePosition);
+            newuser.Parameters.AddWithValue("@EmployeePhoneNumber", employeePhoneNumber);
+            newuser.Parameters.AddWithValue("@EmployeeCity", employeeCity);
+            newuser.Parameters.AddWithValue("@EmployeeState", employeeState);
+            newuser.Parameters.AddWithValue("@EmployeeStreetAddress", employeeStreet);
+            newuser.Parameters.AddWithValue("@EmployeeUserID", employeeUserName);
+            newuser.Parameters.AddWithValue("@EmployeePassword", employeePassword);
+            newuser.ExecuteNonQuery();
+
             if (!String.IsNullOrEmpty(createEmployeeUserNameBox.Text) && !String.IsNullOrEmpty(createEmployeePasswordBox.Text) 
                 && !String.IsNullOrEmpty(createEmployeeNameBox.Text) && !String.IsNullOrEmpty(createEmployeeStreetBox.Text) 
                 && !String.IsNullOrEmpty(createEmployeeCityBox.Text) && !String.IsNullOrEmpty(createEmployeeStateBox.Text)
