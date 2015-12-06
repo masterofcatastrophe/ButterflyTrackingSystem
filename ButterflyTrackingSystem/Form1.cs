@@ -21,5 +21,862 @@ namespace ButterflyTrackingSystem
         {
 
         }
+
+        private void loginPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void loginLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userNameBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void passwordBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(userNameBox.Text) && !String.IsNullOrEmpty(passwordBox.Text))
+            {
+                loginPanel.Visible = false; //To-Do: if credentials are correct, enter system. otherwise, show alert box invalid credentials!
+
+                registrationPanel.Visible = false;
+
+                mainPanel.Visible = true;
+            }
+            if (String.IsNullOrEmpty(userNameBox.Text))
+            {
+                loginUserError.SetError(userNameBox, "User Name field is empty!");
+            }
+            else
+            {
+                loginUserError.Clear();
+            }
+            if (String.IsNullOrEmpty(passwordBox.Text))
+            {
+                loginPasswordError.SetError(passwordBox, "Password field is empty!");
+            }
+            else
+            {
+                loginPasswordError.Clear();
+            }
+        }
+
+        private void registerButton_Click(object sender, EventArgs e)
+        {
+            loginPanel.Visible = false;
+            registrationPanel.Visible = true;
+
+            //resetting the fields when going to create account
+            foreach (Control item in registrationPanel.Controls)
+            {
+                if (item is TextBox)
+                {
+                    item.Text = "";
+                }
+            }//end foreach
+        }
+
+        private void userNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void passwordLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dontHaveanAccountLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void registrationPanel_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void createAccountLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createUserNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createEmployeeUserNameBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createPasswordLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createEmployeePasswordBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmployeeNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createEmployeeNameBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void employeePhoneNumberLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createEmployeePhoneNumberBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void employeePositionLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void taggerNontaggerOptionsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void employeeAddressLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void employeeStreetLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void employeeCityLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void employeeStateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createEmployeeStreetBox_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void createEmployeeCityBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createEmployeeStateBox_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void createEmployeeAccountButton_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(createEmployeeUserNameBox.Text) && !String.IsNullOrEmpty(createEmployeePasswordBox.Text) 
+                && !String.IsNullOrEmpty(createEmployeeNameBox.Text) && !String.IsNullOrEmpty(createEmployeeStreetBox.Text) 
+                && !String.IsNullOrEmpty(createEmployeeCityBox.Text) && !String.IsNullOrEmpty(createEmployeeStateBox.Text)
+                && !String.IsNullOrEmpty(taggerNontaggerOptionsBox.Text))
+            {
+                MessageBox.Show("Account created Successfully!");
+
+                loginPanel.Visible = true; registrationPanel.Visible = false;
+
+                //resetting the fields when going to login after finishing creating account
+                foreach (Control item in loginPanel.Controls)
+                {
+                    if (item is TextBox)
+                    {
+                        item.Text = "";
+                    }
+                }//end foreach
+            }
+
+            if (String.IsNullOrEmpty(createEmployeeUserNameBox.Text))
+            {
+                registerUserNameError.SetError(createEmployeeUserNameBox, "User Name field is empty!");
+            }
+            else
+            {
+                registerUserNameError.Clear();
+            }
+            if (String.IsNullOrEmpty(createEmployeePasswordBox.Text))
+            {
+                registerPasswordError.SetError(createEmployeePasswordBox, "Password field is empty!");
+            }
+            else
+            {
+                registerPasswordError.Clear();
+            }
+            if (String.IsNullOrEmpty(createEmployeeNameBox.Text))
+            {
+                registerEmployeeNameError.SetError(createEmployeeNameBox, "Employee Name field is empty!");
+            }
+            else
+            {
+                registerEmployeeNameError.Clear();
+            }
+            if (String.IsNullOrEmpty(createEmployeeStreetBox.Text))
+            {
+                registerStreetError.SetError(createEmployeeStreetBox, "Street field is empty!");
+            }
+            else
+            {
+                registerStreetError.Clear();
+            }
+            if (String.IsNullOrEmpty(createEmployeeCityBox.Text))
+            {
+                registerCityError.SetError(createEmployeeCityBox, "City field is empty!");
+            }
+            else
+            {
+                registerCityError.Clear();
+            }
+            if (String.IsNullOrEmpty(createEmployeeStateBox.Text))
+            {
+                registerStateError.SetError(createEmployeeStateBox, "State field is empty!");
+            }
+            else
+            {
+                registerStateError.Clear();
+            }
+            if (String.IsNullOrEmpty(taggerNontaggerOptionsBox.Text))
+            {
+                registerSelectPositionError.SetError(taggerNontaggerOptionsBox, "No Postion selected!");
+            }
+            else
+            {
+                registerSelectPositionError.Clear();
+            }
+        }
+
+        private void alreadyHaveanAccountLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loginHereButton_Click(object sender, EventArgs e)
+        {
+            loginPanel.Visible = true; registrationPanel.Visible = false;
+
+            //resetting the fields when going to login
+            foreach (Control item in loginPanel.Controls)
+            {
+                if (item is TextBox)
+                {
+                    item.Text = "";
+                }
+            }//end foreach
+            
+        }
+
+        private void employeeRequiredLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateAccountLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userNameUpdateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateUserNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void employeeNameUpdateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectPositionUpdateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void passwordUpdateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void phoneNumberUpdateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void streetUpdateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addressUpdateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cityUpdateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stateUpdateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateAccountButton_Click(object sender, EventArgs e)
+        {
+            //To-DO: update query here
+
+            MessageBox.Show("Account successfully Updated!");
+
+            foreach (Control item in updateAccountTab.Controls)
+            {
+                if (item is TextBox)
+                {
+                    item.Text = "";
+                }
+            }//end foreach
+        }
+
+        private void updatePasswordTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEmployeeNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updatePhoneNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEmployeeStreetTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void positionOptionsUpdateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateAccountTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchTagIDLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchUserNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchSpeciesLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchGenderLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchLocationLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchCityLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchStateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchCountryLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchNoteLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchTagIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchUserNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchSpeciesTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchGendercomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchCityTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchStateTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchCountryTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            //resetting the fields when going to login
+            foreach (Control item in searchTab.Controls)
+            {
+                if (item is TextBox)
+                {
+                    item.Text = "";
+                }
+            }//end foreach
+        }
+
+        private void searchTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createEntryTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createEntryLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createSpeciesLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createAgeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createGenderLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createLocationLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createCityLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createStateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createCountryLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createLongitudeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createLatitudeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void requiredButterflyFieldsLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createSpeciesTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createAgeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectGenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createCityTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createStateTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createCountryTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createLongitudeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createLatitudeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createEntryButton_Click(object sender, EventArgs e)
+        {
+            /*//if required boxes are left empty, reveal error
+            if (String.IsNullOrEmpty(createCityTextBox.Text) && String.IsNullOrEmpty(createStateTextBox.Text) && String.IsNullOrEmpty(createCountryTextBox.Text) && String.IsNullOrEmpty(createLongitudeTextBox.Text) && String.IsNullOrEmpty(createLatitudeTextBox.Text))
+            {
+                cityError.SetError(createCityTextBox, "City field is empty!");
+                stateError.SetError(createStateTextBox, "State field is empty!");
+                countryError.SetError(createCountryTextBox, "Country field is empty!");
+                longitudeError.SetError(createLongitudeTextBox, "Longitude field is empty!");
+                latitudeError.SetError(createLatitudeTextBox, "Latitude field is empty!");
+            }
+            */
+
+            if (!String.IsNullOrEmpty(createCityTextBox.Text) && !String.IsNullOrEmpty(createStateTextBox.Text) && !String.IsNullOrEmpty(createCountryTextBox.Text) && !String.IsNullOrEmpty(createLongitudeTextBox.Text) && !String.IsNullOrEmpty(createLatitudeTextBox.Text))
+            {
+                MessageBox.Show("New butterfly entry created!");
+
+                //resetting the fields
+                foreach (Control item in createEntryTab.Controls)
+                {
+                    if (item is TextBox)
+                    {
+                        item.Text = "";
+                    }
+
+                }//end foreach
+            }
+            if (String.IsNullOrEmpty(createCityTextBox.Text))
+            {
+                cityError.SetError(createCityTextBox, "City field is empty!");
+            }
+            else
+            {
+                cityError.Clear();
+            }
+            if (String.IsNullOrEmpty(createStateTextBox.Text))
+            {
+                stateError.SetError(createStateTextBox, "State field is empty!");
+            }
+            else
+            {
+                stateError.Clear();
+            }
+            if (String.IsNullOrEmpty(createCountryTextBox.Text))
+            {
+                countryError.SetError(createCountryTextBox, "Country field is empty!");
+            }
+            else
+            {
+                countryError.Clear();
+            }
+            if (String.IsNullOrEmpty(createLongitudeTextBox.Text))
+            {
+                longitudeError.SetError(createLongitudeTextBox, "Longitude field is empty!");
+            }
+            else
+            {
+                longitudeError.Clear();
+            }
+            if (String.IsNullOrEmpty(createLatitudeTextBox.Text))
+            {
+                latitudeError.SetError(createLatitudeTextBox, "Latitude field is empty!");
+            }
+            else
+            {
+                latitudeError.Clear();
+            }
+        }
+
+        private void updateEntryTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void leaderboardTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void graphTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createCityTextBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing to next textbox, remove error if required field is filled
+            if (String.IsNullOrEmpty(createCityTextBox.Text))
+            {
+                cityError.SetError(createCityTextBox, "City field is empty!");
+            }
+            else
+            {
+                cityError.Clear();
+            }
+        }
+
+        private void createStateTextBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing to next textbox, remove error if required field is filled
+            if (String.IsNullOrEmpty(createStateTextBox.Text))
+            {
+                stateError.SetError(createStateTextBox, "State field is empty!");
+            }
+            else
+            {
+                stateError.Clear();
+            }
+        }
+
+        private void createCountryTextBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing to next textbox, remove error if required field is filled
+            if (String.IsNullOrEmpty(createCountryTextBox.Text))
+            {
+                countryError.SetError(createCountryTextBox, "Country field is empty!");
+            }
+            else
+            {
+                countryError.Clear();
+            }
+        }
+
+        private void createLongitudeTextBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing to next textbox, remove error if required field is filled
+            if (String.IsNullOrEmpty(createLongitudeTextBox.Text))
+            {
+                longitudeError.SetError(createLongitudeTextBox, "Longitude field is empty!");
+            }
+            else
+            {
+                longitudeError.Clear();
+            }
+        }
+
+        private void createLatitudeTextBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing to next textbox, remove error if required field is filled
+            if (String.IsNullOrEmpty(createLatitudeTextBox.Text))
+            {
+                latitudeError.SetError(createLatitudeTextBox, "Latitude field is empty!");
+            }
+            else
+            {
+                latitudeError.Clear();
+            }
+        }
+
+        private void userNameBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing to next textbox, remove error if required field is filled
+            if (String.IsNullOrEmpty(userNameBox.Text))
+            {
+                loginUserError.SetError(userNameBox, "User Name field is empty!");
+            }
+            else
+            {
+                loginUserError.Clear();
+            }
+        }
+
+        private void passwordBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing, remove error if required field is filled
+            if (String.IsNullOrEmpty(passwordBox.Text))
+            {
+                loginPasswordError.SetError(passwordBox, "Password field is empty!");
+            }
+            else
+            {
+                loginPasswordError.Clear();
+            }
+        }
+
+        private void createEmployeeUserNameBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing, remove error if required field is filled
+            if (String.IsNullOrEmpty(createEmployeeUserNameBox.Text))
+            {
+                registerUserNameError.SetError(createEmployeeUserNameBox, "User Name field is empty!");
+            }
+            else
+            {
+                registerUserNameError.Clear();
+            }
+        }
+
+        private void createEmployeePasswordBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing, remove error if required field is filled
+            if (String.IsNullOrEmpty(createEmployeePasswordBox.Text))
+            {
+                registerPasswordError.SetError(createEmployeePasswordBox, "Password field is empty!");
+            }
+            else
+            {
+                registerPasswordError.Clear();
+            }
+        }
+
+        private void createEmployeeNameBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing, remove error if required field is filled
+            if (String.IsNullOrEmpty(createEmployeeNameBox.Text))
+            {
+                registerEmployeeNameError.SetError(createEmployeeNameBox, "Employee Name field is empty!");
+            }
+            else
+            {
+                registerEmployeeNameError.Clear();
+            }
+        }
+
+        private void createEmployeePhoneNumberBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing, remove error if required field is filled
+            //if (String.IsNullOrEmpty(createEmployeePhoneNumberBox.Text))
+            //{
+            //    loginPasswordError.SetError(createEmployeePhoneNumberBox, "Phone # field is empty!");
+            //}
+            //else
+            //{
+            //    loginPasswordError.Clear();
+            //}
+        }
+
+        private void createEmployeeStreetBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing, remove error if required field is filled
+            if (String.IsNullOrEmpty(createEmployeeStreetBox.Text))
+            {
+                registerStreetError.SetError(createEmployeeStreetBox, "Street field is empty!");
+            }
+            else
+            {
+                registerStreetError.Clear();
+            }
+        }
+
+        private void createEmployeeCityBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing, remove error if required field is filled
+            if (String.IsNullOrEmpty(createEmployeeCityBox.Text))
+            {
+                registerCityError.SetError(createEmployeeCityBox, "City field is empty!");
+            }
+            else
+            {
+                registerCityError.Clear();
+            }
+        }
+
+        private void createEmployeeStateBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing, remove error if required field is filled
+            if (String.IsNullOrEmpty(createEmployeeStateBox.Text))
+            {
+                registerStateError.SetError(createEmployeeStateBox, "State field is empty!");
+            }
+            else
+            {
+                registerStateError.Clear();
+            }
+        }
+
+        private void taggerNontaggerOptionsBox_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(taggerNontaggerOptionsBox.Text))
+            {
+                registerSelectPositionError.SetError(taggerNontaggerOptionsBox, "No Postion selected!");
+            }
+            else
+            {
+                registerSelectPositionError.Clear();
+            }
+        }
     }
 }
