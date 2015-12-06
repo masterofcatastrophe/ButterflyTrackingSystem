@@ -228,23 +228,36 @@ namespace ButterflyTrackingSystem
 
             // inserting values into Employee table
             string newuser_sql = "INSERT INTO Employee (Name, Position, Phone_Number, City, State, Street_Address, User_ID, Password) VALUES (@EmployeeName, @EmployeePosition, @EmployeePhoneNumber, @EmployeeCity, @EmployeeState, @EmployeeStreetAddress, @EmployeeUserID, @EmployeePassword)";
-            MySqlCommand newuser = new MySqlCommand(newuser_sql, connection);
-            newuser.CommandText = newuser_sql;
-            newuser.Parameters.AddWithValue("@EmployeeName", employeeName);
-            newuser.Parameters.AddWithValue("@EmployeePosition", employeePosition);
-            newuser.Parameters.AddWithValue("@EmployeePhoneNumber", employeePhoneNumber);
-            newuser.Parameters.AddWithValue("@EmployeeCity", employeeCity);
-            newuser.Parameters.AddWithValue("@EmployeeState", employeeState);
-            newuser.Parameters.AddWithValue("@EmployeeStreetAddress", employeeStreet);
-            newuser.Parameters.AddWithValue("@EmployeeUserID", employeeUserName);
-            newuser.Parameters.AddWithValue("@EmployeePassword", employeePassword);
-            newuser.ExecuteNonQuery();
+            string newuser_validation = "SELECT USER_ID FROM Employee WHERE (User_ID=@EmployeeUserID)";
 
-            if (!String.IsNullOrEmpty(createEmployeeUserNameBox.Text) && !String.IsNullOrEmpty(createEmployeePasswordBox.Text) 
+            MySqlCommand newuser_valid = new MySqlCommand(newuser_validation, connection);
+            MySqlCommand newuser = new MySqlCommand(newuser_sql, connection);
+
+            newuser_valid.Parameters.AddWithValue("@EmployeeUserID", employeeUserName);
+            var nID =newuser_valid.ExecuteScalar();
+            if(nID !=null)
+            {
+               MessageBox.Show("user exists !");
+            }
+            
+            
+            
+           
+            else if  (!String.IsNullOrEmpty(createEmployeeUserNameBox.Text) && !String.IsNullOrEmpty(createEmployeePasswordBox.Text) 
                 && !String.IsNullOrEmpty(createEmployeeNameBox.Text) && !String.IsNullOrEmpty(createEmployeeStreetBox.Text) 
                 && !String.IsNullOrEmpty(createEmployeeCityBox.Text) && !String.IsNullOrEmpty(createEmployeeStateBox.Text)
                 && !String.IsNullOrEmpty(taggerNontaggerOptionsBox.Text))
             {
+                newuser.CommandText = newuser_sql;
+                newuser.Parameters.AddWithValue("@EmployeeName", employeeName);
+                newuser.Parameters.AddWithValue("@EmployeePosition", employeePosition);
+                newuser.Parameters.AddWithValue("@EmployeePhoneNumber", employeePhoneNumber);
+                newuser.Parameters.AddWithValue("@EmployeeCity", employeeCity);
+                newuser.Parameters.AddWithValue("@EmployeeState", employeeState);
+                newuser.Parameters.AddWithValue("@EmployeeStreetAddress", employeeStreet);
+                newuser.Parameters.AddWithValue("@EmployeeUserID", employeeUserName);
+                newuser.Parameters.AddWithValue("@EmployeePassword", employeePassword);
+                newuser.ExecuteNonQuery();
                 MessageBox.Show("Account created Successfully!");
 
                 loginPanel.Visible = true; registrationPanel.Visible = false;
