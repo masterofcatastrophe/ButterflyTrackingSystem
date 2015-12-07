@@ -45,8 +45,9 @@ namespace ButterflyTrackingSystem
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            string user_ID = userNameBox.Text;
-            string Password = passwordBox.Text;
+            string LoginUserName = userNameBox.Text;
+            string LoginPassword = passwordBox.Text;
+            
 
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
             builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
@@ -54,16 +55,41 @@ namespace ButterflyTrackingSystem
             builder.Password = "master77";
             builder.Database = "BTS";
             MySqlConnection connection = new MySqlConnection(builder.ToString());
+            connection.Open();
+            
+            MySqlCommand user_validation = new MySqlCommand ("SELECT * FROM Employee WHERE User_ID='"+ userNameBox.Text+"'AND Password='"+passwordBox.Text+"';",connection);
 
-            if (!String.IsNullOrEmpty(userNameBox.Text) && !String.IsNullOrEmpty(passwordBox.Text))
+            MySqlDataReader myReader;
+            myReader = user_validation.ExecuteReader();
+            int count = 0;
+            while (myReader.Read())
             {
-                
-                loginPanel.Visible = false; //To-Do: if credentials are correct, enter system. otherwise, show alert box invalid credentials!
+                count = count + 1;
+            }
+
+            if(count ==1)
+            {
+                loginPanel.Visible = false; 
 
                 registrationPanel.Visible = false;
 
                 mainPanel.Visible = true;
             }
+            
+
+            else 
+            {
+               MessageBox.Show("Wrong user name or password !");
+            }
+
+
+
+            /*else if (!String.IsNullOrEmpty(userNameBox.Text) && !String.IsNullOrEmpty(passwordBox.Text))
+            {
+                loginPanel.Visible = false; //To-Do: if credentials are correct, enter system. otherwise, show alert box invalid credentials!
+                registrationPanel.Visible = false;
+                mainPanel.Visible = true;
+            }*/
             if (String.IsNullOrEmpty(userNameBox.Text))
             {
                 loginUserError.SetError(userNameBox, "User Name field is empty!");
@@ -233,6 +259,7 @@ namespace ButterflyTrackingSystem
             MySqlCommand newuser_valid = new MySqlCommand(newuser_validation, connection);
             MySqlCommand newuser = new MySqlCommand(newuser_sql, connection);
 
+            //Validating if employee id exists
             newuser_valid.Parameters.AddWithValue("@EmployeeUserID", employeeUserName);
             var nID =newuser_valid.ExecuteScalar();
             if(nID !=null)
