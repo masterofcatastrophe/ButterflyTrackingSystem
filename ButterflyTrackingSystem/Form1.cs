@@ -195,7 +195,7 @@ namespace ButterflyTrackingSystem
 
         private void taggerNontaggerOptionsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void employeeAddressLabel_Click(object sender, EventArgs e)
@@ -258,6 +258,7 @@ namespace ButterflyTrackingSystem
 
             MySqlCommand newuser_valid = new MySqlCommand(newuser_validation, connection);
             MySqlCommand newuser = new MySqlCommand(newuser_sql, connection);
+            
 
             //Validating if employee id exists
             newuser_valid.Parameters.AddWithValue("@EmployeeUserID", employeeUserName);
