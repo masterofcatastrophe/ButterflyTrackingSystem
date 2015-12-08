@@ -79,7 +79,7 @@ namespace ButterflyTrackingSystem
 
             else 
             {
-               MessageBox.Show("Wrong user name or password !");
+               MessageBox.Show("Invalid user name/password!");
             }
 
 
