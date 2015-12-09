@@ -962,5 +962,43 @@ namespace ButterflyTrackingSystem
                 registerSelectPositionError.Clear();
             }
         }
+
+        private void retreive_Click(object sender, EventArgs e)
+        {
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
+            builder.UserID = "root";
+            builder.Password = "master77";
+            builder.Database = "BTS";
+            MySqlConnection connection = new MySqlConnection(builder.ToString());
+            connection.Open();
+            
+            string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
+            MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, connection);
+            retreiveData.Parameters.AddWithValue("@user",userNameBox.Text);
+            MySqlDataReader myReader;
+            myReader=retreiveData.ExecuteReader();
+
+            while(myReader.Read())
+            {
+                string sUser = myReader.GetString("User_ID");
+                string sPassword = myReader.GetString("Password");
+                string sName = myReader.GetString("Name");
+                string sPhone = myReader.GetString("Phone_Number");
+                string sStreet = myReader.GetString("Street_Address");
+                string sCity = myReader.GetString("City");
+                string sState = myReader.GetString("State");
+                string sPosition = myReader.GetString("Position");
+                updateUserNameTextBox.Text = sUser;
+                updatePasswordTextBox.Text = sPassword;
+                updateEmployeeNameTextBox.Text = sName;
+                updatePhoneNumberTextBox.Text = sPhone;
+                updateEmployeeStreetTextBox.Text = sStreet;
+                updateEmployeeCityTextBox.Text = sCity;
+                updateEmployeeStateTextBox.Text = sState;
+                positionOptionsUpdateComboBox.Text = sPosition;
+            }
+            connection.Close();
+        }
     }
 }
