@@ -13,9 +13,13 @@ namespace ButterflyTrackingSystem
 {
     public partial class BTS : Form
     {
+        static DBConnect con = new DBConnect();
+        MySqlConnection dbcon = con.connection;
+        
         public BTS()
         {
             InitializeComponent();
+            con.OpenConnection();
         }
 
         private void BTS_Load(object sender, EventArgs e)
@@ -42,69 +46,70 @@ namespace ButterflyTrackingSystem
         {
 
         }
+       
 
         private void loginButton_Click(object sender, EventArgs e)
         {
             string LoginUserName = userNameBox.Text;
             string LoginPassword = passwordBox.Text;
-            
 
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-            builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
-            builder.UserID = "root";
-            builder.Password = "master77";
-            builder.Database = "BTS";
-            MySqlConnection connection = new MySqlConnection(builder.ToString());
-            connection.Open();
-            
-            MySqlCommand user_validation = new MySqlCommand ("SELECT * FROM Employee WHERE User_ID='"+ userNameBox.Text+"'AND Password='"+passwordBox.Text+"';",connection);
-
-            MySqlDataReader myReader;
-            myReader = user_validation.ExecuteReader();
-            int count = 0;
-            while (myReader.Read())
+            if (dbcon.State == ConnectionState.Open)
             {
-                count = count + 1;
-            }
+                MySqlCommand user_validation =
+                    new MySqlCommand(
+                        "SELECT * FROM Employee WHERE User_ID='" + userNameBox.Text + "'AND Password='" +
+                        passwordBox.Text + "';", dbcon);
 
-            if(count ==1)
-            {
-                loginPanel.Visible = false; 
+                MySqlDataReader myReader;
+                myReader = user_validation.ExecuteReader();
+                int count = 0;
+                while (myReader.Read())
+                {
+                    count = count + 1;
+                }
 
-                registrationPanel.Visible = false;
+                if (count == 1)
+                {
+                    loginPanel.Visible = false;
 
-                mainPanel.Visible = true;
-            }
-            
+                    registrationPanel.Visible = false;
 
-            else 
-            {
-               MessageBox.Show("Invalid user name/password!");
-            }
+                    mainPanel.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid user name/password!");
+                }
 
 
 
-            /*else if (!String.IsNullOrEmpty(userNameBox.Text) && !String.IsNullOrEmpty(passwordBox.Text))
+                /*else if (!String.IsNullOrEmpty(userNameBox.Text) && !String.IsNullOrEmpty(passwordBox.Text))
             {
                 loginPanel.Visible = false; //To-Do: if credentials are correct, enter system. otherwise, show alert box invalid credentials!
                 registrationPanel.Visible = false;
                 mainPanel.Visible = true;
             }*/
-            if (String.IsNullOrEmpty(userNameBox.Text))
-            {
-                loginUserError.SetError(userNameBox, "User Name field is empty!");
+                if (String.IsNullOrEmpty(userNameBox.Text))
+                {
+                    loginUserError.SetError(userNameBox, "User Name field is empty!");
+                }
+                else
+                {
+                    loginUserError.Clear();
+                }
+                if (String.IsNullOrEmpty(passwordBox.Text))
+                {
+                    loginPasswordError.SetError(passwordBox, "Password field is empty!");
+                }
+                else
+                {
+                    loginPasswordError.Clear();
+                }
             }
             else
             {
-                loginUserError.Clear();
-            }
-            if (String.IsNullOrEmpty(passwordBox.Text))
-            {
-                loginPasswordError.SetError(passwordBox, "Password field is empty!");
-            }
-            else
-            {
-                loginPasswordError.Clear();
+                con.CloseConnection();
+                con.OpenConnection();
             }
         }
 
@@ -244,6 +249,7 @@ namespace ButterflyTrackingSystem
             string employeePosition = taggerNontaggerOptionsBox.Text;
             string employeePhoneNumber = createEmployeePhoneNumberBox.Text;
 
+            /*
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
             builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
             builder.UserID = "root";
@@ -251,110 +257,120 @@ namespace ButterflyTrackingSystem
             builder.Database = "BTS";
             MySqlConnection connection = new MySqlConnection(builder.ToString());
             connection.Open();
+            */
 
-            // inserting values into Employee table
-            string newuser_sql = "INSERT INTO Employee (Name, Position, Phone_Number, City, State, Street_Address, User_ID, Password) VALUES (@EmployeeName, @EmployeePosition, @EmployeePhoneNumber, @EmployeeCity, @EmployeeState, @EmployeeStreetAddress, @EmployeeUserID, @EmployeePassword)";
-            string newuser_validation = "SELECT USER_ID FROM Employee WHERE (User_ID=@EmployeeUserID)";
-
-            MySqlCommand newuser_valid = new MySqlCommand(newuser_validation, connection);
-            MySqlCommand newuser = new MySqlCommand(newuser_sql, connection);
-            
-
-            //Validating if employee id exists
-            newuser_valid.Parameters.AddWithValue("@EmployeeUserID", employeeUserName);
-            var nID =newuser_valid.ExecuteScalar();
-            if(nID !=null)
+            if (dbcon.State == ConnectionState.Open)
             {
-               MessageBox.Show("user exists !");
-            }
-            
-            
-            
-           
-            else if  (!String.IsNullOrEmpty(createEmployeeUserNameBox.Text) && !String.IsNullOrEmpty(createEmployeePasswordBox.Text) 
-                && !String.IsNullOrEmpty(createEmployeeNameBox.Text) && !String.IsNullOrEmpty(createEmployeeStreetBox.Text) 
-                && !String.IsNullOrEmpty(createEmployeeCityBox.Text) && !String.IsNullOrEmpty(createEmployeeStateBox.Text)
-                && !String.IsNullOrEmpty(taggerNontaggerOptionsBox.Text))
-            {
-                newuser.CommandText = newuser_sql;
-                newuser.Parameters.AddWithValue("@EmployeeName", employeeName);
-                newuser.Parameters.AddWithValue("@EmployeePosition", employeePosition);
-                newuser.Parameters.AddWithValue("@EmployeePhoneNumber", employeePhoneNumber);
-                newuser.Parameters.AddWithValue("@EmployeeCity", employeeCity);
-                newuser.Parameters.AddWithValue("@EmployeeState", employeeState);
-                newuser.Parameters.AddWithValue("@EmployeeStreetAddress", employeeStreet);
-                newuser.Parameters.AddWithValue("@EmployeeUserID", employeeUserName);
-                newuser.Parameters.AddWithValue("@EmployeePassword", employeePassword);
-                newuser.ExecuteNonQuery();
-                MessageBox.Show("Account created Successfully!");
+                // inserting values into Employee table
+                string newuser_sql =
+                    "INSERT INTO Employee (Name, Position, Phone_Number, City, State, Street_Address, User_ID, Password) VALUES (@EmployeeName, @EmployeePosition, @EmployeePhoneNumber, @EmployeeCity, @EmployeeState, @EmployeeStreetAddress, @EmployeeUserID, @EmployeePassword)";
+                string newuser_validation = "SELECT USER_ID FROM Employee WHERE (User_ID=@EmployeeUserID)";
 
-                loginPanel.Visible = true; registrationPanel.Visible = false;
+                MySqlCommand newuser_valid = new MySqlCommand(newuser_validation, dbcon);
+                MySqlCommand newuser = new MySqlCommand(newuser_sql, dbcon);
 
-                //resetting the fields when going to login after finishing creating account
-                foreach (Control item in loginPanel.Controls)
+
+                //Validating if employee id exists
+                newuser_valid.Parameters.AddWithValue("@EmployeeUserID", employeeUserName);
+                var nID = newuser_valid.ExecuteScalar();
+                if (nID != null)
                 {
-                    if (item is TextBox)
-                    {
-                        item.Text = "";
-                    }
-                }//end foreach
-            }
+                    MessageBox.Show("user exists !");
+                }
+                else if (!String.IsNullOrEmpty(createEmployeeUserNameBox.Text) &&
+                         !String.IsNullOrEmpty(createEmployeePasswordBox.Text)
+                         && !String.IsNullOrEmpty(createEmployeeNameBox.Text) &&
+                         !String.IsNullOrEmpty(createEmployeeStreetBox.Text)
+                         && !String.IsNullOrEmpty(createEmployeeCityBox.Text) &&
+                         !String.IsNullOrEmpty(createEmployeeStateBox.Text)
+                         && !String.IsNullOrEmpty(taggerNontaggerOptionsBox.Text))
+                {
+                    newuser.CommandText = newuser_sql;
+                    newuser.Parameters.AddWithValue("@EmployeeName", employeeName);
+                    newuser.Parameters.AddWithValue("@EmployeePosition", employeePosition);
+                    newuser.Parameters.AddWithValue("@EmployeePhoneNumber", employeePhoneNumber);
+                    newuser.Parameters.AddWithValue("@EmployeeCity", employeeCity);
+                    newuser.Parameters.AddWithValue("@EmployeeState", employeeState);
+                    newuser.Parameters.AddWithValue("@EmployeeStreetAddress", employeeStreet);
+                    newuser.Parameters.AddWithValue("@EmployeeUserID", employeeUserName);
+                    newuser.Parameters.AddWithValue("@EmployeePassword", employeePassword);
+                    newuser.ExecuteNonQuery();
+                    MessageBox.Show("Account created Successfully!");
 
-            if (String.IsNullOrEmpty(createEmployeeUserNameBox.Text))
-            {
-                registerUserNameError.SetError(createEmployeeUserNameBox, "User Name field is empty!");
+                    loginPanel.Visible = true;
+                    registrationPanel.Visible = false;
+
+                    //resetting the fields when going to login after finishing creating account
+                    foreach (Control item in loginPanel.Controls)
+                    {
+                        if (item is TextBox)
+                        {
+                            item.Text = "";
+                        }
+                    } //end foreach
+                }
+
+                if (String.IsNullOrEmpty(createEmployeeUserNameBox.Text))
+                {
+                    registerUserNameError.SetError(createEmployeeUserNameBox, "User Name field is empty!");
+                }
+                else
+                {
+                    registerUserNameError.Clear();
+                }
+                if (String.IsNullOrEmpty(createEmployeePasswordBox.Text))
+                {
+                    registerPasswordError.SetError(createEmployeePasswordBox, "Password field is empty!");
+                }
+                else
+                {
+                    registerPasswordError.Clear();
+                }
+                if (String.IsNullOrEmpty(createEmployeeNameBox.Text))
+                {
+                    registerEmployeeNameError.SetError(createEmployeeNameBox, "Employee Name field is empty!");
+                }
+                else
+                {
+                    registerEmployeeNameError.Clear();
+                }
+                if (String.IsNullOrEmpty(createEmployeeStreetBox.Text))
+                {
+                    registerStreetError.SetError(createEmployeeStreetBox, "Street field is empty!");
+                }
+                else
+                {
+                    registerStreetError.Clear();
+                }
+                if (String.IsNullOrEmpty(createEmployeeCityBox.Text))
+                {
+                    registerCityError.SetError(createEmployeeCityBox, "City field is empty!");
+                }
+                else
+                {
+                    registerCityError.Clear();
+                }
+                if (String.IsNullOrEmpty(createEmployeeStateBox.Text))
+                {
+                    registerStateError.SetError(createEmployeeStateBox, "State field is empty!");
+                }
+                else
+                {
+                    registerStateError.Clear();
+                }
+                if (String.IsNullOrEmpty(taggerNontaggerOptionsBox.Text))
+                {
+                    registerSelectPositionError.SetError(taggerNontaggerOptionsBox, "No Postion selected!");
+                }
+                else
+                {
+                    registerSelectPositionError.Clear();
+                }
             }
             else
             {
-                registerUserNameError.Clear();
-            }
-            if (String.IsNullOrEmpty(createEmployeePasswordBox.Text))
-            {
-                registerPasswordError.SetError(createEmployeePasswordBox, "Password field is empty!");
-            }
-            else
-            {
-                registerPasswordError.Clear();
-            }
-            if (String.IsNullOrEmpty(createEmployeeNameBox.Text))
-            {
-                registerEmployeeNameError.SetError(createEmployeeNameBox, "Employee Name field is empty!");
-            }
-            else
-            {
-                registerEmployeeNameError.Clear();
-            }
-            if (String.IsNullOrEmpty(createEmployeeStreetBox.Text))
-            {
-                registerStreetError.SetError(createEmployeeStreetBox, "Street field is empty!");
-            }
-            else
-            {
-                registerStreetError.Clear();
-            }
-            if (String.IsNullOrEmpty(createEmployeeCityBox.Text))
-            {
-                registerCityError.SetError(createEmployeeCityBox, "City field is empty!");
-            }
-            else
-            {
-                registerCityError.Clear();
-            }
-            if (String.IsNullOrEmpty(createEmployeeStateBox.Text))
-            {
-                registerStateError.SetError(createEmployeeStateBox, "State field is empty!");
-            }
-            else
-            {
-                registerStateError.Clear();
-            }
-            if (String.IsNullOrEmpty(taggerNontaggerOptionsBox.Text))
-            {
-                registerSelectPositionError.SetError(taggerNontaggerOptionsBox, "No Postion selected!");
-            }
-            else
-            {
-                registerSelectPositionError.Clear();
+                con.CloseConnection();
+                con.OpenConnection();
             }
         }
 
@@ -993,5 +1009,88 @@ namespace ButterflyTrackingSystem
                 registerSelectPositionError.Clear();
             }
         }
+    }
+
+    public class DBConnect
+    {
+        public MySqlConnection connection;
+        private string server;
+        private string database;
+        private string uid;
+        private string password;
+
+        //Constructor
+        public DBConnect()
+        {
+            Initialize();
+        }
+
+        //Initialize values
+        private void Initialize()
+        {
+            server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
+            database = "BTS";
+            uid = "root";
+            password = "master77";
+            string connectionString;
+            connectionString = "SERVER=" + server + ";" + "DATABASE=" +
+            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+            
+            connection = new MySqlConnection(connectionString);
+            
+        }
+
+        //open connection to database
+        public bool OpenConnection()
+        {
+            /*
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
+            builder.UserID = "root";
+            builder.Password = "master77";
+            builder.Database = "BTS";
+            MySqlConnection connection = new MySqlConnection(builder.ToString());
+            */
+            try
+            {
+                connection.Open();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                switch (ex.Number)
+                {
+                    case 0:
+                        MessageBox.Show("Cannot connect to server.  Contact administrator", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        break;
+                    case 1042:
+                        MessageBox.Show("Unable to connect to any of the specified MySQL hosts", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        break;
+                    case 1045:
+                        MessageBox.Show("Invalid username/password, please try again", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        break;
+                }
+                return false;
+            }
+        }
+
+        //Close connection
+        public bool CloseConnection()
+        {
+            try
+            {
+                connection.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
     }
 }
