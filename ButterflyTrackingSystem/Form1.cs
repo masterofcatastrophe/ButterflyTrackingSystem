@@ -15,11 +15,12 @@ namespace ButterflyTrackingSystem
     {
         static DBConnect con = new DBConnect();
         MySqlConnection dbcon = con.connection;
+        int Emp_ID = -1; // currently logged in user id
         
         public BTS()
         {
             InitializeComponent();
-            con.OpenConnection();
+            con.OpenConnection(); // open db connection
         }
 
         private void BTS_Load(object sender, EventArgs e)
@@ -70,11 +71,32 @@ namespace ButterflyTrackingSystem
 
                 if (count == 1)
                 {
+                    myReader.Close();
+                    try
+                    {
+                        MySqlDataReader reader = null;
+                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text + "';");
+
+                        MySqlCommand Get_Emp_ID = new MySqlCommand(selectCmd, dbcon);
+                        reader = Get_Emp_ID.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            Emp_ID = Convert.ToInt32(reader["Employee_ID"]);
+                        }
+                        reader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    
+                    //MessageBox.Show(Emp_ID.ToString());
+
                     loginPanel.Visible = false;
-
                     registrationPanel.Visible = false;
-
                     mainPanel.Visible = true;
+                    
                 }
                 else
                 {
@@ -714,19 +736,52 @@ namespace ButterflyTrackingSystem
             }
             */
 
+            string sightingcity = createCityTextBox.Text;
+            string sightingstate = createStateTextBox.Text;
+            string sightingcountry = createCountryTextBox.Text;
+            string sightinglongitude = createLongitudeTextBox.Text;
+            string sightinglatitude = createLatitudeTextBox.Text;
+            string butterflyspecies = createSpeciesTextBox.Text;
+            string butterflyage = createAgeTextBox.Text;
+            string butterflygender = selectGenderComboBox.Text;
+
             if (!String.IsNullOrEmpty(createCityTextBox.Text) && !String.IsNullOrEmpty(createStateTextBox.Text) && !String.IsNullOrEmpty(createCountryTextBox.Text) && !String.IsNullOrEmpty(createLongitudeTextBox.Text) && !String.IsNullOrEmpty(createLatitudeTextBox.Text))
             {
-                MessageBox.Show("New butterfly entry created!");
-
-                //resetting the fields
-                foreach (Control item in createEntryTab.Controls)
+                if (dbcon.State == ConnectionState.Open)
                 {
-                    if (item is TextBox)
-                    {
-                        item.Text = "";
-                    }
+                    // inserting values into Butterfly table
+                    string addButterfly =
+                        "INSERT INTO Butterfly (Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Emp_ID)" +
+                        " VALUES (@TagID, @Species, @Gender, @Age, @Date_of_Tagging, @Time_of_Tagging, @Emp_ID)";
 
-                }//end foreach
+                    MySqlCommand Butterfly = new MySqlCommand(addButterfly, dbcon);
+                    Butterfly.CommandText = addButterfly;
+                    Butterfly.Parameters.AddWithValue("@TagID", 0);
+                    Butterfly.Parameters.AddWithValue("@Species", butterflyspecies);
+                    Butterfly.Parameters.AddWithValue("@Gender", butterflygender);
+                    Butterfly.Parameters.AddWithValue("@Age", butterflyage);
+                    Butterfly.Parameters.AddWithValue("@Date_of_Tagging", 0);
+                    Butterfly.Parameters.AddWithValue("@Time_of_Tagging", 0);
+                    Butterfly.Parameters.AddWithValue("@Emp_ID", Emp_ID);
+                    Butterfly.ExecuteNonQuery();
+
+                    MessageBox.Show("New butterfly entry created!");
+
+                    //resetting the fields
+                    foreach (Control item in createEntryTab.Controls)
+                    {
+                        if (item is TextBox)
+                        {
+                            item.Text = "";
+                        }
+
+                    } //end foreach
+                }
+                else
+                {
+                    con.CloseConnection();
+                    con.OpenConnection();
+                }
             }
             if (String.IsNullOrEmpty(createCityTextBox.Text))
             {
@@ -981,6 +1036,7 @@ namespace ButterflyTrackingSystem
 
         private void retreive_Click(object sender, EventArgs e)
         {
+            /*
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
             builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
             builder.UserID = "root";
@@ -988,33 +1044,42 @@ namespace ButterflyTrackingSystem
             builder.Database = "BTS";
             MySqlConnection connection = new MySqlConnection(builder.ToString());
             connection.Open();
-            
-            string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
-            MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, connection);
-            retreiveData.Parameters.AddWithValue("@user",userNameBox.Text);
-            MySqlDataReader myReader;
-            myReader=retreiveData.ExecuteReader();
-
-            while(myReader.Read())
+            */
+            if (dbcon.State == ConnectionState.Open)
             {
-                string sUser = myReader.GetString("User_ID");
-                string sPassword = myReader.GetString("Password");
-                string sName = myReader.GetString("Name");
-                string sPhone = myReader.GetString("Phone_Number");
-                string sStreet = myReader.GetString("Street_Address");
-                string sCity = myReader.GetString("City");
-                string sState = myReader.GetString("State");
-                string sPosition = myReader.GetString("Position");
-                updateUserNameTextBox.Text = sUser;
-                updatePasswordTextBox.Text = sPassword;
-                updateEmployeeNameTextBox.Text = sName;
-                updatePhoneNumberTextBox.Text = sPhone;
-                updateEmployeeStreetTextBox.Text = sStreet;
-                updateEmployeeCityTextBox.Text = sCity;
-                updateEmployeeStateTextBox.Text = sState;
-                positionOptionsUpdateComboBox.Text = sPosition;
+
+                string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
+                MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, dbcon);
+                retreiveData.Parameters.AddWithValue("@user", userNameBox.Text);
+                MySqlDataReader myReader;
+                myReader = retreiveData.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    string sUser = myReader.GetString("User_ID");
+                    string sPassword = myReader.GetString("Password");
+                    string sName = myReader.GetString("Name");
+                    string sPhone = myReader.GetString("Phone_Number");
+                    string sStreet = myReader.GetString("Street_Address");
+                    string sCity = myReader.GetString("City");
+                    string sState = myReader.GetString("State");
+                    string sPosition = myReader.GetString("Position");
+                    updateUserNameTextBox.Text = sUser;
+                    updatePasswordTextBox.Text = sPassword;
+                    updateEmployeeNameTextBox.Text = sName;
+                    updatePhoneNumberTextBox.Text = sPhone;
+                    updateEmployeeStreetTextBox.Text = sStreet;
+                    updateEmployeeCityTextBox.Text = sCity;
+                    updateEmployeeStateTextBox.Text = sState;
+                    positionOptionsUpdateComboBox.Text = sPosition;
+                }
+                //connection.Close();
             }
-            connection.Close();
+            else
+            {
+                con.CloseConnection();
+                con.OpenConnection();
+            }
         }
     }
 
