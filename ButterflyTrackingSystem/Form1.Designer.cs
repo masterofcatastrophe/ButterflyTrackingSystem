@@ -141,6 +141,7 @@
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.retreive = new System.Windows.Forms.Label();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -1267,6 +1268,7 @@
             // 
             this.updateAccountTab.BackColor = System.Drawing.Color.PeachPuff;
             this.updateAccountTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.updateAccountTab.Controls.Add(this.retreive);
             this.updateAccountTab.Controls.Add(this.positionOptionsUpdateComboBox);
             this.updateAccountTab.Controls.Add(this.addressUpdateLabel);
             this.updateAccountTab.Controls.Add(this.selectPositionUpdateLabel);
@@ -1614,6 +1616,18 @@
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
             // 
+            // retreive
+            // 
+            this.retreive.AutoSize = true;
+            this.retreive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.retreive.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.retreive.Location = new System.Drawing.Point(385, 59);
+            this.retreive.Name = "retreive";
+            this.retreive.Size = new System.Drawing.Size(167, 20);
+            this.retreive.TabIndex = 44;
+            this.retreive.Text = "Retreive Account data";
+            this.retreive.Click += new System.EventHandler(this.retreive_Click);
+            // 
             // BTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1773,6 +1787,7 @@
         private System.Windows.Forms.ErrorProvider registerStreetError;
         private System.Windows.Forms.ErrorProvider registerCityError;
         private System.Windows.Forms.ErrorProvider registerStateError;
+        private System.Windows.Forms.Label retreive;
     }
 }
 

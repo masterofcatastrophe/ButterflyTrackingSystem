@@ -703,50 +703,19 @@ namespace ButterflyTrackingSystem
 
         private void createEntryButton_Click(object sender, EventArgs e)
         {
-            // MISSING DATE & TIME HADI PLEASE ADD TO INTERFACE
-            string entrySpecies = createSpeciesTextBox.Text;
-            string entryAge = createAgeTextBox.Text;
-            string entryGender = selectGenderComboBox.Text;
-            string entryCity = createCityTextBox.Text;
-            string entryState = createStateTextBox.Text;
-            string entryCountry = createCountryTextBox.Text;
-            string entryLongtitude = createLongitudeTextBox.Text;
-            string entryLatitude = createLatitudeTextBox.Text;
-            /*
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-            builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
-            builder.UserID = "root";
-            builder.Password = "master77";
-            builder.Database = "BTS";
-            MySqlConnection connection = new MySqlConnection(builder.ToString());
-            connection.Open();
-
-            
-            string newbutterfly_sql = "INSERT INTO Butterfly (Species, Gender, Age) VALUES (@EntrySpecies, @EntryGender, @EntryAge) WHERE Employee.User_ID='" + userNameBox.Text + "'SET Employee.Employee_ID = Butterfly.Emp_ID ;";
-            string butterflySighting_sql = "INSERT INTO Sighting_Locations (Longtitude, Latitude, City, State, Country) VALUES (@EntryLongtitude, @EntryLatitude, @EntryCity, @EntryState, @EntryCountry) WHERE Employee.User_ID='" + userNameBox.Text + "'SET Employee.Employee_ID = Sighting_Locations.Employee_ID AND Butterfly.Tag_ID = Sighting_Locations.Sight_ID ;";
-
-            MySqlCommand newbutterfly = new MySqlCommand(newbutterfly_sql, connection);
-            MySqlCommand butterflySighting = new MySqlCommand(butterflySighting_sql, connection);
+            /*//if required boxes are left empty, reveal error
+            if (String.IsNullOrEmpty(createCityTextBox.Text) && String.IsNullOrEmpty(createStateTextBox.Text) && String.IsNullOrEmpty(createCountryTextBox.Text) && String.IsNullOrEmpty(createLongitudeTextBox.Text) && String.IsNullOrEmpty(createLatitudeTextBox.Text))
+            {
+                cityError.SetError(createCityTextBox, "City field is empty!");
+                stateError.SetError(createStateTextBox, "State field is empty!");
+                countryError.SetError(createCountryTextBox, "Country field is empty!");
+                longitudeError.SetError(createLongitudeTextBox, "Longitude field is empty!");
+                latitudeError.SetError(createLatitudeTextBox, "Latitude field is empty!");
+            }
             */
-            
-    
 
             if (!String.IsNullOrEmpty(createCityTextBox.Text) && !String.IsNullOrEmpty(createStateTextBox.Text) && !String.IsNullOrEmpty(createCountryTextBox.Text) && !String.IsNullOrEmpty(createLongitudeTextBox.Text) && !String.IsNullOrEmpty(createLatitudeTextBox.Text))
             {
-                /*newbutterfly.CommandText = newbutterfly_sql;
-                newbutterfly.Parameters.AddWithValue("@EntrySpecies", entrySpecies);
-                newbutterfly.Parameters.AddWithValue("@EntryAge", entryAge);
-                newbutterfly.Parameters.AddWithValue("@EntryGender", entryGender);
-                newbutterfly.ExecuteNonQuery();
-
-                butterflySighting.CommandText = butterflySighting_sql;
-                butterflySighting.Parameters.AddWithValue("@EntryLatitude", entryLatitude);
-                butterflySighting.Parameters.AddWithValue("@EntryLongtitude", entryLongtitude);
-                butterflySighting.Parameters.AddWithValue("@EntryCity", entryCity);
-                butterflySighting.Parameters.AddWithValue("@EntryState", entryState);
-                butterflySighting.Parameters.AddWithValue("@EntryCountry", entryCountry);
-                butterflySighting.ExecuteNonQuery();
-                */
                 MessageBox.Show("New butterfly entry created!");
 
                 //resetting the fields
@@ -1008,6 +977,44 @@ namespace ButterflyTrackingSystem
             {
                 registerSelectPositionError.Clear();
             }
+        }
+
+        private void retreive_Click(object sender, EventArgs e)
+        {
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
+            builder.UserID = "root";
+            builder.Password = "master77";
+            builder.Database = "BTS";
+            MySqlConnection connection = new MySqlConnection(builder.ToString());
+            connection.Open();
+            
+            string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
+            MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, connection);
+            retreiveData.Parameters.AddWithValue("@user",userNameBox.Text);
+            MySqlDataReader myReader;
+            myReader=retreiveData.ExecuteReader();
+
+            while(myReader.Read())
+            {
+                string sUser = myReader.GetString("User_ID");
+                string sPassword = myReader.GetString("Password");
+                string sName = myReader.GetString("Name");
+                string sPhone = myReader.GetString("Phone_Number");
+                string sStreet = myReader.GetString("Street_Address");
+                string sCity = myReader.GetString("City");
+                string sState = myReader.GetString("State");
+                string sPosition = myReader.GetString("Position");
+                updateUserNameTextBox.Text = sUser;
+                updatePasswordTextBox.Text = sPassword;
+                updateEmployeeNameTextBox.Text = sName;
+                updatePhoneNumberTextBox.Text = sPhone;
+                updateEmployeeStreetTextBox.Text = sStreet;
+                updateEmployeeCityTextBox.Text = sCity;
+                updateEmployeeStateTextBox.Text = sState;
+                positionOptionsUpdateComboBox.Text = sPosition;
+            }
+            connection.Close();
         }
     }
 
