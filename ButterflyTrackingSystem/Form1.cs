@@ -504,6 +504,7 @@ namespace ButterflyTrackingSystem
                     MySqlCommand updateuser = new MySqlCommand(updateuser_sql, dbcon);
                     MySqlDataReader updateReader=updateuser.ExecuteReader();
                     MessageBox.Show("Account successfully Updated!");
+                    updateReader.Close();
                 }
             }
                 
@@ -1140,8 +1141,8 @@ namespace ButterflyTrackingSystem
             }
         }
 
-        private void retreive_Click(object sender, EventArgs e)
-        {
+        //private void retreive_Click(object sender, EventArgs e)
+        //{
             /*
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
             builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
@@ -1151,6 +1152,57 @@ namespace ButterflyTrackingSystem
             MySqlConnection connection = new MySqlConnection(builder.ToString());
             connection.Open();
             */
+            /*if (dbcon.State == ConnectionState.Open)
+            {
+
+                string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
+                MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, dbcon);
+                retreiveData.Parameters.AddWithValue("@user", userNameBox.Text);
+                MySqlDataReader myReader;
+                myReader = retreiveData.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    string sUser = myReader.GetString("User_ID");
+                    string sPassword = myReader.GetString("Password");
+                    string sName = myReader.GetString("Name");
+                    string sPhone = myReader.GetString("Phone_Number");
+                    string sStreet = myReader.GetString("Street_Address");
+                    string sCity = myReader.GetString("City");
+                    string sState = myReader.GetString("State");
+                    string sPosition = myReader.GetString("Position");
+                    updateUserNameTextBox.Text = sUser;
+                    updatePasswordTextBox.Text = sPassword;
+                    updateEmployeeNameTextBox.Text = sName;
+                    updatePhoneNumberTextBox.Text = sPhone;
+                    updateEmployeeStreetTextBox.Text = sStreet;
+                    updateEmployeeCityTextBox.Text = sCity;
+                    updateEmployeeStateTextBox.Text = sState;
+                    positionOptionsUpdateComboBox.Text = sPosition;
+                }
+                myReader.Close();
+            }
+            else
+            {
+                con.CloseConnection();
+                con.OpenConnection();
+            }
+        }*/
+
+        private void createEntryDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            createEntryDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
+            createEntryDateTimePicker.Format = DateTimePickerFormat.Custom;
+        }
+
+        private void searchDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            searchDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
+            searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+        }
+
+        private void functionalitiesTabs_Click(object sender, EventArgs e)
+        {
             if (dbcon.State == ConnectionState.Open)
             {
 
@@ -1188,18 +1240,7 @@ namespace ButterflyTrackingSystem
             }
         }
 
-        private void createEntryDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            createEntryDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
-            createEntryDateTimePicker.Format = DateTimePickerFormat.Custom;
-        }
-
-        private void searchDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            searchDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
-            searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-        }
-    }
+      
 
     public class DBConnect
     {
