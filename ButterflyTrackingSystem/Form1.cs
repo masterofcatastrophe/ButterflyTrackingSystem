@@ -551,13 +551,13 @@ namespace ButterflyTrackingSystem
             }
         
 
-            foreach (Control item in updateAccountTab.Controls)
-            {
-                if (item is TextBox)
-                {
-                    item.Text = "";
-                }
-            }//end foreach
+            //foreach (Control item in updateAccountTab.Controls)
+            //{
+            //    if (item is TextBox)
+            //    {
+            //        item.Text = "";
+            //    }
+            //}//end foreach
         }
 
         private void updatePasswordTextBox_TextChanged(object sender, EventArgs e)
