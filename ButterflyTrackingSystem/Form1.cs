@@ -74,9 +74,8 @@ namespace ButterflyTrackingSystem
                     myReader.Close();
                     try
                     {
-                        MySqlDataReader reader = null;
+                        MySqlDataReader reader;
                         string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text + "';");
-
                         MySqlCommand Get_Emp_ID = new MySqlCommand(selectCmd, dbcon);
                         reader = Get_Emp_ID.ExecuteReader();
 
@@ -96,7 +95,6 @@ namespace ButterflyTrackingSystem
                     loginPanel.Visible = false;
                     registrationPanel.Visible = false;
                     mainPanel.Visible = true;
-                    
                 }
                 else
                 {
@@ -750,6 +748,8 @@ namespace ButterflyTrackingSystem
             {
                 if (dbcon.State == ConnectionState.Open)
                 {
+                    string bDate = DateTime.Now.ToString("MM-dd-yyyy");
+                    string bTime = DateTime.Now.ToString("hh:mm tt");
                     // inserting values into Butterfly table
                     string addButterfly =
                         "INSERT INTO Butterfly (Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Emp_ID)" +
@@ -757,14 +757,31 @@ namespace ButterflyTrackingSystem
 
                     MySqlCommand Butterfly = new MySqlCommand(addButterfly, dbcon);
                     Butterfly.CommandText = addButterfly;
-                    Butterfly.Parameters.AddWithValue("@TagID", 0);
+                    Butterfly.Parameters.AddWithValue("@TagID", null);
                     Butterfly.Parameters.AddWithValue("@Species", butterflyspecies);
                     Butterfly.Parameters.AddWithValue("@Gender", butterflygender);
                     Butterfly.Parameters.AddWithValue("@Age", butterflyage);
-                    Butterfly.Parameters.AddWithValue("@Date_of_Tagging", 0);
-                    Butterfly.Parameters.AddWithValue("@Time_of_Tagging", 0);
+                    Butterfly.Parameters.AddWithValue("@Date_of_Tagging", bDate);
+                    Butterfly.Parameters.AddWithValue("@Time_of_Tagging", bTime);
                     Butterfly.Parameters.AddWithValue("@Emp_ID", Emp_ID);
                     Butterfly.ExecuteNonQuery();
+
+                    string addSightings =
+                      "INSERT INTO Sighting_Locations (Sight_ID, Longitude, Latitude, City, State, Country, Employee_ID, Date_of_sighting, Time_of_sighting)" +
+                      " VALUES (@SightID, @Longitude, @Latitude, @City, @State, @Country, @Employee_ID, @Date_of_sighting, @Time_of_sighting)";
+
+                    MySqlCommand Sightings = new MySqlCommand(addSightings, dbcon);
+                    Sightings.CommandText = addSightings;
+                    Sightings.Parameters.AddWithValue("@SightID", null);
+                    Sightings.Parameters.AddWithValue("@Longitude", sightinglongitude);
+                    Sightings.Parameters.AddWithValue("@Latitude", sightinglatitude);
+                    Sightings.Parameters.AddWithValue("@City", sightingcity);
+                    Sightings.Parameters.AddWithValue("@State", sightingstate);
+                    Sightings.Parameters.AddWithValue("@Country", sightingcountry);
+                    Sightings.Parameters.AddWithValue("@Employee_ID", Emp_ID);
+                    Sightings.Parameters.AddWithValue("@Date_of_sighting", bDate);
+                    Sightings.Parameters.AddWithValue("@Time_of_sighting", bTime);
+                    Sightings.ExecuteNonQuery();
 
                     MessageBox.Show("New butterfly entry created!");
 
