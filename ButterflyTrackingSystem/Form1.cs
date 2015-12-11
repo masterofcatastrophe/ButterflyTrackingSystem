@@ -477,9 +477,79 @@ namespace ButterflyTrackingSystem
 
         private void updateAccountButton_Click(object sender, EventArgs e)
         {
-            //To-DO: update query here
+            string UpdateEmployeeUserName = updateUserNameTextBox.Text;
+            string UpdateEmployeePassword = updatePasswordTextBox.Text;
+            string UpdateEmployeeName = updateEmployeeNameTextBox.Text;
+            string UpdateEmployeeStreet = updateEmployeeStreetTextBox.Text;
+            string UpdateEmployeeCity = updateEmployeeCityTextBox.Text;
+            string UpdateEmployeeState = updateEmployeeStateTextBox.Text;
+            string UpdateEmployeePosition = positionOptionsUpdateComboBox.Text;
+            string UpdateEmployeePhoneNumber = updatePhoneNumberTextBox.Text;
 
-            MessageBox.Show("Account successfully Updated!");
+            //To-DO: update query here
+            if (dbcon.State == ConnectionState.Open)
+            {
+              
+                
+
+                if (!String.IsNullOrEmpty(updateUserNameTextBox.Text) &&
+                         !String.IsNullOrEmpty(updatePasswordTextBox.Text)
+                         && !String.IsNullOrEmpty(updateEmployeeNameTextBox.Text) &&
+                         !String.IsNullOrEmpty(updateEmployeeStreetTextBox.Text)
+                         && !String.IsNullOrEmpty(updateEmployeeCityTextBox.Text) &&
+                         !String.IsNullOrEmpty(updateEmployeeStateTextBox.Text)
+                         && !String.IsNullOrEmpty(updatePhoneNumberTextBox.Text))
+                {
+                    string updateuser_sql = "UPDATE Employee SET Name='" + updateEmployeeNameTextBox.Text + "', Position='" + positionOptionsUpdateComboBox.Text + "', Phone_Number='" + updatePhoneNumberTextBox.Text + "', City='" + updateEmployeeCityTextBox.Text + "', State='" + updateEmployeeStateTextBox.Text + "', Street_Address='" + updateEmployeeStreetTextBox.Text + "', Password='" + updatePasswordTextBox.Text + "'WHERE User_ID='" + userNameBox.Text + "' ;";
+                    MySqlCommand updateuser = new MySqlCommand(updateuser_sql, dbcon);
+                    MySqlDataReader updateReader=updateuser.ExecuteReader();
+                    MessageBox.Show("Account successfully Updated!");
+                }
+            }
+                
+            else if (String.IsNullOrEmpty(updateUserNameTextBox.Text))
+            {
+                MessageBox.Show("UserName Field is empty !");
+            }
+
+            else if (String.IsNullOrEmpty(updatePasswordTextBox.Text))
+            {
+                MessageBox.Show("Password Field is empty !");
+            }
+
+            else if (String.IsNullOrEmpty(updateEmployeeNameTextBox.Text))
+            {
+                MessageBox.Show("Employee Name is empty !");
+            }
+
+            else if (String.IsNullOrEmpty(updateEmployeeStreetTextBox.Text))
+            {
+                MessageBox.Show("Employee street address is empty !");
+            }
+
+            else if (String.IsNullOrEmpty(updateEmployeeCityTextBox.Text))
+            {
+                MessageBox.Show("Employee city Field is empty !");
+            }
+
+            else if (String.IsNullOrEmpty(updateEmployeeStateTextBox.Text))
+            {
+                MessageBox.Show("Employee state Field is empty !");
+            }
+
+            else if (String.IsNullOrEmpty(updatePhoneNumberTextBox.Text))
+            {
+                MessageBox.Show("Employee Phone number Field is empty !");
+            }
+
+
+            else
+            {
+                
+                con.CloseConnection();
+                con.OpenConnection();
+            }
+        
 
             foreach (Control item in updateAccountTab.Controls)
             {
