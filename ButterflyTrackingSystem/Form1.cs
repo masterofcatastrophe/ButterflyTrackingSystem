@@ -477,7 +477,8 @@ namespace ButterflyTrackingSystem
 
         private void updateAccountButton_Click(object sender, EventArgs e)
         {
-            string UpdateEmployeeUserName = updateUserNameTextBox.Text;
+            //string UpdateEmployeeUserName = updateUserNameTextBox.Text;
+
             string UpdateEmployeePassword = updatePasswordTextBox.Text;
             string UpdateEmployeeName = updateEmployeeNameTextBox.Text;
             string UpdateEmployeeStreet = updateEmployeeStreetTextBox.Text;
@@ -489,9 +490,6 @@ namespace ButterflyTrackingSystem
             //To-DO: update query here
             if (dbcon.State == ConnectionState.Open)
             {
-              
-                
-
                 if (!String.IsNullOrEmpty(updateUserNameTextBox.Text) &&
                          !String.IsNullOrEmpty(updatePasswordTextBox.Text)
                          && !String.IsNullOrEmpty(updateEmployeeNameTextBox.Text) &&
