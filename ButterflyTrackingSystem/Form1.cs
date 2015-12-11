@@ -1100,7 +1100,9 @@ namespace ButterflyTrackingSystem
                     string sCity = myReader.GetString("City");
                     string sState = myReader.GetString("State");
                     string sPosition = myReader.GetString("Position");
-                    updateUserNameTextBox.Text = sUser;
+
+                    //updateUserNameTextBox.Text = sUser;
+
                     updatePasswordTextBox.Text = sPassword;
                     updateEmployeeNameTextBox.Text = sName;
                     updatePhoneNumberTextBox.Text = sPhone;
