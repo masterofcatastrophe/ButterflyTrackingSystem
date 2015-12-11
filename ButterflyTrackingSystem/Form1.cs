@@ -1074,7 +1074,7 @@ namespace ButterflyTrackingSystem
                     updateEmployeeStateTextBox.Text = sState;
                     positionOptionsUpdateComboBox.Text = sPosition;
                 }
-                //connection.Close();
+                myReader.Close();
             }
             else
             {
