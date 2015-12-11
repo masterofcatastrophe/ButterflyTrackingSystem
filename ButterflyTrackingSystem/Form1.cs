@@ -100,6 +100,7 @@ namespace ButterflyTrackingSystem
                 }
                 else
                 {
+                    myReader.Close();
                     MessageBox.Show("Invalid user name/password!");
                 }
 
