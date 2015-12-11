@@ -1099,6 +1099,18 @@ namespace ButterflyTrackingSystem
                 con.OpenConnection();
             }
         }
+
+        private void createEntryDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            createEntryDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
+            createEntryDateTimePicker.Format = DateTimePickerFormat.Custom;
+        }
+
+        private void searchDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            searchDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
+            searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+        }
     }
 
     public class DBConnect
