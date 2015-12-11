@@ -130,7 +130,6 @@
             this.updateEmployeeCityTextBox = new System.Windows.Forms.TextBox();
             this.updateEmployeeStreetTextBox = new System.Windows.Forms.TextBox();
             this.updateEmployeeNameTextBox = new System.Windows.Forms.TextBox();
-            this.updateUserNameTextBox = new System.Windows.Forms.TextBox();
             this.phoneNumberUpdateLabel = new System.Windows.Forms.Label();
             this.stateUpdateLabel = new System.Windows.Forms.Label();
             this.cityUpdateLabel = new System.Windows.Forms.Label();
@@ -139,7 +138,6 @@
             this.updateAccountButton = new System.Windows.Forms.Button();
             this.updatePasswordTextBox = new System.Windows.Forms.TextBox();
             this.passwordUpdateLabel = new System.Windows.Forms.Label();
-            this.userNameUpdateLabel = new System.Windows.Forms.Label();
             this.updateAccountLabel = new System.Windows.Forms.Label();
             this.cityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.stateError = new System.Windows.Forms.ErrorProvider(this.components);
@@ -678,7 +676,7 @@
             this.functionalitiesTabs.Size = new System.Drawing.Size(980, 582);
             this.functionalitiesTabs.TabIndex = 0;
             this.functionalitiesTabs.TabStop = false;
-            this.functionalitiesTabs.Click += new System.EventHandler(this.functionalitiesTabs_Click);
+            this.functionalitiesTabs.Click += new System.EventHandler(this.functionalitiesTabs_Click_1);
             // 
             // createEntryTab
             // 
@@ -1447,7 +1445,6 @@
             this.updateAccountTab.Controls.Add(this.updateEmployeeCityTextBox);
             this.updateAccountTab.Controls.Add(this.updateEmployeeStreetTextBox);
             this.updateAccountTab.Controls.Add(this.updateEmployeeNameTextBox);
-            this.updateAccountTab.Controls.Add(this.updateUserNameTextBox);
             this.updateAccountTab.Controls.Add(this.phoneNumberUpdateLabel);
             this.updateAccountTab.Controls.Add(this.stateUpdateLabel);
             this.updateAccountTab.Controls.Add(this.cityUpdateLabel);
@@ -1456,7 +1453,6 @@
             this.updateAccountTab.Controls.Add(this.updateAccountButton);
             this.updateAccountTab.Controls.Add(this.updatePasswordTextBox);
             this.updateAccountTab.Controls.Add(this.passwordUpdateLabel);
-            this.updateAccountTab.Controls.Add(this.userNameUpdateLabel);
             this.updateAccountTab.Controls.Add(this.updateAccountLabel);
             this.updateAccountTab.Location = new System.Drawing.Point(4, 29);
             this.updateAccountTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1473,12 +1469,12 @@
             this.positionOptionsUpdateComboBox.Items.AddRange(new object[] {
             "nonTagger",
             "tagger"});
-            this.positionOptionsUpdateComboBox.Location = new System.Drawing.Point(184, 302);
+            this.positionOptionsUpdateComboBox.Location = new System.Drawing.Point(192, 205);
             this.positionOptionsUpdateComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.positionOptionsUpdateComboBox.Name = "positionOptionsUpdateComboBox";
             this.positionOptionsUpdateComboBox.Size = new System.Drawing.Size(128, 28);
             this.positionOptionsUpdateComboBox.Sorted = true;
-            this.positionOptionsUpdateComboBox.TabIndex = 5;
+            this.positionOptionsUpdateComboBox.TabIndex = 3;
             this.positionOptionsUpdateComboBox.SelectedIndexChanged += new System.EventHandler(this.positionOptionsUpdateComboBox_SelectedIndexChanged);
             // 
             // addressUpdateLabel
@@ -1489,7 +1485,7 @@
             this.addressUpdateLabel.AutoSize = true;
             this.addressUpdateLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.addressUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressUpdateLabel.Location = new System.Drawing.Point(382, 302);
+            this.addressUpdateLabel.Location = new System.Drawing.Point(24, 328);
             this.addressUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.addressUpdateLabel.Name = "addressUpdateLabel";
             this.addressUpdateLabel.Size = new System.Drawing.Size(123, 30);
@@ -1504,7 +1500,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selectPositionUpdateLabel.AutoSize = true;
             this.selectPositionUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectPositionUpdateLabel.Location = new System.Drawing.Point(16, 303);
+            this.selectPositionUpdateLabel.Location = new System.Drawing.Point(16, 206);
             this.selectPositionUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.selectPositionUpdateLabel.Name = "selectPositionUpdateLabel";
             this.selectPositionUpdateLabel.Size = new System.Drawing.Size(141, 25);
@@ -1527,50 +1523,41 @@
             // 
             this.updateEmployeeStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEmployeeStateTextBox.Location = new System.Drawing.Point(614, 349);
+            this.updateEmployeeStateTextBox.Location = new System.Drawing.Point(255, 375);
             this.updateEmployeeStateTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEmployeeStateTextBox.Name = "updateEmployeeStateTextBox";
             this.updateEmployeeStateTextBox.Size = new System.Drawing.Size(322, 26);
-            this.updateEmployeeStateTextBox.TabIndex = 8;
+            this.updateEmployeeStateTextBox.TabIndex = 7;
             // 
             // updateEmployeeCityTextBox
             // 
             this.updateEmployeeCityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEmployeeCityTextBox.Location = new System.Drawing.Point(614, 309);
+            this.updateEmployeeCityTextBox.Location = new System.Drawing.Point(255, 335);
             this.updateEmployeeCityTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEmployeeCityTextBox.Name = "updateEmployeeCityTextBox";
             this.updateEmployeeCityTextBox.Size = new System.Drawing.Size(322, 26);
-            this.updateEmployeeCityTextBox.TabIndex = 7;
+            this.updateEmployeeCityTextBox.TabIndex = 6;
             // 
             // updateEmployeeStreetTextBox
             // 
             this.updateEmployeeStreetTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEmployeeStreetTextBox.Location = new System.Drawing.Point(614, 265);
+            this.updateEmployeeStreetTextBox.Location = new System.Drawing.Point(255, 291);
             this.updateEmployeeStreetTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEmployeeStreetTextBox.Name = "updateEmployeeStreetTextBox";
             this.updateEmployeeStreetTextBox.Size = new System.Drawing.Size(322, 26);
-            this.updateEmployeeStreetTextBox.TabIndex = 6;
+            this.updateEmployeeStreetTextBox.TabIndex = 5;
             this.updateEmployeeStreetTextBox.TextChanged += new System.EventHandler(this.updateEmployeeStreetTextBox_TextChanged);
             // 
             // updateEmployeeNameTextBox
             // 
-            this.updateEmployeeNameTextBox.Location = new System.Drawing.Point(192, 206);
+            this.updateEmployeeNameTextBox.Location = new System.Drawing.Point(192, 140);
             this.updateEmployeeNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEmployeeNameTextBox.Name = "updateEmployeeNameTextBox";
             this.updateEmployeeNameTextBox.Size = new System.Drawing.Size(230, 26);
-            this.updateEmployeeNameTextBox.TabIndex = 3;
+            this.updateEmployeeNameTextBox.TabIndex = 1;
             this.updateEmployeeNameTextBox.TextChanged += new System.EventHandler(this.updateEmployeeNameTextBox_TextChanged);
-            // 
-            // updateUserNameTextBox
-            // 
-            this.updateUserNameTextBox.Location = new System.Drawing.Point(144, 140);
-            this.updateUserNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.updateUserNameTextBox.Name = "updateUserNameTextBox";
-            this.updateUserNameTextBox.Size = new System.Drawing.Size(278, 26);
-            this.updateUserNameTextBox.TabIndex = 1;
-            this.updateUserNameTextBox.TextChanged += new System.EventHandler(this.updateUserNameTextBox_TextChanged);
             // 
             // phoneNumberUpdateLabel
             // 
@@ -1594,7 +1581,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.stateUpdateLabel.AutoSize = true;
             this.stateUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateUpdateLabel.Location = new System.Drawing.Point(525, 349);
+            this.stateUpdateLabel.Location = new System.Drawing.Point(166, 375);
             this.stateUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stateUpdateLabel.Name = "stateUpdateLabel";
             this.stateUpdateLabel.Size = new System.Drawing.Size(58, 25);
@@ -1609,7 +1596,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cityUpdateLabel.AutoSize = true;
             this.cityUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityUpdateLabel.Location = new System.Drawing.Point(525, 309);
+            this.cityUpdateLabel.Location = new System.Drawing.Point(166, 335);
             this.cityUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.cityUpdateLabel.Name = "cityUpdateLabel";
             this.cityUpdateLabel.Size = new System.Drawing.Size(46, 25);
@@ -1624,7 +1611,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.streetUpdateLabel.AutoSize = true;
             this.streetUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.streetUpdateLabel.Location = new System.Drawing.Point(525, 269);
+            this.streetUpdateLabel.Location = new System.Drawing.Point(166, 295);
             this.streetUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.streetUpdateLabel.Name = "streetUpdateLabel";
             this.streetUpdateLabel.Size = new System.Drawing.Size(64, 25);
@@ -1639,7 +1626,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeeNameUpdateLabel.AutoSize = true;
             this.employeeNameUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeNameUpdateLabel.Location = new System.Drawing.Point(16, 206);
+            this.employeeNameUpdateLabel.Location = new System.Drawing.Point(16, 140);
             this.employeeNameUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.employeeNameUpdateLabel.Name = "employeeNameUpdateLabel";
             this.employeeNameUpdateLabel.Size = new System.Drawing.Size(156, 25);
@@ -1650,11 +1637,11 @@
             // updateAccountButton
             // 
             this.updateAccountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateAccountButton.Location = new System.Drawing.Point(352, 448);
+            this.updateAccountButton.Location = new System.Drawing.Point(370, 457);
             this.updateAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateAccountButton.Name = "updateAccountButton";
             this.updateAccountButton.Size = new System.Drawing.Size(204, 46);
-            this.updateAccountButton.TabIndex = 9;
+            this.updateAccountButton.TabIndex = 8;
             this.updateAccountButton.Text = "Update Account";
             this.updateAccountButton.UseVisualStyleBackColor = true;
             this.updateAccountButton.Click += new System.EventHandler(this.updateAccountButton_Click);
@@ -1685,21 +1672,6 @@
             this.passwordUpdateLabel.TabIndex = 26;
             this.passwordUpdateLabel.Text = "Password";
             this.passwordUpdateLabel.Click += new System.EventHandler(this.passwordUpdateLabel_Click);
-            // 
-            // userNameUpdateLabel
-            // 
-            this.userNameUpdateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.userNameUpdateLabel.AutoSize = true;
-            this.userNameUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameUpdateLabel.Location = new System.Drawing.Point(16, 138);
-            this.userNameUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.userNameUpdateLabel.Name = "userNameUpdateLabel";
-            this.userNameUpdateLabel.Size = new System.Drawing.Size(110, 25);
-            this.userNameUpdateLabel.TabIndex = 25;
-            this.userNameUpdateLabel.Text = "User Name";
-            this.userNameUpdateLabel.Click += new System.EventHandler(this.userNameUpdateLabel_Click);
             // 
             // updateAccountLabel
             // 
@@ -1948,7 +1920,6 @@
         private System.Windows.Forms.TextBox updateEmployeeCityTextBox;
         private System.Windows.Forms.TextBox updateEmployeeStreetTextBox;
         private System.Windows.Forms.TextBox updateEmployeeNameTextBox;
-        private System.Windows.Forms.TextBox updateUserNameTextBox;
         private System.Windows.Forms.Label phoneNumberUpdateLabel;
         private System.Windows.Forms.Label stateUpdateLabel;
         private System.Windows.Forms.Label cityUpdateLabel;
@@ -1957,7 +1928,6 @@
         private System.Windows.Forms.Button updateAccountButton;
         private System.Windows.Forms.TextBox updatePasswordTextBox;
         private System.Windows.Forms.Label passwordUpdateLabel;
-        private System.Windows.Forms.Label userNameUpdateLabel;
         private System.Windows.Forms.Label updateAccountLabel;
         private System.Windows.Forms.Button loadEntry;
         private System.Windows.Forms.DataGridView updateEntryGrid;
