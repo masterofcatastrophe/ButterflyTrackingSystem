@@ -677,14 +677,28 @@ namespace ButterflyTrackingSystem
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            //resetting the fields when going to login
-            foreach (Control item in searchTab.Controls)
+            if (dbcon.State == ConnectionState.Open)
             {
-                if (item is TextBox)
+                string SearchDate = searchDateTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
+                string SearchTime = searchDateTimePicker.Value.ToString("hh:mm tt"); // user defined date
+                // string bDate = DateTime.Now.ToString("MM-dd-yyyy"); // system date
+                //string bTime = DateTime.Now.ToString("hh:mm tt"); // system time
+                
+
+                //resetting the fields when going to login
+                foreach (Control item in searchTab.Controls)
                 {
-                    item.Text = "";
-                }
-            }//end foreach
+                    if (item is TextBox)
+                    {
+                        item.Text = "";
+                    }
+                }//end foreach
+            }
+            else
+            {
+                con.CloseConnection();
+                con.OpenConnection();
+            }
         }
 
         private void searchTab_Click(object sender, EventArgs e)
@@ -818,9 +832,13 @@ namespace ButterflyTrackingSystem
             {
                 if (dbcon.State == ConnectionState.Open)
                 {
-                    string bDate = DateTime.Now.ToString("MM-dd-yyyy");
-                    string bTime = DateTime.Now.ToString("hh:mm tt");
+                    string EntryDate = createEntryDateTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
+                    string EntryTime = createEntryDateTimePicker.Value.ToString("hh:mm tt"); // user defined date
+                    
+                    // string bDate = DateTime.Now.ToString("MM-dd-yyyy"); // system date
+                    //string bTime = DateTime.Now.ToString("hh:mm tt"); // system time
                     // inserting values into Butterfly table
+
                     string addButterfly =
                         "INSERT INTO Butterfly (Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Emp_ID)" +
                         " VALUES (@TagID, @Species, @Gender, @Age, @Date_of_Tagging, @Time_of_Tagging, @Emp_ID)";
@@ -831,8 +849,8 @@ namespace ButterflyTrackingSystem
                     Butterfly.Parameters.AddWithValue("@Species", butterflyspecies);
                     Butterfly.Parameters.AddWithValue("@Gender", butterflygender);
                     Butterfly.Parameters.AddWithValue("@Age", butterflyage);
-                    Butterfly.Parameters.AddWithValue("@Date_of_Tagging", bDate);
-                    Butterfly.Parameters.AddWithValue("@Time_of_Tagging", bTime);
+                    Butterfly.Parameters.AddWithValue("@Date_of_Tagging", EntryDate);
+                    Butterfly.Parameters.AddWithValue("@Time_of_Tagging", EntryTime);
                     Butterfly.Parameters.AddWithValue("@Emp_ID", Emp_ID);
                     Butterfly.ExecuteNonQuery();
 
@@ -849,8 +867,8 @@ namespace ButterflyTrackingSystem
                     Sightings.Parameters.AddWithValue("@State", sightingstate);
                     Sightings.Parameters.AddWithValue("@Country", sightingcountry);
                     Sightings.Parameters.AddWithValue("@Employee_ID", Emp_ID);
-                    Sightings.Parameters.AddWithValue("@Date_of_sighting", bDate);
-                    Sightings.Parameters.AddWithValue("@Time_of_sighting", bTime);
+                    Sightings.Parameters.AddWithValue("@Date_of_sighting", EntryDate);
+                    Sightings.Parameters.AddWithValue("@Time_of_sighting", EntryTime);
                     Sightings.ExecuteNonQuery();
 
                     MessageBox.Show("New butterfly entry created!");
