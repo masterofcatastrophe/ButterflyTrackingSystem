@@ -90,6 +90,8 @@
             this.createEntryButton = new System.Windows.Forms.Button();
             this.createEntryLabel = new System.Windows.Forms.Label();
             this.updateEntryTab = new System.Windows.Forms.TabPage();
+            this.updateEntryGrid = new System.Windows.Forms.DataGridView();
+            this.loadEntry = new System.Windows.Forms.Button();
             this.searchTab = new System.Windows.Forms.TabPage();
             this.downloadSightingsFileButton = new System.Windows.Forms.Button();
             this.uploadSightingsFileButton = new System.Windows.Forms.Button();
@@ -117,6 +119,7 @@
             this.leaderboardGrid = new System.Windows.Forms.DataGridView();
             this.leaderboardTabDescriptionLabel = new System.Windows.Forms.Label();
             this.graphTab = new System.Windows.Forms.TabPage();
+            this.graphChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.updateAccountTab = new System.Windows.Forms.TabPage();
             this.retreive = new System.Windows.Forms.Label();
             this.positionOptionsUpdateComboBox = new System.Windows.Forms.ComboBox();
@@ -152,19 +155,19 @@
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.loadEntry = new System.Windows.Forms.Button();
-            this.updateEntryGrid = new System.Windows.Forms.DataGridView();
-            this.graphChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.loadChartButton = new System.Windows.Forms.Button();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.functionalitiesTabs.SuspendLayout();
             this.createEntryTab.SuspendLayout();
             this.updateEntryTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updateEntryGrid)).BeginInit();
             this.searchTab.SuspendLayout();
             this.leaderboardTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leaderboardGrid)).BeginInit();
             this.graphTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.graphChart)).BeginInit();
             this.updateAccountTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cityError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateError)).BeginInit();
@@ -180,8 +183,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.registerStreetError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerCityError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerStateError)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.updateEntryGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.graphChart)).BeginInit();
             this.SuspendLayout();
             // 
             // loginPanel
@@ -947,6 +948,31 @@
             this.updateEntryTab.Text = "Update Entry";
             this.updateEntryTab.Click += new System.EventHandler(this.updateEntryTab_Click);
             // 
+            // updateEntryGrid
+            // 
+            this.updateEntryGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.updateEntryGrid.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.updateEntryGrid.Location = new System.Drawing.Point(20, 20);
+            this.updateEntryGrid.Name = "updateEntryGrid";
+            this.updateEntryGrid.Size = new System.Drawing.Size(604, 259);
+            this.updateEntryGrid.TabIndex = 4;
+            // 
+            // loadEntry
+            // 
+            this.loadEntry.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadEntry.BackColor = System.Drawing.Color.BurlyWood;
+            this.loadEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadEntry.Location = new System.Drawing.Point(262, 297);
+            this.loadEntry.Name = "loadEntry";
+            this.loadEntry.Size = new System.Drawing.Size(134, 36);
+            this.loadEntry.TabIndex = 3;
+            this.loadEntry.Text = "Load Entry(s)";
+            this.loadEntry.UseVisualStyleBackColor = false;
+            // 
             // searchTab
             // 
             this.searchTab.BackColor = System.Drawing.Color.PaleGoldenrod;
@@ -1280,6 +1306,7 @@
             // 
             this.graphTab.BackColor = System.Drawing.Color.Wheat;
             this.graphTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.graphTab.Controls.Add(this.loadChartButton);
             this.graphTab.Controls.Add(this.graphChart);
             this.graphTab.Location = new System.Drawing.Point(4, 22);
             this.graphTab.Name = "graphTab";
@@ -1287,6 +1314,25 @@
             this.graphTab.TabIndex = 4;
             this.graphTab.Text = "Graph";
             this.graphTab.Click += new System.EventHandler(this.graphTab_Click);
+            // 
+            // graphChart
+            // 
+            this.graphChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea1.Name = "ChartArea1";
+            this.graphChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.graphChart.Legends.Add(legend1);
+            this.graphChart.Location = new System.Drawing.Point(6, 4);
+            this.graphChart.Name = "graphChart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.graphChart.Series.Add(series1);
+            this.graphChart.Size = new System.Drawing.Size(629, 287);
+            this.graphChart.TabIndex = 0;
+            this.graphChart.Text = "Graph/Chart";
             // 
             // updateAccountTab
             // 
@@ -1633,49 +1679,18 @@
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
             // 
-            // loadEntry
+            // loadChartButton
             // 
-            this.loadEntry.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.loadChartButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadEntry.BackColor = System.Drawing.Color.BurlyWood;
-            this.loadEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadEntry.Location = new System.Drawing.Point(262, 297);
-            this.loadEntry.Name = "loadEntry";
-            this.loadEntry.Size = new System.Drawing.Size(134, 36);
-            this.loadEntry.TabIndex = 3;
-            this.loadEntry.Text = "Load Entry(s)";
-            this.loadEntry.UseVisualStyleBackColor = false;
-            // 
-            // updateEntryGrid
-            // 
-            this.updateEntryGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.updateEntryGrid.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.updateEntryGrid.Location = new System.Drawing.Point(20, 20);
-            this.updateEntryGrid.Name = "updateEntryGrid";
-            this.updateEntryGrid.Size = new System.Drawing.Size(604, 259);
-            this.updateEntryGrid.TabIndex = 4;
-            // 
-            // graphChart
-            // 
-            this.graphChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.graphChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.graphChart.Legends.Add(legend1);
-            this.graphChart.Location = new System.Drawing.Point(6, 4);
-            this.graphChart.Name = "graphChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.graphChart.Series.Add(series1);
-            this.graphChart.Size = new System.Drawing.Size(629, 338);
-            this.graphChart.TabIndex = 0;
-            this.graphChart.Text = "Graph/Chart";
+            this.loadChartButton.BackColor = System.Drawing.Color.PaleGreen;
+            this.loadChartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadChartButton.Location = new System.Drawing.Point(249, 306);
+            this.loadChartButton.Name = "loadChartButton";
+            this.loadChartButton.Size = new System.Drawing.Size(134, 36);
+            this.loadChartButton.TabIndex = 4;
+            this.loadChartButton.Text = "Load Chart";
+            this.loadChartButton.UseVisualStyleBackColor = false;
             // 
             // BTS
             // 
@@ -1701,12 +1716,14 @@
             this.createEntryTab.ResumeLayout(false);
             this.createEntryTab.PerformLayout();
             this.updateEntryTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.updateEntryGrid)).EndInit();
             this.searchTab.ResumeLayout(false);
             this.searchTab.PerformLayout();
             this.leaderboardTab.ResumeLayout(false);
             this.leaderboardTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leaderboardGrid)).EndInit();
             this.graphTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.graphChart)).EndInit();
             this.updateAccountTab.ResumeLayout(false);
             this.updateAccountTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cityError)).EndInit();
@@ -1723,8 +1740,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.registerStreetError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerCityError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerStateError)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.updateEntryGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.graphChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1853,6 +1868,7 @@
         private System.Windows.Forms.Button loadEntry;
         private System.Windows.Forms.DataGridView updateEntryGrid;
         private System.Windows.Forms.DataVisualization.Charting.Chart graphChart;
+        private System.Windows.Forms.Button loadChartButton;
     }
 }
 
