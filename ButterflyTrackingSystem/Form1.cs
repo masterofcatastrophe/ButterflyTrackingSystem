@@ -494,7 +494,7 @@ namespace ButterflyTrackingSystem
               
                 
 
-                if (!String.IsNullOrEmpty(updateUserNameTextBox.Text) &&
+                if (
                          !String.IsNullOrEmpty(updatePasswordTextBox.Text)
                          && !String.IsNullOrEmpty(updateEmployeeNameTextBox.Text) &&
                          !String.IsNullOrEmpty(updateEmployeeStreetTextBox.Text)
