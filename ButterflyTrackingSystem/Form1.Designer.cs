@@ -155,6 +155,7 @@ namespace ButterflyTrackingSystem
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.searchDataGrid = new System.Windows.Forms.DataGridView();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -182,6 +183,7 @@ namespace ButterflyTrackingSystem
             ((System.ComponentModel.ISupportInitialize)(this.registerStreetError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerCityError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerStateError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // loginPanel
@@ -673,7 +675,7 @@ namespace ButterflyTrackingSystem
             this.createEntryTab.Controls.Add(this.createEntryLabel);
             this.createEntryTab.Location = new System.Drawing.Point(4, 22);
             this.createEntryTab.Name = "createEntryTab";
-            this.createEntryTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.createEntryTab.Padding = new System.Windows.Forms.Padding(3);
             this.createEntryTab.Size = new System.Drawing.Size(645, 352);
             this.createEntryTab.TabIndex = 0;
             this.createEntryTab.Text = "Create Entry";
@@ -942,7 +944,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryTab.Controls.Add(this.loadEntry);
             this.updateEntryTab.Location = new System.Drawing.Point(4, 22);
             this.updateEntryTab.Name = "updateEntryTab";
-            this.updateEntryTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.updateEntryTab.Padding = new System.Windows.Forms.Padding(3);
             this.updateEntryTab.Size = new System.Drawing.Size(645, 352);
             this.updateEntryTab.TabIndex = 1;
             this.updateEntryTab.Text = "Update Entry";
@@ -970,13 +972,14 @@ namespace ButterflyTrackingSystem
             this.loadEntry.Name = "loadEntry";
             this.loadEntry.Size = new System.Drawing.Size(134, 36);
             this.loadEntry.TabIndex = 3;
-            this.loadEntry.Text = "Load Entry(s)";
+            this.loadEntry.Text = "Refresh Entry(s)";
             this.loadEntry.UseVisualStyleBackColor = false;
             // 
             // searchTab
             // 
             this.searchTab.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.searchTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.searchTab.Controls.Add(this.searchDataGrid);
             this.searchTab.Controls.Add(this.downloadSightingsFileButton);
             this.searchTab.Controls.Add(this.uploadSightingsFileButton);
             this.searchTab.Controls.Add(this.searchDateTimePicker);
@@ -1007,9 +1010,9 @@ namespace ButterflyTrackingSystem
             // 
             // downloadSightingsFileButton
             // 
-            this.downloadSightingsFileButton.Location = new System.Drawing.Point(533, 304);
+            this.downloadSightingsFileButton.Location = new System.Drawing.Point(11, 256);
             this.downloadSightingsFileButton.Name = "downloadSightingsFileButton";
-            this.downloadSightingsFileButton.Size = new System.Drawing.Size(92, 23);
+            this.downloadSightingsFileButton.Size = new System.Drawing.Size(120, 23);
             this.downloadSightingsFileButton.TabIndex = 65;
             this.downloadSightingsFileButton.Text = "Download File";
             this.downloadSightingsFileButton.UseVisualStyleBackColor = true;
@@ -1017,7 +1020,7 @@ namespace ButterflyTrackingSystem
             // 
             // uploadSightingsFileButton
             // 
-            this.uploadSightingsFileButton.Location = new System.Drawing.Point(407, 304);
+            this.uploadSightingsFileButton.Location = new System.Drawing.Point(11, 220);
             this.uploadSightingsFileButton.Name = "uploadSightingsFileButton";
             this.uploadSightingsFileButton.Size = new System.Drawing.Size(120, 23);
             this.uploadSightingsFileButton.TabIndex = 64;
@@ -1027,20 +1030,20 @@ namespace ButterflyTrackingSystem
             // 
             // searchDateTimePicker
             // 
-            this.searchDateTimePicker.Location = new System.Drawing.Point(18, 165);
+            this.searchDateTimePicker.Location = new System.Drawing.Point(9, 164);
             this.searchDateTimePicker.Name = "searchDateTimePicker";
-            this.searchDateTimePicker.Size = new System.Drawing.Size(205, 20);
+            this.searchDateTimePicker.Size = new System.Drawing.Size(177, 20);
             this.searchDateTimePicker.TabIndex = 8;
             this.searchDateTimePicker.ValueChanged += new System.EventHandler(this.searchDateTimePicker_ValueChanged);
             // 
             // searchNoteLabel
             // 
             this.searchNoteLabel.AutoSize = true;
-            this.searchNoteLabel.Location = new System.Drawing.Point(23, 314);
+            this.searchNoteLabel.Location = new System.Drawing.Point(16, 308);
             this.searchNoteLabel.Name = "searchNoteLabel";
-            this.searchNoteLabel.Size = new System.Drawing.Size(172, 13);
+            this.searchNoteLabel.Size = new System.Drawing.Size(115, 26);
             this.searchNoteLabel.TabIndex = 63;
-            this.searchNoteLabel.Text = "* Search by any of the above fields";
+            this.searchNoteLabel.Text = "* Search by any of the \r\n   above fields";
             this.searchNoteLabel.Click += new System.EventHandler(this.searchNoteLabel_Click);
             // 
             // searchGendercomboBox
@@ -1050,7 +1053,7 @@ namespace ButterflyTrackingSystem
             this.searchGendercomboBox.Items.AddRange(new object[] {
             "Female",
             "Male"});
-            this.searchGendercomboBox.Location = new System.Drawing.Point(406, 123);
+            this.searchGendercomboBox.Location = new System.Drawing.Point(337, 123);
             this.searchGendercomboBox.Name = "searchGendercomboBox";
             this.searchGendercomboBox.Size = new System.Drawing.Size(87, 21);
             this.searchGendercomboBox.Sorted = true;
@@ -1065,11 +1068,11 @@ namespace ButterflyTrackingSystem
             this.searchLocationLabel.AutoSize = true;
             this.searchLocationLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.searchLocationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchLocationLabel.Location = new System.Drawing.Point(259, 219);
+            this.searchLocationLabel.Location = new System.Drawing.Point(535, 51);
             this.searchLocationLabel.Name = "searchLocationLabel";
-            this.searchLocationLabel.Size = new System.Drawing.Size(89, 22);
+            this.searchLocationLabel.Size = new System.Drawing.Size(78, 22);
             this.searchLocationLabel.TabIndex = 62;
-            this.searchLocationLabel.Text = "Location {";
+            this.searchLocationLabel.Text = "Location";
             this.searchLocationLabel.Click += new System.EventHandler(this.searchLocationLabel_Click);
             // 
             // searchGenderLabel
@@ -1079,7 +1082,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchGenderLabel.AutoSize = true;
             this.searchGenderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchGenderLabel.Location = new System.Drawing.Point(294, 124);
+            this.searchGenderLabel.Location = new System.Drawing.Point(225, 124);
             this.searchGenderLabel.Name = "searchGenderLabel";
             this.searchGenderLabel.Size = new System.Drawing.Size(99, 17);
             this.searchGenderLabel.TabIndex = 61;
@@ -1090,9 +1093,9 @@ namespace ButterflyTrackingSystem
             // 
             this.searchCountryTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchCountryTextBox.Location = new System.Drawing.Point(413, 250);
+            this.searchCountryTextBox.Location = new System.Drawing.Point(509, 131);
             this.searchCountryTextBox.Name = "searchCountryTextBox";
-            this.searchCountryTextBox.Size = new System.Drawing.Size(212, 20);
+            this.searchCountryTextBox.Size = new System.Drawing.Size(126, 20);
             this.searchCountryTextBox.TabIndex = 7;
             this.searchCountryTextBox.TextChanged += new System.EventHandler(this.searchCountryTextBox_TextChanged);
             // 
@@ -1100,9 +1103,9 @@ namespace ButterflyTrackingSystem
             // 
             this.searchStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchStateTextBox.Location = new System.Drawing.Point(413, 224);
+            this.searchStateTextBox.Location = new System.Drawing.Point(509, 105);
             this.searchStateTextBox.Name = "searchStateTextBox";
-            this.searchStateTextBox.Size = new System.Drawing.Size(212, 20);
+            this.searchStateTextBox.Size = new System.Drawing.Size(126, 20);
             this.searchStateTextBox.TabIndex = 6;
             this.searchStateTextBox.TextChanged += new System.EventHandler(this.searchStateTextBox_TextChanged);
             // 
@@ -1110,25 +1113,25 @@ namespace ButterflyTrackingSystem
             // 
             this.searchCityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchCityTextBox.Location = new System.Drawing.Point(413, 195);
+            this.searchCityTextBox.Location = new System.Drawing.Point(509, 76);
             this.searchCityTextBox.Name = "searchCityTextBox";
-            this.searchCityTextBox.Size = new System.Drawing.Size(212, 20);
+            this.searchCityTextBox.Size = new System.Drawing.Size(126, 20);
             this.searchCityTextBox.TabIndex = 5;
             this.searchCityTextBox.TextChanged += new System.EventHandler(this.searchCityTextBox_TextChanged);
             // 
             // searchSpeciesTextBox
             // 
-            this.searchSpeciesTextBox.Location = new System.Drawing.Point(79, 125);
+            this.searchSpeciesTextBox.Location = new System.Drawing.Point(70, 123);
             this.searchSpeciesTextBox.Name = "searchSpeciesTextBox";
-            this.searchSpeciesTextBox.Size = new System.Drawing.Size(190, 20);
+            this.searchSpeciesTextBox.Size = new System.Drawing.Size(138, 20);
             this.searchSpeciesTextBox.TabIndex = 3;
             this.searchSpeciesTextBox.TextChanged += new System.EventHandler(this.searchSpeciesTextBox_TextChanged);
             // 
             // searchTagIDTextBox
             // 
-            this.searchTagIDTextBox.Location = new System.Drawing.Point(71, 80);
+            this.searchTagIDTextBox.Location = new System.Drawing.Point(70, 78);
             this.searchTagIDTextBox.Name = "searchTagIDTextBox";
-            this.searchTagIDTextBox.Size = new System.Drawing.Size(198, 20);
+            this.searchTagIDTextBox.Size = new System.Drawing.Size(138, 20);
             this.searchTagIDTextBox.TabIndex = 1;
             this.searchTagIDTextBox.TextChanged += new System.EventHandler(this.searchTagIDTextBox_TextChanged);
             // 
@@ -1139,7 +1142,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchCountryLabel.AutoSize = true;
             this.searchCountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCountryLabel.Location = new System.Drawing.Point(354, 250);
+            this.searchCountryLabel.Location = new System.Drawing.Point(450, 132);
             this.searchCountryLabel.Name = "searchCountryLabel";
             this.searchCountryLabel.Size = new System.Drawing.Size(57, 17);
             this.searchCountryLabel.TabIndex = 59;
@@ -1153,7 +1156,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchStateLabel.AutoSize = true;
             this.searchStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchStateLabel.Location = new System.Drawing.Point(354, 224);
+            this.searchStateLabel.Location = new System.Drawing.Point(450, 106);
             this.searchStateLabel.Name = "searchStateLabel";
             this.searchStateLabel.Size = new System.Drawing.Size(41, 17);
             this.searchStateLabel.TabIndex = 58;
@@ -1167,7 +1170,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchCityLabel.AutoSize = true;
             this.searchCityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCityLabel.Location = new System.Drawing.Point(354, 198);
+            this.searchCityLabel.Location = new System.Drawing.Point(450, 77);
             this.searchCityLabel.Name = "searchCityLabel";
             this.searchCityLabel.Size = new System.Drawing.Size(31, 17);
             this.searchCityLabel.TabIndex = 57;
@@ -1181,7 +1184,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchSpeciesLabel.AutoSize = true;
             this.searchSpeciesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchSpeciesLabel.Location = new System.Drawing.Point(15, 124);
+            this.searchSpeciesLabel.Location = new System.Drawing.Point(6, 122);
             this.searchSpeciesLabel.Name = "searchSpeciesLabel";
             this.searchSpeciesLabel.Size = new System.Drawing.Size(58, 17);
             this.searchSpeciesLabel.TabIndex = 55;
@@ -1190,22 +1193,21 @@ namespace ButterflyTrackingSystem
             // 
             // searchButton
             // 
+            this.searchButton.BackColor = System.Drawing.Color.PaleTurquoise;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(237, 299);
+            this.searchButton.Location = new System.Drawing.Point(247, 163);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(136, 30);
             this.searchButton.TabIndex = 9;
             this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // searchUserNameTextBox
             // 
-            this.searchUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchUserNameTextBox.Location = new System.Drawing.Point(379, 81);
+            this.searchUserNameTextBox.Location = new System.Drawing.Point(311, 79);
             this.searchUserNameTextBox.Name = "searchUserNameTextBox";
-            this.searchUserNameTextBox.Size = new System.Drawing.Size(246, 20);
+            this.searchUserNameTextBox.Size = new System.Drawing.Size(118, 20);
             this.searchUserNameTextBox.TabIndex = 2;
             this.searchUserNameTextBox.UseSystemPasswordChar = true;
             this.searchUserNameTextBox.TextChanged += new System.EventHandler(this.searchUserNameTextBox_TextChanged);
@@ -1217,7 +1219,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchUserNameLabel.AutoSize = true;
             this.searchUserNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchUserNameLabel.Location = new System.Drawing.Point(294, 80);
+            this.searchUserNameLabel.Location = new System.Drawing.Point(225, 79);
             this.searchUserNameLabel.Name = "searchUserNameLabel";
             this.searchUserNameLabel.Size = new System.Drawing.Size(79, 17);
             this.searchUserNameLabel.TabIndex = 47;
@@ -1231,7 +1233,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTagIDLabel.AutoSize = true;
             this.searchTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTagIDLabel.Location = new System.Drawing.Point(15, 80);
+            this.searchTagIDLabel.Location = new System.Drawing.Point(6, 78);
             this.searchTagIDLabel.Name = "searchTagIDLabel";
             this.searchTagIDLabel.Size = new System.Drawing.Size(50, 17);
             this.searchTagIDLabel.TabIndex = 46;
@@ -1275,7 +1277,7 @@ namespace ButterflyTrackingSystem
             this.loadLeaderboardButton.Name = "loadLeaderboardButton";
             this.loadLeaderboardButton.Size = new System.Drawing.Size(169, 36);
             this.loadLeaderboardButton.TabIndex = 2;
-            this.loadLeaderboardButton.Text = "Load LeaderBoard";
+            this.loadLeaderboardButton.Text = "Refresh LeaderBoard\r\n";
             this.loadLeaderboardButton.UseVisualStyleBackColor = true;
             // 
             // leaderboardGrid
@@ -1300,9 +1302,9 @@ namespace ButterflyTrackingSystem
             this.leaderboardTabDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leaderboardTabDescriptionLabel.Location = new System.Drawing.Point(16, 8);
             this.leaderboardTabDescriptionLabel.Name = "leaderboardTabDescriptionLabel";
-            this.leaderboardTabDescriptionLabel.Size = new System.Drawing.Size(612, 22);
+            this.leaderboardTabDescriptionLabel.Size = new System.Drawing.Size(605, 22);
             this.leaderboardTabDescriptionLabel.TabIndex = 0;
-            this.leaderboardTabDescriptionLabel.Text = "Load the leader board system to check who has tagged the most butterflies!\r\n";
+            this.leaderboardTabDescriptionLabel.Text = "Check the leader board system to see who has tagged the most butterflies!\r\n";
             // 
             // graphTab
             // 
@@ -1327,7 +1329,7 @@ namespace ButterflyTrackingSystem
             this.loadChartButton.Name = "loadChartButton";
             this.loadChartButton.Size = new System.Drawing.Size(134, 36);
             this.loadChartButton.TabIndex = 4;
-            this.loadChartButton.Text = "Load Chart";
+            this.loadChartButton.Text = "Refresh Chart";
             this.loadChartButton.UseVisualStyleBackColor = false;
             // 
             // graphChart
@@ -1656,6 +1658,18 @@ namespace ButterflyTrackingSystem
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
             // 
+            // searchDataGrid
+            // 
+            this.searchDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchDataGrid.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.searchDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.searchDataGrid.Location = new System.Drawing.Point(141, 199);
+            this.searchDataGrid.Name = "searchDataGrid";
+            this.searchDataGrid.Size = new System.Drawing.Size(494, 146);
+            this.searchDataGrid.TabIndex = 66;
+            // 
             // BTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1704,6 +1718,7 @@ namespace ButterflyTrackingSystem
             ((System.ComponentModel.ISupportInitialize)(this.registerStreetError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerCityError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerStateError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1835,6 +1850,7 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.DataGridView updateEntryGrid;
         private System.Windows.Forms.DataVisualization.Charting.Chart graphChart;
         private System.Windows.Forms.Button loadChartButton;
+        private System.Windows.Forms.DataGridView searchDataGrid;
     }
 }
 
