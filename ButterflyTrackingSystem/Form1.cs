@@ -662,51 +662,26 @@ namespace ButterflyTrackingSystem
             {
                 string SearchDate = searchDateTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
                 string SearchTime = searchDateTimePicker.Value.ToString("hh:mm tt"); // user defined date
-                // string bDate = DateTime.Now.ToString("MM-dd-yyyy"); // system date
-                //string bTime = DateTime.Now.ToString("hh:mm tt"); // system time
-                    /*
-                    SELECT Sight_ID, Longitude, Latitude,  BTS.Sighting_Locations.City,  BTS.Sighting_Locations.State, Country,  
-                     BTS.Sighting_Locations.Employee_ID, Date_of_sighting, Time_of_sighting, Species, Age, Gender, User_ID
-                    FROM BTS.Sighting_Locations
-                    INNER JOIN BTS.Butterfly
-                    ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID
-                    RIGHT JOIN BTS.Employee
-                    ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE Sight_ID = 1;
-                    */
-                    if (!String.IsNullOrEmpty(searchUserNameTextBox.Text))
-                    {
-                        column = "User_ID";
-                        param = searchusername;
-                    }
-                    if (!String.IsNullOrEmpty(searchTagIDTextBox.Text))
-                    {
-                        column = "Sight_ID";
-                        param = searchtagid;
-                    }
-                    if (!String.IsNullOrEmpty(searchSpeciesTextBox.Text))
-                    {
-                        column = "Species";
-                        param = searchspecies;
-                    }
-                    if (!String.IsNullOrEmpty(searchCityTextBox.Text))
-                    {
-                        column = "City";
-                        param = searchcity;
-                    }
-                    if (!String.IsNullOrEmpty(searchStateTextBox.Text))
-                    {
-                        column = "State";
-                        param = searchstate;
-                    }
-                    if (!String.IsNullOrEmpty(searchCountryTextBox.Text))
-                    {
-                        column = "Country";
-                        param = searchcountry;
-                    }
+                
+                    if (!String.IsNullOrEmpty(searchUserNameTextBox.Text)){column = "User_ID";param = "'" + searchusername + "'";}
+                    if (!String.IsNullOrEmpty(searchTagIDTextBox.Text)){column = "Sight_ID";param = searchtagid;}
+                    if (!String.IsNullOrEmpty(searchSpeciesTextBox.Text)){column = "Species";param = "'" + searchspecies + "'";}
+                    if (!String.IsNullOrEmpty(searchCityTextBox.Text)){column = "City";param = "'" + searchcity + "'";}
+                    if (!String.IsNullOrEmpty(searchStateTextBox.Text)){column = "State";param = "'" + searchstate + "'";}
+                    if (!String.IsNullOrEmpty(searchCountryTextBox.Text)){column = "Country";param = "'" + searchcountry + "'";}
                     if (!String.IsNullOrEmpty(searchGendercomboBox.Text))
                     {
+                        string gend;
                         column = "Gender";
-                        param = searchgender;
+                        if (searchgender == "Male")
+                        {
+                            gend = "M";
+                        }
+                        else
+                        {
+                            gend = "F";
+                        }
+                        param = "'" + gend + "'";
                     }
                     /*
                     if (!String.IsNullOrEmpty(searchDateTimePicker.Text))
@@ -721,44 +696,43 @@ namespace ButterflyTrackingSystem
                     }
                     */
 
+                    MySqlDataAdapter mySqlDataAdapter;
+                    MySqlCommandBuilder mySqlCommandBuilder;
+                    DataTable dataTable;
+                    BindingSource bindingSource;
+
                     string searchquery =
-                        "SELECT Sight_ID, Longitude, Latitude, BTS.Sighting_Locations.City, BTS.Sighting_Locations.State, Country," +
-                        " BTS.Sighting_Locations.Employee_ID, Date_of_sighting, Time_of_sighting, Species, Age, Gender,  User_ID" +
+                        "SELECT User_ID AS UserID, Sight_ID AS TagID, BTS.Sighting_Locations.Employee_ID AS EmpID, Longitude AS Lon, Latitude AS Lat, BTS.Sighting_Locations.City," +
+                        " BTS.Sighting_Locations.State AS ST, Country," +
+                        " Date_of_sighting AS sDate, Time_of_sighting AS sTime, Species, Age, Gender" +
                         " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
                         " RIGHT JOIN BTS.Employee ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE " +
                         column + "=" + param + ";";
-                
-                    MySqlCommand Search = new MySqlCommand(searchquery, dbcon);
-                    Search.CommandText = searchquery;
-                    MySqlCommand retreiveData = new MySqlCommand(searchquery, dbcon);
-                    MySqlDataReader myReader;
-                    myReader = retreiveData.ExecuteReader();
 
-                    while (myReader.Read())
-                    {
-                        string sTagid = myReader.GetString("Sight_ID");
-                        string sLongitude = myReader.GetString("Longitude");
-                        string sLatitude = myReader.GetString("Latitude");
-                        string sCity = myReader.GetString("City");
-                        string sState = myReader.GetString("State");
-                        string sCountry = myReader.GetString("Country");
-                        string sEmpid = myReader.GetString("Employee_ID");
-                        string sDate = myReader.GetString("Date_of_sighting");
-                        string sTime = myReader.GetString("Time_of_sighting");
-                        string sSpecies = myReader.GetString("Species");
-                        string sAge = myReader.GetString("Age");
-                        string sGender = myReader.GetString("Gender");
-                        string sUser = myReader.GetString("User_ID");
-                        MessageBox.Show(sEmpid, "Output", MessageBoxButtons.OK);
-                    }
-                    myReader.Close();
+                    mySqlDataAdapter = new MySqlDataAdapter(searchquery, dbcon);
+                    mySqlCommandBuilder = new MySqlCommandBuilder(mySqlDataAdapter);
+
+                    dataTable = new DataTable();
+                    mySqlDataAdapter.Fill(dataTable);
+
+                    bindingSource = new BindingSource();
+                    bindingSource.DataSource = dataTable;
+
+                    searchDataGrid.ReadOnly = true;
+                    searchDataGrid.DataSource = bindingSource;
+
+                    searchDataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+                    searchDataGrid.AllowUserToAddRows = false;
+                    searchDataGrid.RowHeadersVisible = false;
+                    searchDataGrid.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
                     //resetting the fields when going to search
-                foreach (Control item in searchTab.Controls)
-                {
-                    if (item is TextBox)
-                    {
-                        item.Text = "";
-                    }
+                    foreach (Control item in searchTab.Controls)
+                     {
+                        if (item is TextBox)
+                        {
+                            item.Text = "";
+                        }
                     } //end foreach
             }
             else
@@ -771,6 +745,11 @@ namespace ButterflyTrackingSystem
             {
                 MessageBox.Show("Have to use at least one field.", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        private void searchDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void uploadSightingsFileButton_Click(object sender, EventArgs e)
@@ -1406,6 +1385,7 @@ namespace ButterflyTrackingSystem
                 con.OpenConnection();
             }
         }
+
     }
 
 }
