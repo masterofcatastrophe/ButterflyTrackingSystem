@@ -482,8 +482,6 @@ namespace ButterflyTrackingSystem
         private void updateAccountButton_Click(object sender, EventArgs e)
         {
             //string UpdateEmployeeUserName = updateUserNameTextBox.Text;
-
-            
             string UpdateEmployeePassword = updatePasswordTextBox.Text;
             string UpdateEmployeeName = updateEmployeeNameTextBox.Text;
             string UpdateEmployeeStreet = updateEmployeeStreetTextBox.Text;
@@ -495,36 +493,28 @@ namespace ButterflyTrackingSystem
             //To-DO: update query here
             if (dbcon.State == ConnectionState.Open)
             {
-
-                
-
-                if (
-                         !String.IsNullOrEmpty(updatePasswordTextBox.Text)
-                         && !String.IsNullOrEmpty(updateEmployeeNameTextBox.Text) &&
-                         !String.IsNullOrEmpty(updateEmployeeStreetTextBox.Text)
-                         && !String.IsNullOrEmpty(updateEmployeeCityTextBox.Text) &&
-                         !String.IsNullOrEmpty(updateEmployeeStateTextBox.Text)
-                         && !String.IsNullOrEmpty(updatePhoneNumberTextBox.Text))
+                if (!String.IsNullOrEmpty(updatePasswordTextBox.Text)
+                    && !String.IsNullOrEmpty(updateEmployeeNameTextBox.Text) &&
+                    !String.IsNullOrEmpty(updateEmployeeStreetTextBox.Text)
+                    && !String.IsNullOrEmpty(updateEmployeeCityTextBox.Text) &&
+                    !String.IsNullOrEmpty(updateEmployeeStateTextBox.Text)
+                    && !String.IsNullOrEmpty(updatePhoneNumberTextBox.Text))
                 {
                     string updateuser_sql = "UPDATE Employee SET Name='" + updateEmployeeNameTextBox.Text + "', Position='" + positionOptionsUpdateComboBox.Text + "', Phone_Number='" + updatePhoneNumberTextBox.Text + "', City='" + updateEmployeeCityTextBox.Text + "', State='" + updateEmployeeStateTextBox.Text + "', Street_Address='" + updateEmployeeStreetTextBox.Text + "', Password='" + updatePasswordTextBox.Text + "'WHERE User_ID='" + userNameBox.Text + "' ;";
                     MySqlCommand updateuser = new MySqlCommand(updateuser_sql, dbcon);
                     MySqlDataReader updateReader = updateuser.ExecuteReader();
-            MessageBox.Show("Account up to date!");
+                    MessageBox.Show("Account up to date!");
                     updateReader.Close();
                 }
             }
-
-
-
             else if (String.IsNullOrEmpty(updatePasswordTextBox.Text))
             {
                 MessageBox.Show("Password Field is empty !");
             }
-
             else if (String.IsNullOrEmpty(updateEmployeeNameTextBox.Text))
-                {
+            {
                 MessageBox.Show("Employee Name is empty !");
-                }
+            }
         }
         private void updatePasswordTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -1346,12 +1336,13 @@ namespace ButterflyTrackingSystem
     private DataSet DS;
         private void functionalitiesTabs_Click_1(object sender, EventArgs e)
         {
-
-            
             if (dbcon.State == ConnectionState.Open)
             {
                 // retreive leaderboard
-                string retreiveLeaderBoard = "SELECT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID ORDER BY Tags_Made DESC LIMIT 10;";
+                string retreiveLeaderBoard = "SELECT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly" +
+                                             " ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID" +
+                                             " ORDER BY Tags_Made DESC LIMIT 10;";
+
                 MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
                 MySqlDataAdapter sda = new MySqlDataAdapter();
                 sda.SelectCommand = retreiveBoard;
@@ -1361,19 +1352,27 @@ namespace ButterflyTrackingSystem
                 bsource.DataSource = dbdataset;
                 leaderboardGrid.DataSource = bsource;
                 sda.Update(dbdataset);
-               
+                leaderboardGrid.AllowUserToAddRows = false;
+                leaderboardGrid.RowHeadersVisible = false;
+
                 // retreive entries
-                string retreiveEntries = "SELECT Butterfly.Species, Butterfly.Gender, Butterfly.Age, Butterfly.Date_of_Tagging, Butterfly.Time_of_Tagging, Sighting_Locations.Longitude, Sighting_Locations.Latitude, Sighting_Locations.City, Sighting_Locations.State, Sighting_Locations.Country FROM Butterfly INNER JOIN Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID) INNER JOIN Employee ON (Sighting_Locations.Employee_ID = Employee.Employee_ID) WHERE (Employee.User_ID='hadi')";//WHERE (Employee.User_ID =@user)
+                string retreiveEntries =
+                     "SELECT Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
+                     " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
+                     " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
+                     " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID)" +
+                     " WHERE(Employee.User_ID = 'hadi');";//WHERE (Employee.User_ID =@user)
+
                 entry2 = new MySqlDataAdapter(retreiveEntries, dbcon);
                 MySqlCommandBuilder builder = new MySqlCommandBuilder(entry2);
-               DS = new DataSet();
-               entry2.Fill(DS, "Entries");
-               bindingsource1 = new BindingSource();
-               bindingsource1.DataSource = DS.Tables[0];
+                DS = new DataSet();
+                entry2.Fill(DS, "Entries");
+                bindingsource1 = new BindingSource();
+                bindingsource1.DataSource = DS.Tables[0];
 
-               BindingNavigator bindingNavigator1 = new BindingNavigator();
-               bindingNavigator1.BindingSource = bindingsource1;
-               updateEntryGrid.DataSource = bindingsource1;
+                BindingNavigator bindingNavigator1 = new BindingNavigator();
+                bindingNavigator1.BindingSource = bindingsource1;
+                updateEntryGrid.DataSource = bindingsource1;
 
                 // retreive account info
                 string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
@@ -1403,8 +1402,6 @@ namespace ButterflyTrackingSystem
                     updateEmployeeCityTextBox.Text = sCity;
                     updateEmployeeStateTextBox.Text = sState;
                     positionOptionsUpdateComboBox.Text = sPosition;
-
-                    
                 }
                 myReader.Close();
             }
@@ -1430,7 +1427,10 @@ namespace ButterflyTrackingSystem
         {
             if (dbcon.State == ConnectionState.Open)
             {
-                string retreiveLeaderBoard = "SELECT DISTINCT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID ORDER BY Tags_Made DESC LIMIT 10;";
+                string retreiveLeaderBoard = "SELECT DISTINCT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly" +
+                                             " ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID" +
+                                             " ORDER BY Tags_Made DESC LIMIT 10;";
+
                 MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
                 MySqlDataAdapter sda = new MySqlDataAdapter();
                 sda.SelectCommand = retreiveBoard;
@@ -1441,8 +1441,6 @@ namespace ButterflyTrackingSystem
                 bsource.DataSource = dbdataset;
                 leaderboardGrid.DataSource = bsource;
                 sda.Update(dbdataset);
-                
-
             }
             else
             {
@@ -1461,19 +1459,12 @@ namespace ButterflyTrackingSystem
                 entry2.Update(changes);
                 ((DataTable)updateEntryGrid.DataSource).AcceptChanges();
             }*/
-            }
+        }
 
         private void loadEntry_Click(object sender, EventArgs e)
         {
-
-           bindingsource1.EndEdit();
-           entry2.Update(DS, "Entries");
-
-
-
+            bindingsource1.EndEdit();
+            entry2.Update(DS, "Entries");
         }
-
-        
     }
-
 }
