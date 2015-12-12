@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MySql.Data.Common;
-using System.Windows.Forms;
 
 
 namespace ButterflyTrackingSystem
@@ -1432,6 +1431,12 @@ namespace ButterflyTrackingSystem
 
         private void loadLeaderboardButton_Click(object sender, EventArgs e)
         {
+            
+
+        }
+
+        private void loadLeaderboardButton_Click_1(object sender, EventArgs e)
+        {
             if (dbcon.State == ConnectionState.Open)
             {
                 string retreiveLeaderBoard = "SELECT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID ORDER BY Tags_Made DESC LIMIT 10;";
@@ -1446,14 +1451,16 @@ namespace ButterflyTrackingSystem
                 leaderboardGrid.DataSource = bsource;
                 sda.Update(dbdataset);
                 
+
             }
             else
             {
                 con.CloseConnection();
                 con.OpenConnection();
             }
-
         }
+
+        
     }
 
 }
