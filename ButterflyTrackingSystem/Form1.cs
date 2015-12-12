@@ -1470,7 +1470,7 @@ namespace ButterflyTrackingSystem
 
                 // retreive entries
                 string retreiveEntries =
-                     "SELECT Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
+                     "SELECT Tag_ID,Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
                      " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
                      " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
                      " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID)" +
