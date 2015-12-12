@@ -1389,7 +1389,7 @@ namespace ButterflyTrackingSystem
                 sda.Update(dbdataset);
                
                 // retreive entries
-                string retreiveEntries = "SELECT Butterfly.Species, Butterfly.Gender, Butterfly.Age, Butterfly.Date_of_Tagging, Butterfly.Time_of_Tagging, Sighting_Locations.Longitude, Sighting_Locations.Latitude, Sighting_Locations.City, Sighting_Locations.State, Sighting_Locations.Country FROM Butterfly INNER JOIN Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID) INNER JOIN Employee ON (Sighting_Locations.Employee_ID = Employee.Employee_ID) WHERE (Employee.User_ID='hadi')";//WHERE (Employee.User_ID =@user)
+                string retreiveEntries = "SELECT Butterfly.Tag_ID, Butterfly.Species, Butterfly.Gender, Butterfly.Age, Butterfly.Date_of_Tagging, Butterfly.Time_of_Tagging, Sighting_Locations.Longitude, Sighting_Locations.Latitude, Sighting_Locations.City, Sighting_Locations.State, Sighting_Locations.Country FROM Butterfly INNER JOIN Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID) INNER JOIN Employee ON (Sighting_Locations.Employee_ID = Employee.Employee_ID) WHERE (Employee.User_ID='hadi')";//WHERE (Employee.User_ID =@user)
                 entry2 = new MySqlDataAdapter(retreiveEntries, dbcon);
                 MySqlCommandBuilder builder = new MySqlCommandBuilder(entry2);
                DS = new DataSet();
