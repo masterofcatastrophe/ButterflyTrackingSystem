@@ -1262,7 +1262,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryGrid.Name = "updateEntryGrid";
             this.updateEntryGrid.Size = new System.Drawing.Size(430, 142);
             this.updateEntryGrid.TabIndex = 89;
-            this.updateEntryGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_CellContentClick);
+            this.updateEntryGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_CellClick);
             this.updateEntryGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_RowValidated);
             // 
             // loadEntry

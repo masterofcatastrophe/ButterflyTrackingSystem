@@ -1529,11 +1529,11 @@ namespace ButterflyTrackingSystem
 
                 // retreive entries
                 string retreiveEntries =
-                    "SELECT Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
+                    "SELECT Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
                     " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
                     " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
                     " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID)" +
-                    " WHERE(Employee.User_ID = 'hadi');"; //WHERE (Employee.User_ID =@user)
+                    " WHERE(Employee.User_ID = '"+userNameBox.Text+"');"; //WHERE (Employee.User_ID =@user)
 
                 entry2 = new MySqlDataAdapter(retreiveEntries, dbcon);
                 MySqlCommandBuilder builder = new MySqlCommandBuilder(entry2);
@@ -1636,18 +1636,65 @@ namespace ButterflyTrackingSystem
 
         private void loadEntry_Click(object sender, EventArgs e)
         {
-            bindingsource1.EndEdit();
-            entry2.Update(DS, "Entries");
+            if (dbcon.State == ConnectionState.Open)
+            {
+                if (!String.IsNullOrEmpty(updateEntryTagIDBox.Text) && !String.IsNullOrEmpty(updateEntrySpeciesBox.Text) &&
+                !String.IsNullOrEmpty(updateEntryGenderComboBox.Text) && !String.IsNullOrEmpty(updateEntryAgeBox.Text) &&
+                !String.IsNullOrEmpty(updateEntryLongitudeBox.Text) && !String.IsNullOrEmpty(updateEntryLatitudeBox.Text) &&
+                !String.IsNullOrEmpty(updateEntryCityBox.Text) && !String.IsNullOrEmpty(updateEntryStateBox.Text)
+                && !String.IsNullOrEmpty(updateEntryCountryBox.Text))
+                {
+                    DataGridViewRow row = updateEntryGrid.Rows[i];
+                    row.Cells[0].Value = updateEntryTagIDBox.Text;
+                    row.Cells[1].Value = updateEntrySpeciesBox.Text;
+                    row.Cells[2].Value = updateEntryGenderComboBox.Text;
+                    row.Cells[3].Value = updateEntryAgeBox.Text;
+                    row.Cells[6].Value = updateEntryLongitudeBox.Text;
+                    row.Cells[7].Value = updateEntryLatitudeBox.Text;
+                    row.Cells[8].Value = updateEntryCityBox.Text;
+                    row.Cells[9].Value = updateEntryStateBox.Text;
+                    row.Cells[10].Value = updateEntryCountryBox.Text;
 
-            if (String.IsNullOrEmpty(updateEntryTagIDBox.Text))
-            {
-                registerStreetError.SetError(updateEntryTagIDBox, "Tag ID field Invalid!");
+
+
+                    //////
+
+
+                    string updateEntry_sql = "UPDATE Butterfly SET Species='" + updateEntrySpeciesBox.Text +
+                                            "', Gender='" + updateEntryGenderComboBox.Text + "', Age='" +
+                                            updateEntryAgeBox.Text + "'WHERE Tag_ID='" + updateEntryTagIDBox.Text + "' ;";
+
+
+
+                    string updateEntrySight_sql = "UPDATE Sighting_Locations SET Longitude='" + updateEntryLongitudeBox.Text +
+                                                "', Latitude='" + updateEntryLatitudeBox.Text + "', City='" +
+                                                updateEntryCityBox.Text + "', State='" + updateEntryStateBox.Text + "', Country='" +
+                                                updateEntryCountryBox + "'WHERE Tag_ID='" + updateEntryTagIDBox.Text + "' ;";
+
+
+
+                    MySqlCommand updateEntry = new MySqlCommand(updateEntry_sql, dbcon);
+                    MySqlDataReader updateReader = updateEntry.ExecuteReader();
+                    updateReader.Close();
+
+                    MySqlCommand updateEntrySight = new MySqlCommand(updateEntry_sql, dbcon);
+                    MySqlDataReader updateSightReader = updateEntry.ExecuteReader();
+
+                    updateSightReader.Close();
+                    MessageBox.Show("Entry up to date!");
+                }
+
+
+
+
+
             }
-            else
-            {
-                registerStreetError.Clear();
-            }
+
+            else MessageBox.Show("Data Missing !");
+            
+           
         }
+            
 
         private void updateEntryLabel_Click(object sender, EventArgs e)
         {
@@ -1753,10 +1800,20 @@ namespace ButterflyTrackingSystem
         {
 
         }
-
-        private void updateEntryGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        int i;
+        private void updateEntryGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            i = e.RowIndex;
+            DataGridViewRow row = updateEntryGrid.Rows[i];
+            updateEntryTagIDBox.Text = row.Cells[0].Value.ToString();
+            updateEntrySpeciesBox.Text = row.Cells[1].Value.ToString();
+            updateEntryGenderComboBox.Text = row.Cells[2].Value.ToString();
+            updateEntryAgeBox.Text = row.Cells[3].Value.ToString();
+            updateEntryLongitudeBox.Text = row.Cells[6].Value.ToString();
+            updateEntryLatitudeBox.Text = row.Cells[7].Value.ToString();
+            updateEntryCityBox.Text = row.Cells[8].Value.ToString();
+            updateEntryStateBox.Text = row.Cells[9].Value.ToString();
+            updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
         }
 
         private void updateEntryTagIDBox_Leave(object sender, EventArgs e)
