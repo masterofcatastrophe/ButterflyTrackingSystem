@@ -118,6 +118,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryGrid = new System.Windows.Forms.DataGridView();
             this.loadEntry = new System.Windows.Forms.Button();
             this.searchTab = new System.Windows.Forms.TabPage();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.searchDataGrid = new System.Windows.Forms.DataGridView();
             this.downloadSightingsFileButton = new System.Windows.Forms.Button();
             this.uploadSightingsFileButton = new System.Windows.Forms.Button();
@@ -179,7 +180,6 @@ namespace ButterflyTrackingSystem
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -1143,6 +1143,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryTagIDBox.Size = new System.Drawing.Size(83, 20);
             this.updateEntryTagIDBox.TabIndex = 1;
             this.updateEntryTagIDBox.TextChanged += new System.EventHandler(this.updateEntryTagIDBox_TextChanged);
+            this.updateEntryTagIDBox.Leave += new System.EventHandler(this.updateEntryTagIDBox_Leave);
             // 
             // updateCountryLabel
             // 
@@ -1310,6 +1311,14 @@ namespace ButterflyTrackingSystem
             this.searchTab.TabIndex = 2;
             this.searchTab.Text = "Search";
             this.searchTab.Click += new System.EventHandler(this.searchTab_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(9, 175);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
+            this.dateTimePicker1.TabIndex = 67;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // searchDataGrid
             // 
@@ -1997,14 +2006,6 @@ namespace ButterflyTrackingSystem
             // 
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(9, 175);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
-            this.dateTimePicker1.TabIndex = 67;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // BTS
             // 

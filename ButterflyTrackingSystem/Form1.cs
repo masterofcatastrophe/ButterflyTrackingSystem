@@ -416,7 +416,7 @@ namespace ButterflyTrackingSystem
                 var nID = newuser_valid.ExecuteScalar();
                 if (nID != null)
                 {
-                    MessageBox.Show("user exists !");
+                    MessageBox.Show("user exists!");
                 }
                 else if (!String.IsNullOrEmpty(createEmployeeUserNameBox.Text) &&
                          !String.IsNullOrEmpty(createEmployeePasswordBox.Text)
@@ -1638,6 +1638,15 @@ namespace ButterflyTrackingSystem
         {
             bindingsource1.EndEdit();
             entry2.Update(DS, "Entries");
+
+            if (String.IsNullOrEmpty(updateEntryTagIDBox.Text))
+            {
+                registerStreetError.SetError(updateEntryTagIDBox, "Tag ID field Invalid!");
+            }
+            else
+            {
+                registerStreetError.Clear();
+            }
         }
 
         private void updateEntryLabel_Click(object sender, EventArgs e)
@@ -1748,6 +1757,19 @@ namespace ButterflyTrackingSystem
         private void updateEntryGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void updateEntryTagIDBox_Leave(object sender, EventArgs e)
+        {
+            //when tabbing, remove error if required field is filled
+            if (String.IsNullOrEmpty(updateEntryTagIDBox.Text))
+            {
+                registerStreetError.SetError(updateEntryTagIDBox, "Tag ID field Invalid!");
+            }
+            else
+            {
+                registerStreetError.Clear();
+            }
         }
     }
 }
