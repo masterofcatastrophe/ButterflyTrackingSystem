@@ -75,8 +75,7 @@ namespace ButterflyTrackingSystem
                     try
                     {
                         MySqlDataReader reader;
-                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +
-                                            "';");
+                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text + "';");
                         MySqlCommand Get_Emp_ID = new MySqlCommand(selectCmd, dbcon);
                         reader = Get_Emp_ID.ExecuteReader();
 
@@ -147,7 +146,7 @@ namespace ButterflyTrackingSystem
                 {
                     item.Text = "";
                 }
-            } //end foreach
+            }//end foreach
         }
 
         private void userNameLabel_Click(object sender, EventArgs e)
@@ -403,8 +402,7 @@ namespace ButterflyTrackingSystem
 
         private void loginHereButton_Click(object sender, EventArgs e)
         {
-            loginPanel.Visible = true;
-            registrationPanel.Visible = false;
+            loginPanel.Visible = true; registrationPanel.Visible = false;
 
             //resetting the fields when going to login
             foreach (Control item in loginPanel.Controls)
@@ -413,7 +411,7 @@ namespace ButterflyTrackingSystem
                 {
                     item.Text = "";
                 }
-            } //end foreach
+            }//end foreach
             
         }
 
@@ -493,7 +491,7 @@ namespace ButterflyTrackingSystem
             //To-DO: update query here
             if (dbcon.State == ConnectionState.Open)
             {
-
+              
                 
 
                 if (
@@ -507,11 +505,11 @@ namespace ButterflyTrackingSystem
                     string updateuser_sql = "UPDATE Employee SET Name='" + updateEmployeeNameTextBox.Text + "', Position='" + positionOptionsUpdateComboBox.Text + "', Phone_Number='" + updatePhoneNumberTextBox.Text + "', City='" + updateEmployeeCityTextBox.Text + "', State='" + updateEmployeeStateTextBox.Text + "', Street_Address='" + updateEmployeeStreetTextBox.Text + "', Password='" + updatePasswordTextBox.Text + "'WHERE User_ID='" + userNameBox.Text + "' ;";
                     MySqlCommand updateuser = new MySqlCommand(updateuser_sql, dbcon);
                     MySqlDataReader updateReader = updateuser.ExecuteReader();
-            MessageBox.Show("Account successfully Updated!");
+                    MessageBox.Show("Account successfully Updated!");
                     updateReader.Close();
                 }
             }
-
+                
 
 
             else if (String.IsNullOrEmpty(updatePasswordTextBox.Text))
@@ -520,9 +518,15 @@ namespace ButterflyTrackingSystem
             }
 
             else if (String.IsNullOrEmpty(updateEmployeeNameTextBox.Text))
-             {
+            {
                 MessageBox.Show("Employee Name is empty !");
-             }
+            }
+
+            else if (String.IsNullOrEmpty(updateEmployeeStreetTextBox.Text))
+            {
+                MessageBox.Show("Employee street address is empty !");
+            }
+
             else if (String.IsNullOrEmpty(updateEmployeeCityTextBox.Text))
             {
                 MessageBox.Show("Employee city Field is empty !");
@@ -537,12 +541,15 @@ namespace ButterflyTrackingSystem
             {
                 MessageBox.Show("Employee Phone number Field is empty !");
             }
+
+
             else
             {
                 
                 con.CloseConnection();
                 con.OpenConnection();
             }
+        
 
             //foreach (Control item in updateAccountTab.Controls)
             //{
@@ -670,146 +677,28 @@ namespace ButterflyTrackingSystem
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            string searchtimepicker = searchDateTimePicker.Text;
-            string searchgender = searchGendercomboBox.Text;
-            string searchcountry = searchCountryTextBox.Text;
-            string searchstate = searchStateTextBox.Text;
-            string searchcity = searchCityTextBox.Text;
-            string searchspecies = searchSpeciesTextBox.Text;
-            string searchtagid = searchTagIDTextBox.Text;
-            string searchusername = searchUserNameTextBox.Text;
-            string param = null; // the search parameter
-            string column = null; // column name
-
-            if (!String.IsNullOrEmpty(searchUserNameTextBox.Text) || !String.IsNullOrEmpty(searchTagIDTextBox.Text) ||
-                !String.IsNullOrEmpty(searchSpeciesTextBox.Text) || !String.IsNullOrEmpty(searchCityTextBox.Text) ||
-                !String.IsNullOrEmpty(searchStateTextBox.Text) || !String.IsNullOrEmpty(searchCountryTextBox.Text)
-                || !String.IsNullOrEmpty(searchGendercomboBox.Text) && !String.IsNullOrEmpty(searchDateTimePicker.Text))
-            {
-
             if (dbcon.State == ConnectionState.Open)
             {
                 string SearchDate = searchDateTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
                 string SearchTime = searchDateTimePicker.Value.ToString("hh:mm tt"); // user defined date
                 // string bDate = DateTime.Now.ToString("MM-dd-yyyy"); // system date
                 //string bTime = DateTime.Now.ToString("hh:mm tt"); // system time
-                    /*
-                    SELECT Sight_ID, Longitude, Latitude,  BTS.Sighting_Locations.City,  BTS.Sighting_Locations.State, Country,  
-                     BTS.Sighting_Locations.Employee_ID, Date_of_sighting, Time_of_sighting, Species, Age, Gender, User_ID
-                    FROM BTS.Sighting_Locations
-                    INNER JOIN BTS.Butterfly
-                    ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID
-                    RIGHT JOIN BTS.Employee
-                    ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE Sight_ID = 1;
-                    */
-                    if (!String.IsNullOrEmpty(searchUserNameTextBox.Text))
-                    {
-                        column = "User_ID";
-                        param = searchusername;
-                    }
-                    if (!String.IsNullOrEmpty(searchTagIDTextBox.Text))
-                    {
-                        column = "Sight_ID";
-                        param = searchtagid;
-                    }
-                    if (!String.IsNullOrEmpty(searchSpeciesTextBox.Text))
-                    {
-                        column = "Species";
-                        param = searchspecies;
-                    }
-                    if (!String.IsNullOrEmpty(searchCityTextBox.Text))
-                    {
-                        column = "City";
-                        param = searchcity;
-                    }
-                    if (!String.IsNullOrEmpty(searchStateTextBox.Text))
-                    {
-                        column = "State";
-                        param = searchstate;
-                    }
-                    if (!String.IsNullOrEmpty(searchCountryTextBox.Text))
-                    {
-                        column = "Country";
-                        param = searchcountry;
-                    }
-                    if (!String.IsNullOrEmpty(searchGendercomboBox.Text))
-                    {
-                        column = "Gender";
-                        param = searchgender;
-                    }
-                    /*
-                    if (!String.IsNullOrEmpty(searchDateTimePicker.Text))
-                    {
-                        column = "SearchDate";
-                        param = "@Date_of_sighting";
-                    }
-                    if (!String.IsNullOrEmpty(searchDateTimePicker.Text))
-                    {
-                        column = "SearchTime";
-                        param = "@Time_of_sighting";
-                    }
-                    */
-
-                    string searchquery =
-                        "SELECT Sight_ID, Longitude, Latitude, BTS.Sighting_Locations.City, BTS.Sighting_Locations.State, Country," +
-                        " BTS.Sighting_Locations.Employee_ID, Date_of_sighting, Time_of_sighting, Species, Age, Gender,  User_ID" +
-                        " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
-                        " RIGHT JOIN BTS.Employee ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE " +
-                        column + "=" + param + ";";
                 
-                    MySqlCommand Search = new MySqlCommand(searchquery, dbcon);
-                    Search.CommandText = searchquery;
-                    MySqlCommand retreiveData = new MySqlCommand(searchquery, dbcon);
-                    MySqlDataReader myReader;
-                    myReader = retreiveData.ExecuteReader();
 
-                    while (myReader.Read())
-                    {
-                        string sTagid = myReader.GetString("Sight_ID");
-                        string sLongitude = myReader.GetString("Longitude");
-                        string sLatitude = myReader.GetString("Latitude");
-                        string sCity = myReader.GetString("City");
-                        string sState = myReader.GetString("State");
-                        string sCountry = myReader.GetString("Country");
-                        string sEmpid = myReader.GetString("Employee_ID");
-                        string sDate = myReader.GetString("Date_of_sighting");
-                        string sTime = myReader.GetString("Time_of_sighting");
-                        string sSpecies = myReader.GetString("Species");
-                        string sAge = myReader.GetString("Age");
-                        string sGender = myReader.GetString("Gender");
-                        string sUser = myReader.GetString("User_ID");
-                        MessageBox.Show(sEmpid, "Output", MessageBoxButtons.OK);
-                    }
-                    myReader.Close();
-                    //resetting the fields when going to search
+                //resetting the fields when going to login
                 foreach (Control item in searchTab.Controls)
                 {
                     if (item is TextBox)
                     {
                         item.Text = "";
                     }
-                    } //end foreach
+                }//end foreach
             }
             else
             {
                 con.CloseConnection();
                 con.OpenConnection();
             }
-            }
-            else
-            {
-                MessageBox.Show("Have to use at least one field.", "Error", MessageBoxButtons.OK);
-            }
-        }
-
-        private void uploadSightingsFileButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void downloadSightingsFileButton_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void searchTab_Click(object sender, EventArgs e)
@@ -939,9 +828,7 @@ namespace ButterflyTrackingSystem
             string butterflyage = createAgeTextBox.Text;
             string butterflygender = selectGenderComboBox.Text;
 
-            if (!String.IsNullOrEmpty(createCityTextBox.Text) && !String.IsNullOrEmpty(createStateTextBox.Text) &&
-                !String.IsNullOrEmpty(createCountryTextBox.Text) && !String.IsNullOrEmpty(createLongitudeTextBox.Text) &&
-                !String.IsNullOrEmpty(createLatitudeTextBox.Text))
+            if (!String.IsNullOrEmpty(createCityTextBox.Text) && !String.IsNullOrEmpty(createStateTextBox.Text) && !String.IsNullOrEmpty(createCountryTextBox.Text) && !String.IsNullOrEmpty(createLongitudeTextBox.Text) && !String.IsNullOrEmpty(createLatitudeTextBox.Text))
             {
                 if (dbcon.State == ConnectionState.Open)
                 {
@@ -1314,7 +1201,45 @@ namespace ButterflyTrackingSystem
             searchDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
             searchDateTimePicker.Format = DateTimePickerFormat.Custom;
         }
-    
+
+        private void functionalitiesTabs_Click(object sender, EventArgs e)
+        {
+            if (dbcon.State == ConnectionState.Open)
+            {
+
+                string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
+                MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, dbcon);
+                retreiveData.Parameters.AddWithValue("@user", userNameBox.Text);
+                MySqlDataReader myReader;
+                myReader = retreiveData.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    string sUser = myReader.GetString("User_ID");
+                    string sPassword = myReader.GetString("Password");
+                    string sName = myReader.GetString("Name");
+                    string sPhone = myReader.GetString("Phone_Number");
+                    string sStreet = myReader.GetString("Street_Address");
+                    string sCity = myReader.GetString("City");
+                    string sState = myReader.GetString("State");
+                    string sPosition = myReader.GetString("Position");
+            
+                    updatePasswordTextBox.Text = sPassword;
+                    updateEmployeeNameTextBox.Text = sName;
+                    updatePhoneNumberTextBox.Text = sPhone;
+                    updateEmployeeStreetTextBox.Text = sStreet;
+                    updateEmployeeCityTextBox.Text = sCity;
+                    updateEmployeeStateTextBox.Text = sState;
+                    positionOptionsUpdateComboBox.Text = sPosition;
+                }
+                myReader.Close();
+            }
+            else
+            {
+                con.CloseConnection();
+                con.OpenConnection();
+            }
+    }
 
 
 
@@ -1368,13 +1293,16 @@ namespace ButterflyTrackingSystem
                 switch (ex.Number)
                 {
                     case 0:
-                            MessageBox.Show("Cannot connect to server.  Contact administrator", "Error", MessageBoxButtons.OK);
+                        MessageBox.Show("Cannot connect to server.  Contact administrator", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         break;
                     case 1042:
-                            MessageBox.Show("Unable to connect to any of the specified MySQL hosts", "Error", MessageBoxButtons.OK);
+                        MessageBox.Show("Unable to connect to any of the specified MySQL hosts", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         break;
                     case 1045:
-                            MessageBox.Show("Invalid username/password, please try again", "Error", MessageBoxButtons.OK);
+                        MessageBox.Show("Invalid username/password, please try again", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         break;
                 }
                 return false;
@@ -1439,5 +1367,4 @@ namespace ButterflyTrackingSystem
             }
         }
     }
-
 }

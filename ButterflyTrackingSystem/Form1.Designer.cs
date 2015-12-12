@@ -124,7 +124,6 @@ namespace ButterflyTrackingSystem
             this.loadChartButton = new System.Windows.Forms.Button();
             this.graphChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.updateAccountTab = new System.Windows.Forms.TabPage();
-            this.retreive = new System.Windows.Forms.Label();
             this.positionOptionsUpdateComboBox = new System.Windows.Forms.ComboBox();
             this.addressUpdateLabel = new System.Windows.Forms.Label();
             this.selectPositionUpdateLabel = new System.Windows.Forms.Label();
@@ -133,7 +132,6 @@ namespace ButterflyTrackingSystem
             this.updateEmployeeCityTextBox = new System.Windows.Forms.TextBox();
             this.updateEmployeeStreetTextBox = new System.Windows.Forms.TextBox();
             this.updateEmployeeNameTextBox = new System.Windows.Forms.TextBox();
-            this.updateUserNameTextBox = new System.Windows.Forms.TextBox();
             this.phoneNumberUpdateLabel = new System.Windows.Forms.Label();
             this.stateUpdateLabel = new System.Windows.Forms.Label();
             this.cityUpdateLabel = new System.Windows.Forms.Label();
@@ -142,7 +140,6 @@ namespace ButterflyTrackingSystem
             this.updateAccountButton = new System.Windows.Forms.Button();
             this.updatePasswordTextBox = new System.Windows.Forms.TextBox();
             this.passwordUpdateLabel = new System.Windows.Forms.Label();
-            this.userNameUpdateLabel = new System.Windows.Forms.Label();
             this.updateAccountLabel = new System.Windows.Forms.Label();
             this.cityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.stateError = new System.Windows.Forms.ErrorProvider(this.components);
@@ -647,6 +644,7 @@ namespace ButterflyTrackingSystem
             this.functionalitiesTabs.Size = new System.Drawing.Size(653, 378);
             this.functionalitiesTabs.TabIndex = 0;
             this.functionalitiesTabs.TabStop = false;
+            this.functionalitiesTabs.Click += new System.EventHandler(this.functionalitiesTabs_Click_1);
             // 
             // createEntryTab
             // 
@@ -675,7 +673,7 @@ namespace ButterflyTrackingSystem
             this.createEntryTab.Controls.Add(this.createEntryLabel);
             this.createEntryTab.Location = new System.Drawing.Point(4, 22);
             this.createEntryTab.Name = "createEntryTab";
-            this.createEntryTab.Padding = new System.Windows.Forms.Padding(3);
+            this.createEntryTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.createEntryTab.Size = new System.Drawing.Size(645, 352);
             this.createEntryTab.TabIndex = 0;
             this.createEntryTab.Text = "Create Entry";
@@ -944,7 +942,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryTab.Controls.Add(this.loadEntry);
             this.updateEntryTab.Location = new System.Drawing.Point(4, 22);
             this.updateEntryTab.Name = "updateEntryTab";
-            this.updateEntryTab.Padding = new System.Windows.Forms.Padding(3);
+            this.updateEntryTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.updateEntryTab.Size = new System.Drawing.Size(645, 352);
             this.updateEntryTab.TabIndex = 1;
             this.updateEntryTab.Text = "Update Entry";
@@ -1355,7 +1353,6 @@ namespace ButterflyTrackingSystem
             // 
             this.updateAccountTab.BackColor = System.Drawing.Color.PeachPuff;
             this.updateAccountTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.updateAccountTab.Controls.Add(this.retreive);
             this.updateAccountTab.Controls.Add(this.positionOptionsUpdateComboBox);
             this.updateAccountTab.Controls.Add(this.addressUpdateLabel);
             this.updateAccountTab.Controls.Add(this.selectPositionUpdateLabel);
@@ -1364,7 +1361,6 @@ namespace ButterflyTrackingSystem
             this.updateAccountTab.Controls.Add(this.updateEmployeeCityTextBox);
             this.updateAccountTab.Controls.Add(this.updateEmployeeStreetTextBox);
             this.updateAccountTab.Controls.Add(this.updateEmployeeNameTextBox);
-            this.updateAccountTab.Controls.Add(this.updateUserNameTextBox);
             this.updateAccountTab.Controls.Add(this.phoneNumberUpdateLabel);
             this.updateAccountTab.Controls.Add(this.stateUpdateLabel);
             this.updateAccountTab.Controls.Add(this.cityUpdateLabel);
@@ -1373,7 +1369,6 @@ namespace ButterflyTrackingSystem
             this.updateAccountTab.Controls.Add(this.updateAccountButton);
             this.updateAccountTab.Controls.Add(this.updatePasswordTextBox);
             this.updateAccountTab.Controls.Add(this.passwordUpdateLabel);
-            this.updateAccountTab.Controls.Add(this.userNameUpdateLabel);
             this.updateAccountTab.Controls.Add(this.updateAccountLabel);
             this.updateAccountTab.Location = new System.Drawing.Point(4, 22);
             this.updateAccountTab.Name = "updateAccountTab";
@@ -1382,19 +1377,6 @@ namespace ButterflyTrackingSystem
             this.updateAccountTab.Text = "Update Account";
             this.updateAccountTab.Click += new System.EventHandler(this.updateAccountTab_Click);
             // 
-            // retreive
-            // 
-            this.retreive.AutoSize = true;
-            this.retreive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.retreive.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.retreive.Location = new System.Drawing.Point(247, 51);
-            this.retreive.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.retreive.Name = "retreive";
-            this.retreive.Size = new System.Drawing.Size(114, 13);
-            this.retreive.TabIndex = 44;
-            this.retreive.Text = "Retreive Account data";
-            this.retreive.Click += new System.EventHandler(this.retreive_Click);
-            // 
             // positionOptionsUpdateComboBox
             // 
             this.positionOptionsUpdateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1402,11 +1384,11 @@ namespace ButterflyTrackingSystem
             this.positionOptionsUpdateComboBox.Items.AddRange(new object[] {
             "nonTagger",
             "tagger"});
-            this.positionOptionsUpdateComboBox.Location = new System.Drawing.Point(123, 196);
+            this.positionOptionsUpdateComboBox.Location = new System.Drawing.Point(137, 121);
             this.positionOptionsUpdateComboBox.Name = "positionOptionsUpdateComboBox";
             this.positionOptionsUpdateComboBox.Size = new System.Drawing.Size(87, 21);
             this.positionOptionsUpdateComboBox.Sorted = true;
-            this.positionOptionsUpdateComboBox.TabIndex = 5;
+            this.positionOptionsUpdateComboBox.TabIndex = 3;
             this.positionOptionsUpdateComboBox.SelectedIndexChanged += new System.EventHandler(this.positionOptionsUpdateComboBox_SelectedIndexChanged);
             // 
             // addressUpdateLabel
@@ -1417,7 +1399,7 @@ namespace ButterflyTrackingSystem
             this.addressUpdateLabel.AutoSize = true;
             this.addressUpdateLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.addressUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressUpdateLabel.Location = new System.Drawing.Point(255, 196);
+            this.addressUpdateLabel.Location = new System.Drawing.Point(25, 201);
             this.addressUpdateLabel.Name = "addressUpdateLabel";
             this.addressUpdateLabel.Size = new System.Drawing.Size(87, 22);
             this.addressUpdateLabel.TabIndex = 43;
@@ -1431,7 +1413,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selectPositionUpdateLabel.AutoSize = true;
             this.selectPositionUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectPositionUpdateLabel.Location = new System.Drawing.Point(11, 197);
+            this.selectPositionUpdateLabel.Location = new System.Drawing.Point(20, 122);
             this.selectPositionUpdateLabel.Name = "selectPositionUpdateLabel";
             this.selectPositionUpdateLabel.Size = new System.Drawing.Size(101, 17);
             this.selectPositionUpdateLabel.TabIndex = 42;
@@ -1442,9 +1424,9 @@ namespace ButterflyTrackingSystem
             // 
             this.updatePhoneNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updatePhoneNumberTextBox.Location = new System.Drawing.Point(375, 134);
+            this.updatePhoneNumberTextBox.Location = new System.Drawing.Point(384, 122);
             this.updatePhoneNumberTextBox.Name = "updatePhoneNumberTextBox";
-            this.updatePhoneNumberTextBox.Size = new System.Drawing.Size(250, 20);
+            this.updatePhoneNumberTextBox.Size = new System.Drawing.Size(241, 20);
             this.updatePhoneNumberTextBox.TabIndex = 4;
             this.updatePhoneNumberTextBox.TextChanged += new System.EventHandler(this.updatePhoneNumberTextBox_TextChanged);
             // 
@@ -1452,45 +1434,37 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEmployeeStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEmployeeStateTextBox.Location = new System.Drawing.Point(409, 227);
+            this.updateEmployeeStateTextBox.Location = new System.Drawing.Point(179, 232);
             this.updateEmployeeStateTextBox.Name = "updateEmployeeStateTextBox";
             this.updateEmployeeStateTextBox.Size = new System.Drawing.Size(216, 20);
-            this.updateEmployeeStateTextBox.TabIndex = 8;
+            this.updateEmployeeStateTextBox.TabIndex = 7;
             // 
             // updateEmployeeCityTextBox
             // 
             this.updateEmployeeCityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEmployeeCityTextBox.Location = new System.Drawing.Point(409, 201);
+            this.updateEmployeeCityTextBox.Location = new System.Drawing.Point(179, 206);
             this.updateEmployeeCityTextBox.Name = "updateEmployeeCityTextBox";
             this.updateEmployeeCityTextBox.Size = new System.Drawing.Size(216, 20);
-            this.updateEmployeeCityTextBox.TabIndex = 7;
+            this.updateEmployeeCityTextBox.TabIndex = 6;
             // 
             // updateEmployeeStreetTextBox
             // 
             this.updateEmployeeStreetTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEmployeeStreetTextBox.Location = new System.Drawing.Point(409, 172);
+            this.updateEmployeeStreetTextBox.Location = new System.Drawing.Point(179, 177);
             this.updateEmployeeStreetTextBox.Name = "updateEmployeeStreetTextBox";
             this.updateEmployeeStreetTextBox.Size = new System.Drawing.Size(216, 20);
-            this.updateEmployeeStreetTextBox.TabIndex = 6;
+            this.updateEmployeeStreetTextBox.TabIndex = 5;
             this.updateEmployeeStreetTextBox.TextChanged += new System.EventHandler(this.updateEmployeeStreetTextBox_TextChanged);
             // 
             // updateEmployeeNameTextBox
             // 
-            this.updateEmployeeNameTextBox.Location = new System.Drawing.Point(128, 134);
+            this.updateEmployeeNameTextBox.Location = new System.Drawing.Point(137, 79);
             this.updateEmployeeNameTextBox.Name = "updateEmployeeNameTextBox";
             this.updateEmployeeNameTextBox.Size = new System.Drawing.Size(155, 20);
-            this.updateEmployeeNameTextBox.TabIndex = 3;
+            this.updateEmployeeNameTextBox.TabIndex = 1;
             this.updateEmployeeNameTextBox.TextChanged += new System.EventHandler(this.updateEmployeeNameTextBox_TextChanged);
-            // 
-            // updateUserNameTextBox
-            // 
-            this.updateUserNameTextBox.Location = new System.Drawing.Point(96, 91);
-            this.updateUserNameTextBox.Name = "updateUserNameTextBox";
-            this.updateUserNameTextBox.Size = new System.Drawing.Size(187, 20);
-            this.updateUserNameTextBox.TabIndex = 1;
-            this.updateUserNameTextBox.TextChanged += new System.EventHandler(this.updateUserNameTextBox_TextChanged);
             // 
             // phoneNumberUpdateLabel
             // 
@@ -1499,7 +1473,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.phoneNumberUpdateLabel.AutoSize = true;
             this.phoneNumberUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneNumberUpdateLabel.Location = new System.Drawing.Point(300, 134);
+            this.phoneNumberUpdateLabel.Location = new System.Drawing.Point(309, 122);
             this.phoneNumberUpdateLabel.Name = "phoneNumberUpdateLabel";
             this.phoneNumberUpdateLabel.Size = new System.Drawing.Size(61, 17);
             this.phoneNumberUpdateLabel.TabIndex = 41;
@@ -1513,7 +1487,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.stateUpdateLabel.AutoSize = true;
             this.stateUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateUpdateLabel.Location = new System.Drawing.Point(350, 227);
+            this.stateUpdateLabel.Location = new System.Drawing.Point(120, 232);
             this.stateUpdateLabel.Name = "stateUpdateLabel";
             this.stateUpdateLabel.Size = new System.Drawing.Size(41, 17);
             this.stateUpdateLabel.TabIndex = 40;
@@ -1527,7 +1501,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cityUpdateLabel.AutoSize = true;
             this.cityUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityUpdateLabel.Location = new System.Drawing.Point(350, 201);
+            this.cityUpdateLabel.Location = new System.Drawing.Point(120, 206);
             this.cityUpdateLabel.Name = "cityUpdateLabel";
             this.cityUpdateLabel.Size = new System.Drawing.Size(31, 17);
             this.cityUpdateLabel.TabIndex = 39;
@@ -1541,7 +1515,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.streetUpdateLabel.AutoSize = true;
             this.streetUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.streetUpdateLabel.Location = new System.Drawing.Point(350, 175);
+            this.streetUpdateLabel.Location = new System.Drawing.Point(120, 180);
             this.streetUpdateLabel.Name = "streetUpdateLabel";
             this.streetUpdateLabel.Size = new System.Drawing.Size(46, 17);
             this.streetUpdateLabel.TabIndex = 37;
@@ -1555,7 +1529,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeeNameUpdateLabel.AutoSize = true;
             this.employeeNameUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeNameUpdateLabel.Location = new System.Drawing.Point(11, 134);
+            this.employeeNameUpdateLabel.Location = new System.Drawing.Point(20, 79);
             this.employeeNameUpdateLabel.Name = "employeeNameUpdateLabel";
             this.employeeNameUpdateLabel.Size = new System.Drawing.Size(111, 17);
             this.employeeNameUpdateLabel.TabIndex = 35;
@@ -1565,10 +1539,10 @@ namespace ButterflyTrackingSystem
             // updateAccountButton
             // 
             this.updateAccountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateAccountButton.Location = new System.Drawing.Point(235, 291);
+            this.updateAccountButton.Location = new System.Drawing.Point(247, 297);
             this.updateAccountButton.Name = "updateAccountButton";
             this.updateAccountButton.Size = new System.Drawing.Size(136, 30);
-            this.updateAccountButton.TabIndex = 9;
+            this.updateAccountButton.TabIndex = 8;
             this.updateAccountButton.Text = "Update Account";
             this.updateAccountButton.UseVisualStyleBackColor = true;
             this.updateAccountButton.Click += new System.EventHandler(this.updateAccountButton_Click);
@@ -1577,9 +1551,9 @@ namespace ButterflyTrackingSystem
             // 
             this.updatePasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updatePasswordTextBox.Location = new System.Drawing.Point(375, 91);
+            this.updatePasswordTextBox.Location = new System.Drawing.Point(384, 79);
             this.updatePasswordTextBox.Name = "updatePasswordTextBox";
-            this.updatePasswordTextBox.Size = new System.Drawing.Size(250, 20);
+            this.updatePasswordTextBox.Size = new System.Drawing.Size(241, 20);
             this.updatePasswordTextBox.TabIndex = 2;
             this.updatePasswordTextBox.UseSystemPasswordChar = true;
             this.updatePasswordTextBox.TextChanged += new System.EventHandler(this.updatePasswordTextBox_TextChanged);
@@ -1591,26 +1565,12 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordUpdateLabel.AutoSize = true;
             this.passwordUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordUpdateLabel.Location = new System.Drawing.Point(300, 91);
+            this.passwordUpdateLabel.Location = new System.Drawing.Point(309, 79);
             this.passwordUpdateLabel.Name = "passwordUpdateLabel";
             this.passwordUpdateLabel.Size = new System.Drawing.Size(69, 17);
             this.passwordUpdateLabel.TabIndex = 26;
             this.passwordUpdateLabel.Text = "Password";
             this.passwordUpdateLabel.Click += new System.EventHandler(this.passwordUpdateLabel_Click);
-            // 
-            // userNameUpdateLabel
-            // 
-            this.userNameUpdateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.userNameUpdateLabel.AutoSize = true;
-            this.userNameUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameUpdateLabel.Location = new System.Drawing.Point(11, 90);
-            this.userNameUpdateLabel.Name = "userNameUpdateLabel";
-            this.userNameUpdateLabel.Size = new System.Drawing.Size(79, 17);
-            this.userNameUpdateLabel.TabIndex = 25;
-            this.userNameUpdateLabel.Text = "User Name";
-            this.userNameUpdateLabel.Click += new System.EventHandler(this.userNameUpdateLabel_Click);
             // 
             // updateAccountLabel
             // 
@@ -1854,7 +1814,6 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.Label leaderboardTabDescriptionLabel;
         private System.Windows.Forms.TabPage graphTab;
         private System.Windows.Forms.TabPage updateAccountTab;
-        private System.Windows.Forms.Label retreive;
         private System.Windows.Forms.ComboBox positionOptionsUpdateComboBox;
         private System.Windows.Forms.Label addressUpdateLabel;
         private System.Windows.Forms.Label selectPositionUpdateLabel;
@@ -1863,7 +1822,6 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.TextBox updateEmployeeCityTextBox;
         private System.Windows.Forms.TextBox updateEmployeeStreetTextBox;
         private System.Windows.Forms.TextBox updateEmployeeNameTextBox;
-        private System.Windows.Forms.TextBox updateUserNameTextBox;
         private System.Windows.Forms.Label phoneNumberUpdateLabel;
         private System.Windows.Forms.Label stateUpdateLabel;
         private System.Windows.Forms.Label cityUpdateLabel;
@@ -1872,7 +1830,6 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.Button updateAccountButton;
         private System.Windows.Forms.TextBox updatePasswordTextBox;
         private System.Windows.Forms.Label passwordUpdateLabel;
-        private System.Windows.Forms.Label userNameUpdateLabel;
         private System.Windows.Forms.Label updateAccountLabel;
         private System.Windows.Forms.Button loadEntry;
         private System.Windows.Forms.DataGridView updateEntryGrid;
