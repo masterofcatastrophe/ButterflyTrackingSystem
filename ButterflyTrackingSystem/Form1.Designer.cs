@@ -179,6 +179,7 @@ namespace ButterflyTrackingSystem
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -1280,6 +1281,7 @@ namespace ButterflyTrackingSystem
             // 
             this.searchTab.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.searchTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.searchTab.Controls.Add(this.dateTimePicker1);
             this.searchTab.Controls.Add(this.searchDataGrid);
             this.searchTab.Controls.Add(this.downloadSightingsFileButton);
             this.searchTab.Controls.Add(this.uploadSightingsFileButton);
@@ -1348,9 +1350,9 @@ namespace ButterflyTrackingSystem
             // 
             // searchDateTimePicker
             // 
-            this.searchDateTimePicker.Location = new System.Drawing.Point(9, 164);
+            this.searchDateTimePicker.Location = new System.Drawing.Point(9, 149);
             this.searchDateTimePicker.Name = "searchDateTimePicker";
-            this.searchDateTimePicker.Size = new System.Drawing.Size(177, 20);
+            this.searchDateTimePicker.Size = new System.Drawing.Size(124, 20);
             this.searchDateTimePicker.TabIndex = 8;
             this.searchDateTimePicker.ValueChanged += new System.EventHandler(this.searchDateTimePicker_ValueChanged);
             // 
@@ -1996,6 +1998,14 @@ namespace ButterflyTrackingSystem
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(9, 175);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
+            this.dateTimePicker1.TabIndex = 67;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
             // BTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2199,5 +2209,6 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.Label updateLatitudeLabel;
         private System.Windows.Forms.Label updateLongitudeLabel;
         private System.Windows.Forms.Label updateEntryRequiredTagIDLabel;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
