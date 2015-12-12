@@ -119,6 +119,7 @@
             this.leaderboardGrid = new System.Windows.Forms.DataGridView();
             this.leaderboardTabDescriptionLabel = new System.Windows.Forms.Label();
             this.graphTab = new System.Windows.Forms.TabPage();
+            this.loadChartButton = new System.Windows.Forms.Button();
             this.graphChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.updateAccountTab = new System.Windows.Forms.TabPage();
             this.retreive = new System.Windows.Forms.Label();
@@ -155,7 +156,6 @@
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.loadChartButton = new System.Windows.Forms.Button();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -1013,6 +1013,7 @@
             this.downloadSightingsFileButton.TabIndex = 65;
             this.downloadSightingsFileButton.Text = "Download File";
             this.downloadSightingsFileButton.UseVisualStyleBackColor = true;
+            this.downloadSightingsFileButton.Click += new System.EventHandler(this.downloadSightingsFileButton_Click);
             // 
             // uploadSightingsFileButton
             // 
@@ -1022,6 +1023,7 @@
             this.uploadSightingsFileButton.TabIndex = 64;
             this.uploadSightingsFileButton.Text = "Upload Sightings File";
             this.uploadSightingsFileButton.UseVisualStyleBackColor = true;
+            this.uploadSightingsFileButton.Click += new System.EventHandler(this.uploadSightingsFileButton_Click);
             // 
             // searchDateTimePicker
             // 
@@ -1314,6 +1316,19 @@
             this.graphTab.TabIndex = 4;
             this.graphTab.Text = "Graph";
             this.graphTab.Click += new System.EventHandler(this.graphTab_Click);
+            // 
+            // loadChartButton
+            // 
+            this.loadChartButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadChartButton.BackColor = System.Drawing.Color.PaleGreen;
+            this.loadChartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadChartButton.Location = new System.Drawing.Point(249, 306);
+            this.loadChartButton.Name = "loadChartButton";
+            this.loadChartButton.Size = new System.Drawing.Size(134, 36);
+            this.loadChartButton.TabIndex = 4;
+            this.loadChartButton.Text = "Load Chart";
+            this.loadChartButton.UseVisualStyleBackColor = false;
             // 
             // graphChart
             // 
@@ -1678,19 +1693,6 @@
             // 
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
-            // 
-            // loadChartButton
-            // 
-            this.loadChartButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadChartButton.BackColor = System.Drawing.Color.PaleGreen;
-            this.loadChartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadChartButton.Location = new System.Drawing.Point(249, 306);
-            this.loadChartButton.Name = "loadChartButton";
-            this.loadChartButton.Size = new System.Drawing.Size(134, 36);
-            this.loadChartButton.TabIndex = 4;
-            this.loadChartButton.Text = "Load Chart";
-            this.loadChartButton.UseVisualStyleBackColor = false;
             // 
             // BTS
             // 
