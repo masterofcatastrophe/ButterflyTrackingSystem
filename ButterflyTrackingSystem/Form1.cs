@@ -666,8 +666,8 @@ namespace ButterflyTrackingSystem
                     if (!String.IsNullOrEmpty(searchUserNameTextBox.Text)){column = "User_ID";param = "'" + searchusername + "'";}
                     if (!String.IsNullOrEmpty(searchTagIDTextBox.Text)){column = "Sight_ID";param = searchtagid;}
                     if (!String.IsNullOrEmpty(searchSpeciesTextBox.Text)){column = "Species";param = "'" + searchspecies + "'";}
-                    if (!String.IsNullOrEmpty(searchCityTextBox.Text)){column = "City";param = "'" + searchcity + "'";}
-                    if (!String.IsNullOrEmpty(searchStateTextBox.Text)){column = "State";param = "'" + searchstate + "'";}
+                    if (!String.IsNullOrEmpty(searchCityTextBox.Text)){column = "BTS.Sighting_Locations.City"; param = "'" + searchcity + "'";}
+                    if (!String.IsNullOrEmpty(searchStateTextBox.Text)){column = "BTS.Sighting_Locations.State"; param = "'" + searchstate + "'";}
                     if (!String.IsNullOrEmpty(searchCountryTextBox.Text)){column = "Country";param = "'" + searchcountry + "'";}
                     if (!String.IsNullOrEmpty(searchGendercomboBox.Text))
                     {
