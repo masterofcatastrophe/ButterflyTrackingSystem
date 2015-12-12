@@ -18,16 +18,27 @@ namespace ButterflyTrackingSystem
         static DBConnect con = new DBConnect();
         MySqlConnection dbcon = con.connection;
         int Emp_ID = -1; // currently logged in user id
+
         
         public BTS()
         {
             InitializeComponent();
             con.OpenConnection(); // open db connection
+            functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (functionalitiesTabs.SelectedIndex == 2) // clears search tab initially
+            {
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.CustomFormat = " ";
+            }
         }
 
         private void BTS_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void loginPanel_Paint(object sender, PaintEventArgs e)
@@ -49,7 +60,6 @@ namespace ButterflyTrackingSystem
         {
 
         }
-       
 
         private void loginButton_Click(object sender, EventArgs e)
         {
@@ -545,10 +555,17 @@ namespace ButterflyTrackingSystem
         {
 
         }
+        private void searchTab_Click(object sender, EventArgs e)
+        {
+            /*
+            searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+            searchDateTimePicker.CustomFormat = " ";
+            */
+        }
 
         private void searchLabel_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void searchTagIDLabel_Click(object sender, EventArgs e)
@@ -647,7 +664,7 @@ namespace ButterflyTrackingSystem
             if (!String.IsNullOrEmpty(searchUserNameTextBox.Text) || !String.IsNullOrEmpty(searchTagIDTextBox.Text) ||
                 !String.IsNullOrEmpty(searchSpeciesTextBox.Text) || !String.IsNullOrEmpty(searchCityTextBox.Text) ||
                 !String.IsNullOrEmpty(searchStateTextBox.Text) || !String.IsNullOrEmpty(searchCountryTextBox.Text)
-                || !String.IsNullOrEmpty(searchGendercomboBox.Text) && !String.IsNullOrEmpty(searchDateTimePicker.Text))
+                || !String.IsNullOrEmpty(searchGendercomboBox.Text) || !String.IsNullOrEmpty(searchDateTimePicker.Text))
             {
 
                 if (dbcon.State == ConnectionState.Open)
@@ -725,7 +742,14 @@ namespace ButterflyTrackingSystem
                         {
                             item.Text = "";
                         }
+                        if (item is ComboBox)
+                        {
+                            (item as ComboBox).SelectedIndex = -1;
+                            (item as ComboBox).Text = "";
+                        }
                     } //end foreach
+                    searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                    searchDateTimePicker.CustomFormat = " ";
                 }
                 else
                 {
@@ -745,11 +769,6 @@ namespace ButterflyTrackingSystem
         }
 
         private void downloadSightingsFileButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void searchTab_Click(object sender, EventArgs e)
         {
 
         }
