@@ -95,6 +95,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryGrid = new System.Windows.Forms.DataGridView();
             this.loadEntry = new System.Windows.Forms.Button();
             this.searchTab = new System.Windows.Forms.TabPage();
+            this.searchDataGrid = new System.Windows.Forms.DataGridView();
             this.downloadSightingsFileButton = new System.Windows.Forms.Button();
             this.uploadSightingsFileButton = new System.Windows.Forms.Button();
             this.searchDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -155,7 +156,6 @@ namespace ButterflyTrackingSystem
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.searchDataGrid = new System.Windows.Forms.DataGridView();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -164,6 +164,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updateEntryGrid)).BeginInit();
             this.searchTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchDataGrid)).BeginInit();
             this.leaderboardTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leaderboardGrid)).BeginInit();
             this.graphTab.SuspendLayout();
@@ -183,7 +184,6 @@ namespace ButterflyTrackingSystem
             ((System.ComponentModel.ISupportInitialize)(this.registerStreetError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerCityError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerStateError)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // loginPanel
@@ -1008,6 +1008,18 @@ namespace ButterflyTrackingSystem
             this.searchTab.Text = "Search";
             this.searchTab.Click += new System.EventHandler(this.searchTab_Click);
             // 
+            // searchDataGrid
+            // 
+            this.searchDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchDataGrid.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.searchDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.searchDataGrid.Location = new System.Drawing.Point(141, 199);
+            this.searchDataGrid.Name = "searchDataGrid";
+            this.searchDataGrid.Size = new System.Drawing.Size(494, 146);
+            this.searchDataGrid.TabIndex = 66;
+            // 
             // downloadSightingsFileButton
             // 
             this.downloadSightingsFileButton.Location = new System.Drawing.Point(11, 256);
@@ -1209,7 +1221,6 @@ namespace ButterflyTrackingSystem
             this.searchUserNameTextBox.Name = "searchUserNameTextBox";
             this.searchUserNameTextBox.Size = new System.Drawing.Size(118, 20);
             this.searchUserNameTextBox.TabIndex = 2;
-            this.searchUserNameTextBox.UseSystemPasswordChar = true;
             this.searchUserNameTextBox.TextChanged += new System.EventHandler(this.searchUserNameTextBox_TextChanged);
             // 
             // searchUserNameLabel
@@ -1658,18 +1669,6 @@ namespace ButterflyTrackingSystem
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
             // 
-            // searchDataGrid
-            // 
-            this.searchDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchDataGrid.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.searchDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.searchDataGrid.Location = new System.Drawing.Point(141, 199);
-            this.searchDataGrid.Name = "searchDataGrid";
-            this.searchDataGrid.Size = new System.Drawing.Size(494, 146);
-            this.searchDataGrid.TabIndex = 66;
-            // 
             // BTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1697,6 +1696,7 @@ namespace ButterflyTrackingSystem
             ((System.ComponentModel.ISupportInitialize)(this.updateEntryGrid)).EndInit();
             this.searchTab.ResumeLayout(false);
             this.searchTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchDataGrid)).EndInit();
             this.leaderboardTab.ResumeLayout(false);
             this.leaderboardTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leaderboardGrid)).EndInit();
@@ -1718,7 +1718,6 @@ namespace ButterflyTrackingSystem
             ((System.ComponentModel.ISupportInitialize)(this.registerStreetError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerCityError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerStateError)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
