@@ -1021,6 +1021,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryGrid.Name = "updateEntryGrid";
             this.updateEntryGrid.Size = new System.Drawing.Size(906, 398);
             this.updateEntryGrid.TabIndex = 4;
+            this.updateEntryGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_RowValidated);
             // 
             // loadEntry
             // 
@@ -1035,6 +1036,7 @@ namespace ButterflyTrackingSystem
             this.loadEntry.TabIndex = 3;
             this.loadEntry.Text = "Refresh Entry(s)";
             this.loadEntry.UseVisualStyleBackColor = false;
+            this.loadEntry.Click += new System.EventHandler(this.loadEntry_Click);
             // 
             // searchTab
             // 

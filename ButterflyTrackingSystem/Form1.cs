@@ -1367,11 +1367,16 @@ namespace ButterflyTrackingSystem
             }
 
         }
-
+    private MySqlDataAdapter entry2;
+    private BindingSource bindingsource1;
+    private DataSet DS;
         private void functionalitiesTabs_Click_1(object sender, EventArgs e)
         {
+
+            
             if (dbcon.State == ConnectionState.Open)
             {
+                // retreive leaderboard
                 string retreiveLeaderBoard = "SELECT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID ORDER BY Tags_Made DESC LIMIT 10;";
                 MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
                 MySqlDataAdapter sda = new MySqlDataAdapter();
@@ -1379,12 +1384,24 @@ namespace ButterflyTrackingSystem
                 DataTable dbdataset = new DataTable();
                 sda.Fill(dbdataset);
                 BindingSource bsource = new BindingSource();
-
                 bsource.DataSource = dbdataset;
                 leaderboardGrid.DataSource = bsource;
                 sda.Update(dbdataset);
+               
+                // retreive entries
+                string retreiveEntries = "SELECT Butterfly.Species, Butterfly.Gender, Butterfly.Age, Butterfly.Date_of_Tagging, Butterfly.Time_of_Tagging, Sighting_Locations.Longitude, Sighting_Locations.Latitude, Sighting_Locations.City, Sighting_Locations.State, Sighting_Locations.Country FROM Butterfly INNER JOIN Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID) INNER JOIN Employee ON (Sighting_Locations.Employee_ID = Employee.Employee_ID) WHERE (Employee.User_ID='hadi')";//WHERE (Employee.User_ID =@user)
+                entry2 = new MySqlDataAdapter(retreiveEntries, dbcon);
+                MySqlCommandBuilder builder = new MySqlCommandBuilder(entry2);
+               DS = new DataSet();
+               entry2.Fill(DS, "Entries");
+               bindingsource1 = new BindingSource();
+               bindingsource1.DataSource = DS.Tables[0];
 
+               BindingNavigator bindingNavigator1 = new BindingNavigator();
+               bindingNavigator1.BindingSource = bindingsource1;
+               updateEntryGrid.DataSource = bindingsource1;
 
+                // retreive account info
                 string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
                 MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, dbcon);
                 retreiveData.Parameters.AddWithValue("@user", userNameBox.Text);
@@ -1439,7 +1456,7 @@ namespace ButterflyTrackingSystem
         {
             if (dbcon.State == ConnectionState.Open)
             {
-                string retreiveLeaderBoard = "SELECT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID ORDER BY Tags_Made DESC LIMIT 10;";
+                string retreiveLeaderBoard = "SELECT DISTINCT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID ORDER BY Tags_Made DESC LIMIT 10;";
                 MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
                 MySqlDataAdapter sda = new MySqlDataAdapter();
                 sda.SelectCommand = retreiveBoard;
@@ -1458,6 +1475,28 @@ namespace ButterflyTrackingSystem
                 con.CloseConnection();
                 con.OpenConnection();
             }
+        }
+
+        private void updateEntryGrid_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            /*DataTable changes = ((DataTable)updateEntryGrid.DataSource).GetChanges();
+            if (changes != null)
+            {
+                MySqlCommandBuilder validate = new MySqlCommandBuilder(entry2);
+                entry2.UpdateCommand = validate.GetUpdateCommand();
+                entry2.Update(changes);
+                ((DataTable)updateEntryGrid.DataSource).AcceptChanges();
+            }*/
+            }
+
+        private void loadEntry_Click(object sender, EventArgs e)
+        {
+
+           bindingsource1.EndEdit();
+           entry2.Update(DS, "Entries");
+
+
+
         }
 
         
