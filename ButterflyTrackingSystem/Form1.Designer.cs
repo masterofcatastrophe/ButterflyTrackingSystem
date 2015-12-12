@@ -1,4 +1,6 @@
-﻿namespace ButterflyTrackingSystem
+﻿using System;
+
+namespace ButterflyTrackingSystem
 {
     partial class BTS
     {
@@ -1744,6 +1746,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.registerStateError)).EndInit();
             this.ResumeLayout(false);
 
+        }
+
+        private void retreive_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
