@@ -18,6 +18,7 @@ namespace ButterflyTrackingSystem
         static DBConnect con = new DBConnect();
         MySqlConnection dbcon = con.connection;
         int Emp_ID = -1; // currently logged in user id
+        bool Cred;
 
         
         public BTS()
@@ -25,16 +26,59 @@ namespace ButterflyTrackingSystem
             InitializeComponent();
             con.OpenConnection(); // open db connection
             functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            //functionalitiesTabs.Selecting += ideaTabControl_Selecting;
+           // functionalitiesTabs.DrawItem += ideaTabControl_DrawItem;
         }
+
+        /*
+        private void ideaTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (!e.TabPage.Enabled)
+            {
+                e.Cancel = true;
+            }
+        }
+        */
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Check Credentials Here 
+
+            if ((Cred == true) && (functionalitiesTabs.SelectedIndex == 0))
+            {
+                (functionalitiesTabs.TabPages[0] as TabPage).Enabled = true;
+            }
+            if ((Cred  == true) && (functionalitiesTabs.SelectedIndex == 1))
+            {
+                (functionalitiesTabs.TabPages[1] as TabPage).Enabled = true;
+            }
+            else if ((Cred == false) && ((functionalitiesTabs.SelectedIndex == 0)
+                || functionalitiesTabs.SelectedIndex == 1))
+            {
+                (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
+                (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false;// disable controls
+                (functionalitiesTabs.TabPages[1] as TabPage).Visible = false; // hide controls
+                (functionalitiesTabs.TabPages[0] as TabPage).Visible = false; // hide controls
+                //functionalitiesTabs.DrawMode = TabDrawMode.OwnerDrawFixed;
+                //MessageBox.Show("Unable to load tab. You are not a tagger.");
+            }
+
             if (functionalitiesTabs.SelectedIndex == 2) // clears search tab initially
             {
                 searchDateTimePicker.Format = DateTimePickerFormat.Custom;
                 searchDateTimePicker.CustomFormat = " ";
             }
         }
+        /*
+        private void ideaTabControl_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TabPage tabPage = functionalitiesTabs.TabPages[e.Index];
+            Color foreColor = SystemColors.WindowText;
+            if (tabPage.Enabled == false) foreColor = SystemColors.GrayText;
+            Rectangle tabRectangle = functionalitiesTabs.GetTabRect(e.Index);
+            TextRenderer.DrawText(e.Graphics, tabPage.Text, this.functionalitiesTabs.Font, tabRectangle, foreColor);
+        }
+        */
 
         private void BTS_Load(object sender, EventArgs e)
         {
@@ -86,9 +130,10 @@ namespace ButterflyTrackingSystem
                     myReader.Close();
                     try
                     {
+                        // Save Employee ID into variable
                         MySqlDataReader reader;
-                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +
-                                            "';");
+                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +"';");
+
                         MySqlCommand Get_Emp_ID = new MySqlCommand(selectCmd, dbcon);
                         reader = Get_Emp_ID.ExecuteReader();
 
@@ -97,6 +142,50 @@ namespace ButterflyTrackingSystem
                             Emp_ID = Convert.ToInt32(reader["Employee_ID"]);
                         }
                         reader.Close();
+
+                        // Find if account is tagger nonTagger
+                        string selectCred = ("SELECT Position FROM Employee WHERE User_ID LIKE'" + userNameBox.Text + "';");
+                        MySqlCommand retreiveCred = new MySqlCommand(selectCred, dbcon);
+                        MySqlDataReader CredReader;
+                        CredReader = retreiveCred.ExecuteReader();
+                        while (CredReader.Read())
+                        {
+                            if ((string)(CredReader["Position"]) == "tagger")
+                            {
+                                Cred = true;
+                            }
+                            else
+                            {
+                                Cred = false;
+                            }
+                        }
+                        CredReader.Close();
+                        
+                        /*
+                        while (myReader.Read())
+                        {
+                            string sUser = myReader.GetString("User_ID");
+                            string sPassword = myReader.GetString("Password");
+                            string sName = myReader.GetString("Name");
+                            string sPhone = myReader.GetString("Phone_Number");
+                            string sStreet = myReader.GetString("Street_Address");
+                            string sCity = myReader.GetString("City");
+                            string sState = myReader.GetString("State");
+                            string sPosition = myReader.GetString("Position");
+
+                            //updateUserNameTextBox.Text = sUser;
+
+                            updatePasswordTextBox.Text = sPassword;
+                            updateEmployeeNameTextBox.Text = sName;
+                            updatePhoneNumberTextBox.Text = sPhone;
+                            updateEmployeeStreetTextBox.Text = sStreet;
+                            updateEmployeeCityTextBox.Text = sCity;
+                            updateEmployeeStateTextBox.Text = sState;
+                            positionOptionsUpdateComboBox.Text = sPosition;
+                        }
+                        myReader.Close();
+                        */
+                        
                     }
                     catch (Exception ex)
                     {
@@ -107,7 +196,12 @@ namespace ButterflyTrackingSystem
 
                     loginPanel.Visible = false;
                     registrationPanel.Visible = false;
+                    if (Cred == false)
+                    {
+                        functionalitiesTabs.SelectedTab = functionalitiesTabs.TabPages[2];
+                    }
                     mainPanel.Visible = true;
+
                 }
                 else
                 {
