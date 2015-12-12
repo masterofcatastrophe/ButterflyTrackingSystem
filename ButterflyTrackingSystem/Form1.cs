@@ -507,7 +507,7 @@ namespace ButterflyTrackingSystem
                     string updateuser_sql = "UPDATE Employee SET Name='" + updateEmployeeNameTextBox.Text + "', Position='" + positionOptionsUpdateComboBox.Text + "', Phone_Number='" + updatePhoneNumberTextBox.Text + "', City='" + updateEmployeeCityTextBox.Text + "', State='" + updateEmployeeStateTextBox.Text + "', Street_Address='" + updateEmployeeStreetTextBox.Text + "', Password='" + updatePasswordTextBox.Text + "'WHERE User_ID='" + userNameBox.Text + "' ;";
                     MySqlCommand updateuser = new MySqlCommand(updateuser_sql, dbcon);
                     MySqlDataReader updateReader = updateuser.ExecuteReader();
-            MessageBox.Show("Account successfully Updated!");
+            MessageBox.Show("Account up to date!");
                     updateReader.Close();
                 }
             }
