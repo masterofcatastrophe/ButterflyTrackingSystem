@@ -94,6 +94,27 @@ namespace ButterflyTrackingSystem
             this.createEntryButton = new System.Windows.Forms.Button();
             this.createEntryLabel = new System.Windows.Forms.Label();
             this.updateEntryTab = new System.Windows.Forms.TabPage();
+            this.updateEntryRequiredTagIDLabel = new System.Windows.Forms.Label();
+            this.updateEntryLatitudeBox = new System.Windows.Forms.TextBox();
+            this.updateEntryLongitudeBox = new System.Windows.Forms.TextBox();
+            this.updateLatitudeLabel = new System.Windows.Forms.Label();
+            this.updateLongitudeLabel = new System.Windows.Forms.Label();
+            this.updateEntryGenderComboBox = new System.Windows.Forms.ComboBox();
+            this.updateLocationLabel = new System.Windows.Forms.Label();
+            this.updateGenderLabel = new System.Windows.Forms.Label();
+            this.updateEntryCountryBox = new System.Windows.Forms.TextBox();
+            this.updateEntryStateBox = new System.Windows.Forms.TextBox();
+            this.updateEntryCityBox = new System.Windows.Forms.TextBox();
+            this.updateEntrySpeciesBox = new System.Windows.Forms.TextBox();
+            this.updateEntryTagIDBox = new System.Windows.Forms.TextBox();
+            this.updateCountryLabel = new System.Windows.Forms.Label();
+            this.updateStateLabel = new System.Windows.Forms.Label();
+            this.updateCityLabel = new System.Windows.Forms.Label();
+            this.updateSpeciesLabel = new System.Windows.Forms.Label();
+            this.updateEntryAgeBox = new System.Windows.Forms.TextBox();
+            this.updateAgeLabel = new System.Windows.Forms.Label();
+            this.updateTagIDLabel = new System.Windows.Forms.Label();
+            this.updateEntryLabel = new System.Windows.Forms.Label();
             this.updateEntryGrid = new System.Windows.Forms.DataGridView();
             this.loadEntry = new System.Windows.Forms.Button();
             this.searchTab = new System.Windows.Forms.TabPage();
@@ -158,27 +179,6 @@ namespace ButterflyTrackingSystem
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.updateEntryGenderComboBox = new System.Windows.Forms.ComboBox();
-            this.updateLocationLabel = new System.Windows.Forms.Label();
-            this.updateGenderLabel = new System.Windows.Forms.Label();
-            this.updateEntryCountryBox = new System.Windows.Forms.TextBox();
-            this.updateEntryStateBox = new System.Windows.Forms.TextBox();
-            this.updateEntryCityBox = new System.Windows.Forms.TextBox();
-            this.updateEntrySpeciesBox = new System.Windows.Forms.TextBox();
-            this.updateEntryTagIDBox = new System.Windows.Forms.TextBox();
-            this.updateCountryLabel = new System.Windows.Forms.Label();
-            this.updateStateLabel = new System.Windows.Forms.Label();
-            this.updateCityLabel = new System.Windows.Forms.Label();
-            this.updateSpeciesLabel = new System.Windows.Forms.Label();
-            this.updateEntryAgeBox = new System.Windows.Forms.TextBox();
-            this.updateAgeLabel = new System.Windows.Forms.Label();
-            this.updateTagIDLabel = new System.Windows.Forms.Label();
-            this.updateEntryLabel = new System.Windows.Forms.Label();
-            this.updateEntryLatitudeBox = new System.Windows.Forms.TextBox();
-            this.updateEntryLongitudeBox = new System.Windows.Forms.TextBox();
-            this.updateLatitudeLabel = new System.Windows.Forms.Label();
-            this.updateLongitudeLabel = new System.Windows.Forms.Label();
-            this.updateEntryRequiredTagIDLabel = new System.Windows.Forms.Label();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -994,6 +994,261 @@ namespace ButterflyTrackingSystem
             this.updateEntryTab.Text = "Update Entry";
             this.updateEntryTab.Click += new System.EventHandler(this.updateEntryTab_Click);
             // 
+            // updateEntryRequiredTagIDLabel
+            // 
+            this.updateEntryRequiredTagIDLabel.AutoSize = true;
+            this.updateEntryRequiredTagIDLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.updateEntryRequiredTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateEntryRequiredTagIDLabel.Location = new System.Drawing.Point(28, 310);
+            this.updateEntryRequiredTagIDLabel.Name = "updateEntryRequiredTagIDLabel";
+            this.updateEntryRequiredTagIDLabel.Size = new System.Drawing.Size(121, 17);
+            this.updateEntryRequiredTagIDLabel.TabIndex = 85;
+            this.updateEntryRequiredTagIDLabel.Text = "* Tag ID Required";
+            this.updateEntryRequiredTagIDLabel.Click += new System.EventHandler(this.updateEntryRequiredTagIDLabel_Click);
+            // 
+            // updateEntryLatitudeBox
+            // 
+            this.updateEntryLatitudeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryLatitudeBox.Location = new System.Drawing.Point(460, 169);
+            this.updateEntryLatitudeBox.Name = "updateEntryLatitudeBox";
+            this.updateEntryLatitudeBox.Size = new System.Drawing.Size(172, 20);
+            this.updateEntryLatitudeBox.TabIndex = 9;
+            this.updateEntryLatitudeBox.TextChanged += new System.EventHandler(this.updateEntryLatitudeBox_TextChanged);
+            // 
+            // updateEntryLongitudeBox
+            // 
+            this.updateEntryLongitudeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryLongitudeBox.Location = new System.Drawing.Point(460, 143);
+            this.updateEntryLongitudeBox.Name = "updateEntryLongitudeBox";
+            this.updateEntryLongitudeBox.Size = new System.Drawing.Size(172, 20);
+            this.updateEntryLongitudeBox.TabIndex = 8;
+            this.updateEntryLongitudeBox.TextChanged += new System.EventHandler(this.updateEntryLongitudeBox_TextChanged);
+            // 
+            // updateLatitudeLabel
+            // 
+            this.updateLatitudeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateLatitudeLabel.AutoSize = true;
+            this.updateLatitudeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateLatitudeLabel.Location = new System.Drawing.Point(389, 170);
+            this.updateLatitudeLabel.Name = "updateLatitudeLabel";
+            this.updateLatitudeLabel.Size = new System.Drawing.Size(59, 17);
+            this.updateLatitudeLabel.TabIndex = 84;
+            this.updateLatitudeLabel.Text = "Latitude";
+            this.updateLatitudeLabel.Click += new System.EventHandler(this.updateLatitudeLabel_Click);
+            // 
+            // updateLongitudeLabel
+            // 
+            this.updateLongitudeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateLongitudeLabel.AutoSize = true;
+            this.updateLongitudeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateLongitudeLabel.Location = new System.Drawing.Point(389, 144);
+            this.updateLongitudeLabel.Name = "updateLongitudeLabel";
+            this.updateLongitudeLabel.Size = new System.Drawing.Size(71, 17);
+            this.updateLongitudeLabel.TabIndex = 83;
+            this.updateLongitudeLabel.Text = "Longitude";
+            this.updateLongitudeLabel.Click += new System.EventHandler(this.updateLongitudeLabel_Click);
+            // 
+            // updateEntryGenderComboBox
+            // 
+            this.updateEntryGenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.updateEntryGenderComboBox.FormattingEnabled = true;
+            this.updateEntryGenderComboBox.Items.AddRange(new object[] {
+            "Female",
+            "Male"});
+            this.updateEntryGenderComboBox.Location = new System.Drawing.Point(235, 117);
+            this.updateEntryGenderComboBox.Name = "updateEntryGenderComboBox";
+            this.updateEntryGenderComboBox.Size = new System.Drawing.Size(87, 21);
+            this.updateEntryGenderComboBox.Sorted = true;
+            this.updateEntryGenderComboBox.TabIndex = 4;
+            this.updateEntryGenderComboBox.SelectedIndexChanged += new System.EventHandler(this.updateEntryGenderComboBox_SelectedIndexChanged);
+            // 
+            // updateLocationLabel
+            // 
+            this.updateLocationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateLocationLabel.AutoSize = true;
+            this.updateLocationLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.updateLocationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateLocationLabel.Location = new System.Drawing.Point(508, 27);
+            this.updateLocationLabel.Name = "updateLocationLabel";
+            this.updateLocationLabel.Size = new System.Drawing.Size(78, 22);
+            this.updateLocationLabel.TabIndex = 80;
+            this.updateLocationLabel.Text = "Location";
+            this.updateLocationLabel.Click += new System.EventHandler(this.updateLocationLabel_Click);
+            // 
+            // updateGenderLabel
+            // 
+            this.updateGenderLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateGenderLabel.AutoSize = true;
+            this.updateGenderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateGenderLabel.Location = new System.Drawing.Point(173, 117);
+            this.updateGenderLabel.Name = "updateGenderLabel";
+            this.updateGenderLabel.Size = new System.Drawing.Size(56, 17);
+            this.updateGenderLabel.TabIndex = 79;
+            this.updateGenderLabel.Text = "Gender";
+            this.updateGenderLabel.Click += new System.EventHandler(this.updateGenderLabel_Click);
+            // 
+            // updateEntryCountryBox
+            // 
+            this.updateEntryCountryBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryCountryBox.Location = new System.Drawing.Point(460, 117);
+            this.updateEntryCountryBox.Name = "updateEntryCountryBox";
+            this.updateEntryCountryBox.Size = new System.Drawing.Size(172, 20);
+            this.updateEntryCountryBox.TabIndex = 7;
+            this.updateEntryCountryBox.TextChanged += new System.EventHandler(this.updateEntryCountryBox_TextChanged);
+            // 
+            // updateEntryStateBox
+            // 
+            this.updateEntryStateBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryStateBox.Location = new System.Drawing.Point(460, 91);
+            this.updateEntryStateBox.Name = "updateEntryStateBox";
+            this.updateEntryStateBox.Size = new System.Drawing.Size(172, 20);
+            this.updateEntryStateBox.TabIndex = 6;
+            this.updateEntryStateBox.TextChanged += new System.EventHandler(this.updateEntryStateBox_TextChanged);
+            // 
+            // updateEntryCityBox
+            // 
+            this.updateEntryCityBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryCityBox.Location = new System.Drawing.Point(460, 62);
+            this.updateEntryCityBox.Name = "updateEntryCityBox";
+            this.updateEntryCityBox.Size = new System.Drawing.Size(172, 20);
+            this.updateEntryCityBox.TabIndex = 5;
+            this.updateEntryCityBox.TextChanged += new System.EventHandler(this.updateEntryCityBox_TextChanged);
+            // 
+            // updateEntrySpeciesBox
+            // 
+            this.updateEntrySpeciesBox.Location = new System.Drawing.Point(235, 62);
+            this.updateEntrySpeciesBox.Name = "updateEntrySpeciesBox";
+            this.updateEntrySpeciesBox.Size = new System.Drawing.Size(138, 20);
+            this.updateEntrySpeciesBox.TabIndex = 2;
+            this.updateEntrySpeciesBox.TextChanged += new System.EventHandler(this.updateEntrySpeciesBox_TextChanged);
+            // 
+            // updateEntryTagIDBox
+            // 
+            this.updateEntryTagIDBox.Location = new System.Drawing.Point(66, 63);
+            this.updateEntryTagIDBox.Name = "updateEntryTagIDBox";
+            this.updateEntryTagIDBox.Size = new System.Drawing.Size(83, 20);
+            this.updateEntryTagIDBox.TabIndex = 1;
+            this.updateEntryTagIDBox.TextChanged += new System.EventHandler(this.updateEntryTagIDBox_TextChanged);
+            // 
+            // updateCountryLabel
+            // 
+            this.updateCountryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateCountryLabel.AutoSize = true;
+            this.updateCountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateCountryLabel.Location = new System.Drawing.Point(389, 117);
+            this.updateCountryLabel.Name = "updateCountryLabel";
+            this.updateCountryLabel.Size = new System.Drawing.Size(57, 17);
+            this.updateCountryLabel.TabIndex = 78;
+            this.updateCountryLabel.Text = "Country";
+            this.updateCountryLabel.Click += new System.EventHandler(this.updateCountryLabel_Click);
+            // 
+            // updateStateLabel
+            // 
+            this.updateStateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateStateLabel.AutoSize = true;
+            this.updateStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateStateLabel.Location = new System.Drawing.Point(389, 91);
+            this.updateStateLabel.Name = "updateStateLabel";
+            this.updateStateLabel.Size = new System.Drawing.Size(41, 17);
+            this.updateStateLabel.TabIndex = 77;
+            this.updateStateLabel.Text = "State";
+            this.updateStateLabel.Click += new System.EventHandler(this.updateStateLabel_Click);
+            // 
+            // updateCityLabel
+            // 
+            this.updateCityLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateCityLabel.AutoSize = true;
+            this.updateCityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateCityLabel.Location = new System.Drawing.Point(389, 62);
+            this.updateCityLabel.Name = "updateCityLabel";
+            this.updateCityLabel.Size = new System.Drawing.Size(31, 17);
+            this.updateCityLabel.TabIndex = 76;
+            this.updateCityLabel.Text = "City";
+            this.updateCityLabel.Click += new System.EventHandler(this.updateCityLabel_Click);
+            // 
+            // updateSpeciesLabel
+            // 
+            this.updateSpeciesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateSpeciesLabel.AutoSize = true;
+            this.updateSpeciesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateSpeciesLabel.Location = new System.Drawing.Point(171, 62);
+            this.updateSpeciesLabel.Name = "updateSpeciesLabel";
+            this.updateSpeciesLabel.Size = new System.Drawing.Size(58, 17);
+            this.updateSpeciesLabel.TabIndex = 75;
+            this.updateSpeciesLabel.Text = "Species";
+            this.updateSpeciesLabel.Click += new System.EventHandler(this.updateSpeciesLabel_Click);
+            // 
+            // updateEntryAgeBox
+            // 
+            this.updateEntryAgeBox.Location = new System.Drawing.Point(66, 118);
+            this.updateEntryAgeBox.Name = "updateEntryAgeBox";
+            this.updateEntryAgeBox.Size = new System.Drawing.Size(83, 20);
+            this.updateEntryAgeBox.TabIndex = 3;
+            this.updateEntryAgeBox.TextChanged += new System.EventHandler(this.updateEntryAgeBox_TextChanged);
+            // 
+            // updateAgeLabel
+            // 
+            this.updateAgeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateAgeLabel.AutoSize = true;
+            this.updateAgeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateAgeLabel.Location = new System.Drawing.Point(6, 117);
+            this.updateAgeLabel.Name = "updateAgeLabel";
+            this.updateAgeLabel.Size = new System.Drawing.Size(33, 17);
+            this.updateAgeLabel.TabIndex = 74;
+            this.updateAgeLabel.Text = "Age";
+            this.updateAgeLabel.Click += new System.EventHandler(this.updateAgeLabel_Click);
+            // 
+            // updateTagIDLabel
+            // 
+            this.updateTagIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateTagIDLabel.AutoSize = true;
+            this.updateTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateTagIDLabel.Location = new System.Drawing.Point(5, 62);
+            this.updateTagIDLabel.Name = "updateTagIDLabel";
+            this.updateTagIDLabel.Size = new System.Drawing.Size(55, 17);
+            this.updateTagIDLabel.TabIndex = 73;
+            this.updateTagIDLabel.Text = "Tag ID*";
+            this.updateTagIDLabel.Click += new System.EventHandler(this.updateTagIDLabel_Click);
+            // 
+            // updateEntryLabel
+            // 
+            this.updateEntryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryLabel.AutoSize = true;
+            this.updateEntryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateEntryLabel.Location = new System.Drawing.Point(230, 14);
+            this.updateEntryLabel.Name = "updateEntryLabel";
+            this.updateEntryLabel.Size = new System.Drawing.Size(183, 25);
+            this.updateEntryLabel.TabIndex = 72;
+            this.updateEntryLabel.Text = "Update your Entries";
+            this.updateEntryLabel.Click += new System.EventHandler(this.updateEntryLabel_Click);
+            // 
             // updateEntryGrid
             // 
             this.updateEntryGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1005,6 +1260,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryGrid.Name = "updateEntryGrid";
             this.updateEntryGrid.Size = new System.Drawing.Size(430, 142);
             this.updateEntryGrid.TabIndex = 89;
+            this.updateEntryGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_CellContentClick);
             this.updateEntryGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_RowValidated);
             // 
             // loadEntry
@@ -1739,240 +1995,6 @@ namespace ButterflyTrackingSystem
             // 
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
-            // 
-            // updateEntryGenderComboBox
-            // 
-            this.updateEntryGenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.updateEntryGenderComboBox.FormattingEnabled = true;
-            this.updateEntryGenderComboBox.Items.AddRange(new object[] {
-            "Female",
-            "Male"});
-            this.updateEntryGenderComboBox.Location = new System.Drawing.Point(235, 117);
-            this.updateEntryGenderComboBox.Name = "updateEntryGenderComboBox";
-            this.updateEntryGenderComboBox.Size = new System.Drawing.Size(87, 21);
-            this.updateEntryGenderComboBox.Sorted = true;
-            this.updateEntryGenderComboBox.TabIndex = 4;
-            // 
-            // updateLocationLabel
-            // 
-            this.updateLocationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateLocationLabel.AutoSize = true;
-            this.updateLocationLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.updateLocationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateLocationLabel.Location = new System.Drawing.Point(508, 27);
-            this.updateLocationLabel.Name = "updateLocationLabel";
-            this.updateLocationLabel.Size = new System.Drawing.Size(78, 22);
-            this.updateLocationLabel.TabIndex = 80;
-            this.updateLocationLabel.Text = "Location";
-            // 
-            // updateGenderLabel
-            // 
-            this.updateGenderLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateGenderLabel.AutoSize = true;
-            this.updateGenderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateGenderLabel.Location = new System.Drawing.Point(173, 117);
-            this.updateGenderLabel.Name = "updateGenderLabel";
-            this.updateGenderLabel.Size = new System.Drawing.Size(56, 17);
-            this.updateGenderLabel.TabIndex = 79;
-            this.updateGenderLabel.Text = "Gender";
-            // 
-            // updateEntryCountryBox
-            // 
-            this.updateEntryCountryBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryCountryBox.Location = new System.Drawing.Point(460, 117);
-            this.updateEntryCountryBox.Name = "updateEntryCountryBox";
-            this.updateEntryCountryBox.Size = new System.Drawing.Size(172, 20);
-            this.updateEntryCountryBox.TabIndex = 7;
-            // 
-            // updateEntryStateBox
-            // 
-            this.updateEntryStateBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryStateBox.Location = new System.Drawing.Point(460, 91);
-            this.updateEntryStateBox.Name = "updateEntryStateBox";
-            this.updateEntryStateBox.Size = new System.Drawing.Size(172, 20);
-            this.updateEntryStateBox.TabIndex = 6;
-            // 
-            // updateEntryCityBox
-            // 
-            this.updateEntryCityBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryCityBox.Location = new System.Drawing.Point(460, 62);
-            this.updateEntryCityBox.Name = "updateEntryCityBox";
-            this.updateEntryCityBox.Size = new System.Drawing.Size(172, 20);
-            this.updateEntryCityBox.TabIndex = 5;
-            // 
-            // updateEntrySpeciesBox
-            // 
-            this.updateEntrySpeciesBox.Location = new System.Drawing.Point(235, 62);
-            this.updateEntrySpeciesBox.Name = "updateEntrySpeciesBox";
-            this.updateEntrySpeciesBox.Size = new System.Drawing.Size(138, 20);
-            this.updateEntrySpeciesBox.TabIndex = 2;
-            // 
-            // updateEntryTagIDBox
-            // 
-            this.updateEntryTagIDBox.Location = new System.Drawing.Point(66, 63);
-            this.updateEntryTagIDBox.Name = "updateEntryTagIDBox";
-            this.updateEntryTagIDBox.Size = new System.Drawing.Size(83, 20);
-            this.updateEntryTagIDBox.TabIndex = 1;
-            // 
-            // updateCountryLabel
-            // 
-            this.updateCountryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateCountryLabel.AutoSize = true;
-            this.updateCountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateCountryLabel.Location = new System.Drawing.Point(389, 117);
-            this.updateCountryLabel.Name = "updateCountryLabel";
-            this.updateCountryLabel.Size = new System.Drawing.Size(57, 17);
-            this.updateCountryLabel.TabIndex = 78;
-            this.updateCountryLabel.Text = "Country";
-            // 
-            // updateStateLabel
-            // 
-            this.updateStateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateStateLabel.AutoSize = true;
-            this.updateStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateStateLabel.Location = new System.Drawing.Point(389, 91);
-            this.updateStateLabel.Name = "updateStateLabel";
-            this.updateStateLabel.Size = new System.Drawing.Size(41, 17);
-            this.updateStateLabel.TabIndex = 77;
-            this.updateStateLabel.Text = "State";
-            // 
-            // updateCityLabel
-            // 
-            this.updateCityLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateCityLabel.AutoSize = true;
-            this.updateCityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateCityLabel.Location = new System.Drawing.Point(389, 62);
-            this.updateCityLabel.Name = "updateCityLabel";
-            this.updateCityLabel.Size = new System.Drawing.Size(31, 17);
-            this.updateCityLabel.TabIndex = 76;
-            this.updateCityLabel.Text = "City";
-            // 
-            // updateSpeciesLabel
-            // 
-            this.updateSpeciesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateSpeciesLabel.AutoSize = true;
-            this.updateSpeciesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateSpeciesLabel.Location = new System.Drawing.Point(171, 62);
-            this.updateSpeciesLabel.Name = "updateSpeciesLabel";
-            this.updateSpeciesLabel.Size = new System.Drawing.Size(58, 17);
-            this.updateSpeciesLabel.TabIndex = 75;
-            this.updateSpeciesLabel.Text = "Species";
-            // 
-            // updateEntryAgeBox
-            // 
-            this.updateEntryAgeBox.Location = new System.Drawing.Point(66, 118);
-            this.updateEntryAgeBox.Name = "updateEntryAgeBox";
-            this.updateEntryAgeBox.Size = new System.Drawing.Size(83, 20);
-            this.updateEntryAgeBox.TabIndex = 3;
-            // 
-            // updateAgeLabel
-            // 
-            this.updateAgeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateAgeLabel.AutoSize = true;
-            this.updateAgeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateAgeLabel.Location = new System.Drawing.Point(6, 117);
-            this.updateAgeLabel.Name = "updateAgeLabel";
-            this.updateAgeLabel.Size = new System.Drawing.Size(33, 17);
-            this.updateAgeLabel.TabIndex = 74;
-            this.updateAgeLabel.Text = "Age";
-            // 
-            // updateTagIDLabel
-            // 
-            this.updateTagIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateTagIDLabel.AutoSize = true;
-            this.updateTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateTagIDLabel.Location = new System.Drawing.Point(5, 62);
-            this.updateTagIDLabel.Name = "updateTagIDLabel";
-            this.updateTagIDLabel.Size = new System.Drawing.Size(55, 17);
-            this.updateTagIDLabel.TabIndex = 73;
-            this.updateTagIDLabel.Text = "Tag ID*";
-            // 
-            // updateEntryLabel
-            // 
-            this.updateEntryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryLabel.AutoSize = true;
-            this.updateEntryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateEntryLabel.Location = new System.Drawing.Point(230, 14);
-            this.updateEntryLabel.Name = "updateEntryLabel";
-            this.updateEntryLabel.Size = new System.Drawing.Size(183, 25);
-            this.updateEntryLabel.TabIndex = 72;
-            this.updateEntryLabel.Text = "Update your Entries";
-            // 
-            // updateEntryLatitudeBox
-            // 
-            this.updateEntryLatitudeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryLatitudeBox.Location = new System.Drawing.Point(460, 169);
-            this.updateEntryLatitudeBox.Name = "updateEntryLatitudeBox";
-            this.updateEntryLatitudeBox.Size = new System.Drawing.Size(172, 20);
-            this.updateEntryLatitudeBox.TabIndex = 9;
-            // 
-            // updateEntryLongitudeBox
-            // 
-            this.updateEntryLongitudeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryLongitudeBox.Location = new System.Drawing.Point(460, 143);
-            this.updateEntryLongitudeBox.Name = "updateEntryLongitudeBox";
-            this.updateEntryLongitudeBox.Size = new System.Drawing.Size(172, 20);
-            this.updateEntryLongitudeBox.TabIndex = 8;
-            // 
-            // updateLatitudeLabel
-            // 
-            this.updateLatitudeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateLatitudeLabel.AutoSize = true;
-            this.updateLatitudeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateLatitudeLabel.Location = new System.Drawing.Point(389, 170);
-            this.updateLatitudeLabel.Name = "updateLatitudeLabel";
-            this.updateLatitudeLabel.Size = new System.Drawing.Size(59, 17);
-            this.updateLatitudeLabel.TabIndex = 84;
-            this.updateLatitudeLabel.Text = "Latitude";
-            // 
-            // updateLongitudeLabel
-            // 
-            this.updateLongitudeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateLongitudeLabel.AutoSize = true;
-            this.updateLongitudeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateLongitudeLabel.Location = new System.Drawing.Point(389, 144);
-            this.updateLongitudeLabel.Name = "updateLongitudeLabel";
-            this.updateLongitudeLabel.Size = new System.Drawing.Size(71, 17);
-            this.updateLongitudeLabel.TabIndex = 83;
-            this.updateLongitudeLabel.Text = "Longitude";
-            // 
-            // updateEntryRequiredTagIDLabel
-            // 
-            this.updateEntryRequiredTagIDLabel.AutoSize = true;
-            this.updateEntryRequiredTagIDLabel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.updateEntryRequiredTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateEntryRequiredTagIDLabel.Location = new System.Drawing.Point(28, 310);
-            this.updateEntryRequiredTagIDLabel.Name = "updateEntryRequiredTagIDLabel";
-            this.updateEntryRequiredTagIDLabel.Size = new System.Drawing.Size(121, 17);
-            this.updateEntryRequiredTagIDLabel.TabIndex = 85;
-            this.updateEntryRequiredTagIDLabel.Text = "* Tag ID Required";
             // 
             // BTS
             // 

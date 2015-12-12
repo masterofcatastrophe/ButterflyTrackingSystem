@@ -1579,5 +1579,115 @@ namespace ButterflyTrackingSystem
             bindingsource1.EndEdit();
             entry2.Update(DS, "Entries");
         }
+
+        private void updateEntryLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntryTagIDBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntrySpeciesBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntryCityBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntryStateBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntryCountryBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntryLongitudeBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntryLatitudeBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntryAgeBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntryGenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntryRequiredTagIDLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateLocationLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateTagIDLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateSpeciesLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateCityLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateStateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateCountryLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateLongitudeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateLatitudeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateGenderLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateAgeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateEntryGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
