@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MySql.Data.Common;
+using System.Windows.Forms;
+
 
 namespace ButterflyTrackingSystem
 {
@@ -1370,12 +1373,25 @@ namespace ButterflyTrackingSystem
         {
             if (dbcon.State == ConnectionState.Open)
             {
+                string retreiveLeaderBoard = "SELECT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID ORDER BY Tags_Made DESC LIMIT 10;";
+                MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
+                MySqlDataAdapter sda = new MySqlDataAdapter();
+                sda.SelectCommand = retreiveBoard;
+                DataTable dbdataset = new DataTable();
+                sda.Fill(dbdataset);
+                BindingSource bsource = new BindingSource();
+
+                bsource.DataSource = dbdataset;
+                leaderboardGrid.DataSource = bsource;
+                sda.Update(dbdataset);
+
 
                 string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
                 MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, dbcon);
                 retreiveData.Parameters.AddWithValue("@user", userNameBox.Text);
                 MySqlDataReader myReader;
                 myReader = retreiveData.ExecuteReader();
+
 
                 while (myReader.Read())
                 {
@@ -1397,6 +1413,8 @@ namespace ButterflyTrackingSystem
                     updateEmployeeCityTextBox.Text = sCity;
                     updateEmployeeStateTextBox.Text = sState;
                     positionOptionsUpdateComboBox.Text = sPosition;
+
+                    
                 }
                 myReader.Close();
             }
@@ -1405,6 +1423,36 @@ namespace ButterflyTrackingSystem
                 con.CloseConnection();
                 con.OpenConnection();
             }
+        }
+
+        private void leaderboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void loadLeaderboardButton_Click(object sender, EventArgs e)
+        {
+            if (dbcon.State == ConnectionState.Open)
+            {
+                string retreiveLeaderBoard = "SELECT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID ORDER BY Tags_Made DESC LIMIT 10;";
+                MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
+                MySqlDataAdapter sda = new MySqlDataAdapter();
+                sda.SelectCommand = retreiveBoard;
+                DataTable dbdataset = new DataTable();
+                sda.Fill(dbdataset);
+                BindingSource bsource = new BindingSource();
+
+                bsource.DataSource = dbdataset;
+                leaderboardGrid.DataSource = bsource;
+                sda.Update(dbdataset);
+                
+            }
+            else
+            {
+                con.CloseConnection();
+                con.OpenConnection();
+            }
+
         }
     }
 
