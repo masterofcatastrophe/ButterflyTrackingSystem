@@ -94,7 +94,6 @@ namespace ButterflyTrackingSystem
             this.createEntryButton = new System.Windows.Forms.Button();
             this.createEntryLabel = new System.Windows.Forms.Label();
             this.updateEntryTab = new System.Windows.Forms.TabPage();
-            this.deleteEntryButton = new System.Windows.Forms.Button();
             this.updateEntryRequiredTagIDLabel = new System.Windows.Forms.Label();
             this.updateEntryLatitudeBox = new System.Windows.Forms.TextBox();
             this.updateEntryLongitudeBox = new System.Windows.Forms.TextBox();
@@ -967,7 +966,6 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEntryTab.BackColor = System.Drawing.Color.Gainsboro;
             this.updateEntryTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.updateEntryTab.Controls.Add(this.deleteEntryButton);
             this.updateEntryTab.Controls.Add(this.updateEntryRequiredTagIDLabel);
             this.updateEntryTab.Controls.Add(this.updateEntryLatitudeBox);
             this.updateEntryTab.Controls.Add(this.updateEntryLongitudeBox);
@@ -998,18 +996,6 @@ namespace ButterflyTrackingSystem
             this.updateEntryTab.TabIndex = 1;
             this.updateEntryTab.Text = "Update Entry";
             this.updateEntryTab.Click += new System.EventHandler(this.updateEntryTab_Click);
-            // 
-            // deleteEntryButton
-            // 
-            this.deleteEntryButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.deleteEntryButton.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.deleteEntryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteEntryButton.Location = new System.Drawing.Point(29, 293);
-            this.deleteEntryButton.Name = "deleteEntryButton";
-            this.deleteEntryButton.Size = new System.Drawing.Size(134, 36);
-            this.deleteEntryButton.TabIndex = 90;
-            this.deleteEntryButton.Text = "Delete Entry";
-            this.deleteEntryButton.UseVisualStyleBackColor = false;
             // 
             // updateEntryRequiredTagIDLabel
             // 
@@ -2252,7 +2238,6 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.Label updateLongitudeLabel;
         private System.Windows.Forms.Label updateEntryRequiredTagIDLabel;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button deleteEntryButton;
         private System.Windows.Forms.Button ResetDate;
         private System.Windows.Forms.Button ResetTime;
         private System.Windows.Forms.Button uploadSightingsFileButton;
