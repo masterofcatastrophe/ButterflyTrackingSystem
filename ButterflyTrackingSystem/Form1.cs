@@ -1823,5 +1823,10 @@ namespace ButterflyTrackingSystem
             updateEntryStateBox.Text = row.Cells[9].Value.ToString();
             updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
         }
+
+        private void updateEntryGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+        }
     }
 }
