@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MySql.Data.Common;
-
+using System.IO;
 
 namespace ButterflyTrackingSystem
 {
@@ -942,7 +942,18 @@ namespace ButterflyTrackingSystem
 
         private void uploadSightingsFileButton_Click(object sender, EventArgs e)
         {
+            OpenFileDialog openSightingsFileDialog = new OpenFileDialog();
+            openSightingsFileDialog.Title = "Select Sightings file for upload";
+            openSightingsFileDialog.Filter = "Text Files (*.txt)|*.txt| All Files (*.*)|*.*";
 
+            if (openSightingsFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader read = new StreamReader(File.OpenRead(openSightingsFileDialog.FileName));
+                
+                //parsing and databse goes here...
+
+                read.Dispose();
+            }
         }
 
         private void downloadSightingsFileButton_Click(object sender, EventArgs e)
