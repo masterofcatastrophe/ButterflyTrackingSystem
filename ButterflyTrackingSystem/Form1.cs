@@ -1452,7 +1452,7 @@ namespace ButterflyTrackingSystem
         {
             searchDateTimePicker.Format = DateTimePickerFormat.Custom;
             searchDateTimePicker.ShowUpDown = true;
-            searchDateTimePicker.CustomFormat = "MM/dd/yyyy";
+            searchDateTimePicker.CustomFormat = "MM-dd-yyyy";
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
