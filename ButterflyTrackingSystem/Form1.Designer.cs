@@ -1000,11 +1000,11 @@ namespace ButterflyTrackingSystem
             this.updateEntryRequiredTagIDLabel.AutoSize = true;
             this.updateEntryRequiredTagIDLabel.Cursor = System.Windows.Forms.Cursors.Default;
             this.updateEntryRequiredTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateEntryRequiredTagIDLabel.Location = new System.Drawing.Point(28, 310);
+            this.updateEntryRequiredTagIDLabel.Location = new System.Drawing.Point(17, 209);
             this.updateEntryRequiredTagIDLabel.Name = "updateEntryRequiredTagIDLabel";
-            this.updateEntryRequiredTagIDLabel.Size = new System.Drawing.Size(121, 17);
+            this.updateEntryRequiredTagIDLabel.Size = new System.Drawing.Size(156, 34);
             this.updateEntryRequiredTagIDLabel.TabIndex = 85;
-            this.updateEntryRequiredTagIDLabel.Text = "* Tag ID Required";
+            this.updateEntryRequiredTagIDLabel.Text = "Click on an entry in the \r\ntable to populate fields";
             this.updateEntryRequiredTagIDLabel.Click += new System.EventHandler(this.updateEntryRequiredTagIDLabel_Click);
             // 
             // updateEntryLatitudeBox
@@ -1060,11 +1060,11 @@ namespace ButterflyTrackingSystem
             this.updateEntryGenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.updateEntryGenderComboBox.FormattingEnabled = true;
             this.updateEntryGenderComboBox.Items.AddRange(new object[] {
-            "Female",
-            "Male"});
+            "F",
+            "M"});
             this.updateEntryGenderComboBox.Location = new System.Drawing.Point(235, 117);
             this.updateEntryGenderComboBox.Name = "updateEntryGenderComboBox";
-            this.updateEntryGenderComboBox.Size = new System.Drawing.Size(87, 21);
+            this.updateEntryGenderComboBox.Size = new System.Drawing.Size(70, 21);
             this.updateEntryGenderComboBox.Sorted = true;
             this.updateEntryGenderComboBox.TabIndex = 4;
             this.updateEntryGenderComboBox.SelectedIndexChanged += new System.EventHandler(this.updateEntryGenderComboBox_SelectedIndexChanged);
@@ -1140,6 +1140,7 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEntryTagIDBox.Location = new System.Drawing.Point(66, 63);
             this.updateEntryTagIDBox.Name = "updateEntryTagIDBox";
+            this.updateEntryTagIDBox.ReadOnly = true;
             this.updateEntryTagIDBox.Size = new System.Drawing.Size(83, 20);
             this.updateEntryTagIDBox.TabIndex = 1;
             this.updateEntryTagIDBox.TextChanged += new System.EventHandler(this.updateEntryTagIDBox_TextChanged);
@@ -1232,9 +1233,9 @@ namespace ButterflyTrackingSystem
             this.updateTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateTagIDLabel.Location = new System.Drawing.Point(5, 62);
             this.updateTagIDLabel.Name = "updateTagIDLabel";
-            this.updateTagIDLabel.Size = new System.Drawing.Size(55, 17);
+            this.updateTagIDLabel.Size = new System.Drawing.Size(50, 17);
             this.updateTagIDLabel.TabIndex = 73;
-            this.updateTagIDLabel.Text = "Tag ID*";
+            this.updateTagIDLabel.Text = "Tag ID";
             this.updateTagIDLabel.Click += new System.EventHandler(this.updateTagIDLabel_Click);
             // 
             // updateEntryLabel
@@ -1270,7 +1271,7 @@ namespace ButterflyTrackingSystem
             this.loadEntry.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.loadEntry.BackColor = System.Drawing.Color.BurlyWood;
             this.loadEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadEntry.Location = new System.Drawing.Point(23, 243);
+            this.loadEntry.Location = new System.Drawing.Point(23, 259);
             this.loadEntry.Name = "loadEntry";
             this.loadEntry.Size = new System.Drawing.Size(134, 36);
             this.loadEntry.TabIndex = 10;
@@ -1616,7 +1617,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.leaderboardGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.leaderboardGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.leaderboardGrid.BackgroundColor = System.Drawing.Color.Indigo;
+            this.leaderboardGrid.BackgroundColor = System.Drawing.Color.MediumPurple;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Plum;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe Print", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
