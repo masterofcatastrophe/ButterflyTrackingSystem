@@ -1520,9 +1520,14 @@ namespace ButterflyTrackingSystem
         }
 
         private MySqlDataAdapter entry2;
+        private MySqlDataAdapter migration;
         private BindingSource bindingsource1;
         private DataSet DS;
-
+        private DataSet DX;
+        private DataSet DY;
+        private BindingSource bindingsource2;
+        private BindingSource bindingsource3;
+        private MySqlDataAdapter entryAll;
         private void functionalitiesTabs_Click_1(object sender, EventArgs e)
         {
             if (dbcon.State == ConnectionState.Open)
@@ -1544,7 +1549,7 @@ namespace ButterflyTrackingSystem
                 sda.Update(dbdataset);
                 leaderboardGrid.AllowUserToAddRows = false;
                 leaderboardGrid.RowHeadersVisible = false;
-
+                
                 // retreive entries
                 string retreiveEntries =
                     "SELECT Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
@@ -1553,6 +1558,7 @@ namespace ButterflyTrackingSystem
                     " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID)" +
                     " WHERE(Employee.User_ID = '"+userNameBox.Text+"');"; //WHERE (Employee.User_ID =@user)
 
+                
                 entry2 = new MySqlDataAdapter(retreiveEntries, dbcon);
                 MySqlCommandBuilder builder = new MySqlCommandBuilder(entry2);
                 DS = new DataSet();
@@ -1564,6 +1570,24 @@ namespace ButterflyTrackingSystem
                 bindingNavigator1.BindingSource = bindingsource1;
                 updateEntryGrid.DataSource = bindingsource1;
 
+                // retreive all entries in system
+                string retreiveAllEntries =
+                    "SELECT Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
+                    " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
+                    " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
+                    " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID);"; //WHERE (Employee.User_ID =@user)
+
+                entryAll = new MySqlDataAdapter(retreiveAllEntries, dbcon);
+                MySqlCommandBuilder builderAll = new MySqlCommandBuilder(entryAll);
+                DX = new DataSet();
+                entryAll.Fill(DX, "Entries");
+                bindingsource2 = new BindingSource();
+                bindingsource2.DataSource = DX.Tables[0];
+
+                BindingNavigator bindingNavigator2 = new BindingNavigator();
+                bindingNavigator1.BindingSource = bindingsource2;
+                migrationFirstGrid.DataSource = bindingsource2;
+                /////////////////
                 // retreive account info
                 string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
                 MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, dbcon);
@@ -1571,7 +1595,8 @@ namespace ButterflyTrackingSystem
                 MySqlDataReader myReader;
                 myReader = retreiveData.ExecuteReader();
 
-
+               
+                
                 while (myReader.Read())
                 {
                     string sUser = myReader.GetString("User_ID");
@@ -1952,17 +1977,78 @@ namespace ButterflyTrackingSystem
 
         private void addRouteButton_Click(object sender, EventArgs e)
         {
+            string migrationid = migrationTagIDTextBox.Text;
+            string migrationcity = migrationCityTextBox.Text;
+            string migrationstate = migrationStateTextBox.Text;
+            string migrationcountry = migrationCountryTextBox.Text;
+            string migrationlongitude = migrationLongitudeTextBox.Text;
+            string migrationlatitude = migrationLatitudeTextBox.Text;
+            
 
-        }
+            if (!String.IsNullOrEmpty(migrationTagIDTextBox.Text) && !String.IsNullOrEmpty(migrationCityTextBox.Text) &&
+                !String.IsNullOrEmpty(migrationStateTextBox.Text) && !String.IsNullOrEmpty(migrationCountryTextBox.Text) &&
+                !String.IsNullOrEmpty(migrationLongitudeTextBox.Text) && !String.IsNullOrEmpty(migrationLatitudeTextBox.Text))
+            {
+                if (dbcon.State == ConnectionState.Open)
+                {
+                    //string migDate = createEntryDateTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
+                    //string EntryTime = createEntryDateTimePicker.Value.ToString("hh:mm tt"); // user defined date
+
+                    // string bDate = DateTime.Now.ToString("MM-dd-yyyy"); // system date
+                    //string bTime = DateTime.Now.ToString("hh:mm tt"); // system time
+                    // inserting values into Butterfly table
+
+                    string addMigration =
+                        "INSERT INTO Migration (Longitude, Latitude,City,State,Country,Migration_Tag,Migration_Viewer)" +
+                        " VALUES (@MLongitude, @MLatitude, @MCity, @MState, @MCountry, @MTag, @Viewer)";
+
+                    MySqlCommand migration = new MySqlCommand(addMigration, dbcon);
+                    migration.CommandText = addMigration;
+                    migration.Parameters.AddWithValue("@MLongitude", migrationlongitude);
+                    migration.Parameters.AddWithValue("@MLatitude", migrationlatitude);
+                    migration.Parameters.AddWithValue("@MCity", migrationcity);
+                    migration.Parameters.AddWithValue("@MState", migrationstate);
+                    migration.Parameters.AddWithValue("@MCountry", migrationcountry);
+                    migration.Parameters.AddWithValue("@MTag", migrationid);
+                    migration.Parameters.AddWithValue("@Viewer", userNameBox.Text);
+                    migration.ExecuteNonQuery();
+
+                    MessageBox.Show("New sighting added to that butterfly tag !");
+                }
+
+                else MessageBox.Show("some fields are missing !");
+            
+                    con.CloseConnection();
+                    con.OpenConnection();
+                }
+            }
+        
 
         private void migrationTagIDtoViewGridBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
+        
         private void viewSightingButton_Click(object sender, EventArgs e)
         {
+            
+            string retreiveMigrations = "SELECT Migration.Migration_no, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;" ;
+            //string retreiveOther = "SELECT City FROM Migration where Migration_Tag=5";        
 
+
+            migration = new MySqlDataAdapter(retreiveMigrations, dbcon);
+            MySqlCommandBuilder builder = new MySqlCommandBuilder(migration);
+            DY = new DataSet();
+            migration.Fill(DY, "Migrations");
+            bindingsource3 = new BindingSource();
+            bindingsource3.DataSource = DY.Tables[0];
+
+            BindingNavigator bindingNavigator3 = new BindingNavigator();
+            bindingNavigator3.BindingSource = bindingsource3;
+            migrationSecondGrid.DataSource = bindingsource3;
+
+           
         }
 
         private void migrationFirstGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
