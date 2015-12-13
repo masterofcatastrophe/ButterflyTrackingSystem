@@ -1624,14 +1624,7 @@ namespace ButterflyTrackingSystem
 
         private void updateEntryGrid_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            /*DataTable changes = ((DataTable)updateEntryGrid.DataSource).GetChanges();
-            if (changes != null)
-            {
-                MySqlCommandBuilder validate = new MySqlCommandBuilder(entry2);
-                entry2.UpdateCommand = validate.GetUpdateCommand();
-                entry2.Update(changes);
-                ((DataTable)updateEntryGrid.DataSource).AcceptChanges();
-            }*/
+            
         }
 
         private void loadEntry_Click(object sender, EventArgs e)
@@ -1657,29 +1650,27 @@ namespace ButterflyTrackingSystem
 
 
 
-                    //////
+                    
 
 
                     string updateEntry_sql = "UPDATE Butterfly SET Species='" + updateEntrySpeciesBox.Text +
                                             "', Gender='" + updateEntryGenderComboBox.Text + "', Age='" +
                                             updateEntryAgeBox.Text + "'WHERE Tag_ID='" + updateEntryTagIDBox.Text + "' ;";
 
+                    MySqlCommand updateEntry = new MySqlCommand(updateEntry_sql, dbcon);
+                    MySqlDataReader updateReader = updateEntry.ExecuteReader();
+                   
+                    updateReader.Close();
 
 
                     string updateEntrySight_sql = "UPDATE Sighting_Locations SET Longitude='" + updateEntryLongitudeBox.Text +
                                                 "', Latitude='" + updateEntryLatitudeBox.Text + "', City='" +
                                                 updateEntryCityBox.Text + "', State='" + updateEntryStateBox.Text + "', Country='" +
-                                                updateEntryCountryBox + "'WHERE Tag_ID='" + updateEntryTagIDBox.Text + "' ;";
+                                                updateEntryCountryBox.Text + "'WHERE Sight_ID='" + updateEntryTagIDBox.Text + "' ;";
 
-
-
-                    MySqlCommand updateEntry = new MySqlCommand(updateEntry_sql, dbcon);
-                    MySqlDataReader updateReader = updateEntry.ExecuteReader();
-                    updateReader.Close();
-
-                    MySqlCommand updateEntrySight = new MySqlCommand(updateEntry_sql, dbcon);
-                    MySqlDataReader updateSightReader = updateEntry.ExecuteReader();
-
+                    MySqlCommand updateEntrySight = new MySqlCommand(updateEntrySight_sql, dbcon);
+                    MySqlDataReader updateSightReader = updateEntrySight.ExecuteReader();
+                    //updateSightReader = updateEntrySight.ExecuteReader();
                     updateSightReader.Close();
                     MessageBox.Show("Entry up to date!");
                 }
@@ -1690,7 +1681,7 @@ namespace ButterflyTrackingSystem
 
             }
 
-            else MessageBox.Show("Data Missing !");
+            else MessageBox.Show("Please fill missing fields !");
             
            
         }
@@ -1803,17 +1794,7 @@ namespace ButterflyTrackingSystem
         int i;
         private void updateEntryGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            i = e.RowIndex;
-            DataGridViewRow row = updateEntryGrid.Rows[i];
-            updateEntryTagIDBox.Text = row.Cells[0].Value.ToString();
-            updateEntrySpeciesBox.Text = row.Cells[1].Value.ToString();
-            updateEntryGenderComboBox.Text = row.Cells[2].Value.ToString();
-            updateEntryAgeBox.Text = row.Cells[3].Value.ToString();
-            updateEntryLongitudeBox.Text = row.Cells[6].Value.ToString();
-            updateEntryLatitudeBox.Text = row.Cells[7].Value.ToString();
-            updateEntryCityBox.Text = row.Cells[8].Value.ToString();
-            updateEntryStateBox.Text = row.Cells[9].Value.ToString();
-            updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
+           
         }
 
         private void updateEntryTagIDBox_Leave(object sender, EventArgs e)
@@ -1827,6 +1808,21 @@ namespace ButterflyTrackingSystem
             {
                 registerStreetError.Clear();
             }
+        }
+
+        private void updateEntryGrid_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            i = e.RowIndex;
+            DataGridViewRow row = updateEntryGrid.Rows[i];
+            updateEntryTagIDBox.Text = row.Cells[0].Value.ToString();
+            updateEntrySpeciesBox.Text = row.Cells[1].Value.ToString();
+            updateEntryGenderComboBox.Text = row.Cells[2].Value.ToString();
+            updateEntryAgeBox.Text = row.Cells[3].Value.ToString();
+            updateEntryLongitudeBox.Text = row.Cells[6].Value.ToString();
+            updateEntryLatitudeBox.Text = row.Cells[7].Value.ToString();
+            updateEntryCityBox.Text = row.Cells[8].Value.ToString();
+            updateEntryStateBox.Text = row.Cells[9].Value.ToString();
+            updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
         }
     }
 }
