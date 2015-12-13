@@ -798,54 +798,43 @@ namespace ButterflyTrackingSystem
             string searchspecies = searchSpeciesTextBox.Text;
             string searchtagid = searchTagIDTextBox.Text;
             string searchusername = searchUserNameTextBox.Text;
-            string param = null; // the search parameter
-            string column = null; // column name
 
             if (!String.IsNullOrEmpty(searchUserNameTextBox.Text) || !String.IsNullOrEmpty(searchTagIDTextBox.Text) ||
                 !String.IsNullOrEmpty(searchSpeciesTextBox.Text) || !String.IsNullOrEmpty(searchCityTextBox.Text) ||
                 !String.IsNullOrEmpty(searchStateTextBox.Text) || !String.IsNullOrEmpty(searchCountryTextBox.Text)
-                || !String.IsNullOrEmpty(searchGendercomboBox.Text) || cal == true || tim == true)//!String.IsNullOrEmpty(searchDateTimePicker.Text)
+                || !String.IsNullOrEmpty(searchGendercomboBox.Text) || cal == true || tim == true)
             {
 
                 if (dbcon.State == ConnectionState.Open)
                 {
                     string SearchDate = searchDateTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
                     string SearchTime = dateTimePicker1.Value.ToString("hh:mm tt"); // user defined date
+                    
+                    MySqlDataAdapter mySqlDataAdapter;
+                    MySqlCommandBuilder mySqlCommandBuilder;
+                    DataTable dataTable;
+                    BindingSource bindingSource;
 
+                    StringBuilder searchquery = new StringBuilder("SELECT User_ID AS UserID, Sight_ID AS TagID, BTS.Sighting_Locations.Employee_ID AS EmpID, Longitude AS Lon, Latitude AS Lat, BTS.Sighting_Locations.City," +
+                        " BTS.Sighting_Locations.State AS ST, Country," +
+                        " Date_of_sighting AS sDate, Time_of_sighting AS sTime, Species, Age, Gender" +
+                        " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
+                        " RIGHT JOIN BTS.Employee ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE 1=1");
                     if (!String.IsNullOrEmpty(searchUserNameTextBox.Text))
-                    {
-                        column = "User_ID =";
-                        param = "'" + searchusername + "'";
-                    }
+                        searchquery.Append(" AND User_ID = '" + searchUserNameTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchTagIDTextBox.Text))
-                    {
-                        column = "Sight_ID =";
-                        param = searchtagid;
-                    }
+                        searchquery.Append(" AND Sight_ID = '" + searchTagIDTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchSpeciesTextBox.Text))
-                    {
-                        column = "Species =";
-                        param = "'" + searchspecies + "'";
-                    }
+                        searchquery.Append(" AND Species = '" + searchSpeciesTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchCityTextBox.Text))
-                    {
-                        column = "BTS.Sighting_Locations.City =";
-                        param = "'" + searchcity + "'";
-                    }
+                        searchquery.Append(" AND BTS.Sighting_Locations.City = '" + searchCityTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchStateTextBox.Text))
-                    {
-                        column = "BTS.Sighting_Locations.State =";
-                        param = "'" + searchstate + "'";
-                    }
+                        searchquery.Append(" AND BTS.Sighting_Locations.State = '" + searchStateTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchCountryTextBox.Text))
-                    {
-                        column = "Country =";
-                        param = "'" + searchcountry + "'";
-                    }
+                        searchquery.Append(" AND Country = '" + searchCountryTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchGendercomboBox.Text))
                     {
                         string gend;
-                        column = "Gender = ";
                         if (searchgender == "Male")
                         {
                             gend = "M";
@@ -854,35 +843,19 @@ namespace ButterflyTrackingSystem
                         {
                             gend = "F";
                         }
-                        param = "'" + gend + "'";
+                        searchquery.Append(" AND Gender = '" + gend + "'");
                     }
                     if (!String.IsNullOrEmpty(searchDateTimePicker.Text) && cal == true)
                     {
-                        column = "Date_of_sighting";
-                        param = "= '" + SearchDate + "'"; // + "' AND ";
+                        searchquery.Append(" AND Date_of_sighting = '" + SearchDate + "'");
                     }
                     if (!String.IsNullOrEmpty(dateTimePicker1.Text) && tim == true)
                     {
-                        column ="Time_of_sighting";
-                        param = "= '" + SearchTime + "'";
+                        searchquery.Append(" AND Time_of_sighting = '" + SearchTime + "'");
                     }
 
-                    MySqlDataAdapter mySqlDataAdapter;
-                    MySqlCommandBuilder mySqlCommandBuilder;
-                    DataTable dataTable;
-                    BindingSource bindingSource;
-
-                    string searchquery =
-                        "SELECT User_ID AS UserID, Sight_ID AS TagID, BTS.Sighting_Locations.Employee_ID AS EmpID, Longitude AS Lon, Latitude AS Lat, BTS.Sighting_Locations.City," +
-                        " BTS.Sighting_Locations.State AS ST, Country," +
-                        " Date_of_sighting AS sDate, Time_of_sighting AS sTime, Species, Age, Gender" +
-                        " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
-                        " RIGHT JOIN BTS.Employee ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE " +
-                        column + " " + param + ";";
-
-                    mySqlDataAdapter = new MySqlDataAdapter(searchquery, dbcon);
+                    mySqlDataAdapter = new MySqlDataAdapter(searchquery.ToString(), dbcon);
                     mySqlCommandBuilder = new MySqlCommandBuilder(mySqlDataAdapter);
-
                     dataTable = new DataTable();
                     mySqlDataAdapter.Fill(dataTable);
 
@@ -891,7 +864,6 @@ namespace ButterflyTrackingSystem
 
                     searchDataGrid.ReadOnly = true;
                     searchDataGrid.DataSource = bindingSource;
-
                     searchDataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
                     searchDataGrid.AllowUserToAddRows = false;
                     searchDataGrid.RowHeadersVisible = false;
@@ -910,22 +882,19 @@ namespace ButterflyTrackingSystem
                             (item as ComboBox).Text = "";
                         }
                     } //end foreach
-                    //dateTimePicker1.Format = DateTimePickerFormat.Time;
-                    //searchDateTimePicker.CustomFormat = " ";
                 }
                 else
                 {
                     con.CloseConnection();
                     con.OpenConnection();
                 }
-                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
             }
             else
             {
                 /*
                 DataGridView1.DataSource = DataSet.Tables["TableName"];
                 DataGridView.DataSource = DataTable;
-                DataGridView.DataSource = null;               
+                DataGridView.DataSource = null;
                 */
                 if (searchDataGrid.DataSource != null)
                 {
