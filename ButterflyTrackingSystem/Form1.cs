@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MySql.Data.Common;
-
+using System.IO;
 
 namespace ButterflyTrackingSystem
 {
@@ -21,14 +21,14 @@ namespace ButterflyTrackingSystem
         bool Cred; // check tagger/nonTagger
         bool cal = false; // enable disabled date
         bool tim = false; // enable disabled time
-
+        
         public BTS()
         {
             InitializeComponent();
             con.OpenConnection(); // open db connection
             functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged; // condition for tagger/nonTagger
             //functionalitiesTabs.Selecting += ideaTabControl_Selecting;
-            mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
+           mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
         }
 
         void listView_VisibleChanged(object sender, EventArgs e)
@@ -72,8 +72,8 @@ namespace ButterflyTrackingSystem
             else if ((Cred == false) && ((functionalitiesTabs.SelectedIndex == 0)
                                          || functionalitiesTabs.SelectedIndex == 1))
             {
-                // (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
-                // (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
+               // (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
+               // (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
                 (functionalitiesTabs.TabPages[1] as TabPage).Visible = false; // hide controls
                 (functionalitiesTabs.TabPages[0] as TabPage).Visible = false; // hide controls
                 //MessageBox.Show("Unable to load tab. You are not a tagger.");
@@ -98,7 +98,7 @@ namespace ButterflyTrackingSystem
 
             }
         }
-
+      
         private void BTS_Load(object sender, EventArgs e)
         {
 
@@ -171,7 +171,7 @@ namespace ButterflyTrackingSystem
                         CredReader = retreiveCred.ExecuteReader();
                         while (CredReader.Read())
                         {
-                            if ((string)(CredReader["Position"]) == "tagger")
+                            if ((string) (CredReader["Position"]) == "tagger")
                             {
                                 Cred = true;
                             }
@@ -699,7 +699,7 @@ namespace ButterflyTrackingSystem
                 cal = false;
             }
             */
-
+            
         }
 
         private void searchLabel_Click(object sender, EventArgs e)
@@ -798,54 +798,43 @@ namespace ButterflyTrackingSystem
             string searchspecies = searchSpeciesTextBox.Text;
             string searchtagid = searchTagIDTextBox.Text;
             string searchusername = searchUserNameTextBox.Text;
-            string param = null; // the search parameter
-            string column = null; // column name
 
             if (!String.IsNullOrEmpty(searchUserNameTextBox.Text) || !String.IsNullOrEmpty(searchTagIDTextBox.Text) ||
                 !String.IsNullOrEmpty(searchSpeciesTextBox.Text) || !String.IsNullOrEmpty(searchCityTextBox.Text) ||
                 !String.IsNullOrEmpty(searchStateTextBox.Text) || !String.IsNullOrEmpty(searchCountryTextBox.Text)
-                || !String.IsNullOrEmpty(searchGendercomboBox.Text) || cal == true || tim == true)//!String.IsNullOrEmpty(searchDateTimePicker.Text)
+                || !String.IsNullOrEmpty(searchGendercomboBox.Text) || cal == true || tim == true)
             {
 
                 if (dbcon.State == ConnectionState.Open)
                 {
                     string SearchDate = searchDateTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
                     string SearchTime = dateTimePicker1.Value.ToString("hh:mm tt"); // user defined date
+                    
+                    MySqlDataAdapter mySqlDataAdapter;
+                    MySqlCommandBuilder mySqlCommandBuilder;
+                    DataTable dataTable;
+                    BindingSource bindingSource;
 
+                    StringBuilder searchquery = new StringBuilder("SELECT User_ID AS UserID, Sight_ID AS TagID, BTS.Sighting_Locations.Employee_ID AS EmpID, Longitude AS Lon, Latitude AS Lat, BTS.Sighting_Locations.City," +
+                        " BTS.Sighting_Locations.State AS ST, Country," +
+                        " Date_of_sighting AS sDate, Time_of_sighting AS sTime, Species, Age, Gender" +
+                        " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
+                        " RIGHT JOIN BTS.Employee ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE 1=1");
                     if (!String.IsNullOrEmpty(searchUserNameTextBox.Text))
-                    {
-                        column = "User_ID =";
-                        param = "'" + searchusername + "'";
-                    }
+                        searchquery.Append(" AND User_ID = '" + searchUserNameTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchTagIDTextBox.Text))
-                    {
-                        column = "Sight_ID =";
-                        param = searchtagid;
-                    }
+                        searchquery.Append(" AND Sight_ID = '" + searchTagIDTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchSpeciesTextBox.Text))
-                    {
-                        column = "Species =";
-                        param = "'" + searchspecies + "'";
-                    }
+                        searchquery.Append(" AND Species = '" + searchSpeciesTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchCityTextBox.Text))
-                    {
-                        column = "BTS.Sighting_Locations.City =";
-                        param = "'" + searchcity + "'";
-                    }
+                        searchquery.Append(" AND BTS.Sighting_Locations.City = '" + searchCityTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchStateTextBox.Text))
-                    {
-                        column = "BTS.Sighting_Locations.State =";
-                        param = "'" + searchstate + "'";
-                    }
+                        searchquery.Append(" AND BTS.Sighting_Locations.State = '" + searchStateTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchCountryTextBox.Text))
-                    {
-                        column = "Country =";
-                        param = "'" + searchcountry + "'";
-                    }
+                        searchquery.Append(" AND Country = '" + searchCountryTextBox.Text + "'");
                     if (!String.IsNullOrEmpty(searchGendercomboBox.Text))
                     {
                         string gend;
-                        column = "Gender = ";
                         if (searchgender == "Male")
                         {
                             gend = "M";
@@ -854,35 +843,19 @@ namespace ButterflyTrackingSystem
                         {
                             gend = "F";
                         }
-                        param = "'" + gend + "'";
+                        searchquery.Append(" AND Gender = '" + gend + "'");
                     }
                     if (!String.IsNullOrEmpty(searchDateTimePicker.Text) && cal == true)
                     {
-                        column = "Date_of_sighting";
-                        param = "= '" + SearchDate + "'"; // + "' AND ";
+                        searchquery.Append(" AND Date_of_sighting = '" + SearchDate + "'");
                     }
                     if (!String.IsNullOrEmpty(dateTimePicker1.Text) && tim == true)
                     {
-                        column = "Time_of_sighting";
-                        param = "= '" + SearchTime + "'";
+                        searchquery.Append(" AND Time_of_sighting = '" + SearchTime + "'");
                     }
 
-                    MySqlDataAdapter mySqlDataAdapter;
-                    MySqlCommandBuilder mySqlCommandBuilder;
-                    DataTable dataTable;
-                    BindingSource bindingSource;
-
-                    string searchquery =
-                        "SELECT User_ID AS UserID, Sight_ID AS TagID, BTS.Sighting_Locations.Employee_ID AS EmpID, Longitude AS Lon, Latitude AS Lat, BTS.Sighting_Locations.City," +
-                        " BTS.Sighting_Locations.State AS ST, Country," +
-                        " Date_of_sighting AS sDate, Time_of_sighting AS sTime, Species, Age, Gender" +
-                        " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
-                        " RIGHT JOIN BTS.Employee ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE " +
-                        column + " " + param + ";";
-
-                    mySqlDataAdapter = new MySqlDataAdapter(searchquery, dbcon);
+                    mySqlDataAdapter = new MySqlDataAdapter(searchquery.ToString(), dbcon);
                     mySqlCommandBuilder = new MySqlCommandBuilder(mySqlDataAdapter);
-
                     dataTable = new DataTable();
                     mySqlDataAdapter.Fill(dataTable);
 
@@ -891,7 +864,6 @@ namespace ButterflyTrackingSystem
 
                     searchDataGrid.ReadOnly = true;
                     searchDataGrid.DataSource = bindingSource;
-
                     searchDataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
                     searchDataGrid.AllowUserToAddRows = false;
                     searchDataGrid.RowHeadersVisible = false;
@@ -910,22 +882,19 @@ namespace ButterflyTrackingSystem
                             (item as ComboBox).Text = "";
                         }
                     } //end foreach
-                    //dateTimePicker1.Format = DateTimePickerFormat.Time;
-                    //searchDateTimePicker.CustomFormat = " ";
                 }
                 else
                 {
                     con.CloseConnection();
                     con.OpenConnection();
                 }
-                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
             }
             else
             {
                 /*
                 DataGridView1.DataSource = DataSet.Tables["TableName"];
                 DataGridView.DataSource = DataTable;
-                DataGridView.DataSource = null;               
+                DataGridView.DataSource = null;
                 */
                 if (searchDataGrid.DataSource != null)
                 {
@@ -942,7 +911,18 @@ namespace ButterflyTrackingSystem
 
         private void uploadSightingsFileButton_Click(object sender, EventArgs e)
         {
+            OpenFileDialog openSightingsFileDialog = new OpenFileDialog();
+            openSightingsFileDialog.Title = "Select Sightings file for upload";
+            openSightingsFileDialog.Filter = "Text Files (*.txt)|*.txt| All Files (*.*)|*.*";
 
+            if (openSightingsFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader read = new StreamReader(File.OpenRead(openSightingsFileDialog.FileName));
+                
+                //parsing and databse goes here...
+
+                read.Dispose();
+            }
         }
 
         private void downloadSightingsFileButton_Click(object sender, EventArgs e)
@@ -1571,7 +1551,7 @@ namespace ButterflyTrackingSystem
                     " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
                     " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
                     " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID)" +
-                    " WHERE(Employee.User_ID = '" + userNameBox.Text + "');"; //WHERE (Employee.User_ID =@user)
+                    " WHERE(Employee.User_ID = '"+userNameBox.Text+"');"; //WHERE (Employee.User_ID =@user)
 
                 entry2 = new MySqlDataAdapter(retreiveEntries, dbcon);
                 MySqlCommandBuilder builder = new MySqlCommandBuilder(entry2);
@@ -1662,7 +1642,7 @@ namespace ButterflyTrackingSystem
 
         private void updateEntryGrid_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void loadEntry_Click(object sender, EventArgs e)
@@ -1718,11 +1698,11 @@ namespace ButterflyTrackingSystem
 
             }
 
-
-
-
+            
+            
+           
         }
-
+            
 
         private void updateEntryLabel_Click(object sender, EventArgs e)
         {
@@ -1831,7 +1811,7 @@ namespace ButterflyTrackingSystem
         int i;
         private void updateEntryGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+           
         }
 
         private void updateEntryTagIDBox_Leave(object sender, EventArgs e)
@@ -1861,9 +1841,9 @@ namespace ButterflyTrackingSystem
             updateEntryStateBox.Text = row.Cells[9].Value.ToString();
             updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
         }
-
-        private void ResetDate_Click(object sender, EventArgs e) { }
-        private void ResetTime_Click(object sender, EventArgs e) { }
+        
+        private void ResetDate_Click(object sender, EventArgs e){}
+        private void ResetTime_Click(object sender, EventArgs e){}
 
         private void ResetDate_Click_1(object sender, EventArgs e)
         {
@@ -1900,11 +1880,104 @@ namespace ButterflyTrackingSystem
             }
         }
 
-        private void deleteEntryButton_Click(object sender, EventArgs e)
+        private void migrationTabTitleLabel_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void migrationTagIDLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationCityLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationStateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationCountryLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationLongitudeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationLatitudeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationTagIDtoSeeGridLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationTagIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationCityTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationStateTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationCountryTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationLongitudeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationLatitudeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addRouteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationTagIDtoViewGridBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewSightingButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationFirstGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void migrationSecondGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void migrationTab_Click(object sender, EventArgs e)
+        {
 
         }
     }
 }
-
