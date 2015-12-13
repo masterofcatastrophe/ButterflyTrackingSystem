@@ -1832,7 +1832,10 @@ namespace ButterflyTrackingSystem
             updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
         }
         
-        private void ResetDate_Click(object sender, EventArgs e)
+        private void ResetDate_Click(object sender, EventArgs e){}
+        private void ResetTime_Click(object sender, EventArgs e){}
+
+        private void ResetDate_Click_1(object sender, EventArgs e)
         {
             if (cal == false)
             {
@@ -1847,12 +1850,15 @@ namespace ButterflyTrackingSystem
                 searchDateTimePicker.CustomFormat = " ";
                 cal = false;
             }
+
         }
-        private void ResetTime_Click(object sender, EventArgs e)
+
+        private void ResetTime_Click_1(object sender, EventArgs e)
         {
+
             if (tim == false)
             {
-                
+
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
                 dateTimePicker1.ShowUpDown = true;
                 dateTimePicker1.CustomFormat = "hh:mm:ss tt";
@@ -1865,6 +1871,6 @@ namespace ButterflyTrackingSystem
                 tim = false;
             }
         }
-
     }
+    
 }
