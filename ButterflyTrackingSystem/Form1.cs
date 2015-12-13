@@ -18,20 +18,37 @@ namespace ButterflyTrackingSystem
         static DBConnect con = new DBConnect();
         MySqlConnection dbcon = con.connection;
         int Emp_ID = -1; // currently logged in user id
-        bool Cred;
-
-
+        bool Cred; // check tagger/nonTagger
+        bool cal = false; // enable disabled date
+        bool tim = false; // enable disabled time
+        
         public BTS()
         {
             InitializeComponent();
             con.OpenConnection(); // open db connection
-            functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged; // condition for tagger/nonTagger
             //functionalitiesTabs.Selecting += ideaTabControl_Selecting;
-            // functionalitiesTabs.DrawItem += ideaTabControl_DrawItem;
+           mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
+        }
+
+        void listView_VisibleChanged(object sender, EventArgs e)
+        {
+            //mainPanel.VisibleChanged -= new EventHandler(listView_VisibleChanged);
+            if (functionalitiesTabs.SelectedIndex == 2) // clears search tab initially
+            {
+                searchDateTimePicker.Value = DateTime.Now;
+                dateTimePicker1.Value = DateTime.Now;
+                searchDateTimePicker.CustomFormat = " ";
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.CustomFormat = " ";
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.CustomFormat = " ";
+
+            }
         }
 
         /*
-        private void ideaTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
             if (!e.TabPage.Enabled)
             {
@@ -55,42 +72,33 @@ namespace ButterflyTrackingSystem
             else if ((Cred == false) && ((functionalitiesTabs.SelectedIndex == 0)
                                          || functionalitiesTabs.SelectedIndex == 1))
             {
-                (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
-                (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
+               // (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
+               // (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
                 (functionalitiesTabs.TabPages[1] as TabPage).Visible = false; // hide controls
                 (functionalitiesTabs.TabPages[0] as TabPage).Visible = false; // hide controls
-                //functionalitiesTabs.DrawMode = TabDrawMode.OwnerDrawFixed;
                 //MessageBox.Show("Unable to load tab. You are not a tagger.");
             }
             if (functionalitiesTabs.SelectedIndex == 2) // clears search tab initially
             {
-                
-               // searchDateTimePicker.Format = DateTimePickerFormat.Date;
-                searchDateTimePicker.ShowUpDown = true;
-                searchDateTimePicker.CustomFormat = "MM-dd-yyyy";
-                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-                dateTimePicker1.CustomFormat = "hh:mm tt";
-                dateTimePicker1.Format = DateTimePickerFormat.Custom;
-                //dateTimePicker1.Format = DateTimePickerFormat.Time;
-                dateTimePicker1.ShowUpDown = true;
                 /*
                 searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-                searchDateTimePicker.CustomFormat = " ";
+                searchDateTimePicker.ShowUpDown = true;
+                searchDateTimePicker.CustomFormat = "MM/dd/yyyy";
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.ShowUpDown = true;
+                dateTimePicker1.CustomFormat = "hh:mm:ss tt";
                 */
+                searchDateTimePicker.Value = DateTime.Now;
+                dateTimePicker1.Value = DateTime.Now;
+                searchDateTimePicker.CustomFormat = " ";
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.CustomFormat = " ";
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.CustomFormat = " ";
+
             }
         }
-
-        /*
-        private void ideaTabControl_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            TabPage tabPage = functionalitiesTabs.TabPages[e.Index];
-            Color foreColor = SystemColors.WindowText;
-            if (tabPage.Enabled == false) foreColor = SystemColors.GrayText;
-            Rectangle tabRectangle = functionalitiesTabs.GetTabRect(e.Index);
-            TextRenderer.DrawText(e.Graphics, tabPage.Text, this.functionalitiesTabs.Font, tabRectangle, foreColor);
-        }
-        */
-
+      
         private void BTS_Load(object sender, EventArgs e)
         {
 
@@ -672,9 +680,26 @@ namespace ButterflyTrackingSystem
         private void searchTab_Click(object sender, EventArgs e)
         {
             /*
-            searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-            searchDateTimePicker.CustomFormat = " ";
+            if (cal == false)
+            {
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.ShowUpDown = true;
+                searchDateTimePicker.CustomFormat = "MM/dd/yyyy";
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.ShowUpDown = true;
+                dateTimePicker1.CustomFormat = "hh:mm:ss tt";
+                cal = true;
+            }
+            else
+            {
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.CustomFormat = " ";
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.CustomFormat = " ";
+                cal = false;
+            }
             */
+            
         }
 
         private void searchLabel_Click(object sender, EventArgs e)
@@ -779,7 +804,7 @@ namespace ButterflyTrackingSystem
             if (!String.IsNullOrEmpty(searchUserNameTextBox.Text) || !String.IsNullOrEmpty(searchTagIDTextBox.Text) ||
                 !String.IsNullOrEmpty(searchSpeciesTextBox.Text) || !String.IsNullOrEmpty(searchCityTextBox.Text) ||
                 !String.IsNullOrEmpty(searchStateTextBox.Text) || !String.IsNullOrEmpty(searchCountryTextBox.Text)
-                || !String.IsNullOrEmpty(searchGendercomboBox.Text) || !String.IsNullOrEmpty(searchDateTimePicker.Text))
+                || !String.IsNullOrEmpty(searchGendercomboBox.Text) || cal == true || tim == true)//!String.IsNullOrEmpty(searchDateTimePicker.Text)
             {
 
                 if (dbcon.State == ConnectionState.Open)
@@ -831,18 +856,16 @@ namespace ButterflyTrackingSystem
                         }
                         param = "'" + gend + "'";
                     }
-                    if (!String.IsNullOrEmpty(searchDateTimePicker.Text))
+                    if (!String.IsNullOrEmpty(searchDateTimePicker.Text) && cal == true)
                     {
                         column = "Date_of_sighting";
                         param = "= '" + SearchDate + "'"; // + "' AND ";
                     }
-                    if (!String.IsNullOrEmpty(dateTimePicker1.Text))
+                    if (!String.IsNullOrEmpty(dateTimePicker1.Text) && tim == true)
                     {
                         column ="Time_of_sighting";
                         param = "= '" + SearchTime + "'";
                     }
-                    
-
 
                     MySqlDataAdapter mySqlDataAdapter;
                     MySqlCommandBuilder mySqlCommandBuilder;
@@ -887,7 +910,7 @@ namespace ButterflyTrackingSystem
                             (item as ComboBox).Text = "";
                         }
                     } //end foreach
-                    //searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                    //dateTimePicker1.Format = DateTimePickerFormat.Time;
                     //searchDateTimePicker.CustomFormat = " ";
                 }
                 else
@@ -895,11 +918,13 @@ namespace ButterflyTrackingSystem
                     con.CloseConnection();
                     con.OpenConnection();
                 }
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
             }
-            else
-            {
+            else{
+                
                 MessageBox.Show("Have to use at least one field.", "Error", MessageBoxButtons.OK);
             }
+            
         }
 
         private void uploadSightingsFileButton_Click(object sender, EventArgs e)
@@ -1407,17 +1432,17 @@ namespace ButterflyTrackingSystem
 
         private void searchDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            searchDateTimePicker.CustomFormat = "MM-dd-yyyy";
             searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+            searchDateTimePicker.ShowUpDown = true;
+            searchDateTimePicker.CustomFormat = "MM/dd/yyyy";
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            dateTimePicker1.CustomFormat = "hh:mm tt";
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.ShowUpDown = true;
+            dateTimePicker1.CustomFormat = "hh:mm tt";
         }
-
-
 
         public class DBConnect
         {
@@ -1823,10 +1848,43 @@ namespace ButterflyTrackingSystem
             updateEntryStateBox.Text = row.Cells[9].Value.ToString();
             updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
         }
+        
+        private void ResetDate_Click(object sender, EventArgs e){}
+        private void ResetTime_Click(object sender, EventArgs e){}
 
-        private void updateEntryGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void ResetDate_Click_1(object sender, EventArgs e)
         {
+            if (cal == false)
+            {
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.ShowUpDown = true;
+                searchDateTimePicker.CustomFormat = "MM-dd-yyyy";
+                cal = true;
+            }
+            else
+            {
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.CustomFormat = " ";
+                cal = false;
+            }
 
+        }
+
+        private void ResetTime_Click_1(object sender, EventArgs e)
+        {
+            if (tim == false)
+            {
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.ShowUpDown = true;
+                dateTimePicker1.CustomFormat = "hh:mm tt";
+                tim = true;
+            }
+            else
+            {
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.CustomFormat = " ";
+                tim = false;
+            }
         }
     }
 }
