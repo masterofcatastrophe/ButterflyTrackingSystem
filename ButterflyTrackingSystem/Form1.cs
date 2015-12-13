@@ -27,14 +27,15 @@ namespace ButterflyTrackingSystem
             InitializeComponent();
             con.OpenConnection(); // open db connection
             functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged; // condition for tagger/nonTagger
-            //functionalitiesTabs.Selecting += ideaTabControl_Selecting;
-           mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
+            functionalitiesTabs.Selecting += tabControl1_Selecting;
+            mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
+            functionalitiesTabs.Selected += new TabControlEventHandler(tabControl1_Selected);
         }
 
         void listView_VisibleChanged(object sender, EventArgs e)
         {
             //mainPanel.VisibleChanged -= new EventHandler(listView_VisibleChanged);
-            if (functionalitiesTabs.SelectedIndex == 2) // clears search tab initially
+            if (functionalitiesTabs.SelectedIndex == 3) // clears search tab initially
             {
                 searchDateTimePicker.Value = DateTime.Now;
                 dateTimePicker1.Value = DateTime.Now;
@@ -46,16 +47,40 @@ namespace ButterflyTrackingSystem
 
             }
         }
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            if (functionalitiesTabs.SelectedIndex == 3) // clears search tab initially
+            {
+                searchDateTimePicker.Value = DateTime.Now;
+                dateTimePicker1.Value = DateTime.Now;
+                searchDateTimePicker.CustomFormat = " ";
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.CustomFormat = " ";
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.CustomFormat = " ";
 
-        /*
+            }
+        }
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
+            if (functionalitiesTabs.SelectedIndex == 3) // clears search tab initially
+            {
+                searchDateTimePicker.Value = DateTime.Now;
+                dateTimePicker1.Value = DateTime.Now;
+                searchDateTimePicker.CustomFormat = " ";
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.CustomFormat = " ";
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.CustomFormat = " ";
+
+            }
+            /*
             if (!e.TabPage.Enabled)
             {
                 e.Cancel = true;
             }
+            */
         }
-        */
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1427,7 +1452,7 @@ namespace ButterflyTrackingSystem
         {
             searchDateTimePicker.Format = DateTimePickerFormat.Custom;
             searchDateTimePicker.ShowUpDown = true;
-            searchDateTimePicker.CustomFormat = "MM/dd/yyyy";
+            searchDateTimePicker.CustomFormat = "MM-dd-yyyy";
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -1691,11 +1716,6 @@ namespace ButterflyTrackingSystem
                     row.Cells[9].Value = updateEntryStateBox.Text;
                     row.Cells[10].Value = updateEntryCountryBox.Text;
 
-
-
-
-
-
                     string updateEntry_sql = "UPDATE Butterfly SET Species='" + updateEntrySpeciesBox.Text +
                                             "', Gender='" + updateEntryGenderComboBox.Text + "', Age='" +
                                             updateEntryAgeBox.Text + "'WHERE Tag_ID='" + updateEntryTagIDBox.Text + "' ;";
@@ -1704,7 +1724,6 @@ namespace ButterflyTrackingSystem
                     MySqlDataReader updateReader = updateEntry.ExecuteReader();
 
                     updateReader.Close();
-
 
                     string updateEntrySight_sql = "UPDATE Sighting_Locations SET Longitude='" + updateEntryLongitudeBox.Text +
                                                 "', Latitude='" + updateEntryLatitudeBox.Text + "', City='" +
@@ -1717,15 +1736,9 @@ namespace ButterflyTrackingSystem
                     updateSightReader.Close();
                     MessageBox.Show("Entry up to date!");
                 }
-
-
                 else MessageBox.Show("Please fill missing fields !");
 
             }
-
-            
-            
-           
         }
             
 
@@ -1877,8 +1890,8 @@ namespace ButterflyTrackingSystem
             if (cal == false)
             {
                 searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-                searchDateTimePicker.ShowUpDown = true;
                 searchDateTimePicker.CustomFormat = "MM-dd-yyyy";
+                searchDateTimePicker.ShowUpDown = true;
                 cal = true;
             }
             else
@@ -1895,8 +1908,8 @@ namespace ButterflyTrackingSystem
             if (tim == false)
             {
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
-                dateTimePicker1.ShowUpDown = true;
                 dateTimePicker1.CustomFormat = "hh:mm tt";
+                dateTimePicker1.ShowUpDown = true;
                 tim = true;
             }
             else
