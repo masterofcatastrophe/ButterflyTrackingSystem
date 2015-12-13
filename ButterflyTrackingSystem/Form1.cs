@@ -1650,7 +1650,7 @@ namespace ButterflyTrackingSystem
 
 
 
-                    
+
 
 
                     string updateEntry_sql = "UPDATE Butterfly SET Species='" + updateEntrySpeciesBox.Text +
@@ -1659,7 +1659,7 @@ namespace ButterflyTrackingSystem
 
                     MySqlCommand updateEntry = new MySqlCommand(updateEntry_sql, dbcon);
                     MySqlDataReader updateReader = updateEntry.ExecuteReader();
-                   
+
                     updateReader.Close();
 
 
@@ -1676,12 +1676,11 @@ namespace ButterflyTrackingSystem
                 }
 
 
-
-
+                else MessageBox.Show("Please fill missing fields !");
 
             }
 
-            else MessageBox.Show("Please fill missing fields !");
+            
             
            
         }
