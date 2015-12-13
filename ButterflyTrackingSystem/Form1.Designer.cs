@@ -1427,6 +1427,7 @@ namespace ButterflyTrackingSystem
             this.migrationSecondGrid.Location = new System.Drawing.Point(352, 328);
             this.migrationSecondGrid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.migrationSecondGrid.Name = "migrationSecondGrid";
+            this.migrationSecondGrid.ReadOnly = true;
             this.migrationSecondGrid.Size = new System.Drawing.Size(600, 200);
             this.migrationSecondGrid.TabIndex = 110;
             this.migrationSecondGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.migrationSecondGrid_CellContentClick);
