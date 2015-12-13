@@ -180,6 +180,7 @@ namespace ButterflyTrackingSystem
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.deleteEntryButton = new System.Windows.Forms.Button();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -222,10 +223,9 @@ namespace ButterflyTrackingSystem
             this.loginPanel.Controls.Add(this.passwordLabel);
             this.loginPanel.Controls.Add(this.userNameLabel);
             this.loginPanel.Controls.Add(this.loginLabel);
-            this.loginPanel.Location = new System.Drawing.Point(214, 20);
-            this.loginPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.loginPanel.Location = new System.Drawing.Point(143, 13);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(536, 529);
+            this.loginPanel.Size = new System.Drawing.Size(357, 344);
             this.loginPanel.TabIndex = 0;
             this.loginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.loginPanel_Paint);
             // 
@@ -236,10 +236,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dontHaveanAccountLabel.AutoSize = true;
             this.dontHaveanAccountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dontHaveanAccountLabel.Location = new System.Drawing.Point(39, 431);
-            this.dontHaveanAccountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dontHaveanAccountLabel.Location = new System.Drawing.Point(26, 280);
             this.dontHaveanAccountLabel.Name = "dontHaveanAccountLabel";
-            this.dontHaveanAccountLabel.Size = new System.Drawing.Size(196, 25);
+            this.dontHaveanAccountLabel.Size = new System.Drawing.Size(142, 17);
             this.dontHaveanAccountLabel.TabIndex = 7;
             this.dontHaveanAccountLabel.Text = "or Need an Account?";
             this.dontHaveanAccountLabel.Click += new System.EventHandler(this.dontHaveanAccountLabel_Click);
@@ -247,10 +246,9 @@ namespace ButterflyTrackingSystem
             // registerButton
             // 
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(261, 420);
-            this.registerButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.registerButton.Location = new System.Drawing.Point(174, 273);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(204, 46);
+            this.registerButton.Size = new System.Drawing.Size(136, 30);
             this.registerButton.TabIndex = 6;
             this.registerButton.Text = "Create an Account";
             this.registerButton.UseVisualStyleBackColor = true;
@@ -259,10 +257,9 @@ namespace ButterflyTrackingSystem
             // loginButton
             // 
             this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginButton.Location = new System.Drawing.Point(216, 345);
-            this.loginButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.loginButton.Location = new System.Drawing.Point(144, 224);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(118, 46);
+            this.loginButton.Size = new System.Drawing.Size(79, 30);
             this.loginButton.TabIndex = 5;
             this.loginButton.Text = "login";
             this.loginButton.UseVisualStyleBackColor = true;
@@ -273,10 +270,9 @@ namespace ButterflyTrackingSystem
             this.passwordBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordBox.Location = new System.Drawing.Point(168, 282);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.passwordBox.Location = new System.Drawing.Point(112, 183);
             this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(312, 26);
+            this.passwordBox.Size = new System.Drawing.Size(209, 20);
             this.passwordBox.TabIndex = 4;
             this.passwordBox.UseSystemPasswordChar = true;
             this.passwordBox.TextChanged += new System.EventHandler(this.passwordBox_TextChanged);
@@ -287,10 +283,9 @@ namespace ButterflyTrackingSystem
             this.userNameBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.userNameBox.Location = new System.Drawing.Point(168, 197);
-            this.userNameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.userNameBox.Location = new System.Drawing.Point(112, 128);
             this.userNameBox.Name = "userNameBox";
-            this.userNameBox.Size = new System.Drawing.Size(312, 26);
+            this.userNameBox.Size = new System.Drawing.Size(209, 20);
             this.userNameBox.TabIndex = 3;
             this.userNameBox.TextChanged += new System.EventHandler(this.userNameBox_TextChanged);
             this.userNameBox.Leave += new System.EventHandler(this.userNameBox_Leave);
@@ -302,10 +297,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(39, 283);
-            this.passwordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.passwordLabel.Location = new System.Drawing.Point(26, 184);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(98, 25);
+            this.passwordLabel.Size = new System.Drawing.Size(69, 17);
             this.passwordLabel.TabIndex = 2;
             this.passwordLabel.Text = "Password";
             this.passwordLabel.Click += new System.EventHandler(this.passwordLabel_Click);
@@ -317,10 +311,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userNameLabel.AutoSize = true;
             this.userNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameLabel.Location = new System.Drawing.Point(39, 197);
-            this.userNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.userNameLabel.Location = new System.Drawing.Point(26, 128);
             this.userNameLabel.Name = "userNameLabel";
-            this.userNameLabel.Size = new System.Drawing.Size(110, 25);
+            this.userNameLabel.Size = new System.Drawing.Size(79, 17);
             this.userNameLabel.TabIndex = 1;
             this.userNameLabel.Text = "User Name";
             this.userNameLabel.Click += new System.EventHandler(this.userNameLabel_Click);
@@ -332,10 +325,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginLabel.Location = new System.Drawing.Point(207, 95);
-            this.loginLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.loginLabel.Location = new System.Drawing.Point(138, 62);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(118, 46);
+            this.loginLabel.Size = new System.Drawing.Size(80, 31);
             this.loginLabel.TabIndex = 0;
             this.loginLabel.Text = "Login";
             this.loginLabel.Click += new System.EventHandler(this.loginLabel_Click);
@@ -366,10 +358,9 @@ namespace ButterflyTrackingSystem
             this.registrationPanel.Controls.Add(this.createPasswordLabel);
             this.registrationPanel.Controls.Add(this.createUserNameLabel);
             this.registrationPanel.Controls.Add(this.createAccountLabel);
-            this.registrationPanel.Location = new System.Drawing.Point(39, 18);
-            this.registrationPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.registrationPanel.Location = new System.Drawing.Point(26, 12);
             this.registrationPanel.Name = "registrationPanel";
-            this.registrationPanel.Size = new System.Drawing.Size(894, 546);
+            this.registrationPanel.Size = new System.Drawing.Size(596, 355);
             this.registrationPanel.TabIndex = 8;
             this.registrationPanel.Visible = false;
             this.registrationPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.registrationPanel_Paint);
@@ -381,10 +372,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeeRequiredLabel.AutoSize = true;
             this.employeeRequiredLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeRequiredLabel.Location = new System.Drawing.Point(20, 492);
-            this.employeeRequiredLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.employeeRequiredLabel.Location = new System.Drawing.Point(13, 320);
             this.employeeRequiredLabel.Name = "employeeRequiredLabel";
-            this.employeeRequiredLabel.Size = new System.Drawing.Size(80, 20);
+            this.employeeRequiredLabel.Size = new System.Drawing.Size(54, 13);
             this.employeeRequiredLabel.TabIndex = 22;
             this.employeeRequiredLabel.Text = "*Required";
             this.employeeRequiredLabel.Click += new System.EventHandler(this.employeeRequiredLabel_Click);
@@ -396,10 +386,9 @@ namespace ButterflyTrackingSystem
             this.taggerNontaggerOptionsBox.Items.AddRange(new object[] {
             "nonTagger",
             "tagger"});
-            this.taggerNontaggerOptionsBox.Location = new System.Drawing.Point(188, 275);
-            this.taggerNontaggerOptionsBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.taggerNontaggerOptionsBox.Location = new System.Drawing.Point(125, 179);
             this.taggerNontaggerOptionsBox.Name = "taggerNontaggerOptionsBox";
-            this.taggerNontaggerOptionsBox.Size = new System.Drawing.Size(128, 28);
+            this.taggerNontaggerOptionsBox.Size = new System.Drawing.Size(87, 21);
             this.taggerNontaggerOptionsBox.Sorted = true;
             this.taggerNontaggerOptionsBox.TabIndex = 5;
             this.taggerNontaggerOptionsBox.SelectedIndexChanged += new System.EventHandler(this.taggerNontaggerOptionsBox_SelectedIndexChanged);
@@ -413,10 +402,9 @@ namespace ButterflyTrackingSystem
             this.employeeAddressLabel.AutoSize = true;
             this.employeeAddressLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.employeeAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeAddressLabel.Location = new System.Drawing.Point(386, 275);
-            this.employeeAddressLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.employeeAddressLabel.Location = new System.Drawing.Point(257, 179);
             this.employeeAddressLabel.Name = "employeeAddressLabel";
-            this.employeeAddressLabel.Size = new System.Drawing.Size(133, 30);
+            this.employeeAddressLabel.Size = new System.Drawing.Size(94, 22);
             this.employeeAddressLabel.TabIndex = 20;
             this.employeeAddressLabel.Text = "Address* {";
             this.employeeAddressLabel.Click += new System.EventHandler(this.employeeAddressLabel_Click);
@@ -428,10 +416,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeePositionLabel.AutoSize = true;
             this.employeePositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeePositionLabel.Location = new System.Drawing.Point(20, 277);
-            this.employeePositionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.employeePositionLabel.Location = new System.Drawing.Point(13, 180);
             this.employeePositionLabel.Name = "employeePositionLabel";
-            this.employeePositionLabel.Size = new System.Drawing.Size(149, 25);
+            this.employeePositionLabel.Size = new System.Drawing.Size(106, 17);
             this.employeePositionLabel.TabIndex = 18;
             this.employeePositionLabel.Text = "Select Position*";
             this.employeePositionLabel.Click += new System.EventHandler(this.employeePositionLabel_Click);
@@ -440,10 +427,9 @@ namespace ButterflyTrackingSystem
             // 
             this.createEmployeePhoneNumberBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createEmployeePhoneNumberBox.Location = new System.Drawing.Point(566, 180);
-            this.createEmployeePhoneNumberBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEmployeePhoneNumberBox.Location = new System.Drawing.Point(377, 117);
             this.createEmployeePhoneNumberBox.Name = "createEmployeePhoneNumberBox";
-            this.createEmployeePhoneNumberBox.Size = new System.Drawing.Size(282, 26);
+            this.createEmployeePhoneNumberBox.Size = new System.Drawing.Size(189, 20);
             this.createEmployeePhoneNumberBox.TabIndex = 4;
             this.createEmployeePhoneNumberBox.TextChanged += new System.EventHandler(this.createEmployeePhoneNumberBox_TextChanged);
             this.createEmployeePhoneNumberBox.Leave += new System.EventHandler(this.createEmployeePhoneNumberBox_Leave);
@@ -455,10 +441,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeePhoneNumberLabel.AutoSize = true;
             this.employeePhoneNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeePhoneNumberLabel.Location = new System.Drawing.Point(453, 180);
-            this.employeePhoneNumberLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.employeePhoneNumberLabel.Location = new System.Drawing.Point(302, 117);
             this.employeePhoneNumberLabel.Name = "employeePhoneNumberLabel";
-            this.employeePhoneNumberLabel.Size = new System.Drawing.Size(85, 25);
+            this.employeePhoneNumberLabel.Size = new System.Drawing.Size(61, 17);
             this.employeePhoneNumberLabel.TabIndex = 16;
             this.employeePhoneNumberLabel.Text = "Phone #";
             this.employeePhoneNumberLabel.Click += new System.EventHandler(this.employeePhoneNumberLabel_Click);
@@ -467,10 +452,9 @@ namespace ButterflyTrackingSystem
             // 
             this.createEmployeeStateBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createEmployeeStateBox.Location = new System.Drawing.Point(616, 323);
-            this.createEmployeeStateBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEmployeeStateBox.Location = new System.Drawing.Point(411, 210);
             this.createEmployeeStateBox.Name = "createEmployeeStateBox";
-            this.createEmployeeStateBox.Size = new System.Drawing.Size(230, 26);
+            this.createEmployeeStateBox.Size = new System.Drawing.Size(155, 20);
             this.createEmployeeStateBox.TabIndex = 8;
             this.createEmployeeStateBox.TextChanged += new System.EventHandler(this.createEmployeeStateBox_TextChanged);
             this.createEmployeeStateBox.Leave += new System.EventHandler(this.createEmployeeStateBox_Leave);
@@ -482,10 +466,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeeStateLabel.AutoSize = true;
             this.employeeStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeStateLabel.Location = new System.Drawing.Point(528, 323);
-            this.employeeStateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.employeeStateLabel.Location = new System.Drawing.Point(352, 210);
             this.employeeStateLabel.Name = "employeeStateLabel";
-            this.employeeStateLabel.Size = new System.Drawing.Size(58, 25);
+            this.employeeStateLabel.Size = new System.Drawing.Size(41, 17);
             this.employeeStateLabel.TabIndex = 14;
             this.employeeStateLabel.Text = "State";
             this.employeeStateLabel.Click += new System.EventHandler(this.employeeStateLabel_Click);
@@ -494,10 +477,9 @@ namespace ButterflyTrackingSystem
             // 
             this.createEmployeeCityBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createEmployeeCityBox.Location = new System.Drawing.Point(616, 283);
-            this.createEmployeeCityBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEmployeeCityBox.Location = new System.Drawing.Point(411, 184);
             this.createEmployeeCityBox.Name = "createEmployeeCityBox";
-            this.createEmployeeCityBox.Size = new System.Drawing.Size(230, 26);
+            this.createEmployeeCityBox.Size = new System.Drawing.Size(155, 20);
             this.createEmployeeCityBox.TabIndex = 7;
             this.createEmployeeCityBox.TextChanged += new System.EventHandler(this.createEmployeeCityBox_TextChanged);
             this.createEmployeeCityBox.Leave += new System.EventHandler(this.createEmployeeCityBox_Leave);
@@ -509,10 +491,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeeCityLabel.AutoSize = true;
             this.employeeCityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeCityLabel.Location = new System.Drawing.Point(528, 283);
-            this.employeeCityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.employeeCityLabel.Location = new System.Drawing.Point(352, 184);
             this.employeeCityLabel.Name = "employeeCityLabel";
-            this.employeeCityLabel.Size = new System.Drawing.Size(46, 25);
+            this.employeeCityLabel.Size = new System.Drawing.Size(31, 17);
             this.employeeCityLabel.TabIndex = 12;
             this.employeeCityLabel.Text = "City";
             this.employeeCityLabel.Click += new System.EventHandler(this.employeeCityLabel_Click);
@@ -521,10 +502,9 @@ namespace ButterflyTrackingSystem
             // 
             this.createEmployeeStreetBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createEmployeeStreetBox.Location = new System.Drawing.Point(616, 238);
-            this.createEmployeeStreetBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEmployeeStreetBox.Location = new System.Drawing.Point(411, 155);
             this.createEmployeeStreetBox.Name = "createEmployeeStreetBox";
-            this.createEmployeeStreetBox.Size = new System.Drawing.Size(230, 26);
+            this.createEmployeeStreetBox.Size = new System.Drawing.Size(155, 20);
             this.createEmployeeStreetBox.TabIndex = 6;
             this.createEmployeeStreetBox.TextChanged += new System.EventHandler(this.createEmployeeStreetBox_TextChanged);
             this.createEmployeeStreetBox.Leave += new System.EventHandler(this.createEmployeeStreetBox_Leave);
@@ -536,20 +516,18 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeeStreetLabel.AutoSize = true;
             this.employeeStreetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeStreetLabel.Location = new System.Drawing.Point(528, 243);
-            this.employeeStreetLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.employeeStreetLabel.Location = new System.Drawing.Point(352, 158);
             this.employeeStreetLabel.Name = "employeeStreetLabel";
-            this.employeeStreetLabel.Size = new System.Drawing.Size(64, 25);
+            this.employeeStreetLabel.Size = new System.Drawing.Size(46, 17);
             this.employeeStreetLabel.TabIndex = 10;
             this.employeeStreetLabel.Text = "Street";
             this.employeeStreetLabel.Click += new System.EventHandler(this.employeeStreetLabel_Click);
             // 
             // createEmployeeNameBox
             // 
-            this.createEmployeeNameBox.Location = new System.Drawing.Point(195, 180);
-            this.createEmployeeNameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEmployeeNameBox.Location = new System.Drawing.Point(130, 117);
             this.createEmployeeNameBox.Name = "createEmployeeNameBox";
-            this.createEmployeeNameBox.Size = new System.Drawing.Size(214, 26);
+            this.createEmployeeNameBox.Size = new System.Drawing.Size(144, 20);
             this.createEmployeeNameBox.TabIndex = 3;
             this.createEmployeeNameBox.TextChanged += new System.EventHandler(this.createEmployeeNameBox_TextChanged);
             this.createEmployeeNameBox.Leave += new System.EventHandler(this.createEmployeeNameBox_Leave);
@@ -561,10 +539,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EmployeeNameLabel.AutoSize = true;
             this.EmployeeNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmployeeNameLabel.Location = new System.Drawing.Point(20, 180);
-            this.EmployeeNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EmployeeNameLabel.Location = new System.Drawing.Point(13, 117);
             this.EmployeeNameLabel.Name = "EmployeeNameLabel";
-            this.EmployeeNameLabel.Size = new System.Drawing.Size(164, 25);
+            this.EmployeeNameLabel.Size = new System.Drawing.Size(116, 17);
             this.EmployeeNameLabel.TabIndex = 8;
             this.EmployeeNameLabel.Text = "Employee Name*";
             this.EmployeeNameLabel.Click += new System.EventHandler(this.EmployeeNameLabel_Click);
@@ -576,10 +553,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.alreadyHaveanAccountLabel.AutoSize = true;
             this.alreadyHaveanAccountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.alreadyHaveanAccountLabel.Location = new System.Drawing.Point(242, 486);
-            this.alreadyHaveanAccountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.alreadyHaveanAccountLabel.Location = new System.Drawing.Point(161, 316);
             this.alreadyHaveanAccountLabel.Name = "alreadyHaveanAccountLabel";
-            this.alreadyHaveanAccountLabel.Size = new System.Drawing.Size(173, 25);
+            this.alreadyHaveanAccountLabel.Size = new System.Drawing.Size(124, 17);
             this.alreadyHaveanAccountLabel.TabIndex = 7;
             this.alreadyHaveanAccountLabel.Text = "Have an Account?";
             this.alreadyHaveanAccountLabel.Click += new System.EventHandler(this.alreadyHaveanAccountLabel_Click);
@@ -587,10 +563,9 @@ namespace ButterflyTrackingSystem
             // createEmployeeAccountButton
             // 
             this.createEmployeeAccountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createEmployeeAccountButton.Location = new System.Drawing.Point(322, 402);
-            this.createEmployeeAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEmployeeAccountButton.Location = new System.Drawing.Point(215, 261);
             this.createEmployeeAccountButton.Name = "createEmployeeAccountButton";
-            this.createEmployeeAccountButton.Size = new System.Drawing.Size(204, 46);
+            this.createEmployeeAccountButton.Size = new System.Drawing.Size(136, 30);
             this.createEmployeeAccountButton.TabIndex = 9;
             this.createEmployeeAccountButton.Text = "Create Account";
             this.createEmployeeAccountButton.UseVisualStyleBackColor = true;
@@ -599,10 +574,9 @@ namespace ButterflyTrackingSystem
             // loginHereButton
             // 
             this.loginHereButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginHereButton.Location = new System.Drawing.Point(441, 475);
-            this.loginHereButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.loginHereButton.Location = new System.Drawing.Point(294, 309);
             this.loginHereButton.Name = "loginHereButton";
-            this.loginHereButton.Size = new System.Drawing.Size(156, 46);
+            this.loginHereButton.Size = new System.Drawing.Size(104, 30);
             this.loginHereButton.TabIndex = 10;
             this.loginHereButton.Text = "login Here!";
             this.loginHereButton.UseVisualStyleBackColor = true;
@@ -612,10 +586,9 @@ namespace ButterflyTrackingSystem
             // 
             this.createEmployeePasswordBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createEmployeePasswordBox.Location = new System.Drawing.Point(566, 114);
-            this.createEmployeePasswordBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEmployeePasswordBox.Location = new System.Drawing.Point(377, 74);
             this.createEmployeePasswordBox.Name = "createEmployeePasswordBox";
-            this.createEmployeePasswordBox.Size = new System.Drawing.Size(282, 26);
+            this.createEmployeePasswordBox.Size = new System.Drawing.Size(189, 20);
             this.createEmployeePasswordBox.TabIndex = 2;
             this.createEmployeePasswordBox.UseSystemPasswordChar = true;
             this.createEmployeePasswordBox.TextChanged += new System.EventHandler(this.createEmployeePasswordBox_TextChanged);
@@ -623,10 +596,9 @@ namespace ButterflyTrackingSystem
             // 
             // createEmployeeUserNameBox
             // 
-            this.createEmployeeUserNameBox.Location = new System.Drawing.Point(147, 114);
-            this.createEmployeeUserNameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEmployeeUserNameBox.Location = new System.Drawing.Point(98, 74);
             this.createEmployeeUserNameBox.Name = "createEmployeeUserNameBox";
-            this.createEmployeeUserNameBox.Size = new System.Drawing.Size(262, 26);
+            this.createEmployeeUserNameBox.Size = new System.Drawing.Size(176, 20);
             this.createEmployeeUserNameBox.TabIndex = 1;
             this.createEmployeeUserNameBox.TextChanged += new System.EventHandler(this.createEmployeeUserNameBox_TextChanged);
             this.createEmployeeUserNameBox.Leave += new System.EventHandler(this.createEmployeeUserNameBox_Leave);
@@ -638,10 +610,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createPasswordLabel.AutoSize = true;
             this.createPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createPasswordLabel.Location = new System.Drawing.Point(453, 114);
-            this.createPasswordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createPasswordLabel.Location = new System.Drawing.Point(302, 74);
             this.createPasswordLabel.Name = "createPasswordLabel";
-            this.createPasswordLabel.Size = new System.Drawing.Size(106, 25);
+            this.createPasswordLabel.Size = new System.Drawing.Size(74, 17);
             this.createPasswordLabel.TabIndex = 2;
             this.createPasswordLabel.Text = "Password*";
             this.createPasswordLabel.Click += new System.EventHandler(this.createPasswordLabel_Click);
@@ -653,10 +624,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createUserNameLabel.AutoSize = true;
             this.createUserNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createUserNameLabel.Location = new System.Drawing.Point(20, 112);
-            this.createUserNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createUserNameLabel.Location = new System.Drawing.Point(13, 73);
             this.createUserNameLabel.Name = "createUserNameLabel";
-            this.createUserNameLabel.Size = new System.Drawing.Size(118, 25);
+            this.createUserNameLabel.Size = new System.Drawing.Size(84, 17);
             this.createUserNameLabel.TabIndex = 1;
             this.createUserNameLabel.Text = "User Name*";
             this.createUserNameLabel.Click += new System.EventHandler(this.createUserNameLabel_Click);
@@ -668,10 +638,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createAccountLabel.AutoSize = true;
             this.createAccountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createAccountLabel.Location = new System.Drawing.Point(315, 25);
-            this.createAccountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createAccountLabel.Location = new System.Drawing.Point(210, 16);
             this.createAccountLabel.Name = "createAccountLabel";
-            this.createAccountLabel.Size = new System.Drawing.Size(261, 36);
+            this.createAccountLabel.Size = new System.Drawing.Size(175, 25);
             this.createAccountLabel.TabIndex = 0;
             this.createAccountLabel.Text = "Create an Account";
             this.createAccountLabel.Click += new System.EventHandler(this.createAccountLabel_Click);
@@ -681,9 +650,8 @@ namespace ButterflyTrackingSystem
             this.mainPanel.Controls.Add(this.functionalitiesTabs);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(980, 582);
+            this.mainPanel.Size = new System.Drawing.Size(653, 378);
             this.mainPanel.TabIndex = 23;
             this.mainPanel.Visible = false;
             // 
@@ -698,10 +666,9 @@ namespace ButterflyTrackingSystem
             this.functionalitiesTabs.Cursor = System.Windows.Forms.Cursors.Hand;
             this.functionalitiesTabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.functionalitiesTabs.Location = new System.Drawing.Point(0, 0);
-            this.functionalitiesTabs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.functionalitiesTabs.Name = "functionalitiesTabs";
             this.functionalitiesTabs.SelectedIndex = 0;
-            this.functionalitiesTabs.Size = new System.Drawing.Size(980, 582);
+            this.functionalitiesTabs.Size = new System.Drawing.Size(653, 378);
             this.functionalitiesTabs.TabIndex = 0;
             this.functionalitiesTabs.TabStop = false;
             this.functionalitiesTabs.Click += new System.EventHandler(this.functionalitiesTabs_Click_1);
@@ -731,21 +698,19 @@ namespace ButterflyTrackingSystem
             this.createEntryTab.Controls.Add(this.createSpeciesLabel);
             this.createEntryTab.Controls.Add(this.createEntryButton);
             this.createEntryTab.Controls.Add(this.createEntryLabel);
-            this.createEntryTab.Location = new System.Drawing.Point(4, 29);
-            this.createEntryTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEntryTab.Location = new System.Drawing.Point(4, 22);
             this.createEntryTab.Name = "createEntryTab";
-            this.createEntryTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.createEntryTab.Size = new System.Drawing.Size(972, 549);
+            this.createEntryTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.createEntryTab.Size = new System.Drawing.Size(645, 352);
             this.createEntryTab.TabIndex = 0;
             this.createEntryTab.Text = "Create Entry";
             this.createEntryTab.Click += new System.EventHandler(this.createEntryTab_Click);
             // 
             // createEntryDateTimePicker
             // 
-            this.createEntryDateTimePicker.Location = new System.Drawing.Point(30, 209);
-            this.createEntryDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEntryDateTimePicker.Location = new System.Drawing.Point(20, 136);
             this.createEntryDateTimePicker.Name = "createEntryDateTimePicker";
-            this.createEntryDateTimePicker.Size = new System.Drawing.Size(270, 26);
+            this.createEntryDateTimePicker.Size = new System.Drawing.Size(181, 20);
             this.createEntryDateTimePicker.TabIndex = 9;
             this.createEntryDateTimePicker.ValueChanged += new System.EventHandler(this.createEntryDateTimePicker_ValueChanged);
             // 
@@ -753,10 +718,9 @@ namespace ButterflyTrackingSystem
             // 
             this.createLatitudeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createLatitudeTextBox.Location = new System.Drawing.Point(588, 380);
-            this.createLatitudeTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createLatitudeTextBox.Location = new System.Drawing.Point(392, 247);
             this.createLatitudeTextBox.Name = "createLatitudeTextBox";
-            this.createLatitudeTextBox.Size = new System.Drawing.Size(310, 26);
+            this.createLatitudeTextBox.Size = new System.Drawing.Size(208, 20);
             this.createLatitudeTextBox.TabIndex = 8;
             this.createLatitudeTextBox.TextChanged += new System.EventHandler(this.createLatitudeTextBox_TextChanged);
             this.createLatitudeTextBox.Leave += new System.EventHandler(this.createLatitudeTextBox_Leave);
@@ -765,20 +729,18 @@ namespace ButterflyTrackingSystem
             // 
             this.createLongitudeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createLongitudeTextBox.Location = new System.Drawing.Point(588, 338);
-            this.createLongitudeTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createLongitudeTextBox.Location = new System.Drawing.Point(392, 220);
             this.createLongitudeTextBox.Name = "createLongitudeTextBox";
-            this.createLongitudeTextBox.Size = new System.Drawing.Size(310, 26);
+            this.createLongitudeTextBox.Size = new System.Drawing.Size(208, 20);
             this.createLongitudeTextBox.TabIndex = 7;
             this.createLongitudeTextBox.TextChanged += new System.EventHandler(this.createLongitudeTextBox_TextChanged);
             this.createLongitudeTextBox.Leave += new System.EventHandler(this.createLongitudeTextBox_Leave);
             // 
             // createAgeTextBox
             // 
-            this.createAgeTextBox.Location = new System.Drawing.Point(470, 125);
-            this.createAgeTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createAgeTextBox.Location = new System.Drawing.Point(313, 81);
             this.createAgeTextBox.Name = "createAgeTextBox";
-            this.createAgeTextBox.Size = new System.Drawing.Size(109, 26);
+            this.createAgeTextBox.Size = new System.Drawing.Size(74, 20);
             this.createAgeTextBox.TabIndex = 2;
             this.createAgeTextBox.TextChanged += new System.EventHandler(this.createAgeTextBox_TextChanged);
             // 
@@ -786,10 +748,9 @@ namespace ButterflyTrackingSystem
             // 
             this.createCountryTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createCountryTextBox.Location = new System.Drawing.Point(588, 294);
-            this.createCountryTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createCountryTextBox.Location = new System.Drawing.Point(392, 191);
             this.createCountryTextBox.Name = "createCountryTextBox";
-            this.createCountryTextBox.Size = new System.Drawing.Size(310, 26);
+            this.createCountryTextBox.Size = new System.Drawing.Size(208, 20);
             this.createCountryTextBox.TabIndex = 6;
             this.createCountryTextBox.TextChanged += new System.EventHandler(this.createCountryTextBox_TextChanged);
             this.createCountryTextBox.Leave += new System.EventHandler(this.createCountryTextBox_Leave);
@@ -798,10 +759,9 @@ namespace ButterflyTrackingSystem
             // 
             this.createStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createStateTextBox.Location = new System.Drawing.Point(588, 255);
-            this.createStateTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createStateTextBox.Location = new System.Drawing.Point(392, 166);
             this.createStateTextBox.Name = "createStateTextBox";
-            this.createStateTextBox.Size = new System.Drawing.Size(310, 26);
+            this.createStateTextBox.Size = new System.Drawing.Size(208, 20);
             this.createStateTextBox.TabIndex = 5;
             this.createStateTextBox.TextChanged += new System.EventHandler(this.createStateTextBox_TextChanged);
             this.createStateTextBox.Leave += new System.EventHandler(this.createStateTextBox_Leave);
@@ -810,20 +770,18 @@ namespace ButterflyTrackingSystem
             // 
             this.createCityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createCityTextBox.Location = new System.Drawing.Point(588, 215);
-            this.createCityTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createCityTextBox.Location = new System.Drawing.Point(392, 140);
             this.createCityTextBox.Name = "createCityTextBox";
-            this.createCityTextBox.Size = new System.Drawing.Size(310, 26);
+            this.createCityTextBox.Size = new System.Drawing.Size(208, 20);
             this.createCityTextBox.TabIndex = 4;
             this.createCityTextBox.TextChanged += new System.EventHandler(this.createCityTextBox_TextChanged);
             this.createCityTextBox.Leave += new System.EventHandler(this.createCityTextBox_Leave);
             // 
             // createSpeciesTextBox
             // 
-            this.createSpeciesTextBox.Location = new System.Drawing.Point(122, 125);
-            this.createSpeciesTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createSpeciesTextBox.Location = new System.Drawing.Point(81, 81);
             this.createSpeciesTextBox.Name = "createSpeciesTextBox";
-            this.createSpeciesTextBox.Size = new System.Drawing.Size(242, 26);
+            this.createSpeciesTextBox.Size = new System.Drawing.Size(163, 20);
             this.createSpeciesTextBox.TabIndex = 1;
             this.createSpeciesTextBox.TextChanged += new System.EventHandler(this.createSpeciesTextBox_TextChanged);
             // 
@@ -834,10 +792,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createLatitudeLabel.AutoSize = true;
             this.createLatitudeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createLatitudeLabel.Location = new System.Drawing.Point(466, 378);
-            this.createLatitudeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createLatitudeLabel.Location = new System.Drawing.Point(311, 246);
             this.createLatitudeLabel.Name = "createLatitudeLabel";
-            this.createLatitudeLabel.Size = new System.Drawing.Size(81, 25);
+            this.createLatitudeLabel.Size = new System.Drawing.Size(59, 17);
             this.createLatitudeLabel.TabIndex = 87;
             this.createLatitudeLabel.Text = "Latitude";
             this.createLatitudeLabel.Click += new System.EventHandler(this.createLatitudeLabel_Click);
@@ -849,10 +806,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createLongitudeLabel.AutoSize = true;
             this.createLongitudeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createLongitudeLabel.Location = new System.Drawing.Point(466, 338);
-            this.createLongitudeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createLongitudeLabel.Location = new System.Drawing.Point(311, 220);
             this.createLongitudeLabel.Name = "createLongitudeLabel";
-            this.createLongitudeLabel.Size = new System.Drawing.Size(98, 25);
+            this.createLongitudeLabel.Size = new System.Drawing.Size(71, 17);
             this.createLongitudeLabel.TabIndex = 86;
             this.createLongitudeLabel.Text = "Longitude";
             this.createLongitudeLabel.Click += new System.EventHandler(this.createLongitudeLabel_Click);
@@ -864,10 +820,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createAgeLabel.AutoSize = true;
             this.createAgeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createAgeLabel.Location = new System.Drawing.Point(411, 123);
-            this.createAgeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createAgeLabel.Location = new System.Drawing.Point(274, 80);
             this.createAgeLabel.Name = "createAgeLabel";
-            this.createAgeLabel.Size = new System.Drawing.Size(48, 25);
+            this.createAgeLabel.Size = new System.Drawing.Size(33, 17);
             this.createAgeLabel.TabIndex = 83;
             this.createAgeLabel.Text = "Age";
             this.createAgeLabel.Click += new System.EventHandler(this.createAgeLabel_Click);
@@ -875,10 +830,9 @@ namespace ButterflyTrackingSystem
             // requiredButterflyFieldsLabel
             // 
             this.requiredButterflyFieldsLabel.AutoSize = true;
-            this.requiredButterflyFieldsLabel.Location = new System.Drawing.Point(38, 483);
-            this.requiredButterflyFieldsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.requiredButterflyFieldsLabel.Location = new System.Drawing.Point(25, 314);
             this.requiredButterflyFieldsLabel.Name = "requiredButterflyFieldsLabel";
-            this.requiredButterflyFieldsLabel.Size = new System.Drawing.Size(84, 20);
+            this.requiredButterflyFieldsLabel.Size = new System.Drawing.Size(57, 13);
             this.requiredButterflyFieldsLabel.TabIndex = 81;
             this.requiredButterflyFieldsLabel.Text = "* Required";
             this.requiredButterflyFieldsLabel.Click += new System.EventHandler(this.requiredButterflyFieldsLabel_Click);
@@ -890,10 +844,9 @@ namespace ButterflyTrackingSystem
             this.selectGenderComboBox.Items.AddRange(new object[] {
             "Female",
             "Male"});
-            this.selectGenderComboBox.Location = new System.Drawing.Point(772, 123);
-            this.selectGenderComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.selectGenderComboBox.Location = new System.Drawing.Point(515, 80);
             this.selectGenderComboBox.Name = "selectGenderComboBox";
-            this.selectGenderComboBox.Size = new System.Drawing.Size(128, 28);
+            this.selectGenderComboBox.Size = new System.Drawing.Size(87, 21);
             this.selectGenderComboBox.Sorted = true;
             this.selectGenderComboBox.TabIndex = 3;
             this.selectGenderComboBox.SelectedIndexChanged += new System.EventHandler(this.selectGenderComboBox_SelectedIndexChanged);
@@ -906,10 +859,9 @@ namespace ButterflyTrackingSystem
             this.createLocationLabel.AutoSize = true;
             this.createLocationLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.createLocationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createLocationLabel.Location = new System.Drawing.Point(302, 294);
-            this.createLocationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createLocationLabel.Location = new System.Drawing.Point(201, 191);
             this.createLocationLabel.Name = "createLocationLabel";
-            this.createLocationLabel.Size = new System.Drawing.Size(135, 30);
+            this.createLocationLabel.Size = new System.Drawing.Size(96, 22);
             this.createLocationLabel.TabIndex = 80;
             this.createLocationLabel.Text = "Location* {";
             this.createLocationLabel.Click += new System.EventHandler(this.createLocationLabel_Click);
@@ -921,10 +873,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createGenderLabel.AutoSize = true;
             this.createGenderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createGenderLabel.Location = new System.Drawing.Point(615, 126);
-            this.createGenderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createGenderLabel.Location = new System.Drawing.Point(410, 82);
             this.createGenderLabel.Name = "createGenderLabel";
-            this.createGenderLabel.Size = new System.Drawing.Size(137, 25);
+            this.createGenderLabel.Size = new System.Drawing.Size(99, 17);
             this.createGenderLabel.TabIndex = 79;
             this.createGenderLabel.Text = "Select Gender";
             this.createGenderLabel.Click += new System.EventHandler(this.createGenderLabel_Click);
@@ -936,10 +887,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createCountryLabel.AutoSize = true;
             this.createCountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createCountryLabel.Location = new System.Drawing.Point(466, 295);
-            this.createCountryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createCountryLabel.Location = new System.Drawing.Point(311, 192);
             this.createCountryLabel.Name = "createCountryLabel";
-            this.createCountryLabel.Size = new System.Drawing.Size(81, 25);
+            this.createCountryLabel.Size = new System.Drawing.Size(57, 17);
             this.createCountryLabel.TabIndex = 78;
             this.createCountryLabel.Text = "Country";
             this.createCountryLabel.Click += new System.EventHandler(this.createCountryLabel_Click);
@@ -951,10 +901,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createStateLabel.AutoSize = true;
             this.createStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createStateLabel.Location = new System.Drawing.Point(466, 255);
-            this.createStateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createStateLabel.Location = new System.Drawing.Point(311, 166);
             this.createStateLabel.Name = "createStateLabel";
-            this.createStateLabel.Size = new System.Drawing.Size(58, 25);
+            this.createStateLabel.Size = new System.Drawing.Size(41, 17);
             this.createStateLabel.TabIndex = 77;
             this.createStateLabel.Text = "State";
             this.createStateLabel.Click += new System.EventHandler(this.createStateLabel_Click);
@@ -966,10 +915,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createCityLabel.AutoSize = true;
             this.createCityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createCityLabel.Location = new System.Drawing.Point(466, 215);
-            this.createCityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createCityLabel.Location = new System.Drawing.Point(311, 140);
             this.createCityLabel.Name = "createCityLabel";
-            this.createCityLabel.Size = new System.Drawing.Size(46, 25);
+            this.createCityLabel.Size = new System.Drawing.Size(31, 17);
             this.createCityLabel.TabIndex = 76;
             this.createCityLabel.Text = "City";
             this.createCityLabel.Click += new System.EventHandler(this.createCityLabel_Click);
@@ -981,10 +929,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createSpeciesLabel.AutoSize = true;
             this.createSpeciesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createSpeciesLabel.Location = new System.Drawing.Point(26, 123);
-            this.createSpeciesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createSpeciesLabel.Location = new System.Drawing.Point(17, 80);
             this.createSpeciesLabel.Name = "createSpeciesLabel";
-            this.createSpeciesLabel.Size = new System.Drawing.Size(83, 25);
+            this.createSpeciesLabel.Size = new System.Drawing.Size(58, 17);
             this.createSpeciesLabel.TabIndex = 74;
             this.createSpeciesLabel.Text = "Species";
             this.createSpeciesLabel.Click += new System.EventHandler(this.createSpeciesLabel_Click);
@@ -992,10 +939,9 @@ namespace ButterflyTrackingSystem
             // createEntryButton
             // 
             this.createEntryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createEntryButton.Location = new System.Drawing.Point(374, 460);
-            this.createEntryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.createEntryButton.Location = new System.Drawing.Point(249, 299);
             this.createEntryButton.Name = "createEntryButton";
-            this.createEntryButton.Size = new System.Drawing.Size(204, 46);
+            this.createEntryButton.Size = new System.Drawing.Size(136, 30);
             this.createEntryButton.TabIndex = 10;
             this.createEntryButton.Text = "Create Entry";
             this.createEntryButton.UseVisualStyleBackColor = true;
@@ -1008,10 +954,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.createEntryLabel.AutoSize = true;
             this.createEntryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createEntryLabel.Location = new System.Drawing.Point(321, 35);
-            this.createEntryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.createEntryLabel.Location = new System.Drawing.Point(214, 23);
             this.createEntryLabel.Name = "createEntryLabel";
-            this.createEntryLabel.Size = new System.Drawing.Size(297, 36);
+            this.createEntryLabel.Size = new System.Drawing.Size(196, 25);
             this.createEntryLabel.TabIndex = 64;
             this.createEntryLabel.Text = "Create Butterfly Entry";
             this.createEntryLabel.Click += new System.EventHandler(this.createEntryLabel_Click);
@@ -1020,6 +965,7 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEntryTab.BackColor = System.Drawing.Color.Gainsboro;
             this.updateEntryTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.updateEntryTab.Controls.Add(this.deleteEntryButton);
             this.updateEntryTab.Controls.Add(this.updateEntryRequiredTagIDLabel);
             this.updateEntryTab.Controls.Add(this.updateEntryLatitudeBox);
             this.updateEntryTab.Controls.Add(this.updateEntryLongitudeBox);
@@ -1043,11 +989,10 @@ namespace ButterflyTrackingSystem
             this.updateEntryTab.Controls.Add(this.updateEntryLabel);
             this.updateEntryTab.Controls.Add(this.updateEntryGrid);
             this.updateEntryTab.Controls.Add(this.loadEntry);
-            this.updateEntryTab.Location = new System.Drawing.Point(4, 29);
-            this.updateEntryTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntryTab.Location = new System.Drawing.Point(4, 22);
             this.updateEntryTab.Name = "updateEntryTab";
-            this.updateEntryTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.updateEntryTab.Size = new System.Drawing.Size(972, 549);
+            this.updateEntryTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.updateEntryTab.Size = new System.Drawing.Size(645, 352);
             this.updateEntryTab.TabIndex = 1;
             this.updateEntryTab.Text = "Update Entry";
             this.updateEntryTab.Click += new System.EventHandler(this.updateEntryTab_Click);
@@ -1057,10 +1002,9 @@ namespace ButterflyTrackingSystem
             this.updateEntryRequiredTagIDLabel.AutoSize = true;
             this.updateEntryRequiredTagIDLabel.Cursor = System.Windows.Forms.Cursors.Default;
             this.updateEntryRequiredTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateEntryRequiredTagIDLabel.Location = new System.Drawing.Point(26, 322);
-            this.updateEntryRequiredTagIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateEntryRequiredTagIDLabel.Location = new System.Drawing.Point(23, 201);
             this.updateEntryRequiredTagIDLabel.Name = "updateEntryRequiredTagIDLabel";
-            this.updateEntryRequiredTagIDLabel.Size = new System.Drawing.Size(214, 50);
+            this.updateEntryRequiredTagIDLabel.Size = new System.Drawing.Size(156, 34);
             this.updateEntryRequiredTagIDLabel.TabIndex = 85;
             this.updateEntryRequiredTagIDLabel.Text = "Click on an entry in the \r\ntable to populate fields";
             this.updateEntryRequiredTagIDLabel.Click += new System.EventHandler(this.updateEntryRequiredTagIDLabel_Click);
@@ -1069,10 +1013,9 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEntryLatitudeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryLatitudeBox.Location = new System.Drawing.Point(690, 260);
-            this.updateEntryLatitudeBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntryLatitudeBox.Location = new System.Drawing.Point(460, 169);
             this.updateEntryLatitudeBox.Name = "updateEntryLatitudeBox";
-            this.updateEntryLatitudeBox.Size = new System.Drawing.Size(256, 26);
+            this.updateEntryLatitudeBox.Size = new System.Drawing.Size(172, 20);
             this.updateEntryLatitudeBox.TabIndex = 9;
             this.updateEntryLatitudeBox.TextChanged += new System.EventHandler(this.updateEntryLatitudeBox_TextChanged);
             // 
@@ -1080,10 +1023,9 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEntryLongitudeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryLongitudeBox.Location = new System.Drawing.Point(690, 220);
-            this.updateEntryLongitudeBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntryLongitudeBox.Location = new System.Drawing.Point(460, 143);
             this.updateEntryLongitudeBox.Name = "updateEntryLongitudeBox";
-            this.updateEntryLongitudeBox.Size = new System.Drawing.Size(256, 26);
+            this.updateEntryLongitudeBox.Size = new System.Drawing.Size(172, 20);
             this.updateEntryLongitudeBox.TabIndex = 8;
             this.updateEntryLongitudeBox.TextChanged += new System.EventHandler(this.updateEntryLongitudeBox_TextChanged);
             // 
@@ -1094,10 +1036,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateLatitudeLabel.AutoSize = true;
             this.updateLatitudeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateLatitudeLabel.Location = new System.Drawing.Point(584, 262);
-            this.updateLatitudeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateLatitudeLabel.Location = new System.Drawing.Point(389, 170);
             this.updateLatitudeLabel.Name = "updateLatitudeLabel";
-            this.updateLatitudeLabel.Size = new System.Drawing.Size(81, 25);
+            this.updateLatitudeLabel.Size = new System.Drawing.Size(59, 17);
             this.updateLatitudeLabel.TabIndex = 84;
             this.updateLatitudeLabel.Text = "Latitude";
             this.updateLatitudeLabel.Click += new System.EventHandler(this.updateLatitudeLabel_Click);
@@ -1109,10 +1050,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateLongitudeLabel.AutoSize = true;
             this.updateLongitudeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateLongitudeLabel.Location = new System.Drawing.Point(584, 222);
-            this.updateLongitudeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateLongitudeLabel.Location = new System.Drawing.Point(389, 144);
             this.updateLongitudeLabel.Name = "updateLongitudeLabel";
-            this.updateLongitudeLabel.Size = new System.Drawing.Size(98, 25);
+            this.updateLongitudeLabel.Size = new System.Drawing.Size(71, 17);
             this.updateLongitudeLabel.TabIndex = 83;
             this.updateLongitudeLabel.Text = "Longitude";
             this.updateLongitudeLabel.Click += new System.EventHandler(this.updateLongitudeLabel_Click);
@@ -1124,10 +1064,9 @@ namespace ButterflyTrackingSystem
             this.updateEntryGenderComboBox.Items.AddRange(new object[] {
             "F",
             "M"});
-            this.updateEntryGenderComboBox.Location = new System.Drawing.Point(352, 180);
-            this.updateEntryGenderComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntryGenderComboBox.Location = new System.Drawing.Point(235, 117);
             this.updateEntryGenderComboBox.Name = "updateEntryGenderComboBox";
-            this.updateEntryGenderComboBox.Size = new System.Drawing.Size(103, 28);
+            this.updateEntryGenderComboBox.Size = new System.Drawing.Size(70, 21);
             this.updateEntryGenderComboBox.Sorted = true;
             this.updateEntryGenderComboBox.TabIndex = 4;
             this.updateEntryGenderComboBox.SelectedIndexChanged += new System.EventHandler(this.updateEntryGenderComboBox_SelectedIndexChanged);
@@ -1140,10 +1079,9 @@ namespace ButterflyTrackingSystem
             this.updateLocationLabel.AutoSize = true;
             this.updateLocationLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.updateLocationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateLocationLabel.Location = new System.Drawing.Point(762, 42);
-            this.updateLocationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateLocationLabel.Location = new System.Drawing.Point(508, 27);
             this.updateLocationLabel.Name = "updateLocationLabel";
-            this.updateLocationLabel.Size = new System.Drawing.Size(109, 30);
+            this.updateLocationLabel.Size = new System.Drawing.Size(78, 22);
             this.updateLocationLabel.TabIndex = 80;
             this.updateLocationLabel.Text = "Location";
             this.updateLocationLabel.Click += new System.EventHandler(this.updateLocationLabel_Click);
@@ -1155,10 +1093,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateGenderLabel.AutoSize = true;
             this.updateGenderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateGenderLabel.Location = new System.Drawing.Point(260, 180);
-            this.updateGenderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateGenderLabel.Location = new System.Drawing.Point(173, 117);
             this.updateGenderLabel.Name = "updateGenderLabel";
-            this.updateGenderLabel.Size = new System.Drawing.Size(77, 25);
+            this.updateGenderLabel.Size = new System.Drawing.Size(56, 17);
             this.updateGenderLabel.TabIndex = 79;
             this.updateGenderLabel.Text = "Gender";
             this.updateGenderLabel.Click += new System.EventHandler(this.updateGenderLabel_Click);
@@ -1167,10 +1104,9 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEntryCountryBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryCountryBox.Location = new System.Drawing.Point(690, 180);
-            this.updateEntryCountryBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntryCountryBox.Location = new System.Drawing.Point(460, 117);
             this.updateEntryCountryBox.Name = "updateEntryCountryBox";
-            this.updateEntryCountryBox.Size = new System.Drawing.Size(256, 26);
+            this.updateEntryCountryBox.Size = new System.Drawing.Size(172, 20);
             this.updateEntryCountryBox.TabIndex = 7;
             this.updateEntryCountryBox.TextChanged += new System.EventHandler(this.updateEntryCountryBox_TextChanged);
             // 
@@ -1178,10 +1114,9 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEntryStateBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryStateBox.Location = new System.Drawing.Point(690, 140);
-            this.updateEntryStateBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntryStateBox.Location = new System.Drawing.Point(460, 91);
             this.updateEntryStateBox.Name = "updateEntryStateBox";
-            this.updateEntryStateBox.Size = new System.Drawing.Size(256, 26);
+            this.updateEntryStateBox.Size = new System.Drawing.Size(172, 20);
             this.updateEntryStateBox.TabIndex = 6;
             this.updateEntryStateBox.TextChanged += new System.EventHandler(this.updateEntryStateBox_TextChanged);
             // 
@@ -1189,29 +1124,26 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEntryCityBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEntryCityBox.Location = new System.Drawing.Point(690, 95);
-            this.updateEntryCityBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntryCityBox.Location = new System.Drawing.Point(460, 62);
             this.updateEntryCityBox.Name = "updateEntryCityBox";
-            this.updateEntryCityBox.Size = new System.Drawing.Size(256, 26);
+            this.updateEntryCityBox.Size = new System.Drawing.Size(172, 20);
             this.updateEntryCityBox.TabIndex = 5;
             this.updateEntryCityBox.TextChanged += new System.EventHandler(this.updateEntryCityBox_TextChanged);
             // 
             // updateEntrySpeciesBox
             // 
-            this.updateEntrySpeciesBox.Location = new System.Drawing.Point(352, 95);
-            this.updateEntrySpeciesBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntrySpeciesBox.Location = new System.Drawing.Point(235, 62);
             this.updateEntrySpeciesBox.Name = "updateEntrySpeciesBox";
-            this.updateEntrySpeciesBox.Size = new System.Drawing.Size(205, 26);
+            this.updateEntrySpeciesBox.Size = new System.Drawing.Size(138, 20);
             this.updateEntrySpeciesBox.TabIndex = 2;
             this.updateEntrySpeciesBox.TextChanged += new System.EventHandler(this.updateEntrySpeciesBox_TextChanged);
             // 
             // updateEntryTagIDBox
             // 
-            this.updateEntryTagIDBox.Location = new System.Drawing.Point(99, 97);
-            this.updateEntryTagIDBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntryTagIDBox.Location = new System.Drawing.Point(66, 63);
             this.updateEntryTagIDBox.Name = "updateEntryTagIDBox";
             this.updateEntryTagIDBox.ReadOnly = true;
-            this.updateEntryTagIDBox.Size = new System.Drawing.Size(122, 26);
+            this.updateEntryTagIDBox.Size = new System.Drawing.Size(83, 20);
             this.updateEntryTagIDBox.TabIndex = 1;
             this.updateEntryTagIDBox.TextChanged += new System.EventHandler(this.updateEntryTagIDBox_TextChanged);
             this.updateEntryTagIDBox.Leave += new System.EventHandler(this.updateEntryTagIDBox_Leave);
@@ -1223,10 +1155,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateCountryLabel.AutoSize = true;
             this.updateCountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateCountryLabel.Location = new System.Drawing.Point(584, 180);
-            this.updateCountryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateCountryLabel.Location = new System.Drawing.Point(389, 117);
             this.updateCountryLabel.Name = "updateCountryLabel";
-            this.updateCountryLabel.Size = new System.Drawing.Size(81, 25);
+            this.updateCountryLabel.Size = new System.Drawing.Size(57, 17);
             this.updateCountryLabel.TabIndex = 78;
             this.updateCountryLabel.Text = "Country";
             this.updateCountryLabel.Click += new System.EventHandler(this.updateCountryLabel_Click);
@@ -1238,10 +1169,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateStateLabel.AutoSize = true;
             this.updateStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateStateLabel.Location = new System.Drawing.Point(584, 140);
-            this.updateStateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateStateLabel.Location = new System.Drawing.Point(389, 91);
             this.updateStateLabel.Name = "updateStateLabel";
-            this.updateStateLabel.Size = new System.Drawing.Size(58, 25);
+            this.updateStateLabel.Size = new System.Drawing.Size(41, 17);
             this.updateStateLabel.TabIndex = 77;
             this.updateStateLabel.Text = "State";
             this.updateStateLabel.Click += new System.EventHandler(this.updateStateLabel_Click);
@@ -1253,10 +1183,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateCityLabel.AutoSize = true;
             this.updateCityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateCityLabel.Location = new System.Drawing.Point(584, 95);
-            this.updateCityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateCityLabel.Location = new System.Drawing.Point(389, 62);
             this.updateCityLabel.Name = "updateCityLabel";
-            this.updateCityLabel.Size = new System.Drawing.Size(46, 25);
+            this.updateCityLabel.Size = new System.Drawing.Size(31, 17);
             this.updateCityLabel.TabIndex = 76;
             this.updateCityLabel.Text = "City";
             this.updateCityLabel.Click += new System.EventHandler(this.updateCityLabel_Click);
@@ -1268,20 +1197,18 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateSpeciesLabel.AutoSize = true;
             this.updateSpeciesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateSpeciesLabel.Location = new System.Drawing.Point(256, 95);
-            this.updateSpeciesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateSpeciesLabel.Location = new System.Drawing.Point(171, 62);
             this.updateSpeciesLabel.Name = "updateSpeciesLabel";
-            this.updateSpeciesLabel.Size = new System.Drawing.Size(83, 25);
+            this.updateSpeciesLabel.Size = new System.Drawing.Size(58, 17);
             this.updateSpeciesLabel.TabIndex = 75;
             this.updateSpeciesLabel.Text = "Species";
             this.updateSpeciesLabel.Click += new System.EventHandler(this.updateSpeciesLabel_Click);
             // 
             // updateEntryAgeBox
             // 
-            this.updateEntryAgeBox.Location = new System.Drawing.Point(99, 182);
-            this.updateEntryAgeBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntryAgeBox.Location = new System.Drawing.Point(66, 118);
             this.updateEntryAgeBox.Name = "updateEntryAgeBox";
-            this.updateEntryAgeBox.Size = new System.Drawing.Size(122, 26);
+            this.updateEntryAgeBox.Size = new System.Drawing.Size(83, 20);
             this.updateEntryAgeBox.TabIndex = 3;
             this.updateEntryAgeBox.TextChanged += new System.EventHandler(this.updateEntryAgeBox_TextChanged);
             // 
@@ -1292,10 +1219,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateAgeLabel.AutoSize = true;
             this.updateAgeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateAgeLabel.Location = new System.Drawing.Point(9, 180);
-            this.updateAgeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateAgeLabel.Location = new System.Drawing.Point(6, 117);
             this.updateAgeLabel.Name = "updateAgeLabel";
-            this.updateAgeLabel.Size = new System.Drawing.Size(48, 25);
+            this.updateAgeLabel.Size = new System.Drawing.Size(33, 17);
             this.updateAgeLabel.TabIndex = 74;
             this.updateAgeLabel.Text = "Age";
             this.updateAgeLabel.Click += new System.EventHandler(this.updateAgeLabel_Click);
@@ -1307,10 +1233,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateTagIDLabel.AutoSize = true;
             this.updateTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateTagIDLabel.Location = new System.Drawing.Point(8, 95);
-            this.updateTagIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateTagIDLabel.Location = new System.Drawing.Point(5, 62);
             this.updateTagIDLabel.Name = "updateTagIDLabel";
-            this.updateTagIDLabel.Size = new System.Drawing.Size(71, 25);
+            this.updateTagIDLabel.Size = new System.Drawing.Size(50, 17);
             this.updateTagIDLabel.TabIndex = 73;
             this.updateTagIDLabel.Text = "Tag ID";
             this.updateTagIDLabel.Click += new System.EventHandler(this.updateTagIDLabel_Click);
@@ -1322,10 +1247,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateEntryLabel.AutoSize = true;
             this.updateEntryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateEntryLabel.Location = new System.Drawing.Point(345, 22);
-            this.updateEntryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateEntryLabel.Location = new System.Drawing.Point(230, 14);
             this.updateEntryLabel.Name = "updateEntryLabel";
-            this.updateEntryLabel.Size = new System.Drawing.Size(279, 36);
+            this.updateEntryLabel.Size = new System.Drawing.Size(183, 25);
             this.updateEntryLabel.TabIndex = 72;
             this.updateEntryLabel.Text = "Update your Entries";
             this.updateEntryLabel.Click += new System.EventHandler(this.updateEntryLabel_Click);
@@ -1337,10 +1261,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateEntryGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.updateEntryGrid.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.updateEntryGrid.Location = new System.Drawing.Point(303, 309);
-            this.updateEntryGrid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEntryGrid.Location = new System.Drawing.Point(202, 201);
             this.updateEntryGrid.Name = "updateEntryGrid";
-            this.updateEntryGrid.Size = new System.Drawing.Size(645, 218);
+            this.updateEntryGrid.Size = new System.Drawing.Size(430, 142);
             this.updateEntryGrid.TabIndex = 89;
             this.updateEntryGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_CellClick_1);
             this.updateEntryGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_CellClick);
@@ -1351,10 +1274,9 @@ namespace ButterflyTrackingSystem
             this.loadEntry.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.loadEntry.BackColor = System.Drawing.Color.BurlyWood;
             this.loadEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadEntry.Location = new System.Drawing.Point(34, 398);
-            this.loadEntry.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.loadEntry.Location = new System.Drawing.Point(29, 251);
             this.loadEntry.Name = "loadEntry";
-            this.loadEntry.Size = new System.Drawing.Size(201, 55);
+            this.loadEntry.Size = new System.Drawing.Size(134, 36);
             this.loadEntry.TabIndex = 10;
             this.loadEntry.Text = "Update Entry";
             this.loadEntry.UseVisualStyleBackColor = false;
@@ -1387,20 +1309,18 @@ namespace ButterflyTrackingSystem
             this.searchTab.Controls.Add(this.searchUserNameLabel);
             this.searchTab.Controls.Add(this.searchTagIDLabel);
             this.searchTab.Controls.Add(this.searchLabel);
-            this.searchTab.Location = new System.Drawing.Point(4, 29);
-            this.searchTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchTab.Location = new System.Drawing.Point(4, 22);
             this.searchTab.Name = "searchTab";
-            this.searchTab.Size = new System.Drawing.Size(972, 549);
+            this.searchTab.Size = new System.Drawing.Size(645, 352);
             this.searchTab.TabIndex = 2;
             this.searchTab.Text = "Search";
             this.searchTab.Click += new System.EventHandler(this.searchTab_Click);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(14, 269);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dateTimePicker1.Location = new System.Drawing.Point(9, 175);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(184, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
             this.dateTimePicker1.TabIndex = 67;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -1414,20 +1334,18 @@ namespace ButterflyTrackingSystem
             this.searchDataGrid.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.searchDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.searchDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.searchDataGrid.Location = new System.Drawing.Point(212, 306);
-            this.searchDataGrid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchDataGrid.Location = new System.Drawing.Point(141, 199);
             this.searchDataGrid.Name = "searchDataGrid";
             this.searchDataGrid.ReadOnly = true;
             this.searchDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.searchDataGrid.Size = new System.Drawing.Size(741, 225);
+            this.searchDataGrid.Size = new System.Drawing.Size(494, 146);
             this.searchDataGrid.TabIndex = 66;
             // 
             // downloadSightingsFileButton
             // 
-            this.downloadSightingsFileButton.Location = new System.Drawing.Point(16, 394);
-            this.downloadSightingsFileButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.downloadSightingsFileButton.Location = new System.Drawing.Point(11, 256);
             this.downloadSightingsFileButton.Name = "downloadSightingsFileButton";
-            this.downloadSightingsFileButton.Size = new System.Drawing.Size(180, 35);
+            this.downloadSightingsFileButton.Size = new System.Drawing.Size(120, 23);
             this.downloadSightingsFileButton.TabIndex = 65;
             this.downloadSightingsFileButton.Text = "Download File";
             this.downloadSightingsFileButton.UseVisualStyleBackColor = true;
@@ -1435,10 +1353,9 @@ namespace ButterflyTrackingSystem
             // 
             // uploadSightingsFileButton
             // 
-            this.uploadSightingsFileButton.Location = new System.Drawing.Point(16, 338);
-            this.uploadSightingsFileButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uploadSightingsFileButton.Location = new System.Drawing.Point(11, 220);
             this.uploadSightingsFileButton.Name = "uploadSightingsFileButton";
-            this.uploadSightingsFileButton.Size = new System.Drawing.Size(180, 35);
+            this.uploadSightingsFileButton.Size = new System.Drawing.Size(120, 23);
             this.uploadSightingsFileButton.TabIndex = 64;
             this.uploadSightingsFileButton.Text = "Upload Sightings File";
             this.uploadSightingsFileButton.UseVisualStyleBackColor = true;
@@ -1446,20 +1363,18 @@ namespace ButterflyTrackingSystem
             // 
             // searchDateTimePicker
             // 
-            this.searchDateTimePicker.Location = new System.Drawing.Point(14, 229);
-            this.searchDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchDateTimePicker.Location = new System.Drawing.Point(9, 149);
             this.searchDateTimePicker.Name = "searchDateTimePicker";
-            this.searchDateTimePicker.Size = new System.Drawing.Size(184, 26);
+            this.searchDateTimePicker.Size = new System.Drawing.Size(124, 20);
             this.searchDateTimePicker.TabIndex = 8;
             this.searchDateTimePicker.ValueChanged += new System.EventHandler(this.searchDateTimePicker_ValueChanged);
             // 
             // searchNoteLabel
             // 
             this.searchNoteLabel.AutoSize = true;
-            this.searchNoteLabel.Location = new System.Drawing.Point(24, 474);
-            this.searchNoteLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchNoteLabel.Location = new System.Drawing.Point(16, 308);
             this.searchNoteLabel.Name = "searchNoteLabel";
-            this.searchNoteLabel.Size = new System.Drawing.Size(168, 40);
+            this.searchNoteLabel.Size = new System.Drawing.Size(115, 26);
             this.searchNoteLabel.TabIndex = 63;
             this.searchNoteLabel.Text = "* Search by any of the \r\n   above fields";
             this.searchNoteLabel.Click += new System.EventHandler(this.searchNoteLabel_Click);
@@ -1471,10 +1386,9 @@ namespace ButterflyTrackingSystem
             this.searchGendercomboBox.Items.AddRange(new object[] {
             "Female",
             "Male"});
-            this.searchGendercomboBox.Location = new System.Drawing.Point(506, 189);
-            this.searchGendercomboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchGendercomboBox.Location = new System.Drawing.Point(337, 123);
             this.searchGendercomboBox.Name = "searchGendercomboBox";
-            this.searchGendercomboBox.Size = new System.Drawing.Size(128, 28);
+            this.searchGendercomboBox.Size = new System.Drawing.Size(87, 21);
             this.searchGendercomboBox.Sorted = true;
             this.searchGendercomboBox.TabIndex = 4;
             this.searchGendercomboBox.SelectedIndexChanged += new System.EventHandler(this.searchGendercomboBox_SelectedIndexChanged);
@@ -1487,10 +1401,9 @@ namespace ButterflyTrackingSystem
             this.searchLocationLabel.AutoSize = true;
             this.searchLocationLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.searchLocationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchLocationLabel.Location = new System.Drawing.Point(802, 78);
-            this.searchLocationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchLocationLabel.Location = new System.Drawing.Point(535, 51);
             this.searchLocationLabel.Name = "searchLocationLabel";
-            this.searchLocationLabel.Size = new System.Drawing.Size(109, 30);
+            this.searchLocationLabel.Size = new System.Drawing.Size(78, 22);
             this.searchLocationLabel.TabIndex = 62;
             this.searchLocationLabel.Text = "Location";
             this.searchLocationLabel.Click += new System.EventHandler(this.searchLocationLabel_Click);
@@ -1502,10 +1415,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchGenderLabel.AutoSize = true;
             this.searchGenderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchGenderLabel.Location = new System.Drawing.Point(338, 191);
-            this.searchGenderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchGenderLabel.Location = new System.Drawing.Point(225, 124);
             this.searchGenderLabel.Name = "searchGenderLabel";
-            this.searchGenderLabel.Size = new System.Drawing.Size(137, 25);
+            this.searchGenderLabel.Size = new System.Drawing.Size(99, 17);
             this.searchGenderLabel.TabIndex = 61;
             this.searchGenderLabel.Text = "Select Gender";
             this.searchGenderLabel.Click += new System.EventHandler(this.searchGenderLabel_Click);
@@ -1514,10 +1426,9 @@ namespace ButterflyTrackingSystem
             // 
             this.searchCountryTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchCountryTextBox.Location = new System.Drawing.Point(764, 202);
-            this.searchCountryTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchCountryTextBox.Location = new System.Drawing.Point(509, 131);
             this.searchCountryTextBox.Name = "searchCountryTextBox";
-            this.searchCountryTextBox.Size = new System.Drawing.Size(187, 26);
+            this.searchCountryTextBox.Size = new System.Drawing.Size(126, 20);
             this.searchCountryTextBox.TabIndex = 7;
             this.searchCountryTextBox.TextChanged += new System.EventHandler(this.searchCountryTextBox_TextChanged);
             // 
@@ -1525,10 +1436,9 @@ namespace ButterflyTrackingSystem
             // 
             this.searchStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchStateTextBox.Location = new System.Drawing.Point(764, 162);
-            this.searchStateTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchStateTextBox.Location = new System.Drawing.Point(509, 105);
             this.searchStateTextBox.Name = "searchStateTextBox";
-            this.searchStateTextBox.Size = new System.Drawing.Size(187, 26);
+            this.searchStateTextBox.Size = new System.Drawing.Size(126, 20);
             this.searchStateTextBox.TabIndex = 6;
             this.searchStateTextBox.TextChanged += new System.EventHandler(this.searchStateTextBox_TextChanged);
             // 
@@ -1536,28 +1446,25 @@ namespace ButterflyTrackingSystem
             // 
             this.searchCityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchCityTextBox.Location = new System.Drawing.Point(764, 117);
-            this.searchCityTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchCityTextBox.Location = new System.Drawing.Point(509, 76);
             this.searchCityTextBox.Name = "searchCityTextBox";
-            this.searchCityTextBox.Size = new System.Drawing.Size(187, 26);
+            this.searchCityTextBox.Size = new System.Drawing.Size(126, 20);
             this.searchCityTextBox.TabIndex = 5;
             this.searchCityTextBox.TextChanged += new System.EventHandler(this.searchCityTextBox_TextChanged);
             // 
             // searchSpeciesTextBox
             // 
-            this.searchSpeciesTextBox.Location = new System.Drawing.Point(105, 189);
-            this.searchSpeciesTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchSpeciesTextBox.Location = new System.Drawing.Point(70, 123);
             this.searchSpeciesTextBox.Name = "searchSpeciesTextBox";
-            this.searchSpeciesTextBox.Size = new System.Drawing.Size(205, 26);
+            this.searchSpeciesTextBox.Size = new System.Drawing.Size(138, 20);
             this.searchSpeciesTextBox.TabIndex = 3;
             this.searchSpeciesTextBox.TextChanged += new System.EventHandler(this.searchSpeciesTextBox_TextChanged);
             // 
             // searchTagIDTextBox
             // 
-            this.searchTagIDTextBox.Location = new System.Drawing.Point(105, 120);
-            this.searchTagIDTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchTagIDTextBox.Location = new System.Drawing.Point(70, 78);
             this.searchTagIDTextBox.Name = "searchTagIDTextBox";
-            this.searchTagIDTextBox.Size = new System.Drawing.Size(205, 26);
+            this.searchTagIDTextBox.Size = new System.Drawing.Size(138, 20);
             this.searchTagIDTextBox.TabIndex = 1;
             this.searchTagIDTextBox.TextChanged += new System.EventHandler(this.searchTagIDTextBox_TextChanged);
             // 
@@ -1568,10 +1475,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchCountryLabel.AutoSize = true;
             this.searchCountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCountryLabel.Location = new System.Drawing.Point(675, 203);
-            this.searchCountryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchCountryLabel.Location = new System.Drawing.Point(450, 132);
             this.searchCountryLabel.Name = "searchCountryLabel";
-            this.searchCountryLabel.Size = new System.Drawing.Size(81, 25);
+            this.searchCountryLabel.Size = new System.Drawing.Size(57, 17);
             this.searchCountryLabel.TabIndex = 59;
             this.searchCountryLabel.Text = "Country";
             this.searchCountryLabel.Click += new System.EventHandler(this.searchCountryLabel_Click);
@@ -1583,10 +1489,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchStateLabel.AutoSize = true;
             this.searchStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchStateLabel.Location = new System.Drawing.Point(675, 163);
-            this.searchStateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchStateLabel.Location = new System.Drawing.Point(450, 106);
             this.searchStateLabel.Name = "searchStateLabel";
-            this.searchStateLabel.Size = new System.Drawing.Size(58, 25);
+            this.searchStateLabel.Size = new System.Drawing.Size(41, 17);
             this.searchStateLabel.TabIndex = 58;
             this.searchStateLabel.Text = "State";
             this.searchStateLabel.Click += new System.EventHandler(this.searchStateLabel_Click);
@@ -1598,10 +1503,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchCityLabel.AutoSize = true;
             this.searchCityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCityLabel.Location = new System.Drawing.Point(675, 118);
-            this.searchCityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchCityLabel.Location = new System.Drawing.Point(450, 77);
             this.searchCityLabel.Name = "searchCityLabel";
-            this.searchCityLabel.Size = new System.Drawing.Size(46, 25);
+            this.searchCityLabel.Size = new System.Drawing.Size(31, 17);
             this.searchCityLabel.TabIndex = 57;
             this.searchCityLabel.Text = "City";
             this.searchCityLabel.Click += new System.EventHandler(this.searchCityLabel_Click);
@@ -1613,10 +1517,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchSpeciesLabel.AutoSize = true;
             this.searchSpeciesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchSpeciesLabel.Location = new System.Drawing.Point(9, 188);
-            this.searchSpeciesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchSpeciesLabel.Location = new System.Drawing.Point(6, 122);
             this.searchSpeciesLabel.Name = "searchSpeciesLabel";
-            this.searchSpeciesLabel.Size = new System.Drawing.Size(83, 25);
+            this.searchSpeciesLabel.Size = new System.Drawing.Size(58, 17);
             this.searchSpeciesLabel.TabIndex = 55;
             this.searchSpeciesLabel.Text = "Species";
             this.searchSpeciesLabel.Click += new System.EventHandler(this.searchSpeciesLabel_Click);
@@ -1625,10 +1528,9 @@ namespace ButterflyTrackingSystem
             // 
             this.searchButton.BackColor = System.Drawing.Color.PaleTurquoise;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(370, 251);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchButton.Location = new System.Drawing.Point(247, 163);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(204, 46);
+            this.searchButton.Size = new System.Drawing.Size(136, 30);
             this.searchButton.TabIndex = 9;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = false;
@@ -1636,10 +1538,9 @@ namespace ButterflyTrackingSystem
             // 
             // searchUserNameTextBox
             // 
-            this.searchUserNameTextBox.Location = new System.Drawing.Point(466, 122);
-            this.searchUserNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchUserNameTextBox.Location = new System.Drawing.Point(311, 79);
             this.searchUserNameTextBox.Name = "searchUserNameTextBox";
-            this.searchUserNameTextBox.Size = new System.Drawing.Size(175, 26);
+            this.searchUserNameTextBox.Size = new System.Drawing.Size(118, 20);
             this.searchUserNameTextBox.TabIndex = 2;
             this.searchUserNameTextBox.TextChanged += new System.EventHandler(this.searchUserNameTextBox_TextChanged);
             // 
@@ -1650,10 +1551,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchUserNameLabel.AutoSize = true;
             this.searchUserNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchUserNameLabel.Location = new System.Drawing.Point(338, 122);
-            this.searchUserNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchUserNameLabel.Location = new System.Drawing.Point(225, 79);
             this.searchUserNameLabel.Name = "searchUserNameLabel";
-            this.searchUserNameLabel.Size = new System.Drawing.Size(110, 25);
+            this.searchUserNameLabel.Size = new System.Drawing.Size(79, 17);
             this.searchUserNameLabel.TabIndex = 47;
             this.searchUserNameLabel.Text = "User Name";
             this.searchUserNameLabel.Click += new System.EventHandler(this.searchUserNameLabel_Click);
@@ -1665,10 +1565,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTagIDLabel.AutoSize = true;
             this.searchTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTagIDLabel.Location = new System.Drawing.Point(9, 120);
-            this.searchTagIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchTagIDLabel.Location = new System.Drawing.Point(6, 78);
             this.searchTagIDLabel.Name = "searchTagIDLabel";
-            this.searchTagIDLabel.Size = new System.Drawing.Size(71, 25);
+            this.searchTagIDLabel.Size = new System.Drawing.Size(50, 17);
             this.searchTagIDLabel.TabIndex = 46;
             this.searchTagIDLabel.Text = "Tag ID";
             this.searchTagIDLabel.Click += new System.EventHandler(this.searchTagIDLabel_Click);
@@ -1680,10 +1579,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchLabel.AutoSize = true;
             this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchLabel.Location = new System.Drawing.Point(318, 35);
-            this.searchLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchLabel.Location = new System.Drawing.Point(212, 23);
             this.searchLabel.Name = "searchLabel";
-            this.searchLabel.Size = new System.Drawing.Size(297, 36);
+            this.searchLabel.Size = new System.Drawing.Size(196, 25);
             this.searchLabel.TabIndex = 44;
             this.searchLabel.Text = "Search for Sightings*";
             this.searchLabel.Click += new System.EventHandler(this.searchLabel_Click);
@@ -1695,10 +1593,9 @@ namespace ButterflyTrackingSystem
             this.leaderboardTab.Controls.Add(this.loadLeaderboardButton);
             this.leaderboardTab.Controls.Add(this.leaderboardGrid);
             this.leaderboardTab.Controls.Add(this.leaderboardTabDescriptionLabel);
-            this.leaderboardTab.Location = new System.Drawing.Point(4, 29);
-            this.leaderboardTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.leaderboardTab.Location = new System.Drawing.Point(4, 22);
             this.leaderboardTab.Name = "leaderboardTab";
-            this.leaderboardTab.Size = new System.Drawing.Size(972, 549);
+            this.leaderboardTab.Size = new System.Drawing.Size(645, 352);
             this.leaderboardTab.TabIndex = 3;
             this.leaderboardTab.Text = "Leaderboard";
             this.leaderboardTab.Click += new System.EventHandler(this.leaderboardTab_Click);
@@ -1708,10 +1605,9 @@ namespace ButterflyTrackingSystem
             this.loadLeaderboardButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.loadLeaderboardButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadLeaderboardButton.Location = new System.Drawing.Point(354, 468);
-            this.loadLeaderboardButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.loadLeaderboardButton.Location = new System.Drawing.Point(236, 304);
             this.loadLeaderboardButton.Name = "loadLeaderboardButton";
-            this.loadLeaderboardButton.Size = new System.Drawing.Size(254, 55);
+            this.loadLeaderboardButton.Size = new System.Drawing.Size(169, 36);
             this.loadLeaderboardButton.TabIndex = 2;
             this.loadLeaderboardButton.Text = "Refresh LeaderBoard\r\n";
             this.loadLeaderboardButton.UseVisualStyleBackColor = true;
@@ -1743,11 +1639,10 @@ namespace ButterflyTrackingSystem
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.leaderboardGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.leaderboardGrid.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.leaderboardGrid.Location = new System.Drawing.Point(26, 51);
-            this.leaderboardGrid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.leaderboardGrid.Location = new System.Drawing.Point(17, 33);
             this.leaderboardGrid.Name = "leaderboardGrid";
             this.leaderboardGrid.ReadOnly = true;
-            this.leaderboardGrid.Size = new System.Drawing.Size(916, 398);
+            this.leaderboardGrid.Size = new System.Drawing.Size(611, 259);
             this.leaderboardGrid.TabIndex = 1;
             // 
             // leaderboardTabDescriptionLabel
@@ -1758,10 +1653,9 @@ namespace ButterflyTrackingSystem
             this.leaderboardTabDescriptionLabel.BackColor = System.Drawing.Color.AntiqueWhite;
             this.leaderboardTabDescriptionLabel.Cursor = System.Windows.Forms.Cursors.Default;
             this.leaderboardTabDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leaderboardTabDescriptionLabel.Location = new System.Drawing.Point(24, 12);
-            this.leaderboardTabDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.leaderboardTabDescriptionLabel.Location = new System.Drawing.Point(16, 8);
             this.leaderboardTabDescriptionLabel.Name = "leaderboardTabDescriptionLabel";
-            this.leaderboardTabDescriptionLabel.Size = new System.Drawing.Size(859, 30);
+            this.leaderboardTabDescriptionLabel.Size = new System.Drawing.Size(605, 22);
             this.leaderboardTabDescriptionLabel.TabIndex = 0;
             this.leaderboardTabDescriptionLabel.Text = "Check the leader board system to see who has tagged the most butterflies!\r\n";
             // 
@@ -1771,10 +1665,9 @@ namespace ButterflyTrackingSystem
             this.graphTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.graphTab.Controls.Add(this.loadChartButton);
             this.graphTab.Controls.Add(this.graphChart);
-            this.graphTab.Location = new System.Drawing.Point(4, 29);
-            this.graphTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.graphTab.Location = new System.Drawing.Point(4, 22);
             this.graphTab.Name = "graphTab";
-            this.graphTab.Size = new System.Drawing.Size(972, 549);
+            this.graphTab.Size = new System.Drawing.Size(645, 352);
             this.graphTab.TabIndex = 4;
             this.graphTab.Text = "Graph";
             this.graphTab.Click += new System.EventHandler(this.graphTab_Click);
@@ -1785,10 +1678,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.loadChartButton.BackColor = System.Drawing.Color.PaleGreen;
             this.loadChartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadChartButton.Location = new System.Drawing.Point(374, 471);
-            this.loadChartButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.loadChartButton.Location = new System.Drawing.Point(249, 306);
             this.loadChartButton.Name = "loadChartButton";
-            this.loadChartButton.Size = new System.Drawing.Size(201, 55);
+            this.loadChartButton.Size = new System.Drawing.Size(134, 36);
             this.loadChartButton.TabIndex = 4;
             this.loadChartButton.Text = "Refresh Chart";
             this.loadChartButton.UseVisualStyleBackColor = false;
@@ -1802,14 +1694,13 @@ namespace ButterflyTrackingSystem
             this.graphChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.graphChart.Legends.Add(legend1);
-            this.graphChart.Location = new System.Drawing.Point(9, 6);
-            this.graphChart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.graphChart.Location = new System.Drawing.Point(6, 4);
             this.graphChart.Name = "graphChart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.graphChart.Series.Add(series1);
-            this.graphChart.Size = new System.Drawing.Size(944, 442);
+            this.graphChart.Size = new System.Drawing.Size(629, 287);
             this.graphChart.TabIndex = 0;
             this.graphChart.Text = "Graph/Chart";
             // 
@@ -1834,10 +1725,9 @@ namespace ButterflyTrackingSystem
             this.updateAccountTab.Controls.Add(this.updatePasswordTextBox);
             this.updateAccountTab.Controls.Add(this.passwordUpdateLabel);
             this.updateAccountTab.Controls.Add(this.updateAccountLabel);
-            this.updateAccountTab.Location = new System.Drawing.Point(4, 29);
-            this.updateAccountTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateAccountTab.Location = new System.Drawing.Point(4, 22);
             this.updateAccountTab.Name = "updateAccountTab";
-            this.updateAccountTab.Size = new System.Drawing.Size(972, 549);
+            this.updateAccountTab.Size = new System.Drawing.Size(645, 352);
             this.updateAccountTab.TabIndex = 5;
             this.updateAccountTab.Text = "Update Account";
             this.updateAccountTab.Click += new System.EventHandler(this.updateAccountTab_Click);
@@ -1849,10 +1739,9 @@ namespace ButterflyTrackingSystem
             this.positionOptionsUpdateComboBox.Items.AddRange(new object[] {
             "nonTagger",
             "tagger"});
-            this.positionOptionsUpdateComboBox.Location = new System.Drawing.Point(206, 186);
-            this.positionOptionsUpdateComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.positionOptionsUpdateComboBox.Location = new System.Drawing.Point(137, 121);
             this.positionOptionsUpdateComboBox.Name = "positionOptionsUpdateComboBox";
-            this.positionOptionsUpdateComboBox.Size = new System.Drawing.Size(128, 28);
+            this.positionOptionsUpdateComboBox.Size = new System.Drawing.Size(87, 21);
             this.positionOptionsUpdateComboBox.Sorted = true;
             this.positionOptionsUpdateComboBox.TabIndex = 3;
             this.positionOptionsUpdateComboBox.SelectedIndexChanged += new System.EventHandler(this.positionOptionsUpdateComboBox_SelectedIndexChanged);
@@ -1865,10 +1754,9 @@ namespace ButterflyTrackingSystem
             this.addressUpdateLabel.AutoSize = true;
             this.addressUpdateLabel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.addressUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressUpdateLabel.Location = new System.Drawing.Point(38, 309);
-            this.addressUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.addressUpdateLabel.Location = new System.Drawing.Point(25, 201);
             this.addressUpdateLabel.Name = "addressUpdateLabel";
-            this.addressUpdateLabel.Size = new System.Drawing.Size(123, 30);
+            this.addressUpdateLabel.Size = new System.Drawing.Size(87, 22);
             this.addressUpdateLabel.TabIndex = 43;
             this.addressUpdateLabel.Text = "Address {";
             this.addressUpdateLabel.Click += new System.EventHandler(this.addressUpdateLabel_Click);
@@ -1880,10 +1768,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selectPositionUpdateLabel.AutoSize = true;
             this.selectPositionUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectPositionUpdateLabel.Location = new System.Drawing.Point(30, 188);
-            this.selectPositionUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.selectPositionUpdateLabel.Location = new System.Drawing.Point(20, 122);
             this.selectPositionUpdateLabel.Name = "selectPositionUpdateLabel";
-            this.selectPositionUpdateLabel.Size = new System.Drawing.Size(141, 25);
+            this.selectPositionUpdateLabel.Size = new System.Drawing.Size(101, 17);
             this.selectPositionUpdateLabel.TabIndex = 42;
             this.selectPositionUpdateLabel.Text = "Select Position";
             this.selectPositionUpdateLabel.Click += new System.EventHandler(this.selectPositionUpdateLabel_Click);
@@ -1892,10 +1779,9 @@ namespace ButterflyTrackingSystem
             // 
             this.updatePhoneNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updatePhoneNumberTextBox.Location = new System.Drawing.Point(576, 188);
-            this.updatePhoneNumberTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updatePhoneNumberTextBox.Location = new System.Drawing.Point(384, 122);
             this.updatePhoneNumberTextBox.Name = "updatePhoneNumberTextBox";
-            this.updatePhoneNumberTextBox.Size = new System.Drawing.Size(360, 26);
+            this.updatePhoneNumberTextBox.Size = new System.Drawing.Size(241, 20);
             this.updatePhoneNumberTextBox.TabIndex = 4;
             this.updatePhoneNumberTextBox.TextChanged += new System.EventHandler(this.updatePhoneNumberTextBox_TextChanged);
             // 
@@ -1903,39 +1789,35 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEmployeeStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEmployeeStateTextBox.Location = new System.Drawing.Point(268, 357);
-            this.updateEmployeeStateTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEmployeeStateTextBox.Location = new System.Drawing.Point(179, 232);
             this.updateEmployeeStateTextBox.Name = "updateEmployeeStateTextBox";
-            this.updateEmployeeStateTextBox.Size = new System.Drawing.Size(322, 26);
+            this.updateEmployeeStateTextBox.Size = new System.Drawing.Size(216, 20);
             this.updateEmployeeStateTextBox.TabIndex = 7;
             // 
             // updateEmployeeCityTextBox
             // 
             this.updateEmployeeCityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEmployeeCityTextBox.Location = new System.Drawing.Point(268, 317);
-            this.updateEmployeeCityTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEmployeeCityTextBox.Location = new System.Drawing.Point(179, 206);
             this.updateEmployeeCityTextBox.Name = "updateEmployeeCityTextBox";
-            this.updateEmployeeCityTextBox.Size = new System.Drawing.Size(322, 26);
+            this.updateEmployeeCityTextBox.Size = new System.Drawing.Size(216, 20);
             this.updateEmployeeCityTextBox.TabIndex = 6;
             // 
             // updateEmployeeStreetTextBox
             // 
             this.updateEmployeeStreetTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateEmployeeStreetTextBox.Location = new System.Drawing.Point(268, 272);
-            this.updateEmployeeStreetTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEmployeeStreetTextBox.Location = new System.Drawing.Point(179, 177);
             this.updateEmployeeStreetTextBox.Name = "updateEmployeeStreetTextBox";
-            this.updateEmployeeStreetTextBox.Size = new System.Drawing.Size(322, 26);
+            this.updateEmployeeStreetTextBox.Size = new System.Drawing.Size(216, 20);
             this.updateEmployeeStreetTextBox.TabIndex = 5;
             this.updateEmployeeStreetTextBox.TextChanged += new System.EventHandler(this.updateEmployeeStreetTextBox_TextChanged);
             // 
             // updateEmployeeNameTextBox
             // 
-            this.updateEmployeeNameTextBox.Location = new System.Drawing.Point(206, 122);
-            this.updateEmployeeNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateEmployeeNameTextBox.Location = new System.Drawing.Point(137, 79);
             this.updateEmployeeNameTextBox.Name = "updateEmployeeNameTextBox";
-            this.updateEmployeeNameTextBox.Size = new System.Drawing.Size(230, 26);
+            this.updateEmployeeNameTextBox.Size = new System.Drawing.Size(155, 20);
             this.updateEmployeeNameTextBox.TabIndex = 1;
             this.updateEmployeeNameTextBox.TextChanged += new System.EventHandler(this.updateEmployeeNameTextBox_TextChanged);
             // 
@@ -1946,10 +1828,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.phoneNumberUpdateLabel.AutoSize = true;
             this.phoneNumberUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneNumberUpdateLabel.Location = new System.Drawing.Point(464, 188);
-            this.phoneNumberUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.phoneNumberUpdateLabel.Location = new System.Drawing.Point(309, 122);
             this.phoneNumberUpdateLabel.Name = "phoneNumberUpdateLabel";
-            this.phoneNumberUpdateLabel.Size = new System.Drawing.Size(85, 25);
+            this.phoneNumberUpdateLabel.Size = new System.Drawing.Size(61, 17);
             this.phoneNumberUpdateLabel.TabIndex = 41;
             this.phoneNumberUpdateLabel.Text = "Phone #";
             this.phoneNumberUpdateLabel.Click += new System.EventHandler(this.phoneNumberUpdateLabel_Click);
@@ -1961,10 +1842,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.stateUpdateLabel.AutoSize = true;
             this.stateUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateUpdateLabel.Location = new System.Drawing.Point(180, 357);
-            this.stateUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.stateUpdateLabel.Location = new System.Drawing.Point(120, 232);
             this.stateUpdateLabel.Name = "stateUpdateLabel";
-            this.stateUpdateLabel.Size = new System.Drawing.Size(58, 25);
+            this.stateUpdateLabel.Size = new System.Drawing.Size(41, 17);
             this.stateUpdateLabel.TabIndex = 40;
             this.stateUpdateLabel.Text = "State";
             this.stateUpdateLabel.Click += new System.EventHandler(this.stateUpdateLabel_Click);
@@ -1976,10 +1856,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cityUpdateLabel.AutoSize = true;
             this.cityUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityUpdateLabel.Location = new System.Drawing.Point(180, 317);
-            this.cityUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cityUpdateLabel.Location = new System.Drawing.Point(120, 206);
             this.cityUpdateLabel.Name = "cityUpdateLabel";
-            this.cityUpdateLabel.Size = new System.Drawing.Size(46, 25);
+            this.cityUpdateLabel.Size = new System.Drawing.Size(31, 17);
             this.cityUpdateLabel.TabIndex = 39;
             this.cityUpdateLabel.Text = "City";
             this.cityUpdateLabel.Click += new System.EventHandler(this.cityUpdateLabel_Click);
@@ -1991,10 +1870,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.streetUpdateLabel.AutoSize = true;
             this.streetUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.streetUpdateLabel.Location = new System.Drawing.Point(180, 277);
-            this.streetUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.streetUpdateLabel.Location = new System.Drawing.Point(120, 180);
             this.streetUpdateLabel.Name = "streetUpdateLabel";
-            this.streetUpdateLabel.Size = new System.Drawing.Size(64, 25);
+            this.streetUpdateLabel.Size = new System.Drawing.Size(46, 17);
             this.streetUpdateLabel.TabIndex = 37;
             this.streetUpdateLabel.Text = "Street";
             this.streetUpdateLabel.Click += new System.EventHandler(this.streetUpdateLabel_Click);
@@ -2006,10 +1884,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.employeeNameUpdateLabel.AutoSize = true;
             this.employeeNameUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeNameUpdateLabel.Location = new System.Drawing.Point(30, 122);
-            this.employeeNameUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.employeeNameUpdateLabel.Location = new System.Drawing.Point(20, 79);
             this.employeeNameUpdateLabel.Name = "employeeNameUpdateLabel";
-            this.employeeNameUpdateLabel.Size = new System.Drawing.Size(156, 25);
+            this.employeeNameUpdateLabel.Size = new System.Drawing.Size(111, 17);
             this.employeeNameUpdateLabel.TabIndex = 35;
             this.employeeNameUpdateLabel.Text = "Employee Name";
             this.employeeNameUpdateLabel.Click += new System.EventHandler(this.employeeNameUpdateLabel_Click);
@@ -2017,10 +1894,9 @@ namespace ButterflyTrackingSystem
             // updateAccountButton
             // 
             this.updateAccountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateAccountButton.Location = new System.Drawing.Point(370, 457);
-            this.updateAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateAccountButton.Location = new System.Drawing.Point(247, 297);
             this.updateAccountButton.Name = "updateAccountButton";
-            this.updateAccountButton.Size = new System.Drawing.Size(204, 46);
+            this.updateAccountButton.Size = new System.Drawing.Size(136, 30);
             this.updateAccountButton.TabIndex = 8;
             this.updateAccountButton.Text = "Update Account";
             this.updateAccountButton.UseVisualStyleBackColor = true;
@@ -2030,10 +1906,9 @@ namespace ButterflyTrackingSystem
             // 
             this.updatePasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.updatePasswordTextBox.Location = new System.Drawing.Point(576, 122);
-            this.updatePasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updatePasswordTextBox.Location = new System.Drawing.Point(384, 79);
             this.updatePasswordTextBox.Name = "updatePasswordTextBox";
-            this.updatePasswordTextBox.Size = new System.Drawing.Size(360, 26);
+            this.updatePasswordTextBox.Size = new System.Drawing.Size(241, 20);
             this.updatePasswordTextBox.TabIndex = 2;
             this.updatePasswordTextBox.UseSystemPasswordChar = true;
             this.updatePasswordTextBox.TextChanged += new System.EventHandler(this.updatePasswordTextBox_TextChanged);
@@ -2045,10 +1920,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordUpdateLabel.AutoSize = true;
             this.passwordUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordUpdateLabel.Location = new System.Drawing.Point(464, 122);
-            this.passwordUpdateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.passwordUpdateLabel.Location = new System.Drawing.Point(309, 79);
             this.passwordUpdateLabel.Name = "passwordUpdateLabel";
-            this.passwordUpdateLabel.Size = new System.Drawing.Size(98, 25);
+            this.passwordUpdateLabel.Size = new System.Drawing.Size(69, 17);
             this.passwordUpdateLabel.TabIndex = 26;
             this.passwordUpdateLabel.Text = "Password";
             this.passwordUpdateLabel.Click += new System.EventHandler(this.passwordUpdateLabel_Click);
@@ -2060,10 +1934,9 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateAccountLabel.AutoSize = true;
             this.updateAccountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateAccountLabel.Location = new System.Drawing.Point(315, 23);
-            this.updateAccountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.updateAccountLabel.Location = new System.Drawing.Point(210, 15);
             this.updateAccountLabel.Name = "updateAccountLabel";
-            this.updateAccountLabel.Size = new System.Drawing.Size(296, 36);
+            this.updateAccountLabel.Size = new System.Drawing.Size(195, 25);
             this.updateAccountLabel.TabIndex = 23;
             this.updateAccountLabel.Text = "Update your Account";
             this.updateAccountLabel.Click += new System.EventHandler(this.updateAccountLabel_Click);
@@ -2138,19 +2011,30 @@ namespace ButterflyTrackingSystem
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
             // 
+            // deleteEntryButton
+            // 
+            this.deleteEntryButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.deleteEntryButton.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.deleteEntryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteEntryButton.Location = new System.Drawing.Point(29, 293);
+            this.deleteEntryButton.Name = "deleteEntryButton";
+            this.deleteEntryButton.Size = new System.Drawing.Size(134, 36);
+            this.deleteEntryButton.TabIndex = 90;
+            this.deleteEntryButton.Text = "Delete Entry";
+            this.deleteEntryButton.UseVisualStyleBackColor = false;
+            // 
             // BTS
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(980, 582);
+            this.ClientSize = new System.Drawing.Size(653, 378);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.registrationPanel);
             this.Controls.Add(this.loginPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BTS";
             this.Text = "Butterfly Tracking System";
             this.Load += new System.EventHandler(this.BTS_Load);
@@ -2343,5 +2227,6 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.Label updateLongitudeLabel;
         private System.Windows.Forms.Label updateEntryRequiredTagIDLabel;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button deleteEntryButton;
     }
 }
