@@ -1879,5 +1879,105 @@ namespace ButterflyTrackingSystem
                 tim = false;
             }
         }
+
+        private void migrationTabTitleLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationTagIDLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationCityLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationStateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationCountryLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationLongitudeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationLatitudeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationTagIDtoSeeGridLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationTagIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationCityTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationStateTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationCountryTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationLongitudeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationLatitudeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addRouteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationTagIDtoViewGridBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewSightingButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void migrationFirstGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void migrationSecondGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void migrationTab_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

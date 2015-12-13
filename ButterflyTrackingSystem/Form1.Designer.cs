@@ -182,6 +182,26 @@ namespace ButterflyTrackingSystem
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.migrationTab = new System.Windows.Forms.TabPage();
+            this.migrationLatitudeTextBox = new System.Windows.Forms.TextBox();
+            this.migrationLongitudeTextBox = new System.Windows.Forms.TextBox();
+            this.migrationLatitudeLabel = new System.Windows.Forms.Label();
+            this.migrationLongitudeLabel = new System.Windows.Forms.Label();
+            this.migrationCountryTextBox = new System.Windows.Forms.TextBox();
+            this.migrationStateTextBox = new System.Windows.Forms.TextBox();
+            this.migrationCityTextBox = new System.Windows.Forms.TextBox();
+            this.migrationTagIDTextBox = new System.Windows.Forms.TextBox();
+            this.migrationCountryLabel = new System.Windows.Forms.Label();
+            this.migrationStateLabel = new System.Windows.Forms.Label();
+            this.migrationCityLabel = new System.Windows.Forms.Label();
+            this.migrationTagIDLabel = new System.Windows.Forms.Label();
+            this.migrationTabTitleLabel = new System.Windows.Forms.Label();
+            this.migrationTagIDtoViewGridBox = new System.Windows.Forms.TextBox();
+            this.migrationTagIDtoSeeGridLabel = new System.Windows.Forms.Label();
+            this.addRouteButton = new System.Windows.Forms.Button();
+            this.viewSightingButton = new System.Windows.Forms.Button();
+            this.migrationFirstGrid = new System.Windows.Forms.DataGridView();
+            this.migrationSecondGrid = new System.Windows.Forms.DataGridView();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -210,6 +230,9 @@ namespace ButterflyTrackingSystem
             ((System.ComponentModel.ISupportInitialize)(this.registerStreetError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerCityError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerStateError)).BeginInit();
+            this.migrationTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.migrationFirstGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.migrationSecondGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // loginPanel
@@ -660,6 +683,7 @@ namespace ButterflyTrackingSystem
             // 
             this.functionalitiesTabs.Controls.Add(this.createEntryTab);
             this.functionalitiesTabs.Controls.Add(this.updateEntryTab);
+            this.functionalitiesTabs.Controls.Add(this.migrationTab);
             this.functionalitiesTabs.Controls.Add(this.searchTab);
             this.functionalitiesTabs.Controls.Add(this.leaderboardTab);
             this.functionalitiesTabs.Controls.Add(this.graphTab);
@@ -1323,9 +1347,9 @@ namespace ButterflyTrackingSystem
             this.ResetTime.BackColor = System.Drawing.Color.MintCream;
             this.ResetTime.Location = new System.Drawing.Point(136, 176);
             this.ResetTime.Name = "ResetTime";
-            this.ResetTime.Size = new System.Drawing.Size(55, 20);
+            this.ResetTime.Size = new System.Drawing.Size(118, 20);
             this.ResetTime.TabIndex = 69;
-            this.ResetTime.Text = "Enable";
+            this.ResetTime.Text = "Enable/Disable Time";
             this.ResetTime.UseVisualStyleBackColor = false;
             this.ResetTime.Click += new System.EventHandler(this.ResetTime_Click_1);
             // 
@@ -1334,9 +1358,9 @@ namespace ButterflyTrackingSystem
             this.ResetDate.BackColor = System.Drawing.Color.MintCream;
             this.ResetDate.Location = new System.Drawing.Point(136, 149);
             this.ResetDate.Name = "ResetDate";
-            this.ResetDate.Size = new System.Drawing.Size(55, 21);
+            this.ResetDate.Size = new System.Drawing.Size(118, 21);
             this.ResetDate.TabIndex = 68;
-            this.ResetDate.Text = "Enable";
+            this.ResetDate.Text = "Enable/Disable Date";
             this.ResetDate.UseVisualStyleBackColor = false;
             this.ResetDate.Click += new System.EventHandler(this.ResetDate_Click_1);
             // 
@@ -1552,9 +1576,9 @@ namespace ButterflyTrackingSystem
             // 
             this.searchButton.BackColor = System.Drawing.Color.PaleTurquoise;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(247, 163);
+            this.searchButton.Location = new System.Drawing.Point(347, 163);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(136, 30);
+            this.searchButton.Size = new System.Drawing.Size(111, 30);
             this.searchButton.TabIndex = 9;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = false;
@@ -2035,6 +2059,250 @@ namespace ButterflyTrackingSystem
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
             // 
+            // migrationTab
+            // 
+            this.migrationTab.BackColor = System.Drawing.Color.LightGreen;
+            this.migrationTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.migrationTab.Controls.Add(this.migrationSecondGrid);
+            this.migrationTab.Controls.Add(this.migrationFirstGrid);
+            this.migrationTab.Controls.Add(this.viewSightingButton);
+            this.migrationTab.Controls.Add(this.addRouteButton);
+            this.migrationTab.Controls.Add(this.migrationTagIDtoViewGridBox);
+            this.migrationTab.Controls.Add(this.migrationTagIDtoSeeGridLabel);
+            this.migrationTab.Controls.Add(this.migrationLatitudeTextBox);
+            this.migrationTab.Controls.Add(this.migrationLongitudeTextBox);
+            this.migrationTab.Controls.Add(this.migrationLatitudeLabel);
+            this.migrationTab.Controls.Add(this.migrationLongitudeLabel);
+            this.migrationTab.Controls.Add(this.migrationCountryTextBox);
+            this.migrationTab.Controls.Add(this.migrationStateTextBox);
+            this.migrationTab.Controls.Add(this.migrationCityTextBox);
+            this.migrationTab.Controls.Add(this.migrationTagIDTextBox);
+            this.migrationTab.Controls.Add(this.migrationCountryLabel);
+            this.migrationTab.Controls.Add(this.migrationStateLabel);
+            this.migrationTab.Controls.Add(this.migrationCityLabel);
+            this.migrationTab.Controls.Add(this.migrationTagIDLabel);
+            this.migrationTab.Controls.Add(this.migrationTabTitleLabel);
+            this.migrationTab.Location = new System.Drawing.Point(4, 22);
+            this.migrationTab.Name = "migrationTab";
+            this.migrationTab.Padding = new System.Windows.Forms.Padding(3);
+            this.migrationTab.Size = new System.Drawing.Size(645, 352);
+            this.migrationTab.TabIndex = 6;
+            this.migrationTab.Text = "Migration";
+            this.migrationTab.Click += new System.EventHandler(this.migrationTab_Click);
+            // 
+            // migrationLatitudeTextBox
+            // 
+            this.migrationLatitudeTextBox.Location = new System.Drawing.Point(79, 172);
+            this.migrationLatitudeTextBox.Name = "migrationLatitudeTextBox";
+            this.migrationLatitudeTextBox.Size = new System.Drawing.Size(135, 20);
+            this.migrationLatitudeTextBox.TabIndex = 6;
+            this.migrationLatitudeTextBox.TextChanged += new System.EventHandler(this.migrationLatitudeTextBox_TextChanged);
+            // 
+            // migrationLongitudeTextBox
+            // 
+            this.migrationLongitudeTextBox.Location = new System.Drawing.Point(79, 146);
+            this.migrationLongitudeTextBox.Name = "migrationLongitudeTextBox";
+            this.migrationLongitudeTextBox.Size = new System.Drawing.Size(135, 20);
+            this.migrationLongitudeTextBox.TabIndex = 5;
+            this.migrationLongitudeTextBox.TextChanged += new System.EventHandler(this.migrationLongitudeTextBox_TextChanged);
+            // 
+            // migrationLatitudeLabel
+            // 
+            this.migrationLatitudeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.migrationLatitudeLabel.AutoSize = true;
+            this.migrationLatitudeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.migrationLatitudeLabel.Location = new System.Drawing.Point(5, 174);
+            this.migrationLatitudeLabel.Name = "migrationLatitudeLabel";
+            this.migrationLatitudeLabel.Size = new System.Drawing.Size(59, 17);
+            this.migrationLatitudeLabel.TabIndex = 104;
+            this.migrationLatitudeLabel.Text = "Latitude";
+            this.migrationLatitudeLabel.Click += new System.EventHandler(this.migrationLatitudeLabel_Click);
+            // 
+            // migrationLongitudeLabel
+            // 
+            this.migrationLongitudeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.migrationLongitudeLabel.AutoSize = true;
+            this.migrationLongitudeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.migrationLongitudeLabel.Location = new System.Drawing.Point(5, 148);
+            this.migrationLongitudeLabel.Name = "migrationLongitudeLabel";
+            this.migrationLongitudeLabel.Size = new System.Drawing.Size(71, 17);
+            this.migrationLongitudeLabel.TabIndex = 103;
+            this.migrationLongitudeLabel.Text = "Longitude";
+            this.migrationLongitudeLabel.Click += new System.EventHandler(this.migrationLongitudeLabel_Click);
+            // 
+            // migrationCountryTextBox
+            // 
+            this.migrationCountryTextBox.Location = new System.Drawing.Point(79, 118);
+            this.migrationCountryTextBox.Name = "migrationCountryTextBox";
+            this.migrationCountryTextBox.Size = new System.Drawing.Size(135, 20);
+            this.migrationCountryTextBox.TabIndex = 4;
+            this.migrationCountryTextBox.TextChanged += new System.EventHandler(this.migrationCountryTextBox_TextChanged);
+            // 
+            // migrationStateTextBox
+            // 
+            this.migrationStateTextBox.Location = new System.Drawing.Point(79, 92);
+            this.migrationStateTextBox.Name = "migrationStateTextBox";
+            this.migrationStateTextBox.Size = new System.Drawing.Size(135, 20);
+            this.migrationStateTextBox.TabIndex = 3;
+            this.migrationStateTextBox.TextChanged += new System.EventHandler(this.migrationStateTextBox_TextChanged);
+            // 
+            // migrationCityTextBox
+            // 
+            this.migrationCityTextBox.Location = new System.Drawing.Point(79, 67);
+            this.migrationCityTextBox.Name = "migrationCityTextBox";
+            this.migrationCityTextBox.Size = new System.Drawing.Size(135, 20);
+            this.migrationCityTextBox.TabIndex = 2;
+            this.migrationCityTextBox.TextChanged += new System.EventHandler(this.migrationCityTextBox_TextChanged);
+            // 
+            // migrationTagIDTextBox
+            // 
+            this.migrationTagIDTextBox.Location = new System.Drawing.Point(79, 38);
+            this.migrationTagIDTextBox.Name = "migrationTagIDTextBox";
+            this.migrationTagIDTextBox.Size = new System.Drawing.Size(83, 20);
+            this.migrationTagIDTextBox.TabIndex = 1;
+            this.migrationTagIDTextBox.TextChanged += new System.EventHandler(this.migrationTagIDTextBox_TextChanged);
+            // 
+            // migrationCountryLabel
+            // 
+            this.migrationCountryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.migrationCountryLabel.AutoSize = true;
+            this.migrationCountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.migrationCountryLabel.Location = new System.Drawing.Point(5, 119);
+            this.migrationCountryLabel.Name = "migrationCountryLabel";
+            this.migrationCountryLabel.Size = new System.Drawing.Size(57, 17);
+            this.migrationCountryLabel.TabIndex = 100;
+            this.migrationCountryLabel.Text = "Country";
+            this.migrationCountryLabel.Click += new System.EventHandler(this.migrationCountryLabel_Click);
+            // 
+            // migrationStateLabel
+            // 
+            this.migrationStateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.migrationStateLabel.AutoSize = true;
+            this.migrationStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.migrationStateLabel.Location = new System.Drawing.Point(5, 93);
+            this.migrationStateLabel.Name = "migrationStateLabel";
+            this.migrationStateLabel.Size = new System.Drawing.Size(41, 17);
+            this.migrationStateLabel.TabIndex = 99;
+            this.migrationStateLabel.Text = "State";
+            this.migrationStateLabel.Click += new System.EventHandler(this.migrationStateLabel_Click);
+            // 
+            // migrationCityLabel
+            // 
+            this.migrationCityLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.migrationCityLabel.AutoSize = true;
+            this.migrationCityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.migrationCityLabel.Location = new System.Drawing.Point(5, 68);
+            this.migrationCityLabel.Name = "migrationCityLabel";
+            this.migrationCityLabel.Size = new System.Drawing.Size(31, 17);
+            this.migrationCityLabel.TabIndex = 98;
+            this.migrationCityLabel.Text = "City";
+            this.migrationCityLabel.Click += new System.EventHandler(this.migrationCityLabel_Click);
+            // 
+            // migrationTagIDLabel
+            // 
+            this.migrationTagIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.migrationTagIDLabel.AutoSize = true;
+            this.migrationTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.migrationTagIDLabel.Location = new System.Drawing.Point(5, 38);
+            this.migrationTagIDLabel.Name = "migrationTagIDLabel";
+            this.migrationTagIDLabel.Size = new System.Drawing.Size(50, 17);
+            this.migrationTagIDLabel.TabIndex = 95;
+            this.migrationTagIDLabel.Text = "Tag ID";
+            this.migrationTagIDLabel.Click += new System.EventHandler(this.migrationTagIDLabel_Click);
+            // 
+            // migrationTabTitleLabel
+            // 
+            this.migrationTabTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.migrationTabTitleLabel.AutoSize = true;
+            this.migrationTabTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.migrationTabTitleLabel.Location = new System.Drawing.Point(140, 4);
+            this.migrationTabTitleLabel.Name = "migrationTabTitleLabel";
+            this.migrationTabTitleLabel.Size = new System.Drawing.Size(361, 25);
+            this.migrationTabTitleLabel.TabIndex = 94;
+            this.migrationTabTitleLabel.Text = "Add new migration data about a Butterfly";
+            this.migrationTabTitleLabel.Click += new System.EventHandler(this.migrationTabTitleLabel_Click);
+            // 
+            // migrationTagIDtoViewGridBox
+            // 
+            this.migrationTagIDtoViewGridBox.Location = new System.Drawing.Point(131, 272);
+            this.migrationTagIDtoViewGridBox.Name = "migrationTagIDtoViewGridBox";
+            this.migrationTagIDtoViewGridBox.Size = new System.Drawing.Size(83, 20);
+            this.migrationTagIDtoViewGridBox.TabIndex = 8;
+            this.migrationTagIDtoViewGridBox.TextChanged += new System.EventHandler(this.migrationTagIDtoViewGridBox_TextChanged);
+            // 
+            // migrationTagIDtoSeeGridLabel
+            // 
+            this.migrationTagIDtoSeeGridLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.migrationTagIDtoSeeGridLabel.AutoSize = true;
+            this.migrationTagIDtoSeeGridLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.migrationTagIDtoSeeGridLabel.Location = new System.Drawing.Point(5, 253);
+            this.migrationTagIDtoSeeGridLabel.Name = "migrationTagIDtoSeeGridLabel";
+            this.migrationTagIDtoSeeGridLabel.Size = new System.Drawing.Size(233, 34);
+            this.migrationTagIDtoSeeGridLabel.TabIndex = 106;
+            this.migrationTagIDtoSeeGridLabel.Text = "To see reported butterfly sightings, \r\nEnter the Tag ID:";
+            this.migrationTagIDtoSeeGridLabel.Click += new System.EventHandler(this.migrationTagIDtoSeeGridLabel_Click);
+            // 
+            // addRouteButton
+            // 
+            this.addRouteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addRouteButton.Location = new System.Drawing.Point(104, 198);
+            this.addRouteButton.Name = "addRouteButton";
+            this.addRouteButton.Size = new System.Drawing.Size(83, 30);
+            this.addRouteButton.TabIndex = 7;
+            this.addRouteButton.Text = "Add Route";
+            this.addRouteButton.UseVisualStyleBackColor = true;
+            this.addRouteButton.Click += new System.EventHandler(this.addRouteButton_Click);
+            // 
+            // viewSightingButton
+            // 
+            this.viewSightingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewSightingButton.Location = new System.Drawing.Point(93, 304);
+            this.viewSightingButton.Name = "viewSightingButton";
+            this.viewSightingButton.Size = new System.Drawing.Size(110, 30);
+            this.viewSightingButton.TabIndex = 9;
+            this.viewSightingButton.Text = "View Sighting";
+            this.viewSightingButton.UseVisualStyleBackColor = true;
+            this.viewSightingButton.Click += new System.EventHandler(this.viewSightingButton_Click);
+            // 
+            // migrationFirstGrid
+            // 
+            this.migrationFirstGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.migrationFirstGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.migrationFirstGrid.Location = new System.Drawing.Point(235, 35);
+            this.migrationFirstGrid.Name = "migrationFirstGrid";
+            this.migrationFirstGrid.Size = new System.Drawing.Size(400, 156);
+            this.migrationFirstGrid.TabIndex = 109;
+            this.migrationFirstGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.migrationFirstGrid_CellContentClick);
+            // 
+            // migrationSecondGrid
+            // 
+            this.migrationSecondGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.migrationSecondGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.migrationSecondGrid.Location = new System.Drawing.Point(235, 213);
+            this.migrationSecondGrid.Name = "migrationSecondGrid";
+            this.migrationSecondGrid.Size = new System.Drawing.Size(400, 130);
+            this.migrationSecondGrid.TabIndex = 110;
+            this.migrationSecondGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.migrationSecondGrid_CellContentClick);
+            // 
             // BTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2085,6 +2353,10 @@ namespace ButterflyTrackingSystem
             ((System.ComponentModel.ISupportInitialize)(this.registerStreetError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerCityError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerStateError)).EndInit();
+            this.migrationTab.ResumeLayout(false);
+            this.migrationTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.migrationFirstGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.migrationSecondGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2241,5 +2513,25 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.Button ResetDate;
         private System.Windows.Forms.Button ResetTime;
         private System.Windows.Forms.Button uploadSightingsFileButton;
+        private System.Windows.Forms.TabPage migrationTab;
+        private System.Windows.Forms.TextBox migrationLatitudeTextBox;
+        private System.Windows.Forms.TextBox migrationLongitudeTextBox;
+        private System.Windows.Forms.Label migrationLatitudeLabel;
+        private System.Windows.Forms.Label migrationLongitudeLabel;
+        private System.Windows.Forms.TextBox migrationCountryTextBox;
+        private System.Windows.Forms.TextBox migrationStateTextBox;
+        private System.Windows.Forms.TextBox migrationCityTextBox;
+        private System.Windows.Forms.TextBox migrationTagIDTextBox;
+        private System.Windows.Forms.Label migrationCountryLabel;
+        private System.Windows.Forms.Label migrationStateLabel;
+        private System.Windows.Forms.Label migrationCityLabel;
+        private System.Windows.Forms.Label migrationTagIDLabel;
+        private System.Windows.Forms.Label migrationTabTitleLabel;
+        private System.Windows.Forms.TextBox migrationTagIDtoViewGridBox;
+        private System.Windows.Forms.Label migrationTagIDtoSeeGridLabel;
+        private System.Windows.Forms.Button viewSightingButton;
+        private System.Windows.Forms.Button addRouteButton;
+        private System.Windows.Forms.DataGridView migrationFirstGrid;
+        private System.Windows.Forms.DataGridView migrationSecondGrid;
     }
 }
