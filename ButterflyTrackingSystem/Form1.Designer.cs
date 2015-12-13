@@ -1715,7 +1715,6 @@ namespace ButterflyTrackingSystem
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "hh:mm tt";
             this.dateTimePicker1.Location = new System.Drawing.Point(14, 269);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -1765,7 +1764,6 @@ namespace ButterflyTrackingSystem
             // 
             // searchDateTimePicker
             // 
-            this.searchDateTimePicker.CustomFormat = "MM-dd-yyyy";
             this.searchDateTimePicker.Location = new System.Drawing.Point(14, 229);
             this.searchDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchDateTimePicker.Name = "searchDateTimePicker";
@@ -2112,7 +2110,6 @@ namespace ButterflyTrackingSystem
             this.loadChartButton.TabIndex = 4;
             this.loadChartButton.Text = "Refresh Chart";
             this.loadChartButton.UseVisualStyleBackColor = false;
-            this.loadChartButton.Click += new System.EventHandler(this.loadChartButton_Click);
             // 
             // graphChart
             // 
@@ -2133,7 +2130,6 @@ namespace ButterflyTrackingSystem
             this.graphChart.Size = new System.Drawing.Size(944, 442);
             this.graphChart.TabIndex = 0;
             this.graphChart.Text = "Graph/Chart";
-            this.graphChart.Click += new System.EventHandler(this.graphChart_Click);
             // 
             // updateAccountTab
             // 
