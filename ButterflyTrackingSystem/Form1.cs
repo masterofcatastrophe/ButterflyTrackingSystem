@@ -27,14 +27,15 @@ namespace ButterflyTrackingSystem
             InitializeComponent();
             con.OpenConnection(); // open db connection
             functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged; // condition for tagger/nonTagger
-            //functionalitiesTabs.Selecting += ideaTabControl_Selecting;
+            functionalitiesTabs.Selecting += tabControl1_Selecting;
            mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
+            functionalitiesTabs.Selected += new TabControlEventHandler(tabControl1_Selected);
         }
 
         void listView_VisibleChanged(object sender, EventArgs e)
         {
             //mainPanel.VisibleChanged -= new EventHandler(listView_VisibleChanged);
-            if (functionalitiesTabs.SelectedIndex == 2) // clears search tab initially
+            if (functionalitiesTabs.SelectedIndex == 3) // clears search tab initially
             {
                 searchDateTimePicker.Value = DateTime.Now;
                 dateTimePicker1.Value = DateTime.Now;
@@ -46,16 +47,40 @@ namespace ButterflyTrackingSystem
 
             }
         }
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            if (functionalitiesTabs.SelectedIndex == 3) // clears search tab initially
+            {
+                searchDateTimePicker.Value = DateTime.Now;
+                dateTimePicker1.Value = DateTime.Now;
+                searchDateTimePicker.CustomFormat = " ";
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.CustomFormat = " ";
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.CustomFormat = " ";
 
-        /*
+            }
+        }
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
+            if (functionalitiesTabs.SelectedIndex == 3) // clears search tab initially
+            {
+                searchDateTimePicker.Value = DateTime.Now;
+                dateTimePicker1.Value = DateTime.Now;
+                searchDateTimePicker.CustomFormat = " ";
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.CustomFormat = " ";
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.CustomFormat = " ";
+
+            }
+            /*
             if (!e.TabPage.Enabled)
             {
                 e.Cancel = true;
             }
-        }
         */
+        }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1427,7 +1452,7 @@ namespace ButterflyTrackingSystem
         {
             searchDateTimePicker.Format = DateTimePickerFormat.Custom;
             searchDateTimePicker.ShowUpDown = true;
-            searchDateTimePicker.CustomFormat = "MM/dd/yyyy";
+            searchDateTimePicker.CustomFormat = "MM-dd-yyyy";
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -1691,11 +1716,6 @@ namespace ButterflyTrackingSystem
                     row.Cells[9].Value = updateEntryStateBox.Text;
                     row.Cells[10].Value = updateEntryCountryBox.Text;
 
-
-
-
-
-
                     string updateEntry_sql = "UPDATE Butterfly SET Species='" + updateEntrySpeciesBox.Text +
                                             "', Gender='" + updateEntryGenderComboBox.Text + "', Age='" +
                                             updateEntryAgeBox.Text + "'WHERE Tag_ID='" + updateEntryTagIDBox.Text + "' ;";
@@ -1704,7 +1724,6 @@ namespace ButterflyTrackingSystem
                     MySqlDataReader updateReader = updateEntry.ExecuteReader();
 
                     updateReader.Close();
-
 
                     string updateEntrySight_sql = "UPDATE Sighting_Locations SET Longitude='" + updateEntryLongitudeBox.Text +
                                                 "', Latitude='" + updateEntryLatitudeBox.Text + "', City='" +
@@ -1717,15 +1736,9 @@ namespace ButterflyTrackingSystem
                     updateSightReader.Close();
                     MessageBox.Show("Entry up to date!");
                 }
-
-
                 else MessageBox.Show("Please fill missing fields !");
 
             }
-
-            
-            
-           
         }
             
 
@@ -1856,18 +1869,20 @@ namespace ButterflyTrackingSystem
         {
             if (e.RowIndex > 0)
             {
-                i = e.RowIndex;
-                DataGridViewRow row = updateEntryGrid.Rows[i];
-                updateEntryTagIDBox.Text = row.Cells[0].Value.ToString();
-                updateEntrySpeciesBox.Text = row.Cells[1].Value.ToString();
-                updateEntryGenderComboBox.Text = row.Cells[2].Value.ToString();
-                updateEntryAgeBox.Text = row.Cells[3].Value.ToString();
-                updateEntryLongitudeBox.Text = row.Cells[6].Value.ToString();
-                updateEntryLatitudeBox.Text = row.Cells[7].Value.ToString();
-                updateEntryCityBox.Text = row.Cells[8].Value.ToString();
-                updateEntryStateBox.Text = row.Cells[9].Value.ToString();
-                updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
-            }
+            
+            i = e.RowIndex;
+            DataGridViewRow row = updateEntryGrid.Rows[i];
+            updateEntryTagIDBox.Text = row.Cells[0].Value.ToString();
+            updateEntrySpeciesBox.Text = row.Cells[1].Value.ToString();
+            updateEntryGenderComboBox.Text = row.Cells[2].Value.ToString();
+            updateEntryAgeBox.Text = row.Cells[3].Value.ToString();
+            updateEntryLongitudeBox.Text = row.Cells[6].Value.ToString();
+            updateEntryLatitudeBox.Text = row.Cells[7].Value.ToString();
+            updateEntryCityBox.Text = row.Cells[8].Value.ToString();
+            updateEntryStateBox.Text = row.Cells[9].Value.ToString();
+            updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
+            
+        }
         }
         
         private void ResetDate_Click(object sender, EventArgs e){}
@@ -1878,8 +1893,8 @@ namespace ButterflyTrackingSystem
             if (cal == false)
             {
                 searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-                searchDateTimePicker.ShowUpDown = true;
                 searchDateTimePicker.CustomFormat = "MM-dd-yyyy";
+                searchDateTimePicker.ShowUpDown = true;
                 cal = true;
             }
             else
@@ -1896,8 +1911,8 @@ namespace ButterflyTrackingSystem
             if (tim == false)
             {
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
-                dateTimePicker1.ShowUpDown = true;
                 dateTimePicker1.CustomFormat = "hh:mm tt";
+                dateTimePicker1.ShowUpDown = true;
                 tim = true;
             }
             else
@@ -1989,7 +2004,7 @@ namespace ButterflyTrackingSystem
             string migrationDate = migrationDateTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
             string migrationTime = migrationDateTimePicker.Value.ToString("hh:mm tt"); // user defined date
             
-            
+
 
             if (!String.IsNullOrEmpty(migrationTagIDTextBox.Text) && !String.IsNullOrEmpty(migrationCityTextBox.Text) &&
                 !String.IsNullOrEmpty(migrationStateTextBox.Text) && !String.IsNullOrEmpty(migrationCountryTextBox.Text) &&
@@ -2057,6 +2072,7 @@ namespace ButterflyTrackingSystem
             bindingNavigator3.BindingSource = bindingsource3;
             migrationSecondGrid.DataSource = bindingsource3;
 
+            if (bindingsource3 == null) MessageBox.Show("No migrations found");
            
         }
 
@@ -2073,12 +2089,6 @@ namespace ButterflyTrackingSystem
         private void migrationTab_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void migrationDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            migrationDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
-            migrationDateTimePicker.Format = DateTimePickerFormat.Custom;
         }
     }
 }

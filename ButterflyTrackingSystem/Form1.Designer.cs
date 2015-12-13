@@ -785,8 +785,11 @@ namespace ButterflyTrackingSystem
             // 
             this.createStateTextBox.Location = new System.Drawing.Point(392, 166);
             this.createStateTextBox.MaxLength = 2;
+            this.createStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.createStateTextBox.Location = new System.Drawing.Point(392, 166);
             this.createStateTextBox.Name = "createStateTextBox";
-            this.createStateTextBox.Size = new System.Drawing.Size(43, 20);
+            this.createStateTextBox.Size = new System.Drawing.Size(310, 26);
             this.createStateTextBox.TabIndex = 5;
             this.createStateTextBox.TextChanged += new System.EventHandler(this.createStateTextBox_TextChanged);
             this.createStateTextBox.Leave += new System.EventHandler(this.createStateTextBox_Leave);
@@ -1035,7 +1038,10 @@ namespace ButterflyTrackingSystem
             // 
             // updateEntryLatitudeBox
             // 
-            this.updateEntryLatitudeBox.Location = new System.Drawing.Point(460, 169);
+            this.updateEntryLatitudeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryLatitudeBox.Location = new System.Drawing.Point(690, 260);
+            this.updateEntryLatitudeBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEntryLatitudeBox.Name = "updateEntryLatitudeBox";
             this.updateEntryLatitudeBox.Size = new System.Drawing.Size(172, 20);
             this.updateEntryLatitudeBox.TabIndex = 9;
@@ -1043,7 +1049,10 @@ namespace ButterflyTrackingSystem
             // 
             // updateEntryLongitudeBox
             // 
-            this.updateEntryLongitudeBox.Location = new System.Drawing.Point(460, 143);
+            this.updateEntryLongitudeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryLongitudeBox.Location = new System.Drawing.Point(690, 220);
+            this.updateEntryLongitudeBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEntryLongitudeBox.Name = "updateEntryLongitudeBox";
             this.updateEntryLongitudeBox.Size = new System.Drawing.Size(172, 20);
             this.updateEntryLongitudeBox.TabIndex = 8;
@@ -1122,7 +1131,10 @@ namespace ButterflyTrackingSystem
             // 
             // updateEntryCountryBox
             // 
-            this.updateEntryCountryBox.Location = new System.Drawing.Point(460, 117);
+            this.updateEntryCountryBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryCountryBox.Location = new System.Drawing.Point(690, 180);
+            this.updateEntryCountryBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEntryCountryBox.Name = "updateEntryCountryBox";
             this.updateEntryCountryBox.Size = new System.Drawing.Size(172, 20);
             this.updateEntryCountryBox.TabIndex = 7;
@@ -1130,16 +1142,21 @@ namespace ButterflyTrackingSystem
             // 
             // updateEntryStateBox
             // 
-            this.updateEntryStateBox.Location = new System.Drawing.Point(460, 91);
-            this.updateEntryStateBox.MaxLength = 2;
+            this.updateEntryStateBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryStateBox.Location = new System.Drawing.Point(690, 140);
+            this.updateEntryStateBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEntryStateBox.Name = "updateEntryStateBox";
-            this.updateEntryStateBox.Size = new System.Drawing.Size(34, 20);
+            this.updateEntryStateBox.Size = new System.Drawing.Size(256, 26);
             this.updateEntryStateBox.TabIndex = 6;
             this.updateEntryStateBox.TextChanged += new System.EventHandler(this.updateEntryStateBox_TextChanged);
             // 
             // updateEntryCityBox
             // 
-            this.updateEntryCityBox.Location = new System.Drawing.Point(460, 62);
+            this.updateEntryCityBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEntryCityBox.Location = new System.Drawing.Point(690, 95);
+            this.updateEntryCityBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEntryCityBox.Name = "updateEntryCityBox";
             this.updateEntryCityBox.Size = new System.Drawing.Size(172, 20);
             this.updateEntryCityBox.TabIndex = 5;
@@ -1358,10 +1375,11 @@ namespace ButterflyTrackingSystem
             // viewSightingButton
             // 
             this.viewSightingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewSightingButton.Location = new System.Drawing.Point(93, 308);
+            this.viewSightingButton.Location = new System.Drawing.Point(140, 468);
+            this.viewSightingButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.viewSightingButton.Name = "viewSightingButton";
-            this.viewSightingButton.Size = new System.Drawing.Size(110, 30);
-            this.viewSightingButton.TabIndex = 10;
+            this.viewSightingButton.Size = new System.Drawing.Size(165, 46);
+            this.viewSightingButton.TabIndex = 9;
             this.viewSightingButton.Text = "View Sighting";
             this.viewSightingButton.UseVisualStyleBackColor = true;
             this.viewSightingButton.Click += new System.EventHandler(this.viewSightingButton_Click);
@@ -1369,20 +1387,22 @@ namespace ButterflyTrackingSystem
             // addRouteButton
             // 
             this.addRouteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addRouteButton.Location = new System.Drawing.Point(140, 198);
+            this.addRouteButton.Location = new System.Drawing.Point(156, 305);
+            this.addRouteButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addRouteButton.Name = "addRouteButton";
-            this.addRouteButton.Size = new System.Drawing.Size(83, 30);
-            this.addRouteButton.TabIndex = 8;
+            this.addRouteButton.Size = new System.Drawing.Size(124, 46);
+            this.addRouteButton.TabIndex = 7;
             this.addRouteButton.Text = "Add Route";
             this.addRouteButton.UseVisualStyleBackColor = true;
             this.addRouteButton.Click += new System.EventHandler(this.addRouteButton_Click);
             // 
             // migrationTagIDtoViewGridBox
             // 
-            this.migrationTagIDtoViewGridBox.Location = new System.Drawing.Point(161, 277);
+            this.migrationTagIDtoViewGridBox.Location = new System.Drawing.Point(196, 418);
+            this.migrationTagIDtoViewGridBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.migrationTagIDtoViewGridBox.Name = "migrationTagIDtoViewGridBox";
-            this.migrationTagIDtoViewGridBox.Size = new System.Drawing.Size(63, 20);
-            this.migrationTagIDtoViewGridBox.TabIndex = 9;
+            this.migrationTagIDtoViewGridBox.Size = new System.Drawing.Size(122, 26);
+            this.migrationTagIDtoViewGridBox.TabIndex = 8;
             this.migrationTagIDtoViewGridBox.TextChanged += new System.EventHandler(this.migrationTagIDtoViewGridBox_TextChanged);
             // 
             // migrationTagIDtoSeeGridLabel
@@ -1391,10 +1411,11 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.migrationTagIDtoSeeGridLabel.AutoSize = true;
-            this.migrationTagIDtoSeeGridLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.migrationTagIDtoSeeGridLabel.Location = new System.Drawing.Point(5, 249);
+            this.migrationTagIDtoSeeGridLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.migrationTagIDtoSeeGridLabel.Location = new System.Drawing.Point(8, 389);
+            this.migrationTagIDtoSeeGridLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.migrationTagIDtoSeeGridLabel.Name = "migrationTagIDtoSeeGridLabel";
-            this.migrationTagIDtoSeeGridLabel.Size = new System.Drawing.Size(219, 48);
+            this.migrationTagIDtoSeeGridLabel.Size = new System.Drawing.Size(315, 50);
             this.migrationTagIDtoSeeGridLabel.TabIndex = 106;
             this.migrationTagIDtoSeeGridLabel.Text = "To see migration route of a sighting \r\n\r\nabove, Enter the Tag ID:";
             this.migrationTagIDtoSeeGridLabel.Click += new System.EventHandler(this.migrationTagIDtoSeeGridLabel_Click);
@@ -1453,10 +1474,10 @@ namespace ButterflyTrackingSystem
             // 
             // migrationStateTextBox
             // 
-            this.migrationStateTextBox.Location = new System.Drawing.Point(79, 92);
-            this.migrationStateTextBox.MaxLength = 2;
+            this.migrationStateTextBox.Location = new System.Drawing.Point(118, 142);
+            this.migrationStateTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.migrationStateTextBox.Name = "migrationStateTextBox";
-            this.migrationStateTextBox.Size = new System.Drawing.Size(38, 20);
+            this.migrationStateTextBox.Size = new System.Drawing.Size(200, 26);
             this.migrationStateTextBox.TabIndex = 3;
             this.migrationStateTextBox.TextChanged += new System.EventHandler(this.migrationStateTextBox_TextChanged);
             // 
@@ -1606,7 +1627,8 @@ namespace ButterflyTrackingSystem
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(9, 175);
+            this.dateTimePicker1.Location = new System.Drawing.Point(14, 269);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
             this.dateTimePicker1.TabIndex = 67;
@@ -1651,7 +1673,8 @@ namespace ButterflyTrackingSystem
             // 
             // searchDateTimePicker
             // 
-            this.searchDateTimePicker.Location = new System.Drawing.Point(9, 149);
+            this.searchDateTimePicker.Location = new System.Drawing.Point(14, 229);
+            this.searchDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchDateTimePicker.Name = "searchDateTimePicker";
             this.searchDateTimePicker.Size = new System.Drawing.Size(124, 20);
             this.searchDateTimePicker.TabIndex = 8;
@@ -1712,7 +1735,10 @@ namespace ButterflyTrackingSystem
             // 
             // searchCountryTextBox
             // 
-            this.searchCountryTextBox.Location = new System.Drawing.Point(509, 131);
+            this.searchCountryTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchCountryTextBox.Location = new System.Drawing.Point(764, 202);
+            this.searchCountryTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchCountryTextBox.Name = "searchCountryTextBox";
             this.searchCountryTextBox.Size = new System.Drawing.Size(126, 20);
             this.searchCountryTextBox.TabIndex = 7;
@@ -1720,16 +1746,21 @@ namespace ButterflyTrackingSystem
             // 
             // searchStateTextBox
             // 
-            this.searchStateTextBox.Location = new System.Drawing.Point(509, 105);
-            this.searchStateTextBox.MaxLength = 2;
+            this.searchStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchStateTextBox.Location = new System.Drawing.Point(764, 162);
+            this.searchStateTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchStateTextBox.Name = "searchStateTextBox";
-            this.searchStateTextBox.Size = new System.Drawing.Size(37, 20);
+            this.searchStateTextBox.Size = new System.Drawing.Size(187, 26);
             this.searchStateTextBox.TabIndex = 6;
             this.searchStateTextBox.TextChanged += new System.EventHandler(this.searchStateTextBox_TextChanged);
             // 
             // searchCityTextBox
             // 
-            this.searchCityTextBox.Location = new System.Drawing.Point(509, 76);
+            this.searchCityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchCityTextBox.Location = new System.Drawing.Point(764, 117);
+            this.searchCityTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchCityTextBox.Name = "searchCityTextBox";
             this.searchCityTextBox.Size = new System.Drawing.Size(126, 20);
             this.searchCityTextBox.TabIndex = 5;
@@ -2070,10 +2101,12 @@ namespace ButterflyTrackingSystem
             // 
             // updateEmployeeStateTextBox
             // 
-            this.updateEmployeeStateTextBox.Location = new System.Drawing.Point(179, 232);
-            this.updateEmployeeStateTextBox.MaxLength = 2;
+            this.updateEmployeeStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateEmployeeStateTextBox.Location = new System.Drawing.Point(268, 357);
+            this.updateEmployeeStateTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEmployeeStateTextBox.Name = "updateEmployeeStateTextBox";
-            this.updateEmployeeStateTextBox.Size = new System.Drawing.Size(45, 20);
+            this.updateEmployeeStateTextBox.Size = new System.Drawing.Size(322, 26);
             this.updateEmployeeStateTextBox.TabIndex = 7;
             // 
             // updateEmployeeCityTextBox
