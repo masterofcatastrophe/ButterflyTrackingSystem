@@ -21,14 +21,14 @@ namespace ButterflyTrackingSystem
         bool Cred; // check tagger/nonTagger
         bool cal = false; // enable disabled date
         bool tim = false; // enable disabled time
-        
+
         public BTS()
         {
             InitializeComponent();
             con.OpenConnection(); // open db connection
             functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged; // condition for tagger/nonTagger
             //functionalitiesTabs.Selecting += ideaTabControl_Selecting;
-           mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
+            mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
         }
 
         void listView_VisibleChanged(object sender, EventArgs e)
@@ -72,8 +72,8 @@ namespace ButterflyTrackingSystem
             else if ((Cred == false) && ((functionalitiesTabs.SelectedIndex == 0)
                                          || functionalitiesTabs.SelectedIndex == 1))
             {
-               // (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
-               // (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
+                // (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
+                // (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
                 (functionalitiesTabs.TabPages[1] as TabPage).Visible = false; // hide controls
                 (functionalitiesTabs.TabPages[0] as TabPage).Visible = false; // hide controls
                 //MessageBox.Show("Unable to load tab. You are not a tagger.");
@@ -98,7 +98,7 @@ namespace ButterflyTrackingSystem
 
             }
         }
-      
+
         private void BTS_Load(object sender, EventArgs e)
         {
 
@@ -171,7 +171,7 @@ namespace ButterflyTrackingSystem
                         CredReader = retreiveCred.ExecuteReader();
                         while (CredReader.Read())
                         {
-                            if ((string) (CredReader["Position"]) == "tagger")
+                            if ((string)(CredReader["Position"]) == "tagger")
                             {
                                 Cred = true;
                             }
@@ -699,7 +699,7 @@ namespace ButterflyTrackingSystem
                 cal = false;
             }
             */
-            
+
         }
 
         private void searchLabel_Click(object sender, EventArgs e)
@@ -863,7 +863,7 @@ namespace ButterflyTrackingSystem
                     }
                     if (!String.IsNullOrEmpty(dateTimePicker1.Text) && tim == true)
                     {
-                        column ="Time_of_sighting";
+                        column = "Time_of_sighting";
                         param = "= '" + SearchTime + "'";
                     }
 
@@ -1571,7 +1571,7 @@ namespace ButterflyTrackingSystem
                     " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
                     " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
                     " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID)" +
-                    " WHERE(Employee.User_ID = '"+userNameBox.Text+"');"; //WHERE (Employee.User_ID =@user)
+                    " WHERE(Employee.User_ID = '" + userNameBox.Text + "');"; //WHERE (Employee.User_ID =@user)
 
                 entry2 = new MySqlDataAdapter(retreiveEntries, dbcon);
                 MySqlCommandBuilder builder = new MySqlCommandBuilder(entry2);
@@ -1662,7 +1662,7 @@ namespace ButterflyTrackingSystem
 
         private void updateEntryGrid_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void loadEntry_Click(object sender, EventArgs e)
@@ -1718,11 +1718,11 @@ namespace ButterflyTrackingSystem
 
             }
 
-            
-            
-           
+
+
+
         }
-            
+
 
         private void updateEntryLabel_Click(object sender, EventArgs e)
         {
@@ -1831,7 +1831,7 @@ namespace ButterflyTrackingSystem
         int i;
         private void updateEntryGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void updateEntryTagIDBox_Leave(object sender, EventArgs e)
@@ -1861,9 +1861,9 @@ namespace ButterflyTrackingSystem
             updateEntryStateBox.Text = row.Cells[9].Value.ToString();
             updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
         }
-        
-        private void ResetDate_Click(object sender, EventArgs e){}
-        private void ResetTime_Click(object sender, EventArgs e){}
+
+        private void ResetDate_Click(object sender, EventArgs e) { }
+        private void ResetTime_Click(object sender, EventArgs e) { }
 
         private void ResetDate_Click_1(object sender, EventArgs e)
         {
@@ -1899,5 +1899,12 @@ namespace ButterflyTrackingSystem
                 tim = false;
             }
         }
+
+        private void deleteEntryButton_Click(object sender, EventArgs e)
+        {
+            
+
+        }
     }
 }
+
