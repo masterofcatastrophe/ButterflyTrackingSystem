@@ -124,7 +124,6 @@ namespace ButterflyTrackingSystem
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.searchDataGrid = new System.Windows.Forms.DataGridView();
             this.downloadSightingsFileButton = new System.Windows.Forms.Button();
-            this.uploadSightingsFileButton = new System.Windows.Forms.Button();
             this.searchDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.searchNoteLabel = new System.Windows.Forms.Label();
             this.searchGendercomboBox = new System.Windows.Forms.ComboBox();
@@ -183,6 +182,7 @@ namespace ButterflyTrackingSystem
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.uploadSightingsFileButton = new System.Windows.Forms.Button();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -1390,16 +1390,6 @@ namespace ButterflyTrackingSystem
             this.downloadSightingsFileButton.UseVisualStyleBackColor = true;
             this.downloadSightingsFileButton.Click += new System.EventHandler(this.downloadSightingsFileButton_Click);
             // 
-            // uploadSightingsFileButton
-            // 
-            this.uploadSightingsFileButton.Location = new System.Drawing.Point(11, 220);
-            this.uploadSightingsFileButton.Name = "uploadSightingsFileButton";
-            this.uploadSightingsFileButton.Size = new System.Drawing.Size(120, 23);
-            this.uploadSightingsFileButton.TabIndex = 64;
-            this.uploadSightingsFileButton.Text = "Upload Sightings File";
-            this.uploadSightingsFileButton.UseVisualStyleBackColor = true;
-            this.uploadSightingsFileButton.Click += new System.EventHandler(this.uploadSightingsFileButton_Click);
-            // 
             // searchDateTimePicker
             // 
             this.searchDateTimePicker.Location = new System.Drawing.Point(9, 149);
@@ -2050,6 +2040,16 @@ namespace ButterflyTrackingSystem
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
             // 
+            // uploadSightingsFileButton
+            // 
+            this.uploadSightingsFileButton.Location = new System.Drawing.Point(11, 220);
+            this.uploadSightingsFileButton.Name = "uploadSightingsFileButton";
+            this.uploadSightingsFileButton.Size = new System.Drawing.Size(120, 23);
+            this.uploadSightingsFileButton.TabIndex = 64;
+            this.uploadSightingsFileButton.Text = "Upload Sightings File";
+            this.uploadSightingsFileButton.UseVisualStyleBackColor = true;
+            this.uploadSightingsFileButton.Click += new System.EventHandler(this.uploadSightingsFileButton_Click);
+            // 
             // BTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2184,7 +2184,6 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.TabPage updateEntryTab;
         private System.Windows.Forms.TabPage searchTab;
         private System.Windows.Forms.Button downloadSightingsFileButton;
-        private System.Windows.Forms.Button uploadSightingsFileButton;
         private System.Windows.Forms.DateTimePicker searchDateTimePicker;
         private System.Windows.Forms.Label searchNoteLabel;
         private System.Windows.Forms.ComboBox searchGendercomboBox;
@@ -2257,5 +2256,6 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.Button deleteEntryButton;
         private System.Windows.Forms.Button ResetDate;
         private System.Windows.Forms.Button ResetTime;
+        private System.Windows.Forms.Button uploadSightingsFileButton;
     }
 }

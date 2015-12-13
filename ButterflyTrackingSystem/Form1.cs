@@ -920,11 +920,24 @@ namespace ButterflyTrackingSystem
                 }
                 searchDateTimePicker.Format = DateTimePickerFormat.Custom;
             }
-            else{
-                
-                MessageBox.Show("Have to use at least one field.", "Error", MessageBoxButtons.OK);
+            else
+            {
+                /*
+                DataGridView1.DataSource = DataSet.Tables["TableName"];
+                DataGridView.DataSource = DataTable;
+                DataGridView.DataSource = null;               
+                */
+                if (searchDataGrid.DataSource != null)
+                {
+                    searchDataGrid.DataSource = null;
+                    searchDataGrid.Refresh();
+                }
+                else
+                {
+                    searchDataGrid.Rows.Clear();
+                }
+                //MessageBox.Show("Have to use at least one field.", "Error", MessageBoxButtons.OK);
             }
-            
         }
 
         private void uploadSightingsFileButton_Click(object sender, EventArgs e)
