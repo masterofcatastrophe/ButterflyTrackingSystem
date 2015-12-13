@@ -1334,22 +1334,24 @@ namespace ButterflyTrackingSystem
             // 
             // ResetTime
             // 
+            this.ResetTime.BackColor = System.Drawing.Color.MintCream;
             this.ResetTime.Location = new System.Drawing.Point(136, 176);
             this.ResetTime.Name = "ResetTime";
             this.ResetTime.Size = new System.Drawing.Size(55, 20);
             this.ResetTime.TabIndex = 69;
             this.ResetTime.Text = "Enable";
-            this.ResetTime.UseVisualStyleBackColor = true;
+            this.ResetTime.UseVisualStyleBackColor = false;
             this.ResetTime.Click += new System.EventHandler(this.ResetTime_Click_1);
             // 
             // ResetDate
             // 
+            this.ResetDate.BackColor = System.Drawing.Color.MintCream;
             this.ResetDate.Location = new System.Drawing.Point(136, 149);
             this.ResetDate.Name = "ResetDate";
             this.ResetDate.Size = new System.Drawing.Size(55, 21);
             this.ResetDate.TabIndex = 68;
             this.ResetDate.Text = "Enable";
-            this.ResetDate.UseVisualStyleBackColor = true;
+            this.ResetDate.UseVisualStyleBackColor = false;
             this.ResetDate.Click += new System.EventHandler(this.ResetDate_Click_1);
             // 
             // dateTimePicker1

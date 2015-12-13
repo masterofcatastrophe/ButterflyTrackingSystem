@@ -1424,7 +1424,7 @@ namespace ButterflyTrackingSystem
         {
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.ShowUpDown = true;
-            dateTimePicker1.CustomFormat = "hh:mm:ss tt";
+            dateTimePicker1.CustomFormat = "hh:mm tt";
         }
 
         public class DBConnect
@@ -1855,13 +1855,11 @@ namespace ButterflyTrackingSystem
 
         private void ResetTime_Click_1(object sender, EventArgs e)
         {
-
             if (tim == false)
             {
-
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
                 dateTimePicker1.ShowUpDown = true;
-                dateTimePicker1.CustomFormat = "hh:mm:ss tt";
+                dateTimePicker1.CustomFormat = "hh:mm tt";
                 tim = true;
             }
             else
@@ -1872,5 +1870,4 @@ namespace ButterflyTrackingSystem
             }
         }
     }
-    
 }
