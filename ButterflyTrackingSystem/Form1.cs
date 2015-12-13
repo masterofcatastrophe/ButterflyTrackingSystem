@@ -21,18 +21,34 @@ namespace ButterflyTrackingSystem
         bool Cred; // check tagger/nonTagger
         bool cal = false; // enable disabled date
         bool tim = false; // enable disabled time
-
+        
         public BTS()
         {
             InitializeComponent();
             con.OpenConnection(); // open db connection
-            functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged; // condition for tagger/nonTagger
             //functionalitiesTabs.Selecting += ideaTabControl_Selecting;
-          
+           mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
+        }
+
+        void listView_VisibleChanged(object sender, EventArgs e)
+        {
+            //mainPanel.VisibleChanged -= new EventHandler(listView_VisibleChanged);
+            if (functionalitiesTabs.SelectedIndex == 2) // clears search tab initially
+            {
+                searchDateTimePicker.Value = DateTime.Now;
+                dateTimePicker1.Value = DateTime.Now;
+                searchDateTimePicker.CustomFormat = " ";
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.CustomFormat = " ";
+                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
+                searchDateTimePicker.CustomFormat = " ";
+
+            }
         }
 
         /*
-        private void ideaTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
             if (!e.TabPage.Enabled)
             {
@@ -40,6 +56,7 @@ namespace ButterflyTrackingSystem
             }
         }
         */
+
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Check Credentials Here 
@@ -55,8 +72,8 @@ namespace ButterflyTrackingSystem
             else if ((Cred == false) && ((functionalitiesTabs.SelectedIndex == 0)
                                          || functionalitiesTabs.SelectedIndex == 1))
             {
-                (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
-                (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
+               // (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
+               // (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
                 (functionalitiesTabs.TabPages[1] as TabPage).Visible = false; // hide controls
                 (functionalitiesTabs.TabPages[0] as TabPage).Visible = false; // hide controls
                 //MessageBox.Show("Unable to load tab. You are not a tagger.");
@@ -202,7 +219,7 @@ namespace ButterflyTrackingSystem
                     registrationPanel.Visible = false;
                     if (Cred == false)
                     {
-                        functionalitiesTabs.SelectedTab = functionalitiesTabs.TabPages[3];
+                        functionalitiesTabs.SelectedTab = functionalitiesTabs.TabPages[2];
                     }
                     mainPanel.Visible = true;
 
