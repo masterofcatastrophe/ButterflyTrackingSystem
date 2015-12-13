@@ -118,8 +118,6 @@ namespace ButterflyTrackingSystem
             this.updateEntryGrid = new System.Windows.Forms.DataGridView();
             this.loadEntry = new System.Windows.Forms.Button();
             this.searchTab = new System.Windows.Forms.TabPage();
-            this.ResetTime = new System.Windows.Forms.Button();
-            this.ResetDate = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.searchDataGrid = new System.Windows.Forms.DataGridView();
             this.downloadSightingsFileButton = new System.Windows.Forms.Button();
@@ -182,6 +180,7 @@ namespace ButterflyTrackingSystem
             this.registerStreetError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerCityError = new System.Windows.Forms.ErrorProvider(this.components);
             this.registerStateError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.deleteEntryButton = new System.Windows.Forms.Button();
             this.loginPanel.SuspendLayout();
             this.registrationPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -701,7 +700,7 @@ namespace ButterflyTrackingSystem
             this.createEntryTab.Controls.Add(this.createEntryLabel);
             this.createEntryTab.Location = new System.Drawing.Point(4, 22);
             this.createEntryTab.Name = "createEntryTab";
-            this.createEntryTab.Padding = new System.Windows.Forms.Padding(3);
+            this.createEntryTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.createEntryTab.Size = new System.Drawing.Size(645, 352);
             this.createEntryTab.TabIndex = 0;
             this.createEntryTab.Text = "Create Entry";
@@ -966,6 +965,7 @@ namespace ButterflyTrackingSystem
             // 
             this.updateEntryTab.BackColor = System.Drawing.Color.Gainsboro;
             this.updateEntryTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.updateEntryTab.Controls.Add(this.deleteEntryButton);
             this.updateEntryTab.Controls.Add(this.updateEntryRequiredTagIDLabel);
             this.updateEntryTab.Controls.Add(this.updateEntryLatitudeBox);
             this.updateEntryTab.Controls.Add(this.updateEntryLongitudeBox);
@@ -991,7 +991,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryTab.Controls.Add(this.loadEntry);
             this.updateEntryTab.Location = new System.Drawing.Point(4, 22);
             this.updateEntryTab.Name = "updateEntryTab";
-            this.updateEntryTab.Padding = new System.Windows.Forms.Padding(3);
+            this.updateEntryTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.updateEntryTab.Size = new System.Drawing.Size(645, 352);
             this.updateEntryTab.TabIndex = 1;
             this.updateEntryTab.Text = "Update Entry";
@@ -1002,7 +1002,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryRequiredTagIDLabel.AutoSize = true;
             this.updateEntryRequiredTagIDLabel.Cursor = System.Windows.Forms.Cursors.Default;
             this.updateEntryRequiredTagIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateEntryRequiredTagIDLabel.Location = new System.Drawing.Point(17, 209);
+            this.updateEntryRequiredTagIDLabel.Location = new System.Drawing.Point(23, 201);
             this.updateEntryRequiredTagIDLabel.Name = "updateEntryRequiredTagIDLabel";
             this.updateEntryRequiredTagIDLabel.Size = new System.Drawing.Size(156, 34);
             this.updateEntryRequiredTagIDLabel.TabIndex = 85;
@@ -1274,7 +1274,7 @@ namespace ButterflyTrackingSystem
             this.loadEntry.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.loadEntry.BackColor = System.Drawing.Color.BurlyWood;
             this.loadEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadEntry.Location = new System.Drawing.Point(23, 259);
+            this.loadEntry.Location = new System.Drawing.Point(29, 251);
             this.loadEntry.Name = "loadEntry";
             this.loadEntry.Size = new System.Drawing.Size(134, 36);
             this.loadEntry.TabIndex = 10;
@@ -1286,8 +1286,6 @@ namespace ButterflyTrackingSystem
             // 
             this.searchTab.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.searchTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.searchTab.Controls.Add(this.ResetTime);
-            this.searchTab.Controls.Add(this.ResetDate);
             this.searchTab.Controls.Add(this.dateTimePicker1);
             this.searchTab.Controls.Add(this.searchDataGrid);
             this.searchTab.Controls.Add(this.downloadSightingsFileButton);
@@ -1317,28 +1315,6 @@ namespace ButterflyTrackingSystem
             this.searchTab.TabIndex = 2;
             this.searchTab.Text = "Search";
             this.searchTab.Click += new System.EventHandler(this.searchTab_Click);
-            // 
-            // ResetTime
-            // 
-            this.ResetTime.BackColor = System.Drawing.Color.Azure;
-            this.ResetTime.Location = new System.Drawing.Point(141, 175);
-            this.ResetTime.Name = "ResetTime";
-            this.ResetTime.Size = new System.Drawing.Size(46, 21);
-            this.ResetTime.TabIndex = 69;
-            this.ResetTime.Text = "Reset";
-            this.ResetTime.UseVisualStyleBackColor = false;
-            this.ResetTime.Click += new System.EventHandler(this.ResetTime_Click);
-            // 
-            // ResetDate
-            // 
-            this.ResetDate.BackColor = System.Drawing.Color.Azure;
-            this.ResetDate.Location = new System.Drawing.Point(141, 148);
-            this.ResetDate.Name = "ResetDate";
-            this.ResetDate.Size = new System.Drawing.Size(46, 21);
-            this.ResetDate.TabIndex = 68;
-            this.ResetDate.Text = "Reset";
-            this.ResetDate.UseVisualStyleBackColor = false;
-            this.ResetDate.Click += new System.EventHandler(this.ResetDate_Click);
             // 
             // dateTimePicker1
             // 
@@ -2035,6 +2011,18 @@ namespace ButterflyTrackingSystem
             this.registerStateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.registerStateError.ContainerControl = this;
             // 
+            // deleteEntryButton
+            // 
+            this.deleteEntryButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.deleteEntryButton.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.deleteEntryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteEntryButton.Location = new System.Drawing.Point(29, 293);
+            this.deleteEntryButton.Name = "deleteEntryButton";
+            this.deleteEntryButton.Size = new System.Drawing.Size(134, 36);
+            this.deleteEntryButton.TabIndex = 90;
+            this.deleteEntryButton.Text = "Delete Entry";
+            this.deleteEntryButton.UseVisualStyleBackColor = false;
+            // 
             // BTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2239,7 +2227,6 @@ namespace ButterflyTrackingSystem
         private System.Windows.Forms.Label updateLongitudeLabel;
         private System.Windows.Forms.Label updateEntryRequiredTagIDLabel;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button ResetTime;
-        private System.Windows.Forms.Button ResetDate;
+        private System.Windows.Forms.Button deleteEntryButton;
     }
 }
