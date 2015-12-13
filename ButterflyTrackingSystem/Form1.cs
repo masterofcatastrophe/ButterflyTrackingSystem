@@ -1854,17 +1854,19 @@ namespace ButterflyTrackingSystem
 
         private void updateEntryGrid_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            i = e.RowIndex;
-            DataGridViewRow row = updateEntryGrid.Rows[i];
-            updateEntryTagIDBox.Text = row.Cells[0].Value.ToString();
-            updateEntrySpeciesBox.Text = row.Cells[1].Value.ToString();
-            updateEntryGenderComboBox.Text = row.Cells[2].Value.ToString();
-            updateEntryAgeBox.Text = row.Cells[3].Value.ToString();
-            updateEntryLongitudeBox.Text = row.Cells[6].Value.ToString();
-            updateEntryLatitudeBox.Text = row.Cells[7].Value.ToString();
-            updateEntryCityBox.Text = row.Cells[8].Value.ToString();
-            updateEntryStateBox.Text = row.Cells[9].Value.ToString();
-            updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
+            
+                i = e.RowIndex;
+                DataGridViewRow row = updateEntryGrid.Rows[i];
+                updateEntryTagIDBox.Text = row.Cells[0].Value.ToString();
+                updateEntrySpeciesBox.Text = row.Cells[1].Value.ToString();
+                updateEntryGenderComboBox.Text = row.Cells[2].Value.ToString();
+                updateEntryAgeBox.Text = row.Cells[3].Value.ToString();
+                updateEntryLongitudeBox.Text = row.Cells[6].Value.ToString();
+                updateEntryLatitudeBox.Text = row.Cells[7].Value.ToString();
+                updateEntryCityBox.Text = row.Cells[8].Value.ToString();
+                updateEntryStateBox.Text = row.Cells[9].Value.ToString();
+                updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
+            
         }
         
         private void ResetDate_Click(object sender, EventArgs e){}
@@ -2048,6 +2050,7 @@ namespace ButterflyTrackingSystem
             bindingNavigator3.BindingSource = bindingsource3;
             migrationSecondGrid.DataSource = bindingsource3;
 
+            if (bindingsource3 == null) MessageBox.Show("No migrations found");
            
         }
 
@@ -2064,6 +2067,11 @@ namespace ButterflyTrackingSystem
         private void migrationTab_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void updateEntryGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            MessageBox.Show("Please Select an Entry !");
         }
     }
 }

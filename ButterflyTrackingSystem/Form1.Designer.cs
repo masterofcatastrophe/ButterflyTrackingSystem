@@ -1358,6 +1358,7 @@ namespace ButterflyTrackingSystem
             // 
             // updateEntryGrid
             // 
+            this.updateEntryGrid.AllowUserToDeleteRows = false;
             this.updateEntryGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1366,10 +1367,12 @@ namespace ButterflyTrackingSystem
             this.updateEntryGrid.Location = new System.Drawing.Point(303, 309);
             this.updateEntryGrid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateEntryGrid.Name = "updateEntryGrid";
+            this.updateEntryGrid.ReadOnly = true;
             this.updateEntryGrid.Size = new System.Drawing.Size(645, 218);
             this.updateEntryGrid.TabIndex = 89;
             this.updateEntryGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_CellClick_1);
             this.updateEntryGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_CellClick);
+            this.updateEntryGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.updateEntryGrid_ColumnHeaderMouseClick);
             this.updateEntryGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_RowValidated);
             // 
             // loadEntry
