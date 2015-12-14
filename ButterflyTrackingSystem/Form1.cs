@@ -1554,54 +1554,63 @@ namespace ButterflyTrackingSystem
         private BindingSource bindingsource2;
         private BindingSource bindingsource3;
         private MySqlDataAdapter entryAll;
+
         private void functionalitiesTabs_Click_1(object sender, EventArgs e)
         {
             if (dbcon.State == ConnectionState.Open)
             {
-                // retreive leaderboard
-                string retreiveLeaderBoard =
-                    "SELECT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly" +
-                    " ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID" +
-                    " ORDER BY Tags_Made DESC LIMIT 15;";
+                if (functionalitiesTabs.SelectedIndex == 4)
+                {
+                    // retreive leaderboard
+                    string retreiveLeaderBoard =
+                        "SELECT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly" +
+                        " ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID" +
+                        " ORDER BY Tags_Made DESC LIMIT 15;";
 
-                MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
-                MySqlDataAdapter sda = new MySqlDataAdapter();
-                sda.SelectCommand = retreiveBoard;
-                DataTable dbdataset = new DataTable();
-                sda.Fill(dbdataset);
-                BindingSource bsource = new BindingSource();
-                bsource.DataSource = dbdataset;
-                leaderboardGrid.DataSource = bsource;
-                sda.Update(dbdataset);
-                leaderboardGrid.AllowUserToAddRows = false;
-                leaderboardGrid.RowHeadersVisible = false;
-                
-                // retreive entries
-                string retreiveEntries =
-                    "SELECT Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
-                    " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
-                    " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
-                    " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID)" +
-                    " WHERE(Employee.User_ID = '"+userNameBox.Text+"');"; //WHERE (Employee.User_ID =@user)
+                    MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
+                    MySqlDataAdapter sda = new MySqlDataAdapter();
+                    sda.SelectCommand = retreiveBoard;
+                    DataTable dbdataset = new DataTable();
+                    sda.Fill(dbdataset);
+                    BindingSource bsource = new BindingSource();
+                    bsource.DataSource = dbdataset;
+                    leaderboardGrid.DataSource = bsource;
+                    sda.Update(dbdataset);
+                    leaderboardGrid.AllowUserToAddRows = false;
+                    leaderboardGrid.RowHeadersVisible = false;
+                }
 
-                
-                entry2 = new MySqlDataAdapter(retreiveEntries, dbcon);
-                MySqlCommandBuilder builder = new MySqlCommandBuilder(entry2);
-                DS = new DataSet();
-                entry2.Fill(DS, "Entries");
-                bindingsource1 = new BindingSource();
-                bindingsource1.DataSource = DS.Tables[0];
+                if (functionalitiesTabs.SelectedIndex == 1)
+                {
+                    // retreive entries
+                    string retreiveEntries =
+                        "SELECT Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
+                        " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
+                        " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
+                        " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID)" +
+                        " WHERE(Employee.User_ID = '" + userNameBox.Text + "');"; //WHERE (Employee.User_ID =@user)
 
-                BindingNavigator bindingNavigator1 = new BindingNavigator();
-                bindingNavigator1.BindingSource = bindingsource1;
-                updateEntryGrid.DataSource = bindingsource1;
 
-                // retreive all entries in system
-                string retreiveAllEntries =
-                    "SELECT Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
-                    " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
-                    " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
-                    " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID);"; //WHERE (Employee.User_ID =@user)
+                    entry2 = new MySqlDataAdapter(retreiveEntries, dbcon);
+                    MySqlCommandBuilder builder = new MySqlCommandBuilder(entry2);
+                    DS = new DataSet();
+                    entry2.Fill(DS, "Entries");
+                    bindingsource1 = new BindingSource();
+                    bindingsource1.DataSource = DS.Tables[0];
+
+                    BindingNavigator bindingNavigator1 = new BindingNavigator();
+                    bindingNavigator1.BindingSource = bindingsource1;
+                    updateEntryGrid.DataSource = bindingsource1;
+                }
+                if (functionalitiesTabs.SelectedIndex == 2)
+                { 
+                    // retreive all entries in system
+                    string retreiveAllEntries =
+                        "SELECT Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
+                        " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
+                        " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
+                        " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID);";
+                //WHERE (Employee.User_ID =@user)
 
                 entryAll = new MySqlDataAdapter(retreiveAllEntries, dbcon);
                 MySqlCommandBuilder builderAll = new MySqlCommandBuilder(entryAll);
@@ -1609,42 +1618,45 @@ namespace ButterflyTrackingSystem
                 entryAll.Fill(DX, "Entries");
                 bindingsource2 = new BindingSource();
                 bindingsource2.DataSource = DX.Tables[0];
-
                 BindingNavigator bindingNavigator2 = new BindingNavigator();
-                bindingNavigator1.BindingSource = bindingsource2;
+                bindingNavigator2.BindingSource = bindingsource2;
                 migrationFirstGrid.DataSource = bindingsource2;
-                /////////////////
-                // retreive account info
-                string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
-                MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, dbcon);
-                retreiveData.Parameters.AddWithValue("@user", userNameBox.Text);
-                MySqlDataReader myReader;
-                myReader = retreiveData.ExecuteReader();
 
-               
-                
-                while (myReader.Read())
-                {
-                    string sUser = myReader.GetString("User_ID");
-                    string sPassword = myReader.GetString("Password");
-                    string sName = myReader.GetString("Name");
-                    string sPhone = myReader.GetString("Phone_Number");
-                    string sStreet = myReader.GetString("Street_Address");
-                    string sCity = myReader.GetString("City");
-                    string sState = myReader.GetString("State");
-                    string sPosition = myReader.GetString("Position");
-
-                    //updateUserNameTextBox.Text = sUser;
-
-                    updatePasswordTextBox.Text = sPassword;
-                    updateEmployeeNameTextBox.Text = sName;
-                    updatePhoneNumberTextBox.Text = sPhone;
-                    updateEmployeeStreetTextBox.Text = sStreet;
-                    updateEmployeeCityTextBox.Text = sCity;
-                    updateEmployeeStateTextBox.Text = sState;
-                    positionOptionsUpdateComboBox.Text = sPosition;
                 }
-                myReader.Close();
+
+                 /////////////////
+                // retreive account info
+                if (functionalitiesTabs.SelectedIndex == 6)
+                {
+                    string retreiveAccount = "SELECT * FROM Employee WHERE (User_ID=@user)";
+                    MySqlCommand retreiveData = new MySqlCommand(retreiveAccount, dbcon);
+                    retreiveData.Parameters.AddWithValue("@user", userNameBox.Text);
+                    MySqlDataReader myReader;
+                    myReader = retreiveData.ExecuteReader();
+
+                    while (myReader.Read())
+                    {
+                        string sUser = myReader.GetString("User_ID");
+                        string sPassword = myReader.GetString("Password");
+                        string sName = myReader.GetString("Name");
+                        string sPhone = myReader.GetString("Phone_Number");
+                        string sStreet = myReader.GetString("Street_Address");
+                        string sCity = myReader.GetString("City");
+                        string sState = myReader.GetString("State");
+                        string sPosition = myReader.GetString("Position");
+
+                        //updateUserNameTextBox.Text = sUser;
+
+                        updatePasswordTextBox.Text = sPassword;
+                        updateEmployeeNameTextBox.Text = sName;
+                        updatePhoneNumberTextBox.Text = sPhone;
+                        updateEmployeeStreetTextBox.Text = sStreet;
+                        updateEmployeeCityTextBox.Text = sCity;
+                        updateEmployeeStateTextBox.Text = sState;
+                        positionOptionsUpdateComboBox.Text = sPosition;
+                    }
+                    myReader.Close();
+                }
             }
             else
             {
