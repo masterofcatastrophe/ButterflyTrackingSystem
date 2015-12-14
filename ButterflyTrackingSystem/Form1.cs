@@ -2024,7 +2024,8 @@ namespace ButterflyTrackingSystem
             string migrationcountry = migrationCountryTextBox.Text;
             string migrationlongitude = migrationLongitudeTextBox.Text;
             string migrationlatitude = migrationLatitudeTextBox.Text;
-            
+            string migrationDate = migrationDataTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
+            string migrationTime = migrationDataTimePicker.Value.ToString("hh:mm tt"); // user defined date
             
             if (!String.IsNullOrEmpty(migrationTagIDTextBox.Text) && !String.IsNullOrEmpty(migrationCityTextBox.Text) &&
                 !String.IsNullOrEmpty(migrationStateTextBox.Text) && !String.IsNullOrEmpty(migrationCountryTextBox.Text) &&
@@ -2040,8 +2041,8 @@ namespace ButterflyTrackingSystem
                     // inserting values into Butterfly table
 
                     string addMigration =
-                        "INSERT INTO Migration (Longitude, Latitude,City,State,Country,Migration_Tag,Migration_Viewer)" +
-                        " VALUES (@MLongitude, @MLatitude, @MCity, @MState, @MCountry, @MTag, @Viewer)";
+                        "INSERT INTO Migration (Longitude, Latitude,City,State,Country,Migration_Tag,Migration_Viewer,Migration_Date,Migration_Time)" +
+                        " VALUES (@MLongitude, @MLatitude, @MCity, @MState, @MCountry, @MTag, @Viewer,@Date,@Time)";
 
                     MySqlCommand migration = new MySqlCommand(addMigration, dbcon);
                     migration.CommandText = addMigration;
@@ -2052,6 +2053,8 @@ namespace ButterflyTrackingSystem
                     migration.Parameters.AddWithValue("@MCountry", migrationcountry);
                     migration.Parameters.AddWithValue("@MTag", migrationid);
                     migration.Parameters.AddWithValue("@Viewer", userNameBox.Text);
+                    migration.Parameters.AddWithValue("Date", migrationDate);
+                    migration.Parameters.AddWithValue("@Time", migrationTime);
                     migration.ExecuteNonQuery();
 
                     MessageBox.Show("New sighting added to that butterfly tag !");
@@ -2074,7 +2077,7 @@ namespace ButterflyTrackingSystem
         {
             if (!String.IsNullOrEmpty(migrationTagIDtoViewGridBox.Text))
             {
-                string retreiveMigrations = "SELECT Migration.Migration_no, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;" ;
+                string retreiveMigrations = "SELECT Migration.Migration_no,Migration_Date,Migration_Time, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;" ;
             //string retreiveOther = "SELECT City FROM Migration where Migration_Tag=5";        
 
 
