@@ -1359,7 +1359,7 @@ namespace ButterflyTrackingSystem
             this.viewSightingButton.Location = new System.Drawing.Point(118, 303);
             this.viewSightingButton.Name = "viewSightingButton";
             this.viewSightingButton.Size = new System.Drawing.Size(110, 30);
-            this.viewSightingButton.TabIndex = 9;
+            this.viewSightingButton.TabIndex = 10;
             this.viewSightingButton.Text = "View Route(s)";
             this.viewSightingButton.UseVisualStyleBackColor = true;
             this.viewSightingButton.Click += new System.EventHandler(this.viewSightingButton_Click);
@@ -1370,7 +1370,7 @@ namespace ButterflyTrackingSystem
             this.addRouteButton.Location = new System.Drawing.Point(145, 198);
             this.addRouteButton.Name = "addRouteButton";
             this.addRouteButton.Size = new System.Drawing.Size(83, 30);
-            this.addRouteButton.TabIndex = 7;
+            this.addRouteButton.TabIndex = 8;
             this.addRouteButton.Text = "Add Route";
             this.addRouteButton.UseVisualStyleBackColor = true;
             this.addRouteButton.Click += new System.EventHandler(this.addRouteButton_Click);
@@ -1380,7 +1380,7 @@ namespace ButterflyTrackingSystem
             this.migrationTagIDtoViewGridBox.Location = new System.Drawing.Point(166, 268);
             this.migrationTagIDtoViewGridBox.Name = "migrationTagIDtoViewGridBox";
             this.migrationTagIDtoViewGridBox.Size = new System.Drawing.Size(62, 20);
-            this.migrationTagIDtoViewGridBox.TabIndex = 8;
+            this.migrationTagIDtoViewGridBox.TabIndex = 9;
             this.migrationTagIDtoViewGridBox.TextChanged += new System.EventHandler(this.migrationTagIDtoViewGridBox_TextChanged);
             // 
             // migrationTagIDtoSeeGridLabel
@@ -2298,7 +2298,7 @@ namespace ButterflyTrackingSystem
             this.migrationDataTimePicker.Location = new System.Drawing.Point(6, 201);
             this.migrationDataTimePicker.Name = "migrationDataTimePicker";
             this.migrationDataTimePicker.Size = new System.Drawing.Size(133, 20);
-            this.migrationDataTimePicker.TabIndex = 111;
+            this.migrationDataTimePicker.TabIndex = 7;
             this.migrationDataTimePicker.ValueChanged += new System.EventHandler(this.migrationDataTimePicker_ValueChanged);
             // 
             // BTS
