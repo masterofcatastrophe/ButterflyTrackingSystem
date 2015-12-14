@@ -1573,7 +1573,7 @@ namespace ButterflyTrackingSystem
                 bsource.DataSource = dbdataset;
                 leaderboardGrid.DataSource = bsource;
                 sda.Update(dbdataset);
-                leaderboardGrid.AllowUserToAddRows = false;
+                leaderboardGrid.AllowUserToAddRows = true;
                 leaderboardGrid.RowHeadersVisible = false;
                 
                 // retreive entries
