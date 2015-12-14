@@ -2216,7 +2216,60 @@ namespace ButterflyTrackingSystem
             barSeries1.Name = "Male";
             barSeries2.Name = "Female";
 
+            graphChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            graphChart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
 
+
+            /*
+            MySqlCommand history2 =
+                 new MySqlCommand(
+                     "SELECT DISTINCT BTS.Sighting_Locations.City FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly" +
+                     " ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID " +
+                     "WHERE BTS.Sighting_Locations.State = 'MI' AND Country = 'USA' ORDER BY City DESC; ", dbcon);
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(history2.ToString(), dbcon);
+
+            DataTable resultsTable = new DataTable();
+            adapter.Fill(resultsTable);
+
+            // Here you can access the members of your table like this:
+            object item = resultsTable.Rows[0]["City"];
+
+            graphChart.ChartAreas[0].AxisX.CustomLabels.Add(1, 1, item.ToString());
+            */
+
+            
+            
+            MySqlCommand history =
+                    new MySqlCommand(
+                        "SELECT DISTINCT Sight_ID AS Tags, BTS.Sighting_Locations.City FROM BTS.Sighting_Locations" +
+                        " INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
+                        " WHERE BTS.Sighting_Locations.State = 'MI' AND Country = 'USA' AND Gender = 'M';", dbcon);
+
+            MySqlDataReader myReader;
+            myReader = history.ExecuteReader();
+            while (myReader.Read())
+            {
+                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"), myReader.GetString("Tags"));
+            }
+            myReader.Close();
+
+
+            MySqlCommand history1 =
+                   new MySqlCommand(
+                        "SELECT DISTINCT Sight_ID AS Tags, BTS.Sighting_Locations.City FROM BTS.Sighting_Locations" +
+                        " INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
+                        " WHERE BTS.Sighting_Locations.State = 'MI' AND Country = 'USA' AND Gender = 'F';", dbcon);
+
+            MySqlDataReader myReader1;
+            myReader1 = history1.ExecuteReader();
+            while (myReader1.Read())
+            {
+                graphChart.Series["Female"].Points.AddXY(myReader1.GetString("City"), myReader1.GetString("Tags"));
+            }
+            myReader1.Close();
+
+            /*
             MySqlCommand history =
                     new MySqlCommand(
                         "SELECT Count(Sight_ID) AS Tags, BTS.Sighting_Locations.City, BTS.Sighting_Locations.State AS ST, Country, Gender" +
@@ -2230,8 +2283,9 @@ namespace ButterflyTrackingSystem
                 graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"), myReader.GetString("Tags"));
             }
             myReader.Close();
+            */
 
-
+            /*
             MySqlCommand history1 =
                    new MySqlCommand(
                        "SELECT Count(Sight_ID) AS Tags, BTS.Sighting_Locations.City, BTS.Sighting_Locations.State AS ST, Country, Gender" +
@@ -2245,6 +2299,7 @@ namespace ButterflyTrackingSystem
                 graphChart.Series["Female"].Points.AddXY(myReader1.GetString("City"), myReader1.GetString("Tags"));
             }
             myReader1.Close();
+            */
 
 
             /*
