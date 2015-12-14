@@ -2084,7 +2084,7 @@ namespace ButterflyTrackingSystem
         {
             if (!String.IsNullOrEmpty(migrationTagIDtoViewGridBox.Text))
             {
-                string retreiveMigrations = "SELECT Migration.Migration_no,Migration_Date,Migration_Time, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;" ;
+                string retreiveMigrations = "SELECT Migration_Date,Migration_Time, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;" ;
             //string retreiveOther = "SELECT City FROM Migration where Migration_Tag=5";        
 
 
