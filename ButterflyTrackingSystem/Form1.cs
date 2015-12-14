@@ -135,6 +135,9 @@ namespace ButterflyTrackingSystem
                 graphChart.ChartAreas[0].BackColor = Color.Transparent;
                 graphChart.ChartAreas[1].BackColor = Color.Transparent;
                 graphChart.Legends[0].BackColor = Color.Transparent;
+                graphChart.Titles.Add("Butterfly History");
+                area.AxisX.Title = "City";
+                area.AxisY.Title = "Sighting";
             }
         }
       
@@ -2194,6 +2197,7 @@ namespace ButterflyTrackingSystem
             //graphChart.Series[0].Points.Clear();
             //graphChart.Series[1].Points.Clear();
             graphChart.Series.Clear();
+            
 
             int[] xData = new int[] { 1, 2, 3, 4 };
             int[] yData = new int[] { 1, 2, 3, 4 };
@@ -2210,8 +2214,13 @@ namespace ButterflyTrackingSystem
             graphChart.Series["Male"] = barSeries1;
             graphChart.Series["Male"] = barSeries2;
 
-            barSeries1.XValueMember = "city1";
+            graphChart.ChartAreas[1].AxisX.Interval = 1;
+            graphChart.ChartAreas[1].AxisY.Interval = 1;
+
+            /*
+            barSeries1.YValueMembers = "city1";
             barSeries2.YValueMembers = "city2";
+            */
 
             barSeries2.Points.DataBindY(xData);
             barSeries1.Points.DataBindY(yData);
@@ -2221,8 +2230,8 @@ namespace ButterflyTrackingSystem
             barSeries2.ChartArea = "History";
             barSeries1.ChartType = SeriesChartType.Column;
             barSeries1.ChartArea = "History";
-            barSeries1.Color = Color.DarkBlue;
-            barSeries2.Color = Color.DeepPink;
+            barSeries1.Color = Color.RoyalBlue;
+            barSeries2.Color = Color.Goldenrod;
             barSeries1.Name = "Male";
             barSeries2.Name = "Female";
 
