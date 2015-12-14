@@ -2240,5 +2240,11 @@ namespace ButterflyTrackingSystem
         {
 
         }
+
+        private void migrationDataTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            migrationDataTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
+            migrationDataTimePicker.Format = DateTimePickerFormat.Custom;
+        }
     }
 }
