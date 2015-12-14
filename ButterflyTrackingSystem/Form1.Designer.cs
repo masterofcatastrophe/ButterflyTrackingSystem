@@ -36,6 +36,7 @@ namespace ButterflyTrackingSystem
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BTS));
             this.loginPanel = new System.Windows.Forms.Panel();
             this.dontHaveanAccountLabel = new System.Windows.Forms.Label();
@@ -725,7 +726,7 @@ namespace ButterflyTrackingSystem
             this.createEntryTab.Controls.Add(this.createEntryLabel);
             this.createEntryTab.Location = new System.Drawing.Point(4, 22);
             this.createEntryTab.Name = "createEntryTab";
-            this.createEntryTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.createEntryTab.Padding = new System.Windows.Forms.Padding(3);
             this.createEntryTab.Size = new System.Drawing.Size(645, 352);
             this.createEntryTab.TabIndex = 0;
             this.createEntryTab.Text = "Create Entry";
@@ -1014,7 +1015,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryTab.Controls.Add(this.loadEntry);
             this.updateEntryTab.Location = new System.Drawing.Point(4, 22);
             this.updateEntryTab.Name = "updateEntryTab";
-            this.updateEntryTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.updateEntryTab.Padding = new System.Windows.Forms.Padding(3);
             this.updateEntryTab.Size = new System.Drawing.Size(645, 352);
             this.updateEntryTab.TabIndex = 1;
             this.updateEntryTab.Text = "Update Entry";
@@ -1324,7 +1325,7 @@ namespace ButterflyTrackingSystem
             this.migrationTab.Controls.Add(this.migrationTabTitleLabel);
             this.migrationTab.Location = new System.Drawing.Point(4, 22);
             this.migrationTab.Name = "migrationTab";
-            this.migrationTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.migrationTab.Padding = new System.Windows.Forms.Padding(3);
             this.migrationTab.Size = new System.Drawing.Size(645, 352);
             this.migrationTab.TabIndex = 6;
             this.migrationTab.Text = "Migration";
@@ -1987,7 +1988,7 @@ namespace ButterflyTrackingSystem
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
+            chartArea1.Name = "HistoryArea";
             this.graphChart.ChartAreas.Add(chartArea1);
             legend1.BackColor = System.Drawing.Color.Transparent;
             legend1.Name = "Legend1";
@@ -1995,13 +1996,15 @@ namespace ButterflyTrackingSystem
             this.graphChart.Legends.Add(legend1);
             this.graphChart.Location = new System.Drawing.Point(6, 4);
             this.graphChart.Name = "graphChart";
-            series1.ChartArea = "ChartArea1";
+            series1.ChartArea = "HistoryArea";
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "History";
             this.graphChart.Series.Add(series1);
             this.graphChart.Size = new System.Drawing.Size(629, 287);
             this.graphChart.TabIndex = 0;
             this.graphChart.Text = "Graph/Chart";
+            title1.Name = "Butterfly History";
+            this.graphChart.Titles.Add(title1);
             this.graphChart.Click += new System.EventHandler(this.graphChart_Click);
             // 
             // updateAccountTab

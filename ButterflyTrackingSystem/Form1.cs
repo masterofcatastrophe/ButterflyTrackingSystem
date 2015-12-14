@@ -127,17 +127,17 @@ namespace ButterflyTrackingSystem
             {
                 // area.BackColor = Color.Wheat;
                 // graphChart.BackColor = Color.Wheat;
-                ChartArea area = new ChartArea("History");
-                graphChart.ChartAreas.Add(area);
-                graphChart.ChartAreas[0].Visible = false;
+                //ChartArea area = new ChartArea("History");
+                //graphChart.ChartAreas.Add(area);
+                //graphChart.ChartAreas[0].Visible = false;
                 graphChart.Text = "Butterfly History";
                 graphChart.BackColor = Color.Transparent;
                 graphChart.ChartAreas[0].BackColor = Color.Transparent;
-                graphChart.ChartAreas[1].BackColor = Color.Transparent;
+                //graphChart.ChartAreas[1].BackColor = Color.Transparent;
                 graphChart.Legends[0].BackColor = Color.Transparent;
                 graphChart.Titles.Add("Butterfly History");
-                area.AxisX.Title = "City";
-                area.AxisY.Title = "Sighting";
+                graphChart.ChartAreas[0].AxisX.Title = "Cities";
+                graphChart.ChartAreas[0].AxisY.Title = "Number of Sighting";
             }
         }
       
@@ -193,8 +193,7 @@ namespace ButterflyTrackingSystem
                     {
                         // Save Employee ID into variable
                         MySqlDataReader reader;
-                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +
-                                            "';");
+                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +"';");
 
                         MySqlCommand Get_Emp_ID = new MySqlCommand(selectCmd, dbcon);
                         reader = Get_Emp_ID.ExecuteReader();
@@ -206,8 +205,7 @@ namespace ButterflyTrackingSystem
                         reader.Close();
 
                         // Find if account is tagger nonTagger
-                        string selectCred = ("SELECT Position FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +
-                                             "';");
+                        string selectCred = ("SELECT Position FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +"';");
                         MySqlCommand retreiveCred = new MySqlCommand(selectCred, dbcon);
                         MySqlDataReader CredReader;
                         CredReader = retreiveCred.ExecuteReader();
@@ -721,26 +719,6 @@ namespace ButterflyTrackingSystem
 
         private void searchTab_Click(object sender, EventArgs e)
         {
-            /*
-            if (cal == false)
-            {
-                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-                searchDateTimePicker.ShowUpDown = true;
-                searchDateTimePicker.CustomFormat = "MM/dd/yyyy";
-                dateTimePicker1.Format = DateTimePickerFormat.Custom;
-                dateTimePicker1.ShowUpDown = true;
-                dateTimePicker1.CustomFormat = "hh:mm:ss tt";
-                cal = true;
-            }
-            else
-            {
-                dateTimePicker1.Format = DateTimePickerFormat.Custom;
-                dateTimePicker1.CustomFormat = " ";
-                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-                searchDateTimePicker.CustomFormat = " ";
-                cal = false;
-            }
-            */
             
         }
 
@@ -1706,7 +1684,7 @@ namespace ButterflyTrackingSystem
                 string retreiveLeaderBoard =
                     "SELECT DISTINCT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly" +
                     " ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID" +
-                    " ORDER BY Tags_Made DESC LIMIT 10;";
+                    " ORDER BY Tags_Made DESC LIMIT 15;";
 
                 MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
                 MySqlDataAdapter sda = new MySqlDataAdapter();
@@ -2199,8 +2177,8 @@ namespace ButterflyTrackingSystem
             graphChart.Series.Clear();
             
 
-            int[] xData = new int[] { 1, 2, 3, 4 };
-            int[] yData = new int[] { 1, 2, 3, 4 };
+            //int[] xData = new int[] { 1, 2, 3, 4 };
+            //int[] yData = new int[] { 1, 2, 3, 4 };
              
              /*
             //Vertical bar chart
@@ -2211,29 +2189,63 @@ namespace ButterflyTrackingSystem
             Series barSeries2 = new Series();
             Series barSeries1 = new Series();
 
-            graphChart.Series["Male"] = barSeries1;
-            graphChart.Series["Male"] = barSeries2;
+           graphChart.Series["History"] = barSeries1;
+           graphChart.Series["History"] = barSeries2;
 
-            graphChart.ChartAreas[1].AxisX.Interval = 1;
-            graphChart.ChartAreas[1].AxisY.Interval = 1;
+            graphChart.ChartAreas[0].AxisX.Interval = 1;
+            graphChart.ChartAreas[0].AxisY.Interval = 1;
 
             /*
             barSeries1.YValueMembers = "city1";
             barSeries2.YValueMembers = "city2";
             */
 
-            barSeries2.Points.DataBindY(xData);
-            barSeries1.Points.DataBindY(yData);
+            //barSeries2.Points.DataBindY(xData);
+            //barSeries1.Points.DataBindY(yData);
 
             //Set the chart type, column; vertical bars                
             barSeries2.ChartType = SeriesChartType.Column;
-            barSeries2.ChartArea = "History";
+            barSeries2.ChartArea = "HistoryArea";
             barSeries1.ChartType = SeriesChartType.Column;
-            barSeries1.ChartArea = "History";
+            barSeries1.ChartArea = "HistoryArea";
+            /*
             barSeries1.Color = Color.RoyalBlue;
             barSeries2.Color = Color.Goldenrod;
+            */
+            graphChart.Palette = ChartColorPalette.BrightPastel;
             barSeries1.Name = "Male";
             barSeries2.Name = "Female";
+
+
+            MySqlCommand history =
+                    new MySqlCommand(
+                        "SELECT Count(Sight_ID) AS Tags, BTS.Sighting_Locations.City, BTS.Sighting_Locations.State AS ST, Country, Gender" +
+                        " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
+                        " WHERE BTS.Sighting_Locations.State = 'MI' AND Country = 'USA' AND Gender = 'M' ORDER BY Gender DESC ;", dbcon);
+
+            MySqlDataReader myReader;
+            myReader = history.ExecuteReader();
+            while (myReader.Read())
+            {
+                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"), myReader.GetString("Tags"));
+            }
+            myReader.Close();
+
+
+            MySqlCommand history1 =
+                   new MySqlCommand(
+                       "SELECT Count(Sight_ID) AS Tags, BTS.Sighting_Locations.City, BTS.Sighting_Locations.State AS ST, Country, Gender" +
+                       " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
+                       " WHERE BTS.Sighting_Locations.State = 'MI' AND Country = 'USA' AND Gender = 'F' ORDER BY Gender DESC ;", dbcon);
+
+            MySqlDataReader myReader1;
+            myReader1 = history1.ExecuteReader();
+            while (myReader1.Read())
+            {
+                graphChart.Series["Female"].Points.AddXY(myReader1.GetString("City"), myReader1.GetString("Tags"));
+            }
+            myReader1.Close();
+
 
             /*
             graphChart.Show();
@@ -2257,29 +2269,6 @@ namespace ButterflyTrackingSystem
             //Add the series to the chart
             //graphChart.Series.Add(barSeries2);
             //graphChart.Series.Add(barSeries1);
-
-            /*
-            ChartArea chartArea1 = new Charting.ChartArea(); 
-            Charting.Legend legend1 = new Charting.Legend(); 
-            Charting.Series series1 = new Charting.Series();
-  
-            chartArea1.Name = "ChartArea1";
-            this.chartMain.ChartAreas.Add(chartArea1);
-  
-            legend1.Name = "Legend1";
-            this.chartMain.Legends.Add(legend1);
-  
-            this.chartMain.Location = new System.Drawing.Point(217, 12);
-            this.chartMain.Name = "chartMain";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartMain.Series.Add(series1);
-            this.chartMain.Size = new System.Drawing.Size(504, 414);
-            this.chartMain.TabIndex = 0;
-            this.chartMain.Text = "chart1";
-            this.Controls.Add(this.chartMain);//where 'this' is the Form
-             */
 
         }
 
