@@ -2110,6 +2110,7 @@ namespace ButterflyTrackingSystem
             this.loadChartButton.TabIndex = 4;
             this.loadChartButton.Text = "Refresh Chart";
             this.loadChartButton.UseVisualStyleBackColor = false;
+            this.loadChartButton.Click += new System.EventHandler(this.loadChartButton_Click);
             // 
             // graphChart
             // 
@@ -2130,6 +2131,7 @@ namespace ButterflyTrackingSystem
             this.graphChart.Size = new System.Drawing.Size(944, 442);
             this.graphChart.TabIndex = 0;
             this.graphChart.Text = "Graph/Chart";
+            this.graphChart.Click += new System.EventHandler(this.graphChart_Click);
             // 
             // updateAccountTab
             // 

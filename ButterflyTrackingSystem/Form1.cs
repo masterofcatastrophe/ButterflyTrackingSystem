@@ -1849,7 +1849,21 @@ namespace ButterflyTrackingSystem
         int i;
         private void updateEntryGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
+            
+                i = e.RowIndex;
+                DataGridViewRow row = updateEntryGrid.Rows[i];
+                updateEntryTagIDBox.Text = row.Cells[0].Value.ToString();
+                updateEntrySpeciesBox.Text = row.Cells[1].Value.ToString();
+                updateEntryGenderComboBox.Text = row.Cells[2].Value.ToString();
+                updateEntryAgeBox.Text = row.Cells[3].Value.ToString();
+                updateEntryLongitudeBox.Text = row.Cells[6].Value.ToString();
+                updateEntryLatitudeBox.Text = row.Cells[7].Value.ToString();
+                updateEntryCityBox.Text = row.Cells[8].Value.ToString();
+                updateEntryStateBox.Text = row.Cells[9].Value.ToString();
+                updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
+            
+            
         }
 
         private void updateEntryTagIDBox_Leave(object sender, EventArgs e)
@@ -1882,7 +1896,7 @@ namespace ButterflyTrackingSystem
                 updateEntryStateBox.Text = row.Cells[9].Value.ToString();
                 updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
 
-            }
+           }
         }
 
         private void ResetDate_Click(object sender, EventArgs e){}
@@ -2033,13 +2047,12 @@ namespace ButterflyTrackingSystem
                     migration.ExecuteNonQuery();
 
                     MessageBox.Show("New sighting added to that butterfly tag !");
-                }
-
-                else MessageBox.Show("some fields are missing !");
+                } 
             
                     con.CloseConnection();
                     con.OpenConnection();
-                }
+            }
+            else MessageBox.Show("some fields are missing !");
             }
         
 
@@ -2051,8 +2064,9 @@ namespace ButterflyTrackingSystem
         
         private void viewSightingButton_Click(object sender, EventArgs e)
         {
-            
-            string retreiveMigrations = "SELECT Migration.Migration_no, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;" ;
+            if (!String.IsNullOrEmpty(migrationTagIDtoViewGridBox.Text))
+            {
+                string retreiveMigrations = "SELECT Migration.Migration_no, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;" ;
             //string retreiveOther = "SELECT City FROM Migration where Migration_Tag=5";        
 
 
@@ -2066,7 +2080,8 @@ namespace ButterflyTrackingSystem
             BindingNavigator bindingNavigator3 = new BindingNavigator();
             bindingNavigator3.BindingSource = bindingsource3;
             migrationSecondGrid.DataSource = bindingsource3;
-
+            }
+            else MessageBox.Show("Please Enter a Tag ID !");
            
         }
 
@@ -2081,6 +2096,16 @@ namespace ButterflyTrackingSystem
         }
 
         private void migrationTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadChartButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void graphChart_Click(object sender, EventArgs e)
         {
 
         }
