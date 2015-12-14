@@ -1651,6 +1651,13 @@ namespace ButterflyTrackingSystem
                 con.CloseConnection();
                 con.OpenConnection();
             }
+            foreach (Control item in searchTab.Controls)
+            {
+                if (item is TextBox)
+                {
+                    item.Text = "";
+                }
+            }
         }
 
         private void leaderboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
