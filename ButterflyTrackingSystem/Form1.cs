@@ -1561,7 +1561,7 @@ namespace ButterflyTrackingSystem
                 string retreiveLeaderBoard =
                     "SELECT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly" +
                     " ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID" +
-                    " ORDER BY Tags_Made DESC LIMIT 10;";
+                    " ORDER BY Tags_Made DESC LIMIT 15;";
 
                 MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
                 MySqlDataAdapter sda = new MySqlDataAdapter();
@@ -2102,7 +2102,137 @@ namespace ButterflyTrackingSystem
 
         private void loadChartButton_Click(object sender, EventArgs e)
         {
+          
+            /*
+             graphChart.Series["mySeries"].ChartType = SeriesChartType.Column;
+             graphChart.Series.Clear();
+ 
+             // Data arrays
+             string[] seriesArray = { "Cat", "Dog", "Bird", "Monkey" };
+             int[] pointsArray = { 2, 1, 7, 5 };
+ 
+             // Set palette
+            graphChart.Palette = ChartColorPalette.EarthTones;
+ 
+            // Set title
+            graphChart.Titles.Add("Animals");
+ 
+            // Add series.
+            for (int i = 0; i < seriesArray.Length; i++)
+             {
+                Series series = graphChart.Series.Add(seriesArray[i]);
+                series.Points.Add(pointsArray[i]);
+             
+             
+             */
+        /*
+        string s = "select date,temperature from flowchart";
+        MySqlDataAdapter da = new MySqlDataAdapter(s, dbcon);
+        DataSet ds = new DataSet();
+        da.Fill(ds, "flowchart");
+        
+        ChartArea chartarea1 = new ChartArea();
+        Legend legend = new Legend();
+        Chart c1 = new Chart();
+        Series series = new Series();
+        
+            
+        Controls.Add(c1);
 
+        graphChart.Name = "ChartArea";
+        c1.ChartAreas.Add(chartarea1);
+        legend.Name = "Legend";
+        c1.Legends.Add(legend);
+        c1.Location = new System.Drawing.Point(13, 13);
+        series.Name = "Series";
+        c1.Series.Add(series);
+        c1.Size = new System.Drawing.Size(800, 400);
+        c1.TabIndex = 0;
+        c1.Text = "Chart1";
+
+        c1.Series["Series"].XValueMember = "date";
+        c1.Series["Series"].YValueMembers = "temperature";
+        c1.DataSource = ds.Tables("flowchart");
+        */
+            graphChart.Series.Clear();
+            
+            double[] xData = new double[] {1,2,3,4,5 };
+            double[] yData = new double[] {6,7,3,4,5 };
+            
+            
+            Legend legend1 = new Legend();
+            Legend legend2 = new Legend();     
+
+            //Vertical bar chart
+            //create another area and add it to the chart
+            ChartArea area = new ChartArea("History");
+            //Controls.Add(area);
+            graphChart.ChartAreas.Add(area);
+            graphChart.Text = "chart1";
+            //Create the series using just the y data
+            Series barSeries2 = new Series();
+            Series barSeries1 = new Series();
+            barSeries2.Points.DataBindY(xData);
+            barSeries1.Points.DataBindY(yData);
+            //Set the chart type, column; vertical bars                
+            barSeries2.ChartType = SeriesChartType.Column;
+            barSeries2.ChartArea = "History";
+            barSeries1.ChartType = SeriesChartType.Column;
+            barSeries1.ChartArea = "History";
+            barSeries1.Color = Color.Blue;
+            barSeries2.Color = Color.Yellow;
+            //graphChart.Legends.Add(legend1);
+            //graphChart.Legends.Add(legend2);
+           // barSeries1.Legend = "Male";
+            //barSeries1.Name = "Male";
+            //barSeries2.Legend = "Female";
+            //barSeries2.Name = "Female";
+            //graphChart.Legends.Add(legend1);
+
+            // Create a new legend called "Legend2".
+            graphChart.Legends.Add(legend2);
+
+            // Set Docking of the Legend chart to the Default Chart Area.
+           // graphChart.Legends["Legend2"].DockToChartArea = "Default";
+
+            graphChart.Series.Add(barSeries1);
+            graphChart.Legends.Add(new Legend("DifferentLegend"));
+            //graphChart.Legends["DifferentLegend"].DockToChartArea = "Default";
+            graphChart.Series["Series1"].Legend = "DifferentLegend";
+            graphChart.Series["Series1"].IsVisibleInLegend = true;
+
+           // barSeries1.ChartArea = "ChartArea1";
+            // Assign the legend to Series1.
+            //graphChart.Series[barSeries1].Legend = "Legend2";
+           // graphChart.Series[barSeries2].IsVisibleInLegend = true;
+            
+            //Add the series to the chart
+            graphChart.Series.Add(barSeries2);
+          //  graphChart.Series.Add(barSeries1);
+
+            /*
+            ChartArea chartArea1 = new Charting.ChartArea(); 
+            Charting.Legend legend1 = new Charting.Legend(); 
+            Charting.Series series1 = new Charting.Series();
+  
+            chartArea1.Name = "ChartArea1";
+            this.chartMain.ChartAreas.Add(chartArea1);
+  
+            legend1.Name = "Legend1";
+            this.chartMain.Legends.Add(legend1);
+  
+            this.chartMain.Location = new System.Drawing.Point(217, 12);
+            this.chartMain.Name = "chartMain";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartMain.Series.Add(series1);
+            this.chartMain.Size = new System.Drawing.Size(504, 414);
+            this.chartMain.TabIndex = 0;
+            this.chartMain.Text = "chart1";
+            this.Controls.Add(this.chartMain);//where 'this' is the Form
+             */
+          
         }
 
         private void graphChart_Click(object sender, EventArgs e)
