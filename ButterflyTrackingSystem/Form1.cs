@@ -1858,7 +1858,8 @@ namespace ButterflyTrackingSystem
         private void updateEntryGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            
+            if (e.RowIndex >= 0)
+            {
                 i = e.RowIndex;
                 DataGridViewRow row = updateEntryGrid.Rows[i];
                 updateEntryTagIDBox.Text = row.Cells[0].Value.ToString();
@@ -1870,8 +1871,8 @@ namespace ButterflyTrackingSystem
                 updateEntryCityBox.Text = row.Cells[8].Value.ToString();
                 updateEntryStateBox.Text = row.Cells[9].Value.ToString();
                 updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
-            
-            
+
+            }
         }
 
         private void updateEntryTagIDBox_Leave(object sender, EventArgs e)
@@ -1889,7 +1890,7 @@ namespace ButterflyTrackingSystem
 
         private void updateEntryGrid_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
 
                 i = e.RowIndex;
@@ -2255,6 +2256,11 @@ namespace ButterflyTrackingSystem
         {
             migrationDataTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
             migrationDataTimePicker.Format = DateTimePickerFormat.Custom;
+        }
+
+        private void updateEntryGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

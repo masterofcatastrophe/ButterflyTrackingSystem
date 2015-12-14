@@ -1361,6 +1361,7 @@ namespace ButterflyTrackingSystem
             this.updateEntryGrid.TabIndex = 89;
             this.updateEntryGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_CellClick_1);
             this.updateEntryGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_CellClick);
+            this.updateEntryGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_CellContentDoubleClick);
             this.updateEntryGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateEntryGrid_RowValidated);
             // 
             // loadEntry
