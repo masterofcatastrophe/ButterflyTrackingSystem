@@ -2037,11 +2037,12 @@ namespace ButterflyTrackingSystem
             // 
             // leaderboardGrid
             // 
+            this.leaderboardGrid.AllowUserToAddRows = false;
             this.leaderboardGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.leaderboardGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.leaderboardGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.leaderboardGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.leaderboardGrid.BackgroundColor = System.Drawing.Color.MediumPurple;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Plum;
@@ -2067,6 +2068,7 @@ namespace ButterflyTrackingSystem
             this.leaderboardGrid.ReadOnly = true;
             this.leaderboardGrid.Size = new System.Drawing.Size(916, 398);
             this.leaderboardGrid.TabIndex = 1;
+            this.leaderboardGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.leaderboardGrid_CellContentClick_1);
             // 
             // leaderboardTabDescriptionLabel
             // 

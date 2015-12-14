@@ -1573,7 +1573,7 @@ namespace ButterflyTrackingSystem
                 bsource.DataSource = dbdataset;
                 leaderboardGrid.DataSource = bsource;
                 sda.Update(dbdataset);
-                leaderboardGrid.AllowUserToAddRows = true;
+                leaderboardGrid.AllowUserToAddRows = false;
                 leaderboardGrid.RowHeadersVisible = false;
                 
                 // retreive entries
@@ -2259,6 +2259,11 @@ namespace ButterflyTrackingSystem
         }
 
         private void updateEntryGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void leaderboardGrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
