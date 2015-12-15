@@ -2250,17 +2250,16 @@ namespace ButterflyTrackingSystem
             
             while (myReader.Read())
             {
-                graphChart.Series["Male"].Points.AddXY(myReader.GetString(""),myReader.GetInt32("NumMale")); 
+                graphChart.Series["Male"].Points.AddY(myReader.GetInt32("NumMale")); 
             }
 
-            myReader.NextResult();   
+            myReader.NextResult();
 
             while (myReader.Read())
             {
-                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"), myReader.GetInt32(null));
+                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"),2);
             }
             myReader.Close();
-
 
             MySqlCommand history2 =
                    new MySqlCommand("SELECT City FROM BTS.FemaleCities; SELECT NumFemale FROM BTS.FemalePerCity;", dbcon);
@@ -2269,12 +2268,12 @@ namespace ButterflyTrackingSystem
 
             while (myReader2.Read())
             {
-                graphChart.Series["Female"].Points.AddXY(myReader2.GetInt32(null),myReader2.GetString("City"));
+                graphChart.Series["Female"].Points.AddXY(myReader2.GetString("City"),2); 
             }
 
             while (myReader2.Read())
             {
-                graphChart.Series["Female"].Points.AddXY(myReader2.GetInt32("NumFemale"), myReader2.GetString(null));
+                graphChart.Series["Female"].Points.AddY(myReader2.GetInt32("NumFemale"));
             }
             myReader2.Close();
 
