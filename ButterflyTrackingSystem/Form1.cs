@@ -2324,5 +2324,383 @@ namespace ButterflyTrackingSystem
         {
 
         }
+
+        private void createSpeciesTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createAgeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createCityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createStateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createCountryTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createLongitudeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createLatitudeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntrySpeciesBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryCityBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryStateBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryCountryBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryLongitudeBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryLatitudeBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryAgeBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationTagIDTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationCityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationStateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationCountryTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationLongitudeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationLatitudeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationTagIDtoViewGridBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchTagIDTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchUserNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchSpeciesTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchCityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchStateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchCountryTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEmployeeNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updatePasswordTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || !char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updatePhoneNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEmployeeStreetTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEmployeeCityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEmployeeStateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void userNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void passwordBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || !char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeeCityBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeeNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeePasswordBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || !char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeePhoneNumberBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeeStateBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeeStreetBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeeUserNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
     }
 }
