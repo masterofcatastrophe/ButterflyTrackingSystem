@@ -22,6 +22,7 @@ namespace ButterflyTrackingSystem
         bool Cred; // check tagger/nonTagger
         bool cal = false; // enable disabled date
         bool tim = false; // enable disabled time
+        bool title = false;
         
         public BTS()
         {
@@ -123,6 +124,20 @@ namespace ButterflyTrackingSystem
                 searchDateTimePicker.CustomFormat = " ";
 
             }
+            if (functionalitiesTabs.SelectedIndex == 5)
+            {
+                // area.BackColor = Color.Wheat;
+                // graphChart.BackColor = Color.Wheat;
+                //ChartArea area = new ChartArea("History");
+                //graphChart.ChartAreas.Add(area);
+                //graphChart.ChartAreas[0].Visible = false;
+                graphChart.BackColor = Color.Transparent;
+                graphChart.ChartAreas[0].BackColor = Color.Transparent;
+                //graphChart.ChartAreas[1].BackColor = Color.Transparent;
+                graphChart.Legends[0].BackColor = Color.Transparent;
+                graphChart.ChartAreas[0].AxisX.Title = "Cities";
+                graphChart.ChartAreas[0].AxisY.Title = "Number of Sighting";
+            }
         }
       
         private void BTS_Load(object sender, EventArgs e)
@@ -177,8 +192,7 @@ namespace ButterflyTrackingSystem
                     {
                         // Save Employee ID into variable
                         MySqlDataReader reader;
-                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +
-                                            "';");
+                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +"';");
 
                         MySqlCommand Get_Emp_ID = new MySqlCommand(selectCmd, dbcon);
                         reader = Get_Emp_ID.ExecuteReader();
@@ -190,8 +204,7 @@ namespace ButterflyTrackingSystem
                         reader.Close();
 
                         // Find if account is tagger nonTagger
-                        string selectCred = ("SELECT Position FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +
-                                             "';");
+                        string selectCred = ("SELECT Position FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +"';");
                         MySqlCommand retreiveCred = new MySqlCommand(selectCred, dbcon);
                         MySqlDataReader CredReader;
                         CredReader = retreiveCred.ExecuteReader();
@@ -705,26 +718,6 @@ namespace ButterflyTrackingSystem
 
         private void searchTab_Click(object sender, EventArgs e)
         {
-            /*
-            if (cal == false)
-            {
-                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-                searchDateTimePicker.ShowUpDown = true;
-                searchDateTimePicker.CustomFormat = "MM/dd/yyyy";
-                dateTimePicker1.Format = DateTimePickerFormat.Custom;
-                dateTimePicker1.ShowUpDown = true;
-                dateTimePicker1.CustomFormat = "hh:mm:ss tt";
-                cal = true;
-            }
-            else
-            {
-                dateTimePicker1.Format = DateTimePickerFormat.Custom;
-                dateTimePicker1.CustomFormat = " ";
-                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-                searchDateTimePicker.CustomFormat = " ";
-                cal = false;
-            }
-            */
             
         }
 
@@ -1690,7 +1683,7 @@ namespace ButterflyTrackingSystem
                 string retreiveLeaderBoard =
                     "SELECT DISTINCT Employee.User_ID, COUNT(*) AS Tags_Made FROM Employee JOIN Butterfly" +
                     " ON Employee.Employee_ID = Butterfly.Emp_ID GROUP BY Employee.User_ID" +
-                    " ORDER BY Tags_Made DESC LIMIT 10;";
+                    " ORDER BY Tags_Made DESC LIMIT 15;";
 
                 MySqlCommand retreiveBoard = new MySqlCommand(retreiveLeaderBoard, dbcon);
                 MySqlDataAdapter sda = new MySqlDataAdapter();
@@ -2090,7 +2083,7 @@ namespace ButterflyTrackingSystem
         {
             if (!String.IsNullOrEmpty(migrationTagIDtoViewGridBox.Text))
             {
-                string retreiveMigrations = "SELECT Migration.Migration_no,Migration_Date,Migration_Time, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;" ;
+                string retreiveMigrations = "SELECT Migration_Date,Migration_Time, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;" ;
             //string retreiveOther = "SELECT City FROM Migration where Migration_Tag=5";        
 
 
@@ -2126,7 +2119,7 @@ namespace ButterflyTrackingSystem
 
         private void loadChartButton_Click(object sender, EventArgs e)
         {
-          
+
             /*
              graphChart.Series["mySeries"].ChartType = SeriesChartType.Column;
              graphChart.Series.Clear();
@@ -2149,114 +2142,166 @@ namespace ButterflyTrackingSystem
              
              
              */
-        /*
-        string s = "select date,temperature from flowchart";
-        MySqlDataAdapter da = new MySqlDataAdapter(s, dbcon);
-        DataSet ds = new DataSet();
-        da.Fill(ds, "flowchart");
-        
-        ChartArea chartarea1 = new ChartArea();
-        Legend legend = new Legend();
-        Chart c1 = new Chart();
-        Series series = new Series();
-        
-            
-        Controls.Add(c1);
+            /*
+            string s = "select date,temperature from flowchart";
+            MySqlDataAdapter da = new MySqlDataAdapter(s, dbcon);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "flowchart");
 
-        graphChart.Name = "ChartArea";
-        c1.ChartAreas.Add(chartarea1);
-        legend.Name = "Legend";
-        c1.Legends.Add(legend);
-        c1.Location = new System.Drawing.Point(13, 13);
-        series.Name = "Series";
-        c1.Series.Add(series);
-        c1.Size = new System.Drawing.Size(800, 400);
-        c1.TabIndex = 0;
-        c1.Text = "Chart1";
+            ChartArea chartarea1 = new ChartArea();
+            Legend legend = new Legend();
+            Chart c1 = new Chart();
+            Series series = new Series();
 
-        c1.Series["Series"].XValueMember = "date";
-        c1.Series["Series"].YValueMembers = "temperature";
-        c1.DataSource = ds.Tables("flowchart");
-        */
+
+            Controls.Add(c1);
+
+            graphChart.Name = "ChartArea";
+            c1.ChartAreas.Add(chartarea1);
+            legend.Name = "Legend";
+            c1.Legends.Add(legend);
+            c1.Location = new System.Drawing.Point(13, 13);
+            series.Name = "Series";
+            c1.Series.Add(series);
+            c1.Size = new System.Drawing.Size(800, 400);
+            c1.TabIndex = 0;
+            c1.Text = "Chart1";
+
+            c1.Series["Series"].XValueMember = "date";
+            c1.Series["Series"].YValueMembers = "temperature";
+            c1.DataSource = ds.Tables("flowchart");
+            */
+            //graphChart.Series[0].Points.Clear();
+            //graphChart.Series[1].Points.Clear();
             graphChart.Series.Clear();
-            
-            double[] xData = new double[] {1,2,3,4,5 };
-            double[] yData = new double[] {6,7,3,4,5 };
-            
-            
-            Legend legend1 = new Legend();
-            Legend legend2 = new Legend();     
 
-            //Vertical bar chart
-            //create another area and add it to the chart
-            ChartArea area = new ChartArea("History");
-            //Controls.Add(area);
-            graphChart.ChartAreas.Add(area);
-            graphChart.Text = "chart1";
-            //Create the series using just the y data
-            Series barSeries2 = new Series();
-            Series barSeries1 = new Series();
-            barSeries2.Points.DataBindY(xData);
-            barSeries1.Points.DataBindY(yData);
-            //Set the chart type, column; vertical bars                
-            barSeries2.ChartType = SeriesChartType.Column;
-            barSeries2.ChartArea = "History";
-            barSeries1.ChartType = SeriesChartType.Column;
-            barSeries1.ChartArea = "History";
-            barSeries1.Color = Color.Blue;
-            barSeries2.Color = Color.Yellow;
-            //graphChart.Legends.Add(legend1);
-            //graphChart.Legends.Add(legend2);
-           // barSeries1.Legend = "Male";
-            //barSeries1.Name = "Male";
-            //barSeries2.Legend = "Female";
-            //barSeries2.Name = "Female";
-            //graphChart.Legends.Add(legend1);
-
-            // Create a new legend called "Legend2".
-            graphChart.Legends.Add(legend2);
-
-            // Set Docking of the Legend chart to the Default Chart Area.
-           // graphChart.Legends["Legend2"].DockToChartArea = "Default";
-
-            graphChart.Series.Add(barSeries1);
-            graphChart.Legends.Add(new Legend("DifferentLegend"));
-            //graphChart.Legends["DifferentLegend"].DockToChartArea = "Default";
-            graphChart.Series["Series1"].Legend = "DifferentLegend";
-            graphChart.Series["Series1"].IsVisibleInLegend = true;
-
-           // barSeries1.ChartArea = "ChartArea1";
-            // Assign the legend to Series1.
-            //graphChart.Series[barSeries1].Legend = "Legend2";
-           // graphChart.Series[barSeries2].IsVisibleInLegend = true;
-            
-            //Add the series to the chart
-            graphChart.Series.Add(barSeries2);
-          //  graphChart.Series.Add(barSeries1);
+            graphChart.Text = "Butterfly History";
+            if (title == false)
+            {
+                graphChart.Titles.Add("Butterfly History");
+                title = true;
+            }
+            //int[] xData = new int[] { 1, 2, 3, 4 };
+            //int[] yData = new int[] { 1, 2, 3, 4 };
 
             /*
-            ChartArea chartArea1 = new Charting.ChartArea(); 
-            Charting.Legend legend1 = new Charting.Legend(); 
-            Charting.Series series1 = new Charting.Series();
-  
-            chartArea1.Name = "ChartArea1";
-            this.chartMain.ChartAreas.Add(chartArea1);
-  
-            legend1.Name = "Legend1";
-            this.chartMain.Legends.Add(legend1);
-  
-            this.chartMain.Location = new System.Drawing.Point(217, 12);
-            this.chartMain.Name = "chartMain";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartMain.Series.Add(series1);
-            this.chartMain.Size = new System.Drawing.Size(504, 414);
-            this.chartMain.TabIndex = 0;
-            this.chartMain.Text = "chart1";
-            this.Controls.Add(this.chartMain);//where 'this' is the Form
-             */
-          
+           //Vertical bar chart
+           ChartArea area = new ChartArea("History");
+           graphChart.ChartAreas.Add(area);
+           graphChart.Text = "Butterfly History";
+           */
+            Series barSeries2 = new Series();
+            Series barSeries1 = new Series();
+
+           graphChart.Series["History"] = barSeries1;
+           graphChart.Series["History"] = barSeries2;
+
+            graphChart.ChartAreas[0].AxisX.Interval = 1;
+            graphChart.ChartAreas[0].AxisY.Interval = 1;
+
+            /*
+            barSeries1.YValueMembers = "city1";
+            barSeries2.YValueMembers = "city2";
+            */
+
+            //barSeries2.Points.DataBindY(xData);
+            //barSeries1.Points.DataBindY(yData);
+
+            //Set the chart type, column; vertical bars                
+            barSeries2.ChartType = SeriesChartType.Column;
+            barSeries2.ChartArea = "HistoryArea";
+            barSeries1.ChartType = SeriesChartType.Column;
+            barSeries1.ChartArea = "HistoryArea";
+            /*
+            barSeries1.Color = Color.RoyalBlue;
+            barSeries2.Color = Color.Goldenrod;
+            */
+            graphChart.Palette = ChartColorPalette.BrightPastel;
+            barSeries1.Name = "Male";
+            barSeries2.Name = "Female";
+
+            graphChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            graphChart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+
+
+            /*
+            MySqlCommand history2 =
+                 new MySqlCommand(
+                     "SELECT DISTINCT BTS.Sighting_Locations.City FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly" +
+                     " ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID " +
+                     "WHERE BTS.Sighting_Locations.State = 'MI' AND Country = 'USA' ORDER BY City DESC; ", dbcon);
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(history2.ToString(), dbcon);
+
+            DataTable resultsTable = new DataTable();
+            adapter.Fill(resultsTable);
+
+            // Here you can access the members of your table like this:
+            object item = resultsTable.Rows[0]["City"];
+
+            graphChart.ChartAreas[0].AxisX.CustomLabels.Add(1, 1, item.ToString());
+            */
+            
+            MySqlCommand history =
+                    new MySqlCommand("SELECT NumMale FROM BTS.MalePerCity; SELECT City FROM BTS.MaleCities", dbcon);
+            MySqlDataReader myReader;
+            
+            myReader = history.ExecuteReader();
+            
+            while (myReader.Read())
+            {
+                graphChart.Series["Male"].Points.AddY(myReader.GetInt32("NumMale")); 
+            }
+
+            myReader.NextResult();
+
+            while (myReader.Read())
+            {
+                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"),2);
+            }
+            myReader.Close();
+
+            MySqlCommand history2 =
+                   new MySqlCommand("SELECT City FROM BTS.FemaleCities; SELECT NumFemale FROM BTS.FemalePerCity;", dbcon);
+            MySqlDataReader myReader2;
+            myReader2 = history2.ExecuteReader();
+
+            while (myReader2.Read())
+            {
+                graphChart.Series["Female"].Points.AddXY(myReader2.GetString("City"),2); 
+            }
+
+            while (myReader2.Read())
+            {
+                graphChart.Series["Female"].Points.AddY(myReader2.GetInt32("NumFemale"));
+            }
+            myReader2.Close();
+
+            //history.Dispose();
+
+            /*
+            graphChart.Show();
+            Controls.Add(graphChart);
+            graphChart.Show();
+            */
+            //graphChart.Series.Add(barSeries1);
+            ///graphChart.Legends.Add(new Legend("DifferentLegend"));
+            //graphChart.Legends["DifferentLegend"].DockToChartArea = "Default";
+            //graphChart.Series["Male"].Legend = "DifferentLegend";
+            //graphChart.Series["Male"].IsVisibleInLegend = true;
+
+            // graphChart.Series["Female"].Legend = "DifferentLegend";
+            // graphChart.Series["Female"].IsVisibleInLegend = true;
+
+            // barSeries1.ChartArea = "ChartArea1";
+            // Assign the legend to Series1.
+            //graphChart.Series[xData].Legend = "Legend2";
+            // graphChart.Series[barSeries2].IsVisibleInLegend = true;
+
+            //Add the series to the chart
+            //graphChart.Series.Add(barSeries2);
+            //graphChart.Series.Add(barSeries1);
+
         }
 
         private void graphChart_Click(object sender, EventArgs e)
