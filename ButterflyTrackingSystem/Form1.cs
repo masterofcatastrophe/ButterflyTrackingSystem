@@ -22,6 +22,7 @@ namespace ButterflyTrackingSystem
         bool Cred; // check tagger/nonTagger
         bool cal = false; // enable disabled date
         bool tim = false; // enable disabled time
+        bool title = false;
         
         public BTS()
         {
@@ -130,12 +131,10 @@ namespace ButterflyTrackingSystem
                 //ChartArea area = new ChartArea("History");
                 //graphChart.ChartAreas.Add(area);
                 //graphChart.ChartAreas[0].Visible = false;
-                graphChart.Text = "Butterfly History";
                 graphChart.BackColor = Color.Transparent;
                 graphChart.ChartAreas[0].BackColor = Color.Transparent;
                 //graphChart.ChartAreas[1].BackColor = Color.Transparent;
                 graphChart.Legends[0].BackColor = Color.Transparent;
-                graphChart.Titles.Add("Butterfly History");
                 graphChart.ChartAreas[0].AxisX.Title = "Cities";
                 graphChart.ChartAreas[0].AxisY.Title = "Number of Sighting";
             }
@@ -2175,17 +2174,22 @@ namespace ButterflyTrackingSystem
             //graphChart.Series[0].Points.Clear();
             //graphChart.Series[1].Points.Clear();
             graphChart.Series.Clear();
-            
 
+            graphChart.Text = "Butterfly History";
+            if (title == false)
+            {
+                graphChart.Titles.Add("Butterfly History");
+                title = true;
+            }
             //int[] xData = new int[] { 1, 2, 3, 4 };
             //int[] yData = new int[] { 1, 2, 3, 4 };
-             
-             /*
-            //Vertical bar chart
-            ChartArea area = new ChartArea("History");
-            graphChart.ChartAreas.Add(area);
-            graphChart.Text = "Butterfly History";
-            */
+
+            /*
+           //Vertical bar chart
+           ChartArea area = new ChartArea("History");
+           graphChart.ChartAreas.Add(area);
+           graphChart.Text = "Butterfly History";
+           */
             Series barSeries2 = new Series();
             Series barSeries1 = new Series();
 
@@ -2237,70 +2241,44 @@ namespace ButterflyTrackingSystem
 
             graphChart.ChartAreas[0].AxisX.CustomLabels.Add(1, 1, item.ToString());
             */
-
-            
             
             MySqlCommand history =
-                    new MySqlCommand(
-                        "SELECT DISTINCT Sight_ID AS Tags, BTS.Sighting_Locations.City FROM BTS.Sighting_Locations" +
-                        " INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
-                        " WHERE BTS.Sighting_Locations.State = 'MI' AND Country = 'USA' AND Gender = 'M';", dbcon);
-
+                    new MySqlCommand("SELECT NumMale FROM BTS.MalePerCity; SELECT City FROM BTS.MaleCities", dbcon);
             MySqlDataReader myReader;
+            
             myReader = history.ExecuteReader();
+            
             while (myReader.Read())
             {
-                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"), myReader.GetString("Tags"));
+                graphChart.Series["Male"].Points.AddXY(myReader.GetString(""),myReader.GetInt32("NumMale")); 
+            }
+
+            myReader.NextResult();   
+
+            while (myReader.Read())
+            {
+                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"), myReader.GetInt32(null));
             }
             myReader.Close();
 
 
-            MySqlCommand history1 =
-                   new MySqlCommand(
-                        "SELECT DISTINCT Sight_ID AS Tags, BTS.Sighting_Locations.City FROM BTS.Sighting_Locations" +
-                        " INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
-                        " WHERE BTS.Sighting_Locations.State = 'MI' AND Country = 'USA' AND Gender = 'F';", dbcon);
+            MySqlCommand history2 =
+                   new MySqlCommand("SELECT City FROM BTS.FemaleCities; SELECT NumFemale FROM BTS.FemalePerCity;", dbcon);
+            MySqlDataReader myReader2;
+            myReader2 = history2.ExecuteReader();
 
-            MySqlDataReader myReader1;
-            myReader1 = history1.ExecuteReader();
-            while (myReader1.Read())
+            while (myReader2.Read())
             {
-                graphChart.Series["Female"].Points.AddXY(myReader1.GetString("City"), myReader1.GetString("Tags"));
+                graphChart.Series["Female"].Points.AddXY(myReader2.GetInt32(null),myReader2.GetString("City"));
             }
-            myReader1.Close();
 
-            /*
-            MySqlCommand history =
-                    new MySqlCommand(
-                        "SELECT Count(Sight_ID) AS Tags, BTS.Sighting_Locations.City, BTS.Sighting_Locations.State AS ST, Country, Gender" +
-                        " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
-                        " WHERE BTS.Sighting_Locations.State = 'MI' AND Country = 'USA' AND Gender = 'M' ORDER BY Gender DESC ;", dbcon);
-
-            MySqlDataReader myReader;
-            myReader = history.ExecuteReader();
-            while (myReader.Read())
+            while (myReader2.Read())
             {
-                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"), myReader.GetString("Tags"));
+                graphChart.Series["Female"].Points.AddXY(myReader2.GetInt32("NumFemale"), myReader2.GetString(null));
             }
-            myReader.Close();
-            */
+            myReader2.Close();
 
-            /*
-            MySqlCommand history1 =
-                   new MySqlCommand(
-                       "SELECT Count(Sight_ID) AS Tags, BTS.Sighting_Locations.City, BTS.Sighting_Locations.State AS ST, Country, Gender" +
-                       " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
-                       " WHERE BTS.Sighting_Locations.State = 'MI' AND Country = 'USA' AND Gender = 'F' ORDER BY Gender DESC ;", dbcon);
-
-            MySqlDataReader myReader1;
-            myReader1 = history1.ExecuteReader();
-            while (myReader1.Read())
-            {
-                graphChart.Series["Female"].Points.AddXY(myReader1.GetString("City"), myReader1.GetString("Tags"));
-            }
-            myReader1.Close();
-            */
-
+            //history.Dispose();
 
             /*
             graphChart.Show();
