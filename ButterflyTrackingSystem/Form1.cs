@@ -170,8 +170,6 @@ namespace ButterflyTrackingSystem
             string LoginUserName = userNameBox.Text;
             string LoginPassword = passwordBox.Text;
 
-
-
             if (dbcon.State == ConnectionState.Open)
             {
                 int count = 0;
@@ -182,7 +180,7 @@ namespace ButterflyTrackingSystem
                 command.Parameters.AddWithValue("@Password", LoginPassword);
                 MySqlDataReader dataReader = command.ExecuteReader();
 
-                while (dataReader.Read())
+                     while (dataReader.Read())
                      {
                          count = count + 1;
                      }
