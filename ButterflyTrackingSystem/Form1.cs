@@ -795,34 +795,25 @@ namespace ButterflyTrackingSystem
                     MySqlCommandBuilder mySqlCommandBuilder;
                     DataTable dataTable;
                     BindingSource bindingSource;
+                   // MySqlCommand mycommand = new MySqlCommand();
 
                     StringBuilder searchquery = new StringBuilder("SELECT User_ID AS UserID, Sight_ID AS TagID, BTS.Sighting_Locations.Employee_ID AS EmpID, Longitude AS Lon, Latitude AS Lat, BTS.Sighting_Locations.City," +
                        " BTS.Sighting_Locations.State AS ST, Country," +
                        " Date_of_sighting AS sDate, Time_of_sighting AS sTime, Species, Age, Gender" +
                        " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
                        " RIGHT JOIN BTS.Employee ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE 1=1");
-
-                    MySqlCommand mycommand = new MySqlCommand();
-                    mycommand.CommandText = searchquery.ToString();
-                   
                     if (!String.IsNullOrEmpty(searchusername))
                         searchquery.Append(" AND User_ID = @SearchUser");
-                        mycommand.Parameters.AddWithValue("@SearchUser", searchusername);
                     if (!String.IsNullOrEmpty(searchtagid))
                         searchquery.Append(" AND Sight_ID = @SearchTagID");
-                        mycommand.Parameters.AddWithValue("@SearchTagID", searchtagid);
                     if (!String.IsNullOrEmpty(searchspecies))
                         searchquery.Append(" AND Species = @SearchSpecies");
-                        mycommand.Parameters.AddWithValue("@SearchSpecies", searchspecies);
                     if (!String.IsNullOrEmpty(searchcity))
                         searchquery.Append(" AND BTS.Sighting_Locations.City = @SearchCity");
-                        mycommand.Parameters.AddWithValue("@SearchCity", searchcity);
                     if (!String.IsNullOrEmpty(searchstate))
                         searchquery.Append(" AND BTS.Sighting_Locations.State = @SearchState");
-                    mycommand.Parameters.AddWithValue("@SearchState", searchstate);
                     if (!String.IsNullOrEmpty(searchcountry))
                         searchquery.Append(" AND Country = @SearchCountry");
-                        mycommand.Parameters.AddWithValue("@SearchCountry", searchcountry);
                     if (!String.IsNullOrEmpty(searchgender))
                     {
                         if (searchgender == "Male")
@@ -834,20 +825,31 @@ namespace ButterflyTrackingSystem
                             searchgender = "F";
                         }
                         searchquery.Append(" AND Gender = @SearchGender");
-                        mycommand.Parameters.AddWithValue("@SearchGender", searchgender);
                     }
                     if (!String.IsNullOrEmpty(searchtimepicker) && cal == true)
                     {
                         searchquery.Append(" AND Date_of_sighting = @SearchDate");
-                        mycommand.Parameters.AddWithValue("@SearchDate", SearchDate);
                     }
                     if (!String.IsNullOrEmpty(datetimepicker) && tim == true)
                     {
                         searchquery.Append(" AND Time_of_sighting = @SearchTime");
-                        mycommand.Parameters.AddWithValue("@SearchTime", SearchTime);
                     }
 
+                    MySqlCommand mycommand = new MySqlCommand(searchquery.ToString(), dbcon);
+                    
+                    mycommand.Parameters.AddWithValue("@SearchTime", SearchTime);
+                    mycommand.Parameters.AddWithValue("@SearchDate", SearchDate);
+                    mycommand.Parameters.AddWithValue("@SearchGender", searchgender);
+                    mycommand.Parameters.AddWithValue("@SearchCountry", searchcountry);
+                    mycommand.Parameters.AddWithValue("@SearchState", searchstate);
+                    mycommand.Parameters.AddWithValue("@SearchCity", searchcity);
+                    mycommand.Parameters.AddWithValue("@SearchSpecies", searchspecies);
+                    mycommand.Parameters.AddWithValue("@SearchUser", searchusername);
+                    mycommand.Parameters.AddWithValue("@SearchTagID", searchtagid);
+                    
+                    //mycommand.CommandText = searchquery.ToString();
                     mySqlDataAdapter = new MySqlDataAdapter(mycommand.CommandText, dbcon);
+                    mySqlDataAdapter.SelectCommand = mycommand;
                     mySqlCommandBuilder = new MySqlCommandBuilder(mySqlDataAdapter);
                     dataTable = new DataTable();
                     mySqlDataAdapter.Fill(dataTable);
