@@ -170,58 +170,60 @@ namespace ButterflyTrackingSystem
             string LoginUserName = userNameBox.Text;
             string LoginPassword = passwordBox.Text;
 
+
+
             if (dbcon.State == ConnectionState.Open)
             {
-                MySqlCommand user_validation =
-                    new MySqlCommand(
-                        "SELECT * FROM Employee WHERE User_ID='" + userNameBox.Text + "'AND Password='" +
-                        passwordBox.Text + "';", dbcon);
-
-                MySqlDataReader myReader;
-                myReader = user_validation.ExecuteReader();
                 int count = 0;
-                while (myReader.Read())
-                {
-                    count = count + 1;
-                }
+                MySqlCommand command =
+                    new MySqlCommand(
+                        "SELECT Employee_ID FROM Employee WHERE User_ID=@Username AND Password=@Password;", dbcon);
+                command.Parameters.AddWithValue("@Username", LoginUserName);
+                command.Parameters.AddWithValue("@Password", LoginPassword);
+                MySqlDataReader dataReader = command.ExecuteReader();
 
-                if (count == 1)
-                {
-                    myReader.Close();
-                    try
+                while (dataReader.Read())
+                     {
+                         count = count + 1;
+                     }
+                    if (count == 1)
                     {
-                        // Save Employee ID into variable
-                        MySqlDataReader reader;
-                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text + "';");
-
-                        MySqlCommand Get_Emp_ID = new MySqlCommand(selectCmd, dbcon);
-                        reader = Get_Emp_ID.ExecuteReader();
-
-                        while (reader.Read())
+                        dataReader.Close();
+                        try
                         {
-                            Emp_ID = Convert.ToInt32(reader["Employee_ID"]);
-                        }
-                        reader.Close();
+                            // Save Employee ID into variable
+                            MySqlDataReader reader;
+                            string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" +
+                                                userNameBox.Text + "';");
 
-                        // Find if account is tagger nonTagger
-                        string selectCred = ("SELECT Position FROM Employee WHERE User_ID LIKE'" + userNameBox.Text + "';");
-                        MySqlCommand retreiveCred = new MySqlCommand(selectCred, dbcon);
-                        MySqlDataReader CredReader;
-                        CredReader = retreiveCred.ExecuteReader();
-                        while (CredReader.Read())
-                        {
-                            if ((string)(CredReader["Position"]) == "tagger")
-                            {
-                                Cred = true;
-                            }
-                            else
-                            {
-                                Cred = false;
-                            }
-                        }
-                        CredReader.Close();
+                            MySqlCommand Get_Emp_ID = new MySqlCommand(selectCmd, dbcon);
+                            reader = Get_Emp_ID.ExecuteReader();
 
-                        /*
+                            while (reader.Read())
+                            {
+                                Emp_ID = Convert.ToInt32(reader["Employee_ID"]);
+                            }
+                            reader.Close();
+
+                            // Find if account is tagger nonTagger
+                            string selectCred = ("SELECT Position FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +
+                                                 "';");
+                            MySqlCommand retreiveCred = new MySqlCommand(selectCred, dbcon);
+                            MySqlDataReader CredReader;
+                            CredReader = retreiveCred.ExecuteReader();
+                            while (CredReader.Read())
+                            {
+                                if ((string) (CredReader["Position"]) == "tagger")
+                                {
+                                    Cred = true;
+                                }
+                                else
+                                {
+                                    Cred = false;
+                                }
+                            }
+                            CredReader.Close();
+                            /*
                         while (myReader.Read())
                         {
                             string sUser = myReader.GetString("User_ID");
@@ -246,54 +248,52 @@ namespace ButterflyTrackingSystem
                         myReader.Close();
                         */
 
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        //MessageBox.Show(Emp_ID.ToString());
+                        loginPanel.Visible = false;
+                        registrationPanel.Visible = false;
+                        if (Cred == false)
+                        {
+                            functionalitiesTabs.SelectedTab = functionalitiesTabs.TabPages[2];
+                        }
+                        mainPanel.Visible = true;
+
+
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message);
+                        dataReader.Close();
+                        MessageBox.Show("Invalid user name/password!");
                     }
 
-                    //MessageBox.Show(Emp_ID.ToString());
-
-                    loginPanel.Visible = false;
-                    registrationPanel.Visible = false;
-                    if (Cred == false)
-                    {
-                        functionalitiesTabs.SelectedTab = functionalitiesTabs.TabPages[2];
-                    }
-                    mainPanel.Visible = true;
-
-                }
-                else
-                {
-                    myReader.Close();
-                    MessageBox.Show("Invalid user name/password!");
-                }
-
-
-
-                /*else if (!String.IsNullOrEmpty(userNameBox.Text) && !String.IsNullOrEmpty(passwordBox.Text))
+                    /*else if (!String.IsNullOrEmpty(userNameBox.Text) && !String.IsNullOrEmpty(passwordBox.Text))
             {
                 loginPanel.Visible = false; //To-Do: if credentials are correct, enter system. otherwise, show alert box invalid credentials!
                 registrationPanel.Visible = false;
                 mainPanel.Visible = true;
             }*/
-                if (String.IsNullOrEmpty(userNameBox.Text))
-                {
-                    loginUserError.SetError(userNameBox, "User Name field is empty!");
+                    if (String.IsNullOrEmpty(userNameBox.Text))
+                    {
+                        loginUserError.SetError(userNameBox, "User Name field is empty!");
+                    }
+                    else
+                    {
+                        loginUserError.Clear();
+                    }
+                    if (String.IsNullOrEmpty(passwordBox.Text))
+                    {
+                        loginPasswordError.SetError(passwordBox, "Password field is empty!");
+                    }
+                    else
+                    {
+                        loginPasswordError.Clear();
+                    }
                 }
-                else
-                {
-                    loginUserError.Clear();
-                }
-                if (String.IsNullOrEmpty(passwordBox.Text))
-                {
-                    loginPasswordError.SetError(passwordBox, "Password field is empty!");
-                }
-                else
-                {
-                    loginPasswordError.Clear();
-                }
-            }
             else
             {
                 con.CloseConnection();
