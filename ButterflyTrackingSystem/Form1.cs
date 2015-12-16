@@ -795,7 +795,6 @@ namespace ButterflyTrackingSystem
                     MySqlCommandBuilder mySqlCommandBuilder;
                     DataTable dataTable;
                     BindingSource bindingSource;
-                   // MySqlCommand mycommand = new MySqlCommand();
 
                     StringBuilder searchquery = new StringBuilder("SELECT User_ID AS UserID, Sight_ID AS TagID, BTS.Sighting_Locations.Employee_ID AS EmpID, Longitude AS Lon, Latitude AS Lat, BTS.Sighting_Locations.City," +
                        " BTS.Sighting_Locations.State AS ST, Country," +
@@ -836,7 +835,6 @@ namespace ButterflyTrackingSystem
                     }
 
                     MySqlCommand mycommand = new MySqlCommand(searchquery.ToString(), dbcon);
-                    
                     mycommand.Parameters.AddWithValue("@SearchTime", SearchTime);
                     mycommand.Parameters.AddWithValue("@SearchDate", SearchDate);
                     mycommand.Parameters.AddWithValue("@SearchGender", searchgender);
@@ -847,7 +845,6 @@ namespace ButterflyTrackingSystem
                     mycommand.Parameters.AddWithValue("@SearchUser", searchusername);
                     mycommand.Parameters.AddWithValue("@SearchTagID", searchtagid);
                     
-                    //mycommand.CommandText = searchquery.ToString();
                     mySqlDataAdapter = new MySqlDataAdapter(mycommand.CommandText, dbcon);
                     mySqlDataAdapter.SelectCommand = mycommand;
                     mySqlCommandBuilder = new MySqlCommandBuilder(mySqlDataAdapter);
@@ -886,11 +883,6 @@ namespace ButterflyTrackingSystem
             }
             else
             {
-                /*
-                DataGridView1.DataSource = DataSet.Tables["TableName"];
-                DataGridView.DataSource = DataTable;
-                DataGridView.DataSource = null;
-                */
                 if (searchDataGrid.DataSource != null)
                 {
                     searchDataGrid.DataSource = null;
@@ -900,7 +892,6 @@ namespace ButterflyTrackingSystem
                 {
                     searchDataGrid.Rows.Clear();
                 }
-                //MessageBox.Show("Have to use at least one field.", "Error", MessageBoxButtons.OK);
             }
         }
 
