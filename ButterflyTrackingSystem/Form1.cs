@@ -797,45 +797,57 @@ namespace ButterflyTrackingSystem
                     BindingSource bindingSource;
 
                     StringBuilder searchquery = new StringBuilder("SELECT User_ID AS UserID, Sight_ID AS TagID, BTS.Sighting_Locations.Employee_ID AS EmpID, Longitude AS Lon, Latitude AS Lat, BTS.Sighting_Locations.City," +
-                        " BTS.Sighting_Locations.State AS ST, Country," +
-                        " Date_of_sighting AS sDate, Time_of_sighting AS sTime, Species, Age, Gender" +
-                        " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
-                        " RIGHT JOIN BTS.Employee ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE 1=1");
-                    if (!String.IsNullOrEmpty(searchUserNameTextBox.Text))
-                        searchquery.Append(" AND User_ID = '" + searchUserNameTextBox.Text + "'");
-                    if (!String.IsNullOrEmpty(searchTagIDTextBox.Text))
-                        searchquery.Append(" AND Sight_ID = '" + searchTagIDTextBox.Text + "'");
-                    if (!String.IsNullOrEmpty(searchSpeciesTextBox.Text))
-                        searchquery.Append(" AND Species = '" + searchSpeciesTextBox.Text + "'");
-                    if (!String.IsNullOrEmpty(searchCityTextBox.Text))
-                        searchquery.Append(" AND BTS.Sighting_Locations.City = '" + searchCityTextBox.Text + "'");
-                    if (!String.IsNullOrEmpty(searchStateTextBox.Text))
-                        searchquery.Append(" AND BTS.Sighting_Locations.State = '" + searchStateTextBox.Text + "'");
-                    if (!String.IsNullOrEmpty(searchCountryTextBox.Text))
-                        searchquery.Append(" AND Country = '" + searchCountryTextBox.Text + "'");
-                    if (!String.IsNullOrEmpty(searchGendercomboBox.Text))
+                       " BTS.Sighting_Locations.State AS ST, Country," +
+                       " Date_of_sighting AS sDate, Time_of_sighting AS sTime, Species, Age, Gender" +
+                       " FROM BTS.Sighting_Locations INNER JOIN BTS.Butterfly ON BTS.Sighting_Locations.Sight_ID = BTS.Butterfly.Tag_ID" +
+                       " RIGHT JOIN BTS.Employee ON BTS.Employee.Employee_ID = BTS.Sighting_Locations.Employee_ID WHERE 1=1");
+
+                    MySqlCommand mycommand = new MySqlCommand();
+                    mycommand.CommandText = searchquery.ToString();
+                   
+                    if (!String.IsNullOrEmpty(searchusername))
+                        searchquery.Append(" AND User_ID = @SearchUser");
+                        mycommand.Parameters.AddWithValue("@SearchUser", searchusername);
+                    if (!String.IsNullOrEmpty(searchtagid))
+                        searchquery.Append(" AND Sight_ID = @SearchTagID");
+                        mycommand.Parameters.AddWithValue("@SearchTagID", searchtagid);
+                    if (!String.IsNullOrEmpty(searchspecies))
+                        searchquery.Append(" AND Species = @SearchSpecies");
+                        mycommand.Parameters.AddWithValue("@SearchSpecies", searchspecies);
+                    if (!String.IsNullOrEmpty(searchcity))
+                        searchquery.Append(" AND BTS.Sighting_Locations.City = @SearchCity");
+                        mycommand.Parameters.AddWithValue("@SearchCity", searchcity);
+                    if (!String.IsNullOrEmpty(searchstate))
+                        searchquery.Append(" AND BTS.Sighting_Locations.State = @SearchState");
+                    mycommand.Parameters.AddWithValue("@SearchState", searchstate);
+                    if (!String.IsNullOrEmpty(searchcountry))
+                        searchquery.Append(" AND Country = @SearchCountry");
+                        mycommand.Parameters.AddWithValue("@SearchCountry", searchcountry);
+                    if (!String.IsNullOrEmpty(searchgender))
                     {
-                        string gend;
                         if (searchgender == "Male")
                         {
-                            gend = "M";
+                            searchgender = "M";
                         }
                         else
                         {
-                            gend = "F";
+                            searchgender = "F";
                         }
-                        searchquery.Append(" AND Gender = '" + gend + "'");
+                        searchquery.Append(" AND Gender = @SearchGender");
+                        mycommand.Parameters.AddWithValue("@SearchGender", searchgender);
                     }
-                    if (!String.IsNullOrEmpty(searchDateTimePicker.Text) && cal == true)
+                    if (!String.IsNullOrEmpty(searchtimepicker) && cal == true)
                     {
-                        searchquery.Append(" AND Date_of_sighting = '" + SearchDate + "'");
+                        searchquery.Append(" AND Date_of_sighting = @SearchDate");
+                        mycommand.Parameters.AddWithValue("@SearchDate", SearchDate);
                     }
-                    if (!String.IsNullOrEmpty(dateTimePicker1.Text) && tim == true)
+                    if (!String.IsNullOrEmpty(datetimepicker) && tim == true)
                     {
-                        searchquery.Append(" AND Time_of_sighting = '" + SearchTime + "'");
+                        searchquery.Append(" AND Time_of_sighting = @SearchTime");
+                        mycommand.Parameters.AddWithValue("@SearchTime", SearchTime);
                     }
 
-                    mySqlDataAdapter = new MySqlDataAdapter(searchquery.ToString(), dbcon);
+                    mySqlDataAdapter = new MySqlDataAdapter(mycommand.CommandText, dbcon);
                     mySqlCommandBuilder = new MySqlCommandBuilder(mySqlDataAdapter);
                     dataTable = new DataTable();
                     mySqlDataAdapter.Fill(dataTable);
