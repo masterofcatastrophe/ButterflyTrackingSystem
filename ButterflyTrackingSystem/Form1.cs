@@ -99,22 +99,12 @@ namespace ButterflyTrackingSystem
             else if ((Cred == false) && ((functionalitiesTabs.SelectedIndex == 0)
                                          || functionalitiesTabs.SelectedIndex == 1))
             {
-                // (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
-                // (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
                 (functionalitiesTabs.TabPages[1] as TabPage).Visible = false; // hide controls
                 (functionalitiesTabs.TabPages[0] as TabPage).Visible = false; // hide controls
                 //MessageBox.Show("Unable to load tab. You are not a tagger.");
             }
             if (functionalitiesTabs.SelectedIndex == 2) // clears search tab initially
             {
-                /*
-                searchDateTimePicker.Format = DateTimePickerFormat.Custom;
-                searchDateTimePicker.ShowUpDown = true;
-                searchDateTimePicker.CustomFormat = "MM/dd/yyyy";
-                dateTimePicker1.Format = DateTimePickerFormat.Custom;
-                dateTimePicker1.ShowUpDown = true;
-                dateTimePicker1.CustomFormat = "hh:mm:ss tt";
-                */
                 searchDateTimePicker.Value = DateTime.Now;
                 dateTimePicker1.Value = DateTime.Now;
                 searchDateTimePicker.CustomFormat = " ";
@@ -122,18 +112,11 @@ namespace ButterflyTrackingSystem
                 dateTimePicker1.CustomFormat = " ";
                 searchDateTimePicker.Format = DateTimePickerFormat.Custom;
                 searchDateTimePicker.CustomFormat = " ";
-
             }
             if (functionalitiesTabs.SelectedIndex == 5)
             {
-                // area.BackColor = Color.Wheat;
-                // graphChart.BackColor = Color.Wheat;
-                //ChartArea area = new ChartArea("History");
-                //graphChart.ChartAreas.Add(area);
-                //graphChart.ChartAreas[0].Visible = false;
                 graphChart.BackColor = Color.Transparent;
                 graphChart.ChartAreas[0].BackColor = Color.Transparent;
-                //graphChart.ChartAreas[1].BackColor = Color.Transparent;
                 graphChart.Legends[0].BackColor = Color.Transparent;
                 graphChart.ChartAreas[0].AxisX.Title = "Cities";
                 graphChart.ChartAreas[0].AxisY.Title = "Number of Sighting";
@@ -189,13 +172,12 @@ namespace ButterflyTrackingSystem
                         dataReader.Close();
                         try
                         {
-                            // Save Employee ID into variable
-                            MySqlDataReader reader;
-                            string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" +
-                                                userNameBox.Text + "';");
 
-                            MySqlCommand Get_Emp_ID = new MySqlCommand(selectCmd, dbcon);
-                            reader = Get_Emp_ID.ExecuteReader();
+                            MySqlCommand command1 =
+                                 new MySqlCommand("SELECT Employee_ID FROM Employee WHERE User_ID LIKE @Username;", dbcon);
+                            command1.Parameters.AddWithValue("@Username", LoginUserName);
+                            MySqlDataReader reader = command1.ExecuteReader();
+                             // Save Employee ID into variable
 
                             while (reader.Read())
                             {
@@ -203,12 +185,11 @@ namespace ButterflyTrackingSystem
                             }
                             reader.Close();
 
-                            // Find if account is tagger nonTagger
-                            string selectCred = ("SELECT Position FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +
-                                                 "';");
-                            MySqlCommand retreiveCred = new MySqlCommand(selectCred, dbcon);
-                            MySqlDataReader CredReader;
-                            CredReader = retreiveCred.ExecuteReader();
+                             // Find if account is tagger nonTagger
+                            MySqlCommand command2 =
+                                 new MySqlCommand("SELECT Position FROM Employee WHERE User_ID LIKE @Username;",dbcon);
+                            command2.Parameters.AddWithValue("@Username", LoginUserName);
+                             MySqlDataReader CredReader = command2.ExecuteReader();
                             while (CredReader.Read())
                             {
                                 if ((string) (CredReader["Position"]) == "tagger")
@@ -268,13 +249,6 @@ namespace ButterflyTrackingSystem
                         dataReader.Close();
                         MessageBox.Show("Invalid user name/password!");
                     }
-
-                    /*else if (!String.IsNullOrEmpty(userNameBox.Text) && !String.IsNullOrEmpty(passwordBox.Text))
-            {
-                loginPanel.Visible = false; //To-Do: if credentials are correct, enter system. otherwise, show alert box invalid credentials!
-                registrationPanel.Visible = false;
-                mainPanel.Visible = true;
-            }*/
                     if (String.IsNullOrEmpty(userNameBox.Text))
                     {
                         loginUserError.SetError(userNameBox, "User Name field is empty!");
@@ -434,16 +408,6 @@ namespace ButterflyTrackingSystem
             string employeeState = createEmployeeStateBox.Text;
             string employeePosition = taggerNontaggerOptionsBox.Text;
             string employeePhoneNumber = createEmployeePhoneNumberBox.Text;
-
-            /*
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-            builder.Server = "butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com";
-            builder.UserID = "root";
-            builder.Password = "master77";
-            builder.Database = "BTS";
-            MySqlConnection connection = new MySqlConnection(builder.ToString());
-            connection.Open();
-            */
 
             if (dbcon.State == ConnectionState.Open)
             {
