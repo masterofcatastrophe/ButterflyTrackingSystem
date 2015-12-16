@@ -60,7 +60,6 @@ namespace ButterflyTrackingSystem
                 dateTimePicker1.CustomFormat = " ";
                 searchDateTimePicker.Format = DateTimePickerFormat.Custom;
                 searchDateTimePicker.CustomFormat = " ";
-
             }
         }
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
@@ -2329,7 +2328,6 @@ namespace ButterflyTrackingSystem
                 graphChart.ChartAreas[0].AxisY.Maximum = maxYValue1;
             }
 
-
             /*
             MySqlCommand history =
                     new MySqlCommand("SELECT NumMale FROM BTS.MalePerCity UNION ALL SELECT City FROM BTS.MaleCities;", dbcon);
@@ -2620,56 +2618,68 @@ namespace ButterflyTrackingSystem
 
         private void searchTagIDTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            /*
             if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
             {
                 return;
             }
             e.Handled = true;
+            */
         }
 
         private void searchUserNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            /*
             if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar))
             {
                 return;
             }
             e.Handled = true;
+            */
         }
 
         private void searchSpeciesTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            /*
             if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
             {
                 return;
             }
             e.Handled = true;
+            */
         }
 
         private void searchCityTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            /*
             if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
             {
                 return;
             }
             e.Handled = true;
+            */
         }
 
         private void searchStateTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            /*
             if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
             {
                 return;
             }
             e.Handled = true;
+            */
         }
 
         private void searchCountryTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            /*
             if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
             {
                 return;
             }
             e.Handled = true;
+            */
         }
 
         private void updateEmployeeNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
