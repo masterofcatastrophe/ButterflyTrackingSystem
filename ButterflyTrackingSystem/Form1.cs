@@ -23,14 +23,14 @@ namespace ButterflyTrackingSystem
         bool cal = false; // enable disabled date
         bool tim = false; // enable disabled time
         bool title = false;
-        
+
         public BTS()
         {
             InitializeComponent();
             con.OpenConnection(); // open db connection
             functionalitiesTabs.SelectedIndexChanged += tabControl1_SelectedIndexChanged; // condition for tagger/nonTagger
             functionalitiesTabs.Selecting += tabControl1_Selecting;
-           mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
+            mainPanel.VisibleChanged += new EventHandler(listView_VisibleChanged); // conditions for nonTagger
             functionalitiesTabs.Selected += new TabControlEventHandler(tabControl1_Selected);
         }
 
@@ -99,8 +99,8 @@ namespace ButterflyTrackingSystem
             else if ((Cred == false) && ((functionalitiesTabs.SelectedIndex == 0)
                                          || functionalitiesTabs.SelectedIndex == 1))
             {
-               // (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
-               // (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
+                // (functionalitiesTabs.TabPages[0] as TabPage).Enabled = false; // disable controls
+                // (functionalitiesTabs.TabPages[1] as TabPage).Enabled = false; // disable controls
                 (functionalitiesTabs.TabPages[1] as TabPage).Visible = false; // hide controls
                 (functionalitiesTabs.TabPages[0] as TabPage).Visible = false; // hide controls
                 //MessageBox.Show("Unable to load tab. You are not a tagger.");
@@ -139,7 +139,7 @@ namespace ButterflyTrackingSystem
                 graphChart.ChartAreas[0].AxisY.Title = "Number of Sighting";
             }
         }
-      
+
         private void BTS_Load(object sender, EventArgs e)
         {
 
@@ -192,7 +192,7 @@ namespace ButterflyTrackingSystem
                     {
                         // Save Employee ID into variable
                         MySqlDataReader reader;
-                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +"';");
+                        string selectCmd = ("SELECT Employee_ID FROM Employee WHERE User_ID LIKE'" + userNameBox.Text + "';");
 
                         MySqlCommand Get_Emp_ID = new MySqlCommand(selectCmd, dbcon);
                         reader = Get_Emp_ID.ExecuteReader();
@@ -204,13 +204,13 @@ namespace ButterflyTrackingSystem
                         reader.Close();
 
                         // Find if account is tagger nonTagger
-                        string selectCred = ("SELECT Position FROM Employee WHERE User_ID LIKE'" + userNameBox.Text +"';");
+                        string selectCred = ("SELECT Position FROM Employee WHERE User_ID LIKE'" + userNameBox.Text + "';");
                         MySqlCommand retreiveCred = new MySqlCommand(selectCred, dbcon);
                         MySqlDataReader CredReader;
                         CredReader = retreiveCred.ExecuteReader();
                         while (CredReader.Read())
                         {
-                            if ((string) (CredReader["Position"]) == "tagger")
+                            if ((string)(CredReader["Position"]) == "tagger")
                             {
                                 Cred = true;
                             }
@@ -718,7 +718,7 @@ namespace ButterflyTrackingSystem
 
         private void searchTab_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void searchLabel_Click(object sender, EventArgs e)
@@ -828,7 +828,7 @@ namespace ButterflyTrackingSystem
                 {
                     string SearchDate = searchDateTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
                     string SearchTime = dateTimePicker1.Value.ToString("hh:mm tt"); // user defined date
-                    
+
                     MySqlDataAdapter mySqlDataAdapter;
                     MySqlCommandBuilder mySqlCommandBuilder;
                     DataTable dataTable;
@@ -937,7 +937,7 @@ namespace ButterflyTrackingSystem
             if (openSightingsFileDialog.ShowDialog() == DialogResult.OK)
             {
                 StreamReader read = new StreamReader(File.OpenRead(openSightingsFileDialog.FileName));
-                
+
                 //parsing and databse goes here...
 
                 read.Dispose();
@@ -1596,28 +1596,28 @@ namespace ButterflyTrackingSystem
                     updateEntryGrid.DataSource = bindingsource1;
                 }
                 if (functionalitiesTabs.SelectedIndex == 2)
-                { 
+                {
                     // retreive all entries in system
                     string retreiveAllEntries =
                         "SELECT Tag_ID, Species, Gender, Age, Date_of_Tagging, Time_of_Tagging, Longitude, Latitude," +
                         " Sighting_Locations.City, Sighting_Locations.State, Country FROM BTS.Butterfly" +
                         " INNER JOIN BTS.Sighting_Locations ON (Butterfly.Tag_ID = Sighting_Locations.Sight_ID)" +
                         " INNER JOIN BTS.Employee ON(Sighting_Locations.Employee_ID = Employee.Employee_ID);";
-                //WHERE (Employee.User_ID =@user)
+                    //WHERE (Employee.User_ID =@user)
 
-                entryAll = new MySqlDataAdapter(retreiveAllEntries, dbcon);
-                MySqlCommandBuilder builderAll = new MySqlCommandBuilder(entryAll);
-                DX = new DataSet();
-                entryAll.Fill(DX, "Entries");
-                bindingsource2 = new BindingSource();
-                bindingsource2.DataSource = DX.Tables[0];
-                BindingNavigator bindingNavigator2 = new BindingNavigator();
-                bindingNavigator2.BindingSource = bindingsource2;
-                migrationFirstGrid.DataSource = bindingsource2;
+                    entryAll = new MySqlDataAdapter(retreiveAllEntries, dbcon);
+                    MySqlCommandBuilder builderAll = new MySqlCommandBuilder(entryAll);
+                    DX = new DataSet();
+                    entryAll.Fill(DX, "Entries");
+                    bindingsource2 = new BindingSource();
+                    bindingsource2.DataSource = DX.Tables[0];
+                    BindingNavigator bindingNavigator2 = new BindingNavigator();
+                    bindingNavigator2.BindingSource = bindingsource2;
+                    migrationFirstGrid.DataSource = bindingsource2;
 
                 }
 
-                 /////////////////
+                /////////////////
                 // retreive account info
                 if (functionalitiesTabs.SelectedIndex == 6)
                 {
@@ -1705,7 +1705,7 @@ namespace ButterflyTrackingSystem
 
         private void updateEntryGrid_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void loadEntry_Click(object sender, EventArgs e)
@@ -1753,7 +1753,7 @@ namespace ButterflyTrackingSystem
 
             }
         }
-            
+
 
         private void updateEntryLabel_Click(object sender, EventArgs e)
         {
@@ -1910,11 +1910,11 @@ namespace ButterflyTrackingSystem
                 updateEntryStateBox.Text = row.Cells[9].Value.ToString();
                 updateEntryCountryBox.Text = row.Cells[10].Value.ToString();
 
-           }
+            }
         }
 
-        private void ResetDate_Click(object sender, EventArgs e){}
-        private void ResetTime_Click(object sender, EventArgs e){}
+        private void ResetDate_Click(object sender, EventArgs e) { }
+        private void ResetTime_Click(object sender, EventArgs e) { }
 
         private void ResetDate_Click_1(object sender, EventArgs e)
         {
@@ -2032,7 +2032,7 @@ namespace ButterflyTrackingSystem
             string migrationlatitude = migrationLatitudeTextBox.Text;
             string migrationDate = migrationDataTimePicker.Value.ToString("MM-dd-yyyy"); // user defined date
             string migrationTime = migrationDataTimePicker.Value.ToString("hh:mm tt"); // user defined date
-            
+
             if (!String.IsNullOrEmpty(migrationTagIDTextBox.Text) && !String.IsNullOrEmpty(migrationCityTextBox.Text) &&
                 !String.IsNullOrEmpty(migrationStateTextBox.Text) && !String.IsNullOrEmpty(migrationCountryTextBox.Text) &&
                 !String.IsNullOrEmpty(migrationLongitudeTextBox.Text) && !String.IsNullOrEmpty(migrationLatitudeTextBox.Text))
@@ -2064,42 +2064,42 @@ namespace ButterflyTrackingSystem
                     migration.ExecuteNonQuery();
 
                     MessageBox.Show("New sighting added to that butterfly tag !");
-                } 
-            
-                    con.CloseConnection();
-                    con.OpenConnection();
+                }
+
+                con.CloseConnection();
+                con.OpenConnection();
             }
             else MessageBox.Show("some fields are missing !");
-            }
-        
+        }
+
 
         private void migrationTagIDtoViewGridBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        
+
         private void viewSightingButton_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(migrationTagIDtoViewGridBox.Text))
             {
-                string retreiveMigrations = "SELECT Migration_Date,Migration_Time, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;" ;
-            //string retreiveOther = "SELECT City FROM Migration where Migration_Tag=5";        
+                string retreiveMigrations = "SELECT Migration_Date,Migration_Time, Migration.Longitude,Migration.Latitude, Migration.City,Migration.State,Migration.Country,Migration.Migration_Viewer FROM  Migration WHERE (Migration.Migration_Tag= '" + migrationTagIDtoViewGridBox.Text + "') ORDER BY Migration.Migration_no ASC;";
+                //string retreiveOther = "SELECT City FROM Migration where Migration_Tag=5";        
 
 
-            migration = new MySqlDataAdapter(retreiveMigrations, dbcon);
-            MySqlCommandBuilder builder = new MySqlCommandBuilder(migration);
-            DY = new DataSet();
-            migration.Fill(DY, "Migrations");
-            bindingsource3 = new BindingSource();
-            bindingsource3.DataSource = DY.Tables[0];
+                migration = new MySqlDataAdapter(retreiveMigrations, dbcon);
+                MySqlCommandBuilder builder = new MySqlCommandBuilder(migration);
+                DY = new DataSet();
+                migration.Fill(DY, "Migrations");
+                bindingsource3 = new BindingSource();
+                bindingsource3.DataSource = DY.Tables[0];
 
-            BindingNavigator bindingNavigator3 = new BindingNavigator();
-            bindingNavigator3.BindingSource = bindingsource3;
-            migrationSecondGrid.DataSource = bindingsource3;
+                BindingNavigator bindingNavigator3 = new BindingNavigator();
+                bindingNavigator3.BindingSource = bindingsource3;
+                migrationSecondGrid.DataSource = bindingsource3;
             }
             else MessageBox.Show("Please Enter a Tag ID !");
-           
+
         }
 
         private void migrationFirstGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -2193,8 +2193,8 @@ namespace ButterflyTrackingSystem
             Series barSeries2 = new Series();
             Series barSeries1 = new Series();
 
-           graphChart.Series["History"] = barSeries1;
-           graphChart.Series["History"] = barSeries2;
+            graphChart.Series["History"] = barSeries1;
+            graphChart.Series["History"] = barSeries2;
 
             graphChart.ChartAreas[0].AxisX.Interval = 1;
             graphChart.ChartAreas[0].AxisY.Interval = 1;
@@ -2241,23 +2241,23 @@ namespace ButterflyTrackingSystem
 
             graphChart.ChartAreas[0].AxisX.CustomLabels.Add(1, 1, item.ToString());
             */
-            
+
             MySqlCommand history =
                     new MySqlCommand("SELECT NumMale FROM BTS.MalePerCity; SELECT City FROM BTS.MaleCities", dbcon);
             MySqlDataReader myReader;
-            
+
             myReader = history.ExecuteReader();
-            
+
             while (myReader.Read())
             {
-                graphChart.Series["Male"].Points.AddY(myReader.GetInt32("NumMale")); 
+                graphChart.Series["Male"].Points.AddY(myReader.GetInt32("NumMale"));
             }
 
             myReader.NextResult();
 
             while (myReader.Read())
             {
-                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"),2);
+                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"), 2);
             }
             myReader.Close();
 
@@ -2268,7 +2268,7 @@ namespace ButterflyTrackingSystem
 
             while (myReader2.Read())
             {
-                graphChart.Series["Female"].Points.AddXY(myReader2.GetString("City"),2); 
+                graphChart.Series["Female"].Points.AddXY(myReader2.GetString("City"), 2);
             }
 
             while (myReader2.Read())
@@ -2323,6 +2323,384 @@ namespace ButterflyTrackingSystem
         private void leaderboardGrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void createSpeciesTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createAgeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createCityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createStateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createCountryTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createLongitudeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createLatitudeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntrySpeciesBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryCityBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryStateBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryCountryBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryLongitudeBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryLatitudeBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEntryAgeBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationTagIDTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationCityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationStateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationCountryTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationLongitudeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationLatitudeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void migrationTagIDtoViewGridBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchTagIDTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchUserNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchSpeciesTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchCityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchStateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void searchCountryTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEmployeeNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updatePasswordTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || !char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updatePhoneNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEmployeeStreetTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEmployeeCityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void updateEmployeeStateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void userNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void passwordBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || !char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeeCityBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeeNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeePasswordBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || !char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeePhoneNumberBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeeStateBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeeStreetBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void createEmployeeUserNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar))
+            {
+                return;
+            }
+            e.Handled = true;
         }
     }
 }
