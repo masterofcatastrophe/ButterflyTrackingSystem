@@ -2209,41 +2209,178 @@ namespace ButterflyTrackingSystem
             graphChart.ChartAreas[0].AxisX.CustomLabels.Add(1, 1, item.ToString());
             */
 
-            MySqlCommand history =
-                    new MySqlCommand("SELECT NumMale FROM BTS.MalePerCity; SELECT City FROM BTS.MaleCities", dbcon);
-            MySqlDataReader myReader;
+            //int cnter = 0;
 
+            /*
+            int mycountm = 0; // number of rows.
+            MySqlCommand numrows =
+                    new MySqlCommand("SELECT Count(NumMale) FROM BTS.MalePerCity", dbcon);
+            MySqlDataReader myReader4;
+
+            myReader4 = numrows.ExecuteReader();
+
+            while (myReader4.Read())
+            {
+                mycountm = myReader4.GetInt32(0);
+            }
+            myReader4.Close();
+
+
+            int mycountf = 0; // number of rows.
+            MySqlCommand numrows1 =
+                    new MySqlCommand("SELECT Count(NumFemale) FROM BTS.FemalePerCity", dbcon);
+            MySqlDataReader myReader5;
+
+            myReader5 = numrows.ExecuteReader();
+
+            while (myReader5.Read())
+            {
+                mycountf = myReader5.GetInt32(0);
+            }
+            myReader5.Close();
+            */
+            //SELECT Count(NumMale) FROM BTS.MalePerCity;
+            
+            MySqlCommand history =
+                   new MySqlCommand("SELECT NumMale FROM BTS.MalePerCity; SELECT City FROM BTS.MaleCities;", dbcon);
+            MySqlDataReader myReader;
+            myReader = history.ExecuteReader();
+           
+            DataTable dt = new DataTable();
+            dt.Load(myReader);
+            int count = dt.Rows.Count;
+            myReader.Close();
             myReader = history.ExecuteReader();
 
+            double[] MaleNum = new double[count];
+            string[] MaleCities = new string[count];
+            int i = 0;
             while (myReader.Read())
             {
-                graphChart.Series["Male"].Points.AddY(myReader.GetInt32("NumMale"));
+                MaleNum[i] = myReader.GetDouble("NumMale");
+                i++;
             }
-
             myReader.NextResult();
-
+            i = 0;
             while (myReader.Read())
             {
-                graphChart.Series["Male"].Points.AddXY(myReader.GetString("City"), 2);
+                MaleCities[i] = myReader.GetString("City");
+                i++;
+            }
+            for (int j = 0; j < count; j++)
+            {
+                graphChart.Series["Male"].Points.AddXY(MaleCities[j], MaleNum[j]);
             }
             myReader.Close();
 
             MySqlCommand history2 =
-                   new MySqlCommand("SELECT City FROM BTS.FemaleCities; SELECT NumFemale FROM BTS.FemalePerCity;", dbcon);
+                  new MySqlCommand("SELECT NumFemale FROM BTS.FemalePerCity; SELECT City FROM BTS.FemaleCities;", dbcon);
             MySqlDataReader myReader2;
             myReader2 = history2.ExecuteReader();
 
-            while (myReader2.Read())
-            {
-                graphChart.Series["Female"].Points.AddXY(myReader2.GetString("City"), 2);
-            }
+            DataTable dt2 = new DataTable();
+            dt2.Load(myReader2);
+            int count2 = dt2.Rows.Count;
+            myReader2.Close();
+            myReader2 = history2.ExecuteReader();
 
+            double[] FemaleNum = new double[count2];
+            string[] FemaleCities = new string[count2];
+            int counter = 0;
             while (myReader2.Read())
             {
-                graphChart.Series["Female"].Points.AddY(myReader2.GetInt32("NumFemale"));
+                FemaleNum[counter] = myReader2.GetDouble("NumFemale");
+                counter++;
+            }
+            myReader2.NextResult();
+            counter = 0;
+            while (myReader2.Read())
+            {
+                FemaleCities[counter] = myReader2.GetString("City");
+                counter++;
+            }
+            for (int j = 0; j < count2; j++)
+            {
+                graphChart.Series["Female"].Points.AddXY(FemaleCities[j], FemaleNum[j]);
             }
             myReader2.Close();
 
+
+            double maxYValue = 0;
+            double maxYValue1 = 0;
+            int iPoints = graphChart.Series["Female"].Points.Count;
+            if (iPoints > 1)
+            {
+                DataPoint maxDP = graphChart.Series["Female"].Points.FindMaxByValue();
+                maxYValue = maxDP.YValues[0];
+            }
+            int iPoints1 = graphChart.Series["Male"].Points.Count;
+            if (iPoints1 > 1)
+            {
+                DataPoint maxDP1 = graphChart.Series["Male"].Points.FindMaxByValue();
+                maxYValue1 = maxDP1.YValues[0];
+            }
+            if (maxYValue > maxYValue1)
+            {
+                graphChart.ChartAreas[0].AxisY.Maximum = maxYValue;
+            }
+            else
+            {
+                graphChart.ChartAreas[0].AxisY.Maximum = maxYValue1;
+            }
+
+
+            /*
+            MySqlCommand history =
+                    new MySqlCommand("SELECT NumMale FROM BTS.MalePerCity UNION ALL SELECT City FROM BTS.MaleCities;", dbcon);
+            MySqlDataReader myReader;
+
+            myReader = history.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(myReader);
+            int count = dt.Rows.Count;
+            int mycounter = 0;
+            myReader = history.ExecuteReader();
+            
+            while (myReader.Read())
+            {
+                if (mycounter > (count / 2))
+                {
+                    graphChart.Series["Male"].Points.AddY(myReader[0]);
+                }
+                else
+                {
+                    graphChart.Series["Male"].Points.AddXY(myReader[0], graphChart.Series["Male"].Points.AddY(myReader[0]));
+                }
+                mycounter++;
+            }
+
+            myReader.Close();
+
+            MySqlCommand history2 =
+                   new MySqlCommand("SELECT NumFemale FROM BTS.FemalePerCity UNION ALL SELECT City FROM BTS.FemaleCities;", dbcon);
+            MySqlDataReader myReader2;
+            myReader2 = history2.ExecuteReader();
+            DataTable dt1 = new DataTable();
+            dt1.Load(myReader2);
+            int count1 = dt1.Rows.Count;
+
+            myReader2 = history2.ExecuteReader();
+            int mycounter1 = 0;
+            while (myReader2.Read())
+            {
+                if (mycounter1 > (count1/2))
+                {
+                    graphChart.Series["Female"].Points.AddY(myReader2[0]);
+                }
+                else
+                {
+                    graphChart.Series["Female"].Points.AddXY(myReader2[0], graphChart.Series["Female"].Points.AddY(myReader2[0]));
+                }
+                mycounter1++;
+            }
+            myReader2.Close();
+            */
             //history.Dispose();
 
             /*
