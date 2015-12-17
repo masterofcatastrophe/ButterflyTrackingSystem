@@ -2328,6 +2328,9 @@ namespace ButterflyTrackingSystem
                 graphChart.ChartAreas[0].AxisY.Maximum = maxYValue1;
             }
 
+            graphChart.Series["Male"].XAxisType = AxisType.Primary;
+            graphChart.Series["Female"].XAxisType = AxisType.Secondary;
+
             /*
             MySqlCommand history =
                     new MySqlCommand("SELECT NumMale FROM BTS.MalePerCity UNION ALL SELECT City FROM BTS.MaleCities;", dbcon);
