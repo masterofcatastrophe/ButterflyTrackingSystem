@@ -33,5 +33,16 @@ namespace ButterflyTrackingSystem.Properties {
                 return ((string)(this["BTSConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=bts.cqioreefdvo2.us-east-1.rds.amazonaws.com;user id=root;password=passwor" +
+            "d;persistsecurityinfo=True;database=BTS")]
+        public string BTSConnectionString_LAST {
+            get {
+                return ((string)(this["BTSConnectionString_LAST"]));
+            }
+        }
     }
 }

@@ -10,5 +10,13 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=butterflytrackingsystem.coriiiuartnb.us-east-1.rds.amazonaws.com;user id=root;password=master77;database=BTS;persistsecurityinfo=True</Value>
     </Setting>
+    <Setting Name="BTSConnectionString_LAST" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=bts.cqioreefdvo2.us-east-1.rds.amazonaws.com;user id=root;password=password;persistsecurityinfo=True;database=BTS&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=bts.cqioreefdvo2.us-east-1.rds.amazonaws.com;user id=root;password=password;persistsecurityinfo=True;database=BTS</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -1439,10 +1439,10 @@ namespace ButterflyTrackingSystem
             //Initialize values
             private void Initialize()
             {
-                server = "bts.ct5hjcz9obxd.us-west-2.rds.amazonaws.com";
+                server = "bts.cqioreefdvo2.us-east-1.rds.amazonaws.com";
                 database = "BTS";
-                uid = "alsanad";
-                password = "3132583492";
+                uid = "root";
+                password = "password";
                 string connectionString;
                 connectionString = "SERVER=" + server + ";" + "DATABASE=" +
                                    database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
